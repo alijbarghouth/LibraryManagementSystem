@@ -1,8 +1,7 @@
-﻿using Domain.Authentication;
-using Infrastructure.Authentication;
+﻿using Application.Repositories;
 using Infrastructure.DBContext;
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,18 +11,16 @@ public static class Configuration
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<ApplicationDBContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
-                 );
-        services.AddScoped<ILogoutRepository, RedisLogoutRepository>();
-
-        services.AddScoped<ILogoutRepository>(provider =>
+        services.AddDbContext<LibraryDBContext>(option =>
+                option.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+               );
+        services.AddStackExchangeRedisCache(redisOption =>
         {
-            var cache = provider.GetRequiredService<IDistributedCache>();
-            var tokenLifetime = Convert.ToDouble(configuration.GetSection("Security:TokenLifetime").Value);
-            return new RedisLogoutRepository(cache, tokenLifetime);
-        });
+            string connectionString = configuration.GetConnectionString("Redis");
+            redisOption.Configuration = connectionString;
 
+        });
+        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         return services;
     }
 }

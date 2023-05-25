@@ -1,5 +1,10 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Domain.Authentication;
+using Infrastructure.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
+using System.Text;
 using WebApi.Authentication;
 using WebApi.Features;
 using WebApi.Settings;
@@ -29,6 +34,29 @@ public static class Configuration
              });
              options.OperationFilter<SecurityRequirementsOperationFilter>();
          });
+
+        services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+    .AddJwtBearer(o =>
+    {
+        o.RequireHttpsMetadata = false;
+        o.SaveToken = false;
+        o.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidIssuer = configuration.GetSection("JWT:Issuer").Value,
+            ValidAudience = configuration.GetSection("JWT:Audience").Value,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetSection("JWT:Key").Value ?? "")),
+            ClockSkew = TimeSpan.Zero
+        };
+    });
+        services.AddScoped<ILogoutRepository, RedisLogoutRepository>();
         services.AddScoped<LogoutMiddleware>();
         services.AddScoped<LoggerMiddleware>();
 
