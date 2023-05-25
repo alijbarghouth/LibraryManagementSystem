@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Application.Model;
+namespace Infrastructure.Model;
 [Owned]
 public class RefreshToken
 {

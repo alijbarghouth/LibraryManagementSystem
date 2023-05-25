@@ -8,7 +8,7 @@ public sealed class LibraryExceptionHandlerFilter : ExceptionFilterAttribute
 {
     public override void OnException(ExceptionContext context)
     {
-        if (context.Exception is MyApplicationException exception)
+        if (context.Exception is LibraryException exception)
         {
             context.Result = new ObjectResult(new { exception.Message })
             {
