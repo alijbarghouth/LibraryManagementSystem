@@ -22,4 +22,5 @@ public sealed class User
     public bool IsActive { get; set; }
     public List<Role> Roles { get; set; }
     public List<ReadingList> ReadingLists { get; set; }
+    public List<Notification> Notifications { get; set; }
 }
