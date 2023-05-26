@@ -21,4 +21,5 @@ public sealed class User
     public DateTime? UpdatedAt { get; set; }
     public bool IsActive { get; set; }
     public List<Role> Roles { get; set; }
+    public List<ReadingList> ReadingLists { get; set; }
 }
