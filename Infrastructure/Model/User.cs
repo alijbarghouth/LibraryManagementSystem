@@ -25,4 +25,5 @@ public sealed class User
     public List<Notification> Notifications { get; set; }
     public List<BookReview> BookReviews { get; set; }
     public List<BookRecommendation> BookRecommendations { get; set; }
+    public List<Order> Orders { get; set; }
 }

@@ -9,8 +9,8 @@ public sealed class OrderItem
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
-    public string OrderId { get; set; }
-    public string BookId { get; set; }
+    public Guid OrderId { get; set; }
+    public Guid BookId { get; set; }
     public DateTime BorrowedAt { get; set; }
     public DateTime? ReturnedAt { get; set; }
     public Order Order { get; set; }
