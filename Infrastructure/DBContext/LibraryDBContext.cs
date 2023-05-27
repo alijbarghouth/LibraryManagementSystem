@@ -15,6 +15,10 @@ public sealed class LibraryDBContext : DbContext
             .HasMany(x => x.Roles)
             .WithMany(x => x.Users)
             .UsingEntity(x => x.ToTable("UserRole"));
+        modelBuilder.Entity<Author>()
+            .HasMany(x => x.Books)
+            .WithMany(x => x.Authors)
+            .UsingEntity(x => x.ToTable("BookAuthor"));
     }
     public DbSet<User> Users { get; set; }
     public DbSet<Role> Roles { get; set; }

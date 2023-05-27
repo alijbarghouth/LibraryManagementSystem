@@ -23,4 +23,6 @@ public sealed class User
     public List<Role> Roles { get; set; }
     public List<ReadingList> ReadingLists { get; set; }
     public List<Notification> Notifications { get; set; }
+    public List<BookReview> BookReviews { get; set; }
+    public List<BookRecommendation> BookRecommendations { get; set; }
 }
