@@ -1,6 +1,4 @@
-﻿using Domain.Authentication;
-using Infrastructure.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
@@ -56,7 +54,6 @@ public static class Configuration
             ClockSkew = TimeSpan.Zero
         };
     });
-        services.AddScoped<ILogoutRepository, RedisLogoutRepository>();
         services.AddScoped<LogoutMiddleware>();
         services.AddScoped<LoggerMiddleware>();
 

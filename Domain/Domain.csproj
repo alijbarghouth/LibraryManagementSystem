@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\UserService\" />
+    <Compile Remove="Features\UserService\Services\AuthServcie\**" />
+    <EmbeddedResource Remove="Features\UserService\Services\AuthServcie\**" />
+    <None Remove="Features\UserService\Services\AuthServcie\**" />
   </ItemGroup>
 
 </Project>

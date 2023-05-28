@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Infrastructure.Model;
 [Index(nameof(Username), IsUnique = true)]
-public sealed class Author
+public class Author
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -12,5 +12,5 @@ public sealed class Author
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Username { get; set; }
-    public List<Book> Books { get; set; }
+    public virtual IEnumerable<Book> Books { get; set; }
 }

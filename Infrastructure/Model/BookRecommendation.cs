@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Infrastructure.Model;
 [Index(nameof(Id), IsUnique = true)]
-public sealed class BookRecommendation
+public class BookRecommendation
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -13,6 +13,6 @@ public sealed class BookRecommendation
     public Guid BookId { get; set; }
     public string RecommendationType { get; set; }
     public DateTime CreatedAt { get; set; }
-    public User User { get; set; }
-    public Book Book { get; set; }
+    public virtual User User { get; set; }
+    public virtual Book Book { get; set; }
 }

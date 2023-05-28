@@ -27,7 +27,7 @@ if (app.Environment.IsDevelopment())
 }
 app.UseHttpsRedirection();
 
-app.UseMiddleware<LogoutMiddleware>();
+//app.UseMiddleware<LogoutMiddleware>();
 app.UseMiddleware<LoggerMiddleware>();
 
 app.UseAuthorization();

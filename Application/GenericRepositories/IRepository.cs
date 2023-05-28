@@ -1,4 +1,4 @@
-﻿namespace Application.Repositories;
+﻿namespace Application.GenericRepositories;
 
 public interface IRepository<TEntity>
 {
@@ -6,7 +6,7 @@ public interface IRepository<TEntity>
     Task<TEntity?> GetById(int id);
     IQueryable<TEntity> GetQueryable();
     Task<TEntity> Insert(TEntity entity);
-    void Update(TEntity entity);
     void Delete(TEntity entity);
+    void Update(TEntity entity);
     Task SaveChangesAsync();
 }

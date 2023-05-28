@@ -1,6 +1,5 @@
 ﻿using Infrastructure.Model;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace Infrastructure.DBContext;
 
@@ -19,23 +18,23 @@ public sealed class LibraryDBContext : DbContext
         modelBuilder.Entity<User>()
             .HasMany(x => x.ReadingLists)
             .WithOne(x => x.User)
-            .HasForeignKey(x => x.UserId);  
+            .HasForeignKey(x => x.UserId);
         modelBuilder.Entity<User>()
             .HasMany(x => x.Notifications)
             .WithOne(x => x.User)
-            .HasForeignKey(x => x.UserId); 
+            .HasForeignKey(x => x.UserId);
         modelBuilder.Entity<User>()
             .HasMany(x => x.BookRecommendations)
             .WithOne(x => x.User)
-            .HasForeignKey(x => x.UserId); 
+            .HasForeignKey(x => x.UserId);
         modelBuilder.Entity<User>()
             .HasMany(x => x.BookReviews)
             .WithOne(x => x.User)
             .HasForeignKey(x => x.UserId);
-           modelBuilder.Entity<User>()
-            .HasMany(x => x.Orders)
-            .WithOne(x => x.User)
-            .HasForeignKey(x => x.UserId);
+        modelBuilder.Entity<User>()
+         .HasMany(x => x.Orders)
+         .WithOne(x => x.User)
+         .HasForeignKey(x => x.UserId);
 
         modelBuilder.Entity<Book>()
             .HasMany(x => x.Authors)
@@ -49,10 +48,10 @@ public sealed class LibraryDBContext : DbContext
             .HasMany(x => x.ReadingLists)
             .WithOne(x => x.Book)
             .HasForeignKey(x => x.BookId);
-         modelBuilder.Entity<Book>()
-            .HasMany(x => x.BookReviews)
-            .WithOne(x => x.Book)
-            .HasForeignKey(x => x.BookId);
+        modelBuilder.Entity<Book>()
+           .HasMany(x => x.BookReviews)
+           .WithOne(x => x.Book)
+           .HasForeignKey(x => x.BookId);
         modelBuilder.Entity<Book>()
             .HasOne(x => x.BookRecommendation)
             .WithOne(x => x.Book)

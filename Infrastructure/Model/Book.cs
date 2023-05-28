@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Infrastructure.Model;
 [Index(nameof(Title), IsUnique = true)]
 [Index(nameof(Id), IsUnique = true)]
-public sealed class Book
+public class Book
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -15,10 +15,10 @@ public sealed class Book
     public Guid GenreId { get; set; }
     public bool Availability { get; set; }
     public int Count { get; set; }
-    public List<Genre> Genre { get; set; }
-    public List<Author> Authors { get; set; }
-    public List<ReadingList> ReadingLists { get; set; }
-    public List<BookReview> BookReviews { get; set; }
-    public BookRecommendation BookRecommendation { get; set; }
-    public List<OrderItem> OrderItems { get; set; }
+    public virtual IEnumerable<Genre> Genre { get; set; }
+    public virtual IEnumerable<Author> Authors { get; set; }
+    public virtual IEnumerable<ReadingList> ReadingLists { get; set; }
+    public virtual IEnumerable<BookReview> BookReviews { get; set; }
+    public virtual BookRecommendation BookRecommendation { get; set; }
+    public virtual IEnumerable<OrderItem> OrderItems { get; set; }
 }

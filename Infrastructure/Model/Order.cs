@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Infrastructure.Model;
 [Index(nameof(Id), IsUnique = true)]
-public sealed class Order
+public class Order
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -15,6 +15,6 @@ public sealed class Order
     public DateTime DateRetrive { get; set; }
     public DateTime DateRequest { get; set; }
     public StatusRequest StatusRequest { get; set; }
-    public User User { get; set; }
-    public List<OrderItem> OrderItems { get; set; }
+    public virtual User User { get; set; }
+    public virtual IEnumerable<OrderItem> OrderItems { get; set; }
 }
