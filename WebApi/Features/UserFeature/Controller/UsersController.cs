@@ -25,7 +25,27 @@ namespace WebApi.Features.UserFeature.Controller
         [HttpPost("login")]
         public async Task<IActionResult> LoginUser(LoginRequest request)
         {
-            return Ok(await _commandService.LoginUser(request));
+            var (token, refreshToken) = await _commandService.LoginUser(request);
+            if (!string.IsNullOrEmpty(refreshToken))
+            {
+                SetRefreshTokenInCookie(refreshToken);
+            }
+            return Ok(token);
+        }
+        [HttpPost("role")]
+        public async Task<IActionResult> AddRole(RoleRequest roleRequest)
+        {
+            return Ok(await _commandService.AddRole(roleRequest));
+        }
+        private void SetRefreshTokenInCookie(string refreshToken)
+        {
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true,
+                Expires = DateTime.UtcNow.AddDays(3),
+            };
+
+            Response.Cookies.Append("refreshToken", refreshToken, cookieOptions);
         }
     }
 }

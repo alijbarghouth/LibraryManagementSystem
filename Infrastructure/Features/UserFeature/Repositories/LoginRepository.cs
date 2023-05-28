@@ -1,5 +1,4 @@
-﻿using Domain.Authentication;
-using Domain.Features.UserService.Services.LoginService;
+﻿using Domain.Features.UserService.Services.LoginService;
 using Domain.Shared.Exceptions.CustomException;
 using Infrastructure.DBContext;
 using Infrastructure.HashingPassword;
@@ -9,6 +8,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using WebApi.Settings;
 
@@ -24,7 +24,7 @@ public sealed class LoginRepository : ILoginRepository
         _jwt = jwt.Value;
     }
 
-    public async Task<string> LoginUser(Domain.Features.UserService.DTOs.LoginRequest login)
+    public async Task<(string, string)> LoginUser(Domain.Features.UserService.DTOs.LoginRequest login)
     {
         var user = await _libraryDBContext.Users
             .FirstOrDefaultAsync(x => x.Email == login.Email)
@@ -34,8 +34,15 @@ public sealed class LoginRepository : ILoginRepository
             throw new LibraryBadRequestException("The password is wrong");
         }
         var token = new JwtSecurityTokenHandler().WriteToken(CreateJwtToken(user));
+        var refreshToken = new RefreshToken();
+        if (!user.RefreshTokens.Any(x => x.IsActive))
+        {
+            refreshToken = GenerateRefreshToken();
+            user.RefreshTokens.Add(refreshToken);
+            _libraryDBContext.Users.Update(user);
+        }
 
-        return token;
+        return (token,refreshToken.Token);
     }
     private JwtSecurityToken CreateJwtToken(User user)
     {
@@ -64,5 +71,20 @@ public sealed class LoginRepository : ILoginRepository
             signingCredentials: signingCredentials);
 
         return jwtSecurityToken;
+    }
+    private static RefreshToken GenerateRefreshToken()
+    {
+        var randomNumber = new byte[32];
+
+        using var generator = new RNGCryptoServiceProvider();
+
+        generator.GetBytes(randomNumber);
+
+        return new RefreshToken
+        {
+            Token = Convert.ToBase64String(randomNumber),
+            ExpiresOn = DateTime.UtcNow.AddDays(3),
+            CreatedOn = DateTime.UtcNow
+        };
     }
 }

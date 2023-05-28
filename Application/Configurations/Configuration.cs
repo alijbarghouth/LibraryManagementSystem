@@ -1,6 +1,7 @@
 ﻿using Application.Features.UserFeature.Command;
 using Application.Features.UserFeature.Validator;
 using Domain.Features.UserService.DTOs;
+using Domain.Features.UserService.Services.AuthService;
 using Domain.Features.UserService.Services.LoginService;
 using Domain.Features.UserService.Services.RegisterService;
 using FluentValidation;
@@ -27,5 +28,6 @@ public static class Configuration
         services.AddScoped<IRegisterService, RegisterService>();
         services.AddScoped<ICommandService, CommandService>();
         services.AddScoped<ILoginService, LoginService>();
+        services.AddScoped<IAuthService, AuthService>();
     }
 }

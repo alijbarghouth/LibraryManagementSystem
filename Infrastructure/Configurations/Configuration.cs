@@ -1,5 +1,6 @@
 ﻿using Application.GenericRepositories;
 using Domain.Authentication;
+using Domain.Features.UserService.Services.AuthService;
 using Domain.Features.UserService.Services.LoginService;
 using Domain.Features.UserService.Services.RegisterService;
 using Domain.Features.UserService.SharedRepositories;
@@ -36,6 +37,7 @@ public static class Configuration
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ILoginRepository, LoginRepository>();
         services.AddScoped<ISharedRepository, SharedRepository>();
+        services.AddScoped<IAuthRepository, AuthRepository>();
     }
     private static void AddLibraryDbContext(IServiceCollection services, ConfigurationManager configuration)
     {

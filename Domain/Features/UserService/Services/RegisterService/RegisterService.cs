@@ -20,8 +20,8 @@ public sealed class RegisterService : IRegisterService
 
     public async Task<User> RegisterUser(User register, CancellationToken cancellationToken = default)
     {
-        if (await _sharedRepository.FindUserByEmail(register.Email)
-            || await _sharedRepository.FindUserByUsername(register.Username))
+        if (await _sharedRepository.UserIsExistsByEmail(register.Email)
+            || await _sharedRepository.UserIsExistByUsername(register.Username))
             throw new LibraryBadRequestException("username or email is exists");
 
         var user = await _registerRepository.RegisterUser(register);

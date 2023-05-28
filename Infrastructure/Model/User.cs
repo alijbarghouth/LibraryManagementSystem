@@ -24,6 +24,7 @@ public class User
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
     public bool IsActive { get; set; } = true;
+    public List<RefreshToken> RefreshTokens { get; set; }
     public virtual ICollection<Role> Roles { get; set; }
     public virtual IEnumerable<ReadingList> ReadingLists { get; set; }
     public virtual IEnumerable<Notification> Notifications { get; set; }

@@ -2,6 +2,6 @@
 
 public interface ISharedRepository
 {
-    Task<bool> FindUserByUsername(string username);
-    Task<bool> FindUserByEmail(string email);
+    Task<bool> UserIsExistByUsername(string username);
+    Task<bool> UserIsExistsByEmail(string email);
 }

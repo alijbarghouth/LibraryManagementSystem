@@ -12,17 +12,19 @@ public sealed class SharedRepository : ISharedRepository
     {
         _libraryDBContext = libraryDBContext;
     }
-    public async Task<bool> FindUserByUsername(string username)
+
+
+    public async Task<bool> UserIsExistByUsername(string username)
     {
         return await _libraryDBContext.Users
-        .AsNoTracking()
-        .AnyAsync(x => x.Username == username);
+       .AsNoTracking()
+       .AnyAsync(x => x.Username == username);
     }
 
-    public async Task<bool> FindUserByEmail(string email)
+    public async Task<bool> UserIsExistsByEmail(string email)
     {
         return await _libraryDBContext.Users
-           .AsNoTracking()
-           .AnyAsync(x => x.Email == email);
+            .AsNoTracking()
+            .AnyAsync(x => x.Email == email);
     }
 }
