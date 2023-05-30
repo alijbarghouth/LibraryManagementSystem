@@ -1,4 +1,6 @@
 ﻿using Application.Features.UserFeature.Command;
+using Application.Features.UserFeature.Handler.LoginHandler;
+using Application.Features.UserFeature.Handler.RegisterHandler;
 using Domain.Features.UserService.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Filter;
@@ -10,32 +12,29 @@ namespace WebApi.Features.UserFeature.Controller
     [LibraryExceptionHandlerFilter]
     public class UsersController : ControllerBase
     {
-        private readonly ICommandService _commandService;
-
-        public UsersController(ICommandService commandService)
+        private readonly IRegisterUserCommandHandler _registerCommandHandler;
+        private readonly ILoginUserCommandHandler _loginUserCommandHandler;
+        public UsersController(RegisterUserCommandHandler registerCommandHandler
+            , ILoginUserCommandHandler loginUserCommandHandler)
         {
-            _commandService = commandService;
+            _registerCommandHandler = registerCommandHandler;
+            _loginUserCommandHandler = loginUserCommandHandler;
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> RegisterUser(User user)
+        public async Task<IActionResult> RegisterUser(RegisterUserCommand user)
         {
-            return Ok(await _commandService.RegisterUser(user));
+            return Ok(await _registerCommandHandler.Handle(user));
         }
         [HttpPost("login")]
-        public async Task<IActionResult> LoginUser(LoginRequest request)
+        public async Task<IActionResult> LoginUser(LoginUserCommand request)
         {
-            var (token, refreshToken) = await _commandService.LoginUser(request);
+            var (token, refreshToken) = await _loginUserCommandHandler.Handle(request);
             if (!string.IsNullOrEmpty(refreshToken))
             {
                 SetRefreshTokenInCookie(refreshToken);
             }
             return Ok(token);
-        }
-        [HttpPost("role")]
-        public async Task<IActionResult> AddRole(RoleRequest roleRequest)
-        {
-            return Ok(await _commandService.AddRole(roleRequest));
         }
         private void SetRefreshTokenInCookie(string refreshToken)
         {

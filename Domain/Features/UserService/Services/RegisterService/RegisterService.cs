@@ -18,7 +18,7 @@ public sealed class RegisterService : IRegisterService
         _sharedRepository = sharedRepository;
     }
 
-    public async Task<User> RegisterUser(User register, CancellationToken cancellationToken = default)
+    public async Task<RegisterUser> RegisterUser(RegisterUser register, CancellationToken cancellationToken = default)
     {
         if (await _sharedRepository.UserIsExistsByEmail(register.Email)
             || await _sharedRepository.UserIsExistByUsername(register.Username))

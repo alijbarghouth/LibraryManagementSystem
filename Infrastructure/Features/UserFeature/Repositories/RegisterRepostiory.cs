@@ -16,8 +16,8 @@ public sealed class RegisterRepostiory : IRegisterRepository
         _libraryDBContext = libraryDBContext;
     }
 
-    public async Task<Domain.Features.UserService.DTOs.User>
-        RegisterUser(Domain.Features.UserService.DTOs.User register)
+    public async Task<Domain.Features.UserService.DTOs.RegisterUser>
+        RegisterUser(Domain.Features.UserService.DTOs.RegisterUser register)
     {
         var role = await _libraryDBContext.Roles.FirstOrDefaultAsync(x => x.RoleName == "Patrons");
 

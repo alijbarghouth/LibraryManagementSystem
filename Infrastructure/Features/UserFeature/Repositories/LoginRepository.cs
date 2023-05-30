@@ -24,11 +24,11 @@ public sealed class LoginRepository : ILoginRepository
         _jwt = jwt.Value;
     }
 
-    public async Task<(string, string)> LoginUser(Domain.Features.UserService.DTOs.LoginRequest login)
+    public async Task<(string, string)> LoginUser(Domain.Features.UserService.DTOs.LoginUser login)
     {
         var user = await _libraryDBContext.Users
-            .FirstOrDefaultAsync(x => x.Email == login.Email)
-            ?? throw new LibraryNotFoundException("user is not found");
+            .FirstOrDefaultAsync(x => x.Email == login.Email);
+            
         if (!login.Password.VerifyingPassword(user.PasswordHash, user.PasswordSlot))
         {
             throw new LibraryBadRequestException("The password is wrong");

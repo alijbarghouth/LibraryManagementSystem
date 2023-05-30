@@ -1,6 +1,6 @@
 ﻿using Application.Features.UserFeature.Command;
+using Application.Features.UserFeature.Handler.RegisterHandler;
 using Application.Features.UserFeature.Validator;
-using Domain.Features.UserService.DTOs;
 using Domain.Features.UserService.Services.AuthService;
 using Domain.Features.UserService.Services.LoginService;
 using Domain.Features.UserService.Services.RegisterService;
@@ -21,7 +21,7 @@ public static class Configuration
     private static void AddFluentValidation(IServiceCollection services)
     {
         services.AddFluentValidationAutoValidation();
-        services.AddScoped<IValidator<User>, UserValidation>();
+        services.AddScoped<IValidator<RegisterUserCommand>, UserValidation>();
     }
     private static void AddCustomDependencies(IServiceCollection services)
     {
@@ -29,5 +29,6 @@ public static class Configuration
         services.AddScoped<ICommandService, CommandService>();
         services.AddScoped<ILoginService, LoginService>();
         services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IRegisterUserCommandHandler, RegisterUserCommandHandler>();
     }
 }

@@ -23,7 +23,7 @@ public sealed class LoggerMiddleware : IMiddleware
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, $"Error occurred while processing request: {context.Request.Method} {context.Request.Path}" +
+            _logger.LogError(ex.Message, $"Error occurred while processing request: {context.Request.Method} {context.Request.Path}" +
                 $" from {context.Connection.RemoteIpAddress}");
 
             throw;

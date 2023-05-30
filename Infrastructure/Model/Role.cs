@@ -8,7 +8,7 @@ public class Role
 {
     public Role()
     {
-        Users = new List<User>(); // Initialize the Roles collection
+        Users = new List<User>();
     }
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

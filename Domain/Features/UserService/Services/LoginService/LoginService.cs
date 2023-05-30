@@ -14,11 +14,11 @@ public class LoginService : ILoginService
         _loginRepository = loginRepository;
     }
 
-    public async Task<(string, string)> LoginUser(LoginRequest login)
+    public async Task<(string, string)> LoginUser(LoginUser login)
     {
         if (!await _sharedRepository.UserIsExistsByEmail(login.Email))
         {
-            throw new LibraryBadRequestException("email or password is incorrect!");
+            throw new LibraryNotFoundException("email or password is incorrect!");
         }
         return await _loginRepository.LoginUser(login);
     }

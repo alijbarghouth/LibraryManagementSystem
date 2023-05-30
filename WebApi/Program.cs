@@ -1,6 +1,5 @@
 using Application.Configurations;
 using Infrastructure.Configurations;
-using WebApi.Authentication;
 using WebApi.Configurations;
 using WebApi.Features;
 

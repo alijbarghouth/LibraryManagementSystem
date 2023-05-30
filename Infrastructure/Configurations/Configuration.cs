@@ -58,7 +58,7 @@ public static class Configuration
     }
     private static void AddMapsterConfiguration()
     {
-        TypeAdapterConfig<Domain.Features.UserService.DTOs.User, User>
+        TypeAdapterConfig<Domain.Features.UserService.DTOs.RegisterUser, User>
             .NewConfig()
             .Ignore(x => x.PasswordHash)
             .Ignore(x => x.PasswordSlot);
