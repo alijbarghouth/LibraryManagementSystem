@@ -2,8 +2,8 @@
 
 namespace Application.Query.BookQuery;
 
-public record SearchByTitleQuery
+public record SearchByTAuthorNameQuery
 {
-    public string? BookTitle { get; set; }
+    public string? AuthorName { get; set; }
     public PaginationQueries Queries { get; set; } = new PaginationQueries();
 }

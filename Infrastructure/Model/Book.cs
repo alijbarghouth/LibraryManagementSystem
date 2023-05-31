@@ -16,7 +16,7 @@ public class Book
     public bool Availability { get; set; }
     public int Count { get; set; }
     public virtual IEnumerable<Genre> Genre { get; set; }
-    public virtual IEnumerable<Author> Authors { get; set; }
+    public virtual ICollection<Author> Authors { get; set; }
     public virtual IEnumerable<ReadingList> ReadingLists { get; set; }
     public virtual IEnumerable<BookReview> BookReviews { get; set; }
     public virtual BookRecommendation BookRecommendation { get; set; }

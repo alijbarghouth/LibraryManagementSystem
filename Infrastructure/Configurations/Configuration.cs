@@ -1,5 +1,7 @@
 ﻿using Domain.Authentication;
 using Domain.DTOs.UserDTOs;
+using Domain.Repositories.AuthorRepository;
+using Domain.Repositories.BookAuthorRepository;
 using Domain.Repositories.BookRepository;
 using Domain.Repositories.SharedRepositories;
 using Domain.Repositories.UserRepositories;
@@ -7,6 +9,8 @@ using Domain.Shared.Exceptions;
 using Infrastructure.Authentication;
 using Infrastructure.DBContext;
 using Infrastructure.Model;
+using Infrastructure.Repositories.AuhtorRepository;
+using Infrastructure.Repositories.BookAuthorRepository;
 using Infrastructure.Repositories.BookRepository;
 using Infrastructure.Repositories.SharedRepositories;
 using Infrastructure.Repositories.UserRepositories;
@@ -38,6 +42,8 @@ public static class Configuration
         services.AddScoped<ISharedRepository, SharedRepository>();
         services.AddScoped<IAuthRepository, AuthRepository>();
         services.AddScoped<IBookRepository, BookRepository>();
+        services.AddScoped<IBookAuthorRepository, BookAuthorRepository>();
+        services.AddScoped<IAuthorRepository, AuthorRepository>();
         services.Configure<JWT>(configuration.GetSection("JWT"));
     }
     private static void AddLibraryDbContext(IServiceCollection services, ConfigurationManager configuration)
