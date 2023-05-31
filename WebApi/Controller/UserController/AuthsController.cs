@@ -1,5 +1,6 @@
 ﻿using Application.Command.UserCommand;
 using Application.Handler.UserHandler.RoleHandler;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Filter;
 
@@ -16,7 +17,7 @@ namespace WebApi.Controller.UserController
         {
             _roleCommandHandler = roleCommandHandler;
         }
-        //[Authorize(Roles = "Administrators")]
+        [Authorize(Roles = "Administrators")]
         [HttpPost("role")]
         public async Task<IActionResult> AddRole(AddRoleCommand role)
         {

@@ -1,9 +1,12 @@
 ﻿using Application.Command.UserCommand;
+using Application.Handler.BookHandler.SearchByTitle;
 using Application.Handler.UserHandler.LoginHandler;
 using Application.Handler.UserHandler.RefreshTokenHandler;
 using Application.Handler.UserHandler.RegisterHandler;
 using Application.Handler.UserHandler.RoleHandler;
+using Application.Query.BookQuery;
 using Application.Validator.UserValidator;
+using Domain.Services.BookService;
 using Domain.Services.Services.AuthService;
 using Domain.Services.Services.LoginService;
 using Domain.Services.Services.RegisterService;
@@ -35,5 +38,7 @@ public static class Configuration
         services.AddScoped<ILoginUserCommandHandler, LoginUserCommandHandler>();
         services.AddScoped<IRoleCommandHandler, RoleCommandHandler>();
         services.AddScoped<IRefreshTokenQueryHandler, RefreshTokenQueryHandler>();
+        services.AddScoped<ISearchByTitleQueryHandler, SearchByTitleQueryHandler>();
+        services.AddScoped<IBookService, BookService>();
     }
 }

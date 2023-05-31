@@ -1,12 +1,13 @@
-﻿using Application.Configurations;
-using Domain.Authentication;
+﻿using Domain.Authentication;
 using Domain.DTOs.UserDTOs;
+using Domain.Repositories.BookRepository;
 using Domain.Repositories.SharedRepositories;
 using Domain.Repositories.UserRepositories;
 using Domain.Shared.Exceptions;
 using Infrastructure.Authentication;
 using Infrastructure.DBContext;
 using Infrastructure.Model;
+using Infrastructure.Repositories.BookRepository;
 using Infrastructure.Repositories.SharedRepositories;
 using Infrastructure.Repositories.UserRepositories;
 using Infrastructure.Shared;
@@ -36,6 +37,7 @@ public static class Configuration
         services.AddScoped<ILoginRepository, LoginRepository>();
         services.AddScoped<ISharedRepository, SharedRepository>();
         services.AddScoped<IAuthRepository, AuthRepository>();
+        services.AddScoped<IBookRepository, BookRepository>();
         services.Configure<JWT>(configuration.GetSection("JWT"));
     }
     private static void AddLibraryDbContext(IServiceCollection services, ConfigurationManager configuration)

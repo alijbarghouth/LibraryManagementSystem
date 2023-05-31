@@ -12,8 +12,4 @@
     <None Remove="Services\UserService\AuthServcie\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\" />
-  </ItemGroup>
-
 </Project>
