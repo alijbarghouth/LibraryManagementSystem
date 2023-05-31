@@ -1,4 +1,4 @@
-﻿using Domain.DTOs.BookDTOs;
+﻿using Domain.DTOs.PaginationsDTOs;
 
 namespace Application.Query.BookQuery;
 

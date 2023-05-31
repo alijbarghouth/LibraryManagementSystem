@@ -1,4 +1,5 @@
 ﻿using Domain.DTOs.BookDTOs;
+using Domain.DTOs.PaginationsDTOs;
 using Domain.Repositories.BookRepository;
 
 namespace Domain.Services.BookService;

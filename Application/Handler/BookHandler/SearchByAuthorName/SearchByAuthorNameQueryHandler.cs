@@ -1,5 +1,6 @@
 ﻿using Application.Query.BookQuery;
 using Domain.DTOs.BookDTOs;
+using Domain.DTOs.PaginationsDTOs;
 using Domain.Services.BookService;
 using Mapster;
 

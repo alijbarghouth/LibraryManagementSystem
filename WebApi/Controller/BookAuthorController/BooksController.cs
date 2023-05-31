@@ -2,6 +2,7 @@
 using Application.Handler.BookHandler.SearchByTitle;
 using Application.Query.BookQuery;
 using Domain.DTOs.BookDTOs;
+using Domain.DTOs.PaginationsDTOs;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Filter;
 

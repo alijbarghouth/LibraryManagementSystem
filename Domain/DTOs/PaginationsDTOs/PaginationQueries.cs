@@ -1,4 +1,4 @@
-﻿namespace Domain.DTOs.BookDTOs;
+﻿namespace Domain.DTOs.PaginationsDTOs;
 
 public record PaginationQueries
 {

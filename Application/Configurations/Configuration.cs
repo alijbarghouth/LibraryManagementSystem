@@ -1,4 +1,6 @@
-﻿using Application.Command.UserCommand;
+﻿using Application.Command.AuthorCommand;
+using Application.Command.BookAuthorCommand;
+using Application.Command.UserCommand;
 using Application.Handler.AuthorHandler;
 using Application.Handler.BookAuthorHandler;
 using Application.Handler.BookHandler.SearchByAuthorName;
@@ -7,6 +9,7 @@ using Application.Handler.UserHandler.LoginHandler;
 using Application.Handler.UserHandler.RefreshTokenHandler;
 using Application.Handler.UserHandler.RegisterHandler;
 using Application.Handler.UserHandler.RoleHandler;
+using Application.Validator.AuthorBookValidator;
 using Application.Validator.UserValidator;
 using Domain.Services.AuthorService;
 using Domain.Services.BookAuthorService;
@@ -32,6 +35,9 @@ public static class Configuration
     {
         services.AddFluentValidationAutoValidation();
         services.AddScoped<IValidator<RegisterUserCommand>, UserValidation>();
+        services.AddScoped<IValidator<LoginUserCommand>, LoginRequestValidation>();
+        services.AddScoped<IValidator<AddAuthorCommand>, AuthorValidation>();
+        services.AddScoped<IValidator<BookAuthorCommand>, BookAuthorValidation>();
     }
     private static void AddCustomDependencies(IServiceCollection services)
     {

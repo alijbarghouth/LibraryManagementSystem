@@ -1,5 +1,6 @@
 ﻿using Domain.DTOs.BookAuthorDTOs;
 using Domain.DTOs.BookDTOs;
+using Domain.DTOs.PaginationsDTOs;
 
 namespace Domain.Repositories.BookRepository;
 

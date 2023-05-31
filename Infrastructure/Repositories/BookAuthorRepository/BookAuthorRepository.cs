@@ -22,9 +22,9 @@ public sealed class BookAuthorRepository : IBookAuthorRepository
             .SingleOrDefaultAsync(x => x.Title == bookAuthor.BookName)
             ?? throw new LibraryNotFoundException("book not found");
 
-        foreach (var authorDto in bookAuthor.Authors)
+        foreach (var authorDto in bookAuthor.AuthorName)
         {
-            var author = await _dbContext.Authors.SingleOrDefaultAsync(x => x.Username == authorDto.Username);
+            var author = await _dbContext.Authors.SingleOrDefaultAsync(x => x.Username == authorDto);
             
             book.Authors.Add(author);
         }
