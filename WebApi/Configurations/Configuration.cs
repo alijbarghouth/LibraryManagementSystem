@@ -3,9 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
-using WebApi.Authentication;
-using WebApi.Features;
-using WebApi.Settings;
+using WebApi.Middleware;
 
 namespace WebApi.Configurations;
 
@@ -57,9 +55,13 @@ public static class Configuration
         services.AddScoped<LogoutMiddleware>();
         services.AddScoped<LoggerMiddleware>();
 
-        services.Configure<JWT>(configuration.GetSection("JWT"));
+
 
         return services;
+    }
+    private static void AddCustomDependencies(IServiceCollection services)
+    {
+
     }
 }
 

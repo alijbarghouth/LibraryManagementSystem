@@ -1,7 +1,7 @@
 using Application.Configurations;
 using Infrastructure.Configurations;
 using WebApi.Configurations;
-using WebApi.Features;
+using WebApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 

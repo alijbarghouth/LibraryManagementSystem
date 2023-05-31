@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\UserFeature\Query\" />
+    <Folder Include="Query\" />
   </ItemGroup>
 
 </Project>

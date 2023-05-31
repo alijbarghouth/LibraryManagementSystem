@@ -1,21 +1,20 @@
-﻿using Application.GenericRepositories;
+﻿using Application.Configurations;
 using Domain.Authentication;
-using Domain.Features.UserService.Services.AuthService;
-using Domain.Features.UserService.Services.LoginService;
-using Domain.Features.UserService.Services.RegisterService;
-using Domain.Features.UserService.SharedRepositories;
+using Domain.DTOs.UserDTOs;
+using Domain.Repositories.SharedRepositories;
+using Domain.Repositories.UserRepositories;
 using Domain.Shared.Exceptions;
 using Infrastructure.Authentication;
 using Infrastructure.DBContext;
-using Infrastructure.Features.UserFeature.Repositories;
-using Infrastructure.Features.UserFeature.SharedRepositories;
 using Infrastructure.Model;
-using Infrastructure.Repositories;
+using Infrastructure.Repositories.SharedRepositories;
+using Infrastructure.Repositories.UserRepositories;
 using Infrastructure.Shared;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebApi.Settings;
 
 namespace Infrastructure.Configurations;
 
@@ -25,19 +24,19 @@ public static class Configuration
     {
         AddLibraryDbContext(services, configuration);
         AddRedisConfig(services, configuration);
-        AddCustomDependencies(services);
+        AddCustomDependencies(services, configuration);
         AddMapsterConfiguration();
         return services;
     }
-    private static void AddCustomDependencies(IServiceCollection services)
+    private static void AddCustomDependencies(IServiceCollection services, ConfigurationManager configuration)
     {
         services.AddScoped<ILogoutRepository, RedisLogoutRepository>();
         services.AddScoped<IRegisterRepository, RegisterRepostiory>();
-        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ILoginRepository, LoginRepository>();
         services.AddScoped<ISharedRepository, SharedRepository>();
         services.AddScoped<IAuthRepository, AuthRepository>();
+        services.Configure<JWT>(configuration.GetSection("JWT"));
     }
     private static void AddLibraryDbContext(IServiceCollection services, ConfigurationManager configuration)
     {
@@ -48,6 +47,7 @@ public static class Configuration
             .UseSqlServer(configuration.GetConnectionString("LibraryDbContext"));
         });
     }
+
     private static void AddRedisConfig(IServiceCollection services, ConfigurationManager configuration)
     {
         services.AddStackExchangeRedisCache(redisOption =>
@@ -56,9 +56,10 @@ public static class Configuration
             redisOption.Configuration = connectionString;
         });
     }
+
     private static void AddMapsterConfiguration()
     {
-        TypeAdapterConfig<Domain.Features.UserService.DTOs.RegisterUser, User>
+        TypeAdapterConfig<RegisterUser, User>
             .NewConfig()
             .Ignore(x => x.PasswordHash)
             .Ignore(x => x.PasswordSlot);
