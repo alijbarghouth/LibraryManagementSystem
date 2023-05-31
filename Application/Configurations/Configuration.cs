@@ -1,5 +1,8 @@
 ﻿using Application.Features.UserFeature.Command;
+using Application.Features.UserFeature.Handler.LoginHandler;
+using Application.Features.UserFeature.Handler.RefreshTokenHandler;
 using Application.Features.UserFeature.Handler.RegisterHandler;
+using Application.Features.UserFeature.Handler.RoleHandler;
 using Application.Features.UserFeature.Validator;
 using Domain.Features.UserService.Services.AuthService;
 using Domain.Features.UserService.Services.LoginService;
@@ -26,9 +29,11 @@ public static class Configuration
     private static void AddCustomDependencies(IServiceCollection services)
     {
         services.AddScoped<IRegisterService, RegisterService>();
-        services.AddScoped<ICommandService, CommandService>();
         services.AddScoped<ILoginService, LoginService>();
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IRegisterUserCommandHandler, RegisterUserCommandHandler>();
+        services.AddScoped<ILoginUserCommandHandler, LoginUserCommandHandler>();
+        services.AddScoped<IRoleCommandHandler, RoleCommandHandler>();
+        services.AddScoped<IRefreshTokenQueryHandler, RefreshTokenQueryHandler>();
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Application.Features.UserFeature.Command;
 using Domain.Features.UserService.DTOs;
 using Domain.Features.UserService.Services.RegisterService;
-using Domain.Shared.Exceptions.CustomException;
 
 namespace Application.Features.UserFeature.Handler.RegisterHandler;
 

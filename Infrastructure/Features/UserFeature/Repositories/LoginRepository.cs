@@ -28,7 +28,7 @@ public sealed class LoginRepository : ILoginRepository
     {
         var user = await _libraryDBContext.Users
             .FirstOrDefaultAsync(x => x.Email == login.Email);
-            
+
         if (!login.Password.VerifyingPassword(user.PasswordHash, user.PasswordSlot))
         {
             throw new LibraryBadRequestException("The password is wrong");
@@ -42,7 +42,26 @@ public sealed class LoginRepository : ILoginRepository
             _libraryDBContext.Users.Update(user);
         }
 
-        return (token,refreshToken.Token);
+        return (token, refreshToken.Token);
+    }
+
+    public async Task<(string, string)> RefreshToken(string token)
+    {
+        var user = await _libraryDBContext.Users
+            .SingleOrDefaultAsync(u => u.RefreshTokens.Any(t => t.Token == token))
+            ?? throw new LibraryBadRequestException("Invalid token");
+
+        var refreshToken = user.RefreshTokens.Single(t => t.Token == token)
+            ?? throw new LibraryBadRequestException("Inactive token");
+
+        refreshToken.RevokedOn = DateTime.UtcNow;
+
+        var newRefreshToken = GenerateRefreshToken();
+        user.RefreshTokens.Add(newRefreshToken);
+        _libraryDBContext.Update(user);
+
+        var jwtToken = new JwtSecurityTokenHandler().WriteToken(CreateJwtToken(user));
+        return (jwtToken, newRefreshToken.Token);
     }
     private JwtSecurityToken CreateJwtToken(User user)
     {
@@ -55,6 +74,7 @@ public sealed class LoginRepository : ILoginRepository
 
         var claims = new[]
             {
+                new Claim("uid",user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Sub, user.Username),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
@@ -72,11 +92,12 @@ public sealed class LoginRepository : ILoginRepository
 
         return jwtSecurityToken;
     }
+
     private static RefreshToken GenerateRefreshToken()
     {
         var randomNumber = new byte[32];
 
-        using var generator = new RNGCryptoServiceProvider();
+        using var generator = RandomNumberGenerator.Create();
 
         generator.GetBytes(randomNumber);
 

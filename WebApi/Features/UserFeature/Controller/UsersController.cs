@@ -1,7 +1,7 @@
 ﻿using Application.Features.UserFeature.Command;
 using Application.Features.UserFeature.Handler.LoginHandler;
+using Application.Features.UserFeature.Handler.RefreshTokenHandler;
 using Application.Features.UserFeature.Handler.RegisterHandler;
-using Domain.Features.UserService.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Filter;
 
@@ -14,11 +14,14 @@ namespace WebApi.Features.UserFeature.Controller
     {
         private readonly IRegisterUserCommandHandler _registerCommandHandler;
         private readonly ILoginUserCommandHandler _loginUserCommandHandler;
-        public UsersController(RegisterUserCommandHandler registerCommandHandler
-            , ILoginUserCommandHandler loginUserCommandHandler)
+        private readonly IRefreshTokenQueryHandler _refreshTokenQueryHandler;
+        public UsersController(IRegisterUserCommandHandler registerCommandHandler,
+              ILoginUserCommandHandler loginUserCommandHandler,
+              IRefreshTokenQueryHandler refreshTokenQueryHandler)
         {
             _registerCommandHandler = registerCommandHandler;
             _loginUserCommandHandler = loginUserCommandHandler;
+            _refreshTokenQueryHandler = refreshTokenQueryHandler;
         }
 
         [HttpPost("register")]
@@ -34,6 +37,16 @@ namespace WebApi.Features.UserFeature.Controller
             {
                 SetRefreshTokenInCookie(refreshToken);
             }
+            return Ok(token);
+        }
+        [HttpGet("refreshToken")]
+        public async Task<IActionResult> RefreshToken()
+        {
+            var refreshToken = Request.Cookies["refreshToken"];
+            var (token, refreshedToken) = await _refreshTokenQueryHandler.RefreshToken(refreshToken);
+
+            SetRefreshTokenInCookie(refreshedToken);
+
             return Ok(token);
         }
         private void SetRefreshTokenInCookie(string refreshToken)
