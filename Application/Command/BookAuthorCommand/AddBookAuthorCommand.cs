@@ -2,4 +2,4 @@
 
 namespace Application.Command.BookAuthorCommand;
 
-public record BookAuthorCommand(BookAuthor BookAuthor);
+public record AddBookAuthorCommand(BookAuthor BookAuthor);

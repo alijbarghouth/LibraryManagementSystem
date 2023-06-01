@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Application.Validator.AuthorBookValidator;
 
-public sealed class BookAuthorValidation : AbstractValidator<BookAuthorCommand>
+public sealed class BookAuthorValidation : AbstractValidator<AddBookAuthorCommand>
 {
     public BookAuthorValidation()
     {

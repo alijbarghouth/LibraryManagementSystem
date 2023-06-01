@@ -17,7 +17,7 @@ namespace WebApi.Controller.BookAuthorController
             _bookAuthorCommandHandler = bookAuthorCommandHandler;
         }
         [HttpPost]
-        public async Task<IActionResult> AddBookAuthor(BookAuthorCommand command)
+        public async Task<IActionResult> AddBookAuthor(AddBookAuthorCommand command)
         {
             return Ok(await _bookAuthorCommandHandler.Handel(command));
         }

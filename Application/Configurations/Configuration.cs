@@ -1,20 +1,24 @@
 ﻿using Application.Command.AuthorCommand;
 using Application.Command.BookAuthorCommand;
+using Application.Command.GenreCommand;
 using Application.Command.UserCommand;
 using Application.Handler.AuthorHandler;
 using Application.Handler.BookAuthorHandler;
 using Application.Handler.BookHandler.SearchBookByAuthorName;
 using Application.Handler.BookHandler.SearchBookByGenre;
 using Application.Handler.BookHandler.SearchBookByTitle;
+using Application.Handler.GenreHandler;
 using Application.Handler.UserHandler.LoginHandler;
 using Application.Handler.UserHandler.RefreshTokenHandler;
 using Application.Handler.UserHandler.RegisterHandler;
 using Application.Handler.UserHandler.RoleHandler;
 using Application.Validator.AuthorBookValidator;
+using Application.Validator.GenreValidator;
 using Application.Validator.UserValidator;
 using Domain.Services.AuthorService;
 using Domain.Services.BookAuthorService;
 using Domain.Services.BookService;
+using Domain.Services.GenreService;
 using Domain.Services.Services.AuthService;
 using Domain.Services.Services.LoginService;
 using Domain.Services.Services.RegisterService;
@@ -38,7 +42,8 @@ public static class Configuration
         services.AddScoped<IValidator<RegisterUserCommand>, UserValidation>();
         services.AddScoped<IValidator<LoginUserCommand>, LoginRequestValidation>();
         services.AddScoped<IValidator<AddAuthorCommand>, AuthorValidation>();
-        services.AddScoped<IValidator<BookAuthorCommand>, BookAuthorValidation>();
+        services.AddScoped<IValidator<AddBookAuthorCommand>, BookAuthorValidation>();
+        services.AddScoped<IValidator<AddBookGenreCommand>, AddBookGenreCommandValidation>();
     }
     private static void AddCustomDependencies(IServiceCollection services)
     {
@@ -57,5 +62,7 @@ public static class Configuration
         services.AddScoped<IAuthorService, AuthorService>();
         services.AddScoped<IAddAuthorCommandHandler, AddAuthorCommandHandler>();
         services.AddScoped<ISearchBookByGenreQueryHandler, SearchBookByGenreQueryHandler>();
+        services.AddScoped<IAddBookGenreCommandHandler, AddBookGenreCommandHandler>();
+        services.AddScoped<IGenreService, GenreService>();
     }
 }
