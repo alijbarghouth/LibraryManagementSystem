@@ -5,5 +5,5 @@ namespace Application.Handler.BookAuthorHandler;
 
 public interface IBookAuthorCommandHandler
 {
-    Task<bool> Handel(BookAuthorCommand command);
+    Task<BookAuthor> Handel(BookAuthorCommand command);
 }

@@ -5,4 +5,5 @@ namespace Domain.Repositories.AuthorRepository;
 public interface IAuthorRepository
 {
     Task<Author> AddAuthor(Author auhtor);
+    Task<bool> IsAuthorExists(string authorName);
 }

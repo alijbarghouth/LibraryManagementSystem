@@ -42,9 +42,7 @@ public sealed class BookRepository : IBookRepository
             .AsNoTracking()
             .Where(x => x.Authors.Any(x => 
             string.IsNullOrEmpty(AuthorName)
-            || x.Username.Contains(AuthorName)
-            || x.FirstName.Contains(AuthorName)
-            || x.LastName.Contains(AuthorName)))
+            || x.Username.Contains(AuthorName)))
            .Select(x => new
            {
                x.Title,
@@ -57,6 +55,29 @@ public sealed class BookRepository : IBookRepository
             .Skip((filter.PageNumber - 1) * filter.PageSize)
             .Take(filter.PageSize)
             .ToListAsync();
+
+        return query.Adapt<List<Book>>();
+    }
+
+    public async Task<List<Book>> SearchBookByBookGenre(string bookGenre, PaginationFilter filter)
+    {
+        var query = await _libraryDBContext.Books
+             .AsNoTracking()
+             .Where(x => x.Genre.Any(x =>
+             string.IsNullOrEmpty(bookGenre)
+             || x.Name.Contains(bookGenre)))
+            .Select(x => new
+            {
+                x.Title,
+                Author = x.Authors.Select(x => x.Username).ToList(),
+                x.PublicationDate,
+                x.Availability,
+                x.Count,
+                Genre = x.Genre.Select(x => x.Name).ToList(),
+            })
+             .Skip((filter.PageNumber - 1) * filter.PageSize)
+             .Take(filter.PageSize)
+             .ToListAsync();
 
         return query.Adapt<List<Book>>();
     }

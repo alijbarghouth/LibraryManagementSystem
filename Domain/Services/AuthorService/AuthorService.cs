@@ -1,6 +1,7 @@
 ﻿using Domain.DTOs.AuthorDTOs;
 using Domain.Repositories.AuthorRepository;
 using Domain.Shared.Exceptions;
+using Domain.Shared.Exceptions.CustomException;
 
 namespace Domain.Services.AuthorService;
 
@@ -16,6 +17,9 @@ public sealed class AuthorService : IAuthorService
 
     public async Task<Author> AddAuthor(Author author, CancellationToken cancellationToken = default)
     {
+        if (await _authorRepository.IsAuthorExists(author.Username))
+            throw new BadRequestException("author is exists");
+
         var result = await _authorRepository.AddAuthor(author);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return result;

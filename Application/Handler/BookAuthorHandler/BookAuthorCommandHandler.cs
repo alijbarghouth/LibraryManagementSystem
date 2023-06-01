@@ -13,7 +13,7 @@ public sealed class BookAuthorCommandHandler : IBookAuthorCommandHandler
         _bookAuthorService = bookAuthorService;
     }
 
-    public async Task<bool> Handel(BookAuthorCommand command)
+    public async Task<BookAuthor> Handel(BookAuthorCommand command)
     {
         return await _bookAuthorService.AddBookAuthor(command.BookAuthor);
     }

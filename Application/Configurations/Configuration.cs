@@ -3,8 +3,9 @@ using Application.Command.BookAuthorCommand;
 using Application.Command.UserCommand;
 using Application.Handler.AuthorHandler;
 using Application.Handler.BookAuthorHandler;
-using Application.Handler.BookHandler.SearchByAuthorName;
-using Application.Handler.BookHandler.SearchByTitle;
+using Application.Handler.BookHandler.SearchBookByAuthorName;
+using Application.Handler.BookHandler.SearchBookByGenre;
+using Application.Handler.BookHandler.SearchBookByTitle;
 using Application.Handler.UserHandler.LoginHandler;
 using Application.Handler.UserHandler.RefreshTokenHandler;
 using Application.Handler.UserHandler.RegisterHandler;
@@ -48,12 +49,13 @@ public static class Configuration
         services.AddScoped<ILoginUserCommandHandler, LoginUserCommandHandler>();
         services.AddScoped<IRoleCommandHandler, RoleCommandHandler>();
         services.AddScoped<IRefreshTokenQueryHandler, RefreshTokenQueryHandler>();
-        services.AddScoped<ISearchByTitleQueryHandler, SearchByTitleQueryHandler>();
-        services.AddScoped<ISearchByAuthorNameQueryHandler, SearchByAuthorNameQueryHandler>();
+        services.AddScoped<ISearchBookByTitleQueryHandler, SearchBookByTitleQueryHandler>();
+        services.AddScoped<ISearchBookByAuthorNameQueryHandler, SearchBookByAuthorNameQueryHandler>();
         services.AddScoped<IBookService, BookService>();
         services.AddScoped<IBookAuthorService, BookAuthorService>();
         services.AddScoped<IBookAuthorCommandHandler, BookAuthorCommandHandler>();
         services.AddScoped<IAuthorService, AuthorService>();
         services.AddScoped<IAddAuthorCommandHandler, AddAuthorCommandHandler>();
+        services.AddScoped<ISearchBookByGenreQueryHandler, SearchBookByGenreQueryHandler>();
     }
 }

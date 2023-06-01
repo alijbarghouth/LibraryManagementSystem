@@ -2,6 +2,7 @@
 using Infrastructure.DBContext;
 using Infrastructure.Model;
 using Mapster;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories.AuhtorRepository;
 
@@ -18,5 +19,12 @@ public sealed class AuthorRepository : IAuthorRepository
     {
         await _libraryDBContext.Authors.AddAsync(auhtor.Adapt<Author>());
         return auhtor;
+    }
+
+    public async Task<bool> IsAuthorExists(string authorName)
+    {
+        return await _libraryDBContext.Authors
+            .AsNoTracking()
+            .AnyAsync(x => x.Username == authorName);
     }
 }

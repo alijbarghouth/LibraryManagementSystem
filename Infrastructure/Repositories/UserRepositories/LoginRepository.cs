@@ -32,7 +32,7 @@ public sealed class LoginRepository : ILoginRepository
 
         if (!login.Password.VerifyingPassword(user.PasswordHash, user.PasswordSlot))
         {
-            throw new LibraryBadRequestException("The password is wrong");
+            throw new BadRequestException("The password is wrong");
         }
         var token = new JwtSecurityTokenHandler().WriteToken(CreateJwtToken(user));
         var refreshToken = new RefreshToken();
@@ -50,10 +50,10 @@ public sealed class LoginRepository : ILoginRepository
     {
         var user = await _libraryDBContext.Users
             .SingleOrDefaultAsync(u => u.RefreshTokens.Any(t => t.Token == token))
-            ?? throw new LibraryBadRequestException("Invalid token");
+            ?? throw new BadRequestException("Invalid token");
 
         var refreshToken = user.RefreshTokens.Single(t => t.Token == token)
-            ?? throw new LibraryBadRequestException("Inactive token");
+            ?? throw new BadRequestException("Inactive token");
 
         refreshToken.RevokedOn = DateTime.UtcNow;
 

@@ -24,7 +24,7 @@ public class LoginService : ILoginService
     {
         if (!await _sharedRepository.UserIsExistsByEmail(login.Email))
         {
-            throw new LibraryNotFoundException("email or password is incorrect!");
+            throw new NotFoundException("email or password is incorrect!");
         }
         var tokens = await _loginRepository.LoginUser(login);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
@@ -34,7 +34,7 @@ public class LoginService : ILoginService
     public async Task<(string, string)> RefreshToken(string token, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrEmpty(token))
-            throw new LibraryNotFoundException("token not found");
+            throw new NotFoundException("token not found");
         var tokens = await _loginRepository.RefreshToken(token);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return tokens;

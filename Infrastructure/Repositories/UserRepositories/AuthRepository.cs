@@ -18,12 +18,12 @@ public sealed class AuthRepository : IAuthRepository
     public async Task AddRole(RoleRequest roleRequest)
     {
         var user = await _libraryDBContext.Users.FindAsync(roleRequest.UserId)
-            ?? throw new LibraryNotFoundException("user not found");
+            ?? throw new NotFoundException("user not found");
         var role = await _libraryDBContext.Roles.FirstOrDefaultAsync(x => x.RoleName == roleRequest.RoleName)
-            ?? throw new LibraryNotFoundException("role not found");
+            ?? throw new NotFoundException("role not found");
         if (user.Roles.Any(x => x.RoleName == roleRequest.RoleName))
         {
-            throw new LibraryBadRequestException("User already assigned to this role");
+            throw new BadRequestException("User already assigned to this role");
         }
 
         user.Roles.Add(role);

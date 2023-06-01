@@ -1,7 +1,9 @@
-﻿namespace Domain.Services.BookAuthorService;
+﻿using Domain.DTOs.BookAuthorDTOs;
+
+namespace Domain.Services.BookAuthorService;
 
 public interface IBookAuthorService
 {
-    Task<bool> AddBookAuthor(Domain.DTOs.BookAuthorDTOs.BookAuthor bookAuthor
+    Task<BookAuthor> AddBookAuthor(BookAuthor bookAuthor
         , CancellationToken cancellationToken = default);
 }

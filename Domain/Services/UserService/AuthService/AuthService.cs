@@ -18,7 +18,7 @@ public sealed class AuthService : IAuthService
     public async Task<bool> AddRole(RoleRequest role, CancellationToken cancellationToken = default)
     {
         if (role is null)
-            throw new LibraryNotFoundException("role is not found");
+            throw new NotFoundException("role is not found");
         await _authRepository.AddRole(role);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return true;

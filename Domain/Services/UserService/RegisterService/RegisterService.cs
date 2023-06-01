@@ -23,7 +23,7 @@ public sealed class RegisterService : IRegisterService
     {
         if (await _sharedRepository.UserIsExistsByEmail(register.Email)
             || await _sharedRepository.UserIsExistByUsername(register.Username))
-            throw new LibraryBadRequestException("username or email is exists");
+            throw new BadRequestException("username or email is exists");
 
         var user = await _registerRepository.RegisterUser(register);
         await _unitOfWork.SaveChangesAsync(cancellationToken);

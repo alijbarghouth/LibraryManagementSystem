@@ -2,9 +2,9 @@
 
 namespace Domain.Shared.Exceptions.CustomException;
 
-public sealed class LibraryNotFoundException : LibraryException
+public sealed class NotFoundException : LibraryException
 {
-    public LibraryNotFoundException(string Message)
+    public NotFoundException(string Message)
     {
         this.Message = Message;
         StatusCode = HttpStatusCode.NotFound;

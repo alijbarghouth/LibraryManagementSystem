@@ -14,7 +14,8 @@ public sealed class BookAuthorService : IBookAuthorService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<bool> AddBookAuthor(BookAuthor bookAuthor, CancellationToken cancellationToken = default)
+    public async Task<BookAuthor> AddBookAuthor(BookAuthor bookAuthor
+        , CancellationToken cancellationToken = default)
     {
         var result = await _bookAuthorRepository.AddBookAuthor(bookAuthor);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
