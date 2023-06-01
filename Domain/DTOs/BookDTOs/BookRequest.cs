@@ -1,13 +1,12 @@
-﻿using Domain.Shared.Enums;
+using Domain.Shared.Enums;
 
 namespace Domain.DTOs.BookDTOs;
 
-public record Book
+public record BookRequest
 (
     string Title,
-    List<string> Author,
     DateTime PublicationDate,
-    List<string> Genre,
+    Guid GenreId,
     BookStatus BookStatus,
     int Count
 );

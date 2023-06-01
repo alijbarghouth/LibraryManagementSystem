@@ -1,4 +1,6 @@
-﻿using Application.Handler.BookHandler.SearchBookByAuthorName;
+﻿using Application.Command.BookCommand;
+using Application.Handler.BookHandler.AddBookCommandHandler;
+using Application.Handler.BookHandler.SearchBookByAuthorName;
 using Application.Handler.BookHandler.SearchBookByGenre;
 using Application.Handler.BookHandler.SearchBookByTitle;
 using Application.Query.BookQuery;
@@ -15,13 +17,22 @@ namespace WebApi.Controller.BookAuthorController
         private readonly ISearchBookByTitleQueryHandler _searchByTitleQueryHandler;
         private readonly ISearchBookByAuthorNameQueryHandler _searchByAuthorNameQueryHandler;
         private readonly ISearchBookByGenreQueryHandler _searchByGenreQueryHandler;
+        private readonly IAddBookCommandHandler _addBookCommandHandler;
         public BooksController(ISearchBookByTitleQueryHandler searchByTitleQueryHandler
             , ISearchBookByAuthorNameQueryHandler searchByAuthorNameQueryHandler
-            , ISearchBookByGenreQueryHandler searchByGenreQueryHandler)
+            , ISearchBookByGenreQueryHandler searchByGenreQueryHandler
+            , IAddBookCommandHandler addBookCommandHandler)
         {
             _searchByTitleQueryHandler = searchByTitleQueryHandler;
             _searchByAuthorNameQueryHandler = searchByAuthorNameQueryHandler;
             _searchByGenreQueryHandler = searchByGenreQueryHandler;
+            _addBookCommandHandler = addBookCommandHandler;
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddBook(AddBookCommand command)
+        {
+            var book = await _addBookCommandHandler.Handel(command);
+            return Ok(book);
         }
         [HttpGet("searchByTitle")]
         public async Task<IActionResult> GetBookByTitle([FromQuery] SearchBookByTitleQuery? query)

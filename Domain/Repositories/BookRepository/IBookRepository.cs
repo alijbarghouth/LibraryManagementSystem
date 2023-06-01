@@ -9,4 +9,6 @@ public interface IBookRepository
     Task<List<Book>> SearchBookByAuhtorName(string AuthorName, PaginationFilter filter);
     Task<List<Book>> SearchBookByBookGenre(string bookGenre, PaginationFilter filter);
 
+    Task<BookRequest> AddBook(BookRequest book);
+    Task<bool> IsBookExists(string bookTitle);
 }

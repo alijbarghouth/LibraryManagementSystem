@@ -8,4 +8,5 @@ public interface IBookService
     Task<PagedResponse<Book>> SearchBookByTitle(string bookTitle, PaginationFilter filter);
     Task<PagedResponse<Book>> SearchBookByAuthor(string auhtorName, PaginationFilter filter);
     Task<PagedResponse<Book>> SearchBookByBookGenre(string bookGenre, PaginationFilter filter);
+    Task<BookRequest> AddBook(BookRequest book, CancellationToken cancellationToken = default);
 }

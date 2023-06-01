@@ -4,10 +4,12 @@ using Application.Command.GenreCommand;
 using Application.Command.UserCommand;
 using Application.Handler.AuthorHandler;
 using Application.Handler.BookAuthorHandler;
+using Application.Handler.BookHandler.AddBookCommandHandler;
 using Application.Handler.BookHandler.SearchBookByAuthorName;
 using Application.Handler.BookHandler.SearchBookByGenre;
 using Application.Handler.BookHandler.SearchBookByTitle;
 using Application.Handler.GenreHandler;
+using Application.Handler.ReserveBookHandler;
 using Application.Handler.UserHandler.LoginHandler;
 using Application.Handler.UserHandler.RefreshTokenHandler;
 using Application.Handler.UserHandler.RegisterHandler;
@@ -19,6 +21,7 @@ using Domain.Services.AuthorService;
 using Domain.Services.BookAuthorService;
 using Domain.Services.BookService;
 using Domain.Services.GenreService;
+using Domain.Services.ReserveBookService;
 using Domain.Services.Services.AuthService;
 using Domain.Services.Services.LoginService;
 using Domain.Services.Services.RegisterService;
@@ -64,5 +67,8 @@ public static class Configuration
         services.AddScoped<ISearchBookByGenreQueryHandler, SearchBookByGenreQueryHandler>();
         services.AddScoped<IAddBookGenreCommandHandler, AddBookGenreCommandHandler>();
         services.AddScoped<IGenreService, GenreService>();
+        services.AddScoped<IReserveBookService, ReserveBookService>();
+        services.AddScoped<IReserveBookCommandHandler, ReserveBookCommandHandler>();
+        services.AddScoped<IAddBookCommandHandler, AddBookCommandHandler>();
     }
 }

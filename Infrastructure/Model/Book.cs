@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain.Shared.Enums;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,7 +14,7 @@ public class Book
     public string Title { get; set; }
     public DateTime PublicationDate { get; set; }
     public Guid GenreId { get; set; }
-    public bool Availability { get; set; }
+    public BookStatus BookStatus { get; set; }
     public int Count { get; set; }
     public virtual IEnumerable<Genre> Genre { get; set; }
     public virtual ICollection<Author> Authors { get; set; }

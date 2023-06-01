@@ -24,7 +24,14 @@ public sealed class GenreRepository : IGenreRepository
     public async Task<bool> IsBookGenreExists(string bookGenre)
     {
         return await _libraryDBContext.Genres
-           .AsNoTracking()
-           .AnyAsync(x => x.Name == bookGenre);
+            .AsNoTracking()
+            .AnyAsync(x => x.Name == bookGenre);
+    }
+
+    public async Task<bool> IsBookGenreExistsById(Guid genreId)
+    {
+        return await _libraryDBContext.Genres
+            .AsNoTracking()
+            .AnyAsync(x => x.Id == genreId);
     }
 }
