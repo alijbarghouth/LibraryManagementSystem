@@ -6,24 +6,24 @@ namespace Infrastructure.Repositories.SharedRepositories;
 
 public sealed class SharedRepository : ISharedRepository
 {
-    private readonly LibraryDBContext _libraryDBContext;
+    private readonly LibraryDBContext _libraryDbContext;
 
-    public SharedRepository(LibraryDBContext libraryDBContext)
+    public SharedRepository(LibraryDBContext libraryDbContext)
     {
-        _libraryDBContext = libraryDBContext;
+        _libraryDbContext = libraryDbContext;
     }
 
 
     public async Task<bool> UserIsExistByUsername(string username)
     {
-        return await _libraryDBContext.Users
+        return await _libraryDbContext.Users
        .AsNoTracking()
        .AnyAsync(x => x.Username == username);
     }
 
     public async Task<bool> UserIsExistsByEmail(string email)
     {
-        return await _libraryDBContext.Users
+        return await _libraryDbContext.Users
             .AsNoTracking()
             .AnyAsync(x => x.Email == email);
     }

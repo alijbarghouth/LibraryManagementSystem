@@ -39,13 +39,13 @@ public sealed class BookRepository : IBookRepository
     }
 
     public async Task<List<Domain.DTOs.BookDTOs.Book>> SearchBookByAuhtorName
-        (string AuthorName, PaginationFilter filter)
+        (string authorName, PaginationFilter filter)
     {
         var query = await _libraryDbContext.Books
             .AsNoTracking()
             .Where(x => x.Authors.Any(x =>
-                string.IsNullOrEmpty(AuthorName)
-                || x.Username.Contains(AuthorName)))
+                string.IsNullOrEmpty(authorName)
+                || x.Username.Contains(authorName)))
             .Select(x => new
             {
                 x.Title,

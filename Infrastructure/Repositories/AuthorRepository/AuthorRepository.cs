@@ -4,26 +4,26 @@ using Infrastructure.Model;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repositories.AuhtorRepository;
+namespace Infrastructure.Repositories.AuthorRepository;
 
 public sealed class AuthorRepository : IAuthorRepository
 {
-    private readonly LibraryDBContext _libraryDBContext;
+    private readonly LibraryDBContext _libraryDbContext;
 
-    public AuthorRepository(LibraryDBContext libraryDBContext)
+    public AuthorRepository(LibraryDBContext libraryDbContext)
     {
-        _libraryDBContext = libraryDBContext;
+        _libraryDbContext = libraryDbContext;
     }
 
     public async Task<Domain.DTOs.AuthorDTOs.Author> AddAuthor(Domain.DTOs.AuthorDTOs.Author auhtor)
     {
-        await _libraryDBContext.Authors.AddAsync(auhtor.Adapt<Author>());
+        await _libraryDbContext.Authors.AddAsync(auhtor.Adapt<Author>());
         return auhtor;
     }
 
     public async Task<bool> IsAuthorExists(string authorName)
     {
-        return await _libraryDBContext.Authors
+        return await _libraryDbContext.Authors
             .AsNoTracking()
             .AnyAsync(x => x.Username == authorName);
     }

@@ -11,11 +11,11 @@ using Domain.Shared.Exceptions;
 using Infrastructure.Authentication;
 using Infrastructure.DBContext;
 using Infrastructure.Model;
-using Infrastructure.Repositories.AuhtorRepository;
+using Infrastructure.Repositories.AuthorRepository;
 using Infrastructure.Repositories.BookAuthorRepository;
 using Infrastructure.Repositories.BookRepository;
 using Infrastructure.Repositories.GenreRepository;
-using Infrastructure.Repositories.ReserveBookRepository;
+using Infrastructure.Repositories.BookTransactionRepository;
 using Infrastructure.Repositories.SharedRepositories;
 using Infrastructure.Repositories.UserRepositories;
 using Infrastructure.Shared;
@@ -40,7 +40,7 @@ public static class Configuration
     private static void AddCustomDependencies(IServiceCollection services, ConfigurationManager configuration)
     {
         services.AddScoped<ILogoutRepository, RedisLogoutRepository>();
-        services.AddScoped<IRegisterRepository, RegisterRepostiory>();
+        services.AddScoped<IRegisterRepository, RegisterRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ILoginRepository, LoginRepository>();
         services.AddScoped<ISharedRepository, SharedRepository>();
@@ -49,7 +49,7 @@ public static class Configuration
         services.AddScoped<IBookAuthorRepository, BookAuthorRepository>();
         services.AddScoped<IAuthorRepository, AuthorRepository>();
         services.AddScoped<IGenreRepository, GenreRepository>();
-        services.AddScoped<IReserveBookRepository, ReserveBookRepository>();
+        services.AddScoped<IReserveBookRepository, BookTransactionRepository>();
         services.Configure<JWT>(configuration.GetSection("JWT"));
     }
     private static void AddLibraryDbContext(IServiceCollection services, ConfigurationManager configuration)

@@ -8,26 +8,26 @@ namespace Infrastructure.Repositories.BookAuthorRepository;
 
 public sealed class BookAuthorRepository : IBookAuthorRepository
 {
-    private readonly LibraryDBContext _dbContext;
+    private readonly LibraryDBContext _libraryDbContext;
 
-    public BookAuthorRepository(LibraryDBContext dbContext)
+    public BookAuthorRepository(LibraryDBContext libraryDbContext)
     {
-        _dbContext = dbContext;
+        _libraryDbContext = libraryDbContext;
     }
 
     public async Task<BookAuthor> AddBookAuthor(BookAuthor bookAuthor)
     {
-        var book = await _dbContext.Books
+        var book = await _libraryDbContext.Books
             .SingleOrDefaultAsync(x => x.Title == bookAuthor.BookName)
             ?? throw new NotFoundException("book not found");
 
         foreach (var authorDto in bookAuthor.AuthorName)
         {
-            var author = await _dbContext.Authors.SingleOrDefaultAsync(x => x.Username == authorDto)
+            var author = await _libraryDbContext.Authors.SingleOrDefaultAsync(x => x.Username == authorDto)
                  ?? throw new NotFoundException("author not found"); ;
             book.Authors.Add(author);
         }
-        _dbContext.Books.Update(book);
+        _libraryDbContext.Books.Update(book);
 
         return bookAuthor;
     }

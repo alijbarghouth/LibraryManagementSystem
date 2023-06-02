@@ -11,13 +11,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53e77f84-7d3d-4a8a-bd2b-c169cbe4d963" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookTransactionRepository/BookTransactionRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/DTOs/UserDTOs/RegisterUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/DTOs/UserDTOs/RegisterUser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Services/BookService/BookService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/BookService/BookService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Shared/Enums/BookStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Shared/Enums/BookStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Repositories/ReserveBookRepository/IReserveBookRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/ReserveBookRepository/IReserveBookRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Shared/Enums/StatusRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Shared/Enums/StatusRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/ReserveBookRepository/ReserveBookRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/ReserveBookRepository/ReserveBookRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controller/ReserveController/ReservesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/ReserveController/ReservesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/LibraryDBContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/LibraryDBContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Model/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Model/Order.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Model/OrderItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Model/OrderItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/AuhtorRepository/AuthorRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/AuthorRepository/AuthorRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookAuthorRepository/BookAuthorRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookAuthorRepository/BookAuthorRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookRepository/BookRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookRepository/BookRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/GenreRepository/GenreRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/GenreRepository/GenreRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/ReserveBookRepository/ReserveBookRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/AuthRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/AuthRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/LoginRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/LoginRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/RegisterRepostiory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/RegisterRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +150,7 @@
       <workItem from="1684826539665" duration="2773000" />
       <workItem from="1684956812889" duration="346000" />
       <workItem from="1685632169631" duration="5208000" />
-      <workItem from="1685701274115" duration="1473000" />
+      <workItem from="1685701274115" duration="9912000" />
     </task>
     <servers />
   </component>
@@ -160,24 +170,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Infrastructure/Repositories/ReserveBookRepository/ReserveBookRepository.cs</url>
-          <line>26</line>
-          <properties documentPath="C:\Users\user\source\repos\LibraryManagementSystem\Infrastructure\Repositories\ReserveBookRepository\ReserveBookRepository.cs" initialLine="26" containingFunctionPresentation="Method 'ReserveBook'">
-            <startOffsets>
-              <option value="968" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1021" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

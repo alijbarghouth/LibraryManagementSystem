@@ -11,10 +11,8 @@ public class Order
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
     public Guid UserId { get; set; }
-    public DateTime? BorrowingDate { get; set; }
-    public DateTime? DateRetrive { get; set; }
-    public DateTime RequestDate { get; set; }
+    public DateTime OrderDate { get; set; }
     public StatusRequest StatusRequest { get; set; }
     public virtual User User { get; set; }
-    public virtual ICollection<OrderItem> OrderItems { get; set; }
+    public virtual IEnumerable<OrderItem> OrderItems { get; set; }
 }

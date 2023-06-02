@@ -6,7 +6,7 @@ using Infrastructure.Model;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repositories.ReserveBookRepository;
+namespace Infrastructure.Repositories.BookTransactionRepository;
 
 public sealed class BookTransactionRepository : IReserveBookRepository
 {

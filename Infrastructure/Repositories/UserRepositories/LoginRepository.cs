@@ -17,17 +17,17 @@ namespace Infrastructure.Repositories.UserRepositories;
 
 public sealed class LoginRepository : ILoginRepository
 {
-    private readonly LibraryDBContext _libraryDBContext;
+    private readonly LibraryDBContext _libraryDbContext;
     private readonly JWT _jwt;
-    public LoginRepository(LibraryDBContext libraryDBContext, IOptions<JWT> jwt)
+    public LoginRepository(LibraryDBContext libraryDbContext, IOptions<JWT> jwt)
     {
-        _libraryDBContext = libraryDBContext;
+        _libraryDbContext = libraryDbContext;
         _jwt = jwt.Value;
     }
 
     public async Task<(string, string)> LoginUser(LoginUser login)
     {
-        var user = await _libraryDBContext.Users
+        var user = await _libraryDbContext.Users
             .FirstOrDefaultAsync(x => x.Email == login.Email);
 
         if (!login.Password.VerifyingPassword(user.PasswordHash, user.PasswordSlot))
@@ -40,7 +40,7 @@ public sealed class LoginRepository : ILoginRepository
         {
             refreshToken = GenerateRefreshToken();
             user.RefreshTokens.Add(refreshToken);
-            _libraryDBContext.Users.Update(user);
+            _libraryDbContext.Users.Update(user);
         }
 
         return (token, refreshToken.Token);
@@ -48,7 +48,7 @@ public sealed class LoginRepository : ILoginRepository
 
     public async Task<(string, string)> RefreshToken(string token)
     {
-        var user = await _libraryDBContext.Users
+        var user = await _libraryDbContext.Users
             .SingleOrDefaultAsync(u => u.RefreshTokens.Any(t => t.Token == token))
             ?? throw new BadRequestException("Invalid token");
 
@@ -59,7 +59,7 @@ public sealed class LoginRepository : ILoginRepository
 
         var newRefreshToken = GenerateRefreshToken();
         user.RefreshTokens.Add(newRefreshToken);
-        _libraryDBContext.Update(user);
+        _libraryDbContext.Update(user);
 
         var jwtToken = new JwtSecurityTokenHandler().WriteToken(CreateJwtToken(user));
         return (jwtToken, newRefreshToken.Token);
