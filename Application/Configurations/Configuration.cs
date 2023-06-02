@@ -14,11 +14,13 @@ using Application.Handler.BookTransactionHandler.CheckOutBook;
 using Application.Handler.BookTransactionHandler.GetOverdueBooks;
 using Application.Handler.BookTransactionHandler.ReserveBook;
 using Application.Handler.GenreHandler;
+using Application.Handler.PatronProfileHandler;
 using Application.Handler.UserHandler.LoginHandler;
 using Application.Handler.UserHandler.RefreshTokenHandler;
 using Application.Handler.UserHandler.RegisterHandler;
 using Application.Handler.UserHandler.RoleHandler;
 using Application.Validator.AuthorBookValidator;
+using Application.Validator.BookTransactionValidator;
 using Application.Validator.GenreValidator;
 using Application.Validator.UserValidator;
 using Domain.Services.AuthorService;
@@ -52,6 +54,9 @@ public static class Configuration
         services.AddScoped<IValidator<AddAuthorCommand>, AuthorValidation>();
         services.AddScoped<IValidator<AddBookAuthorCommand>, BookAuthorValidation>();
         services.AddScoped<IValidator<AddBookGenreCommand>, AddBookGenreCommandValidation>();
+        services.AddScoped<IValidator<AcceptReturnedBookCommand>, AcceptReturnedBookCommandValidation>();
+        services.AddScoped<IValidator<CheckOutBookCommand>, CheckOutBookCommandValidation>();
+        services.AddScoped<IValidator<ReserveBookCommand>, ReserveBookCommandValidation>();
     }
 
     private static void AddCustomDependencies(IServiceCollection services)
@@ -79,5 +84,6 @@ public static class Configuration
         services.AddScoped<ICheckOutBookCommandHandler, CheckOutBookCommandHandler>();
         services.AddScoped<IGetOverdueBooksQueryHandler, GetOverdueBooksQueryHandler>();
         services.AddScoped<IAcceptReturnedBookCommandHandler, AcceptReturnedBookCommandHandler>();
+        services.AddScoped<IPatronProfileQueryHandler, PatronProfileQueryHandler>();
     }
 }
