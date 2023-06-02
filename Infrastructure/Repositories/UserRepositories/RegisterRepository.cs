@@ -8,19 +8,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories.UserRepositories;
 
-public sealed class RegisterRepostiory : IRegisterRepository
+public sealed class RegisterRepository : IRegisterRepository
 {
-    private readonly LibraryDBContext _libraryDBContext;
+    private readonly LibraryDBContext _libraryDbContext;
 
-    public RegisterRepostiory(LibraryDBContext libraryDBContext)
+    public RegisterRepository(LibraryDBContext libraryDbContext)
     {
-        _libraryDBContext = libraryDBContext;
+        _libraryDbContext = libraryDbContext;
     }
 
     public async Task<RegisterUser>
         RegisterUser(RegisterUser register)
     {
-        var role = await _libraryDBContext.Roles.FirstOrDefaultAsync(x => x.RoleName == "Patrons");
+        var role = await _libraryDbContext.Roles.FirstOrDefaultAsync(x => x.RoleName == "Patrons");
 
         register.Password.HashingPassword(out byte[] passwordHash, out byte[] passwordSlot);
         var user = register.Adapt<User>();
@@ -28,7 +28,7 @@ public sealed class RegisterRepostiory : IRegisterRepository
         user.PasswordSlot = passwordSlot;
 
         user.Roles.Add(role);
-        await _libraryDBContext.Users.AddAsync(user);
+        await _libraryDbContext.Users.AddAsync(user);
 
         return register;
     }
