@@ -2,6 +2,6 @@
 
 public enum BookStatus
 {
-    Available,
-    NotAvailable
+    Available = 1,
+    NotAvailable = 2
 }

@@ -10,6 +10,5 @@ public record RegisterUser
     [EmailAddress]
      string Email,
      string Password,
-     DateTime CreatedAt,
-     DateTime? UpdatedAt
+     DateTime CreatedAt
 );

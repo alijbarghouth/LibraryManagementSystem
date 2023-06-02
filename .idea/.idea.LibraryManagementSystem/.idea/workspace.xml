@@ -12,21 +12,12 @@
   <component name="ChangeListManager">
     <list default="true" id="53e77f84-7d3d-4a8a-bd2b-c169cbe4d963" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/DTOs/BookDTOs/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/DTOs/BookDTOs/Book.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Repositories/BookRepository/IBookRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/BookRepository/IBookRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Repositories/GenreRepository/IGenreRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/GenreRepository/IGenreRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/DTOs/UserDTOs/RegisterUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/DTOs/UserDTOs/RegisterUser.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Services/BookService/BookService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/BookService/BookService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Services/BookService/IBookService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/BookService/IBookService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Shared/Enums/BookStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Shared/Enums/BookStatus.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Shared/Enums/StatusRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Shared/Enums/StatusRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/LibraryDBContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/LibraryDBContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Model/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Model/Book.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Model/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Model/Order.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookRepository/BookRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookRepository/BookRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/GenreRepository/GenreRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/GenreRepository/GenreRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/BooksController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/BooksController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/ReserveBookRepository/ReserveBookRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/ReserveBookRepository/ReserveBookRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/ReserveController/ReservesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/ReserveController/ReservesController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,29 +35,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "BookTransactions",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CodeLensConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;BookTransactions&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\user\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\user\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="dddd" />
@@ -148,7 +139,8 @@
       <updated>1684826535070</updated>
       <workItem from="1684826539665" duration="2773000" />
       <workItem from="1684956812889" duration="346000" />
-      <workItem from="1685632169631" duration="4838000" />
+      <workItem from="1685632169631" duration="5208000" />
+      <workItem from="1685701274115" duration="1473000" />
     </task>
     <servers />
   </component>
@@ -168,5 +160,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Repositories/ReserveBookRepository/ReserveBookRepository.cs</url>
+          <line>26</line>
+          <properties documentPath="C:\Users\user\source\repos\LibraryManagementSystem\Infrastructure\Repositories\ReserveBookRepository\ReserveBookRepository.cs" initialLine="26" containingFunctionPresentation="Method 'ReserveBook'">
+            <startOffsets>
+              <option value="968" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1021" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

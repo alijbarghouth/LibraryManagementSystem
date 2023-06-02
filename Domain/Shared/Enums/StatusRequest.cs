@@ -2,7 +2,7 @@
 
 public enum StatusRequest
 {
-    Wating,
-    Accept,
-    Reject,
+    Pending = 1,
+    Accept = 2,
+    Reject = 3,
 }

@@ -2,11 +2,13 @@
 using Application.Handler.ReserveBookHandler;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Filter;
 
 namespace WebApi.Controller.ReserveController
 {
     [Route("api/[controller]")]
     [ApiController]
+    [LibraryExceptionHandlerFilter]
     public class ReservesController : ControllerBase
     {
         private readonly IReserveBookCommandHandler _reserveBookCommandHandler;

@@ -20,8 +20,11 @@ public sealed class ReserveBookRepository : IReserveBookRepository
     {
         var book = await _libraryDbContext.Books.FindAsync(bookId)
                    ?? throw new NotFoundException("book is not found");
-        if (book.BookStatus is BookStatus.Available)
+        var user = await _libraryDbContext.Users.FindAsync(userId)
+                   ?? throw new NotFoundException("user is not found");
+        if (book.BookStatus != BookStatus.Available)
         {
+             throw new NotFoundException("book is not Available");
         }
 
         var orderItem = new OrderItem
@@ -34,7 +37,7 @@ public sealed class ReserveBookRepository : IReserveBookRepository
         {
             UserId = userId,
             RequestDate = DateTime.Now,
-            StatusRequest = StatusRequest.Wating,
+            StatusRequest = StatusRequest.Pending,
             OrderItems = new List<OrderItem> { orderItem }
         };
 

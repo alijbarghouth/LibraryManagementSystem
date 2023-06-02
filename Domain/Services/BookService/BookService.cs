@@ -52,9 +52,9 @@ public sealed class BookService : IBookService
     public async Task<BookRequest> AddBook(BookRequest book, CancellationToken cancellationToken = default)
     {
         if (await _bookRepository.IsBookExists(book.Title))
-            throw new BadRequestException("book is exists");
-        if (await _genreRepository.IsBookGenreExistsById(book.GenreId))
-            throw new BadRequestException("genre is exists");
+            throw new NotFoundException("book is exists");
+        if (!await _genreRepository.IsBookGenreExistsById(book.GenreId))
+            throw new NotFoundException("genre is not exists");
         await _bookRepository.AddBook(book);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return book;
@@ -68,7 +68,6 @@ public sealed class BookService : IBookService
             PageSize = filter.PageSize,
             PageNumber = filter.PageNumber
         };
-
         paginationResponse.NextPage = $"{BaseUrl}/{endPointName}" +
                                       $"?AuthorName={searchTitle}" +
                                       $"&Queries.PageNumber={paginationResponse.PageNumber + 1}&Queries.PageSize={paginationResponse.PageSize}";
