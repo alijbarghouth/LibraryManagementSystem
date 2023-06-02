@@ -18,9 +18,8 @@ namespace WebApi.Controller
         {
             _patronProfileQueryHandler = patronProfileQueryHandler;
         }
-        [Authorize]
         [HttpGet]
-        public async Task<IActionResult> GetPatronProfile(PatronProfileQuery query)
+        public async Task<IActionResult> GetPatronProfile([FromQuery] PatronProfileQuery query)
         {
             return Ok(await _patronProfileQueryHandler.Handel(query));
         }

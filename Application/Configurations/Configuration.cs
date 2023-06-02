@@ -28,6 +28,7 @@ using Domain.Services.BookAuthorService;
 using Domain.Services.BookService;
 using Domain.Services.BookTransactionService;
 using Domain.Services.GenreService;
+using Domain.Services.PatronProfile;
 using Domain.Services.Services.AuthService;
 using Domain.Services.Services.LoginService;
 using Domain.Services.Services.RegisterService;
@@ -85,5 +86,6 @@ public static class Configuration
         services.AddScoped<IGetOverdueBooksQueryHandler, GetOverdueBooksQueryHandler>();
         services.AddScoped<IAcceptReturnedBookCommandHandler, AcceptReturnedBookCommandHandler>();
         services.AddScoped<IPatronProfileQueryHandler, PatronProfileQueryHandler>();
+        services.AddScoped<IPatronProfileService, PatronProfileService>();
     }
 }
