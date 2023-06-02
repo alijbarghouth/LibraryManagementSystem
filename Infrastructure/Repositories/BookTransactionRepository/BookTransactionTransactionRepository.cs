@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories.BookTransactionRepository;
 
-public sealed class BookTransactionRepository : IReserveBookRepository
+public sealed class BookTransactionTransactionRepository : IBookTransactionRepository
 {
     private readonly LibraryDBContext _libraryDbContext;
 
-    public BookTransactionRepository(LibraryDBContext libraryDbContext)
+    public BookTransactionTransactionRepository(LibraryDBContext libraryDbContext)
     {
         _libraryDbContext = libraryDbContext;
     }

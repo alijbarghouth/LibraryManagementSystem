@@ -1,5 +1,6 @@
 ﻿using Application.Command.AuthorCommand;
 using Application.Command.BookAuthorCommand;
+using Application.Command.BookTransactionCommand;
 using Application.Command.GenreCommand;
 using Application.Command.UserCommand;
 using Application.Handler.AuthorHandler;
@@ -8,8 +9,11 @@ using Application.Handler.BookHandler.AddBookCommandHandler;
 using Application.Handler.BookHandler.SearchBookByAuthorName;
 using Application.Handler.BookHandler.SearchBookByGenre;
 using Application.Handler.BookHandler.SearchBookByTitle;
+using Application.Handler.BookTransactionHandler.AcceptReturnedBook;
+using Application.Handler.BookTransactionHandler.CheckOutBook;
+using Application.Handler.BookTransactionHandler.GetOverdueBooks;
+using Application.Handler.BookTransactionHandler.ReserveBook;
 using Application.Handler.GenreHandler;
-using Application.Handler.ReserveBookHandler;
 using Application.Handler.UserHandler.LoginHandler;
 using Application.Handler.UserHandler.RefreshTokenHandler;
 using Application.Handler.UserHandler.RegisterHandler;
@@ -20,8 +24,8 @@ using Application.Validator.UserValidator;
 using Domain.Services.AuthorService;
 using Domain.Services.BookAuthorService;
 using Domain.Services.BookService;
+using Domain.Services.BookTransactionService;
 using Domain.Services.GenreService;
-using Domain.Services.ReserveBookService;
 using Domain.Services.Services.AuthService;
 using Domain.Services.Services.LoginService;
 using Domain.Services.Services.RegisterService;
@@ -39,6 +43,7 @@ public static class Configuration
         AddCustomDependencies(services);
         return services;
     }
+
     private static void AddFluentValidation(IServiceCollection services)
     {
         services.AddFluentValidationAutoValidation();
@@ -48,6 +53,7 @@ public static class Configuration
         services.AddScoped<IValidator<AddBookAuthorCommand>, BookAuthorValidation>();
         services.AddScoped<IValidator<AddBookGenreCommand>, AddBookGenreCommandValidation>();
     }
+
     private static void AddCustomDependencies(IServiceCollection services)
     {
         services.AddScoped<IRegisterService, RegisterService>();
@@ -67,8 +73,11 @@ public static class Configuration
         services.AddScoped<ISearchBookByGenreQueryHandler, SearchBookByGenreQueryHandler>();
         services.AddScoped<IAddBookGenreCommandHandler, AddBookGenreCommandHandler>();
         services.AddScoped<IGenreService, GenreService>();
-        services.AddScoped<IReserveBookService, ReserveBookService>();
+        services.AddScoped<IBookTransactionService, BookTransactionService>();
         services.AddScoped<IReserveBookCommandHandler, ReserveBookCommandHandler>();
         services.AddScoped<IAddBookCommandHandler, AddBookCommandHandler>();
+        services.AddScoped<ICheckOutBookCommandHandler, CheckOutBookCommandHandler>();
+        services.AddScoped<IGetOverdueBooksQueryHandler, GetOverdueBooksQueryHandler>();
+        services.AddScoped<IAcceptReturnedBookCommandHandler, AcceptReturnedBookCommandHandler>();
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Domain.Repositories.ReserveBookRepository;
 
-public interface IReserveBookRepository
+public interface IBookTransactionRepository
 {
     Task<bool> ReserveBook(Guid bookId, Guid userId);
     Task CheckOutBook(Guid orderId);

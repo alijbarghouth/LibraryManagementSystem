@@ -1,3 +1,3 @@
-﻿namespace Application.Command.ReserveBookCommand;
+﻿namespace Application.Command.BookTransactionCommand;
 
 public record ReserveBookCommand(Guid BookId, Guid UserId);

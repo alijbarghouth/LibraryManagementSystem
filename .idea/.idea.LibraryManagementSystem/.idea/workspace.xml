@@ -11,23 +11,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53e77f84-7d3d-4a8a-bd2b-c169cbe4d963" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookTransactionRepository/BookTransactionRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/AcceptReturnedBook/AcceptReturnedBookCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/ReserveBook/ReserveBookCommandHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Repositories/ReserveBookRepository/IReserveBookRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/ReserveBookRepository/IReserveBookRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Shared/Enums/StatusRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Shared/Enums/StatusRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Command/ReserveBookCommand/ReserveBookCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Command/BookTransactionCommand/ReserveBookCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/ReserveBookHandler/IReserveBookCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/ReserveBook/IReserveBookCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/ReserveBookHandler/ReserveBookCommandHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Repositories/ReserveBookRepository/IReserveBookRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/ReserveBookRepository/IBookTransactionRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/BookTransactionService/BookTransactionService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/BookTransactionService/BookTransactionService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/BookTransactionService/IBookTransactionService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/BookTransactionService/IBookTransactionService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/ReserveBookService/IReserveBookService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/ReserveBookService/ReserveBookService.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/LibraryDBContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/LibraryDBContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Model/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Model/Order.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Model/OrderItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Model/OrderItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/AuhtorRepository/AuthorRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/AuthorRepository/AuthorRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookAuthorRepository/BookAuthorRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookAuthorRepository/BookAuthorRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookRepository/BookRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookRepository/BookRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/GenreRepository/GenreRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/GenreRepository/GenreRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/ReserveBookRepository/ReserveBookRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/AuthRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/AuthRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/LoginRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/LoginRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/RegisterRepostiory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/RegisterRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookTransactionRepository/BookTransactionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookTransactionRepository/BookTransactionTransactionRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/ReserveController/ReservesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookTransactionController/BookTransactionsController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +149,7 @@
       <workItem from="1684826539665" duration="2773000" />
       <workItem from="1684956812889" duration="346000" />
       <workItem from="1685632169631" duration="5208000" />
-      <workItem from="1685701274115" duration="9912000" />
+      <workItem from="1685701274115" duration="13159000" />
     </task>
     <servers />
   </component>

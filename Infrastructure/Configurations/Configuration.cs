@@ -49,7 +49,7 @@ public static class Configuration
         services.AddScoped<IBookAuthorRepository, BookAuthorRepository>();
         services.AddScoped<IAuthorRepository, AuthorRepository>();
         services.AddScoped<IGenreRepository, GenreRepository>();
-        services.AddScoped<IReserveBookRepository, BookTransactionRepository>();
+        services.AddScoped<IBookTransactionRepository, BookTransactionTransactionRepository>();
         services.Configure<JWT>(configuration.GetSection("JWT"));
     }
     private static void AddLibraryDbContext(IServiceCollection services, ConfigurationManager configuration)
