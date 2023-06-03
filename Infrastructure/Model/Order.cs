@@ -14,5 +14,5 @@ public class Order
     public DateTime OrderDate { get; set; }
     public StatusRequest StatusRequest { get; set; }
     public virtual User User { get; set; }
-    public virtual IEnumerable<OrderItem> OrderItems { get; set; }
+    public virtual ICollection<OrderItem> OrderItems { get; set; }
 }

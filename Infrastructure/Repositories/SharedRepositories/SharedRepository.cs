@@ -27,4 +27,18 @@ public sealed class SharedRepository : ISharedRepository
             .AsNoTracking()
             .AnyAsync(x => x.Email == email);
     }
+
+    public async Task<bool> UserIsExistsUserId(Guid userId)
+    {
+        return await _libraryDbContext.Users
+            .AsNoTracking()
+            .AnyAsync(x => x.Id == userId);
+    }
+
+    public async Task<bool> OrderIsExistsByOrderId(Guid orderId)
+    {
+        return await _libraryDbContext.Orders
+            .AsNoTracking()
+            .AnyAsync(x => x.Id == orderId);
+    }
 }

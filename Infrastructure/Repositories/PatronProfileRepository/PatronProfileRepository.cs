@@ -26,19 +26,13 @@ public class PatronProfileRepository : IPatronProfileRepository
             .ToListAsync()).Adapt<List<PatronProfile>>();
     }
 
-    public Task<PatronProfile> ViewAndEditPatronProfile(Guid userId)
-    {
-        throw new NotImplementedException();
-    }
-
     public async Task<PatronProfile> ViewAndEditPatronProfile(PatronProfile patronProfile, Guid orderId)
     {
         var order = await _libraryDbContext.Orders
                         .Where(x => x.UserId == patronProfile.UserId)
                         .FirstOrDefaultAsync(x => x.Id == orderId)
                     ?? throw new NotFoundException("order not found");
-        order.Adapt(patronProfile);
-        _libraryDbContext.Orders.Update(order);
+        _libraryDbContext.Orders.Update(patronProfile.Adapt(order));
         return patronProfile;
     }
 }

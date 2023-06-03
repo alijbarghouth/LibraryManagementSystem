@@ -1,7 +1,7 @@
-﻿using Application.Handler.PatronProfileHandler;
+﻿using Application.Command.PatronProfileCommand;
+using Application.Handler.PatronProfileHandler.GetPatronProfileQueryHandler;
+using Application.Handler.PatronProfileHandler.ViewAndEditPatronProfileCommandHandler;
 using Application.Query.PatronProfile;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Filter;
 
@@ -12,16 +12,22 @@ namespace WebApi.Controller
     [LibraryExceptionHandlerFilter]
     public class PatronProfilesController : ControllerBase
     {
-        private readonly IPatronProfileQueryHandler _patronProfileQueryHandler;
-
-        public PatronProfilesController(IPatronProfileQueryHandler patronProfileQueryHandler)
+        private readonly IGetPatronProfileQueryHandler _getPatronProfileQueryHandler;
+        private readonly IViewAndEditPatronProfileCommandHandler _viewAndEditPatronProfileCommandHandler;
+        public PatronProfilesController(IGetPatronProfileQueryHandler getPatronProfileQueryHandler, IViewAndEditPatronProfileCommandHandler patronProfileCommandHandler)
         {
-            _patronProfileQueryHandler = patronProfileQueryHandler;
+            _getPatronProfileQueryHandler = getPatronProfileQueryHandler;
+            _viewAndEditPatronProfileCommandHandler = patronProfileCommandHandler;
         }
         [HttpGet]
         public async Task<IActionResult> GetPatronProfile([FromQuery] PatronProfileQuery query)
         {
-            return Ok(await _patronProfileQueryHandler.Handel(query));
+            return Ok(await _getPatronProfileQueryHandler.Handel(query));
+        }
+        [HttpPut]
+        public async Task<IActionResult> ViewAndEditPatronProfile(ViewAndEditPatronProfileCommand command)
+        {
+            return Ok(await _viewAndEditPatronProfileCommandHandler.Handel(command));
         }
     }
 }

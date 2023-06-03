@@ -13,9 +13,13 @@
     <list default="true" id="53e77f84-7d3d-4a8a-bd2b-c169cbe4d963" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Repositories/PatronProfileRepository/IPatronProfileRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/PatronProfileRepository/IPatronProfileRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/PatronProfileHandler/IPatronProfileQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/PatronProfileHandler/GetPatronProfileQueryHandler/IGetPatronProfileQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/PatronProfileHandler/PatronProfileQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/PatronProfileHandler/GetPatronProfileQueryHandler/GetPatronProfileQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Repositories/SharedRepositories/ISharedRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/SharedRepositories/ISharedRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/PatronProfile/IPatronProfileService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/PatronProfile/IPatronProfileService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/PatronProfile/PatronProfileService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/PatronProfile/PatronProfileService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/PatronProfileRepository/PatronProfileRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/PatronProfileRepository/PatronProfileRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/Controller/PatronProfilesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/PatronProfilesController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,37 +30,43 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Application/Validator/PatronProfileValidator/PatronProfileQueryValidation.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2QBUZGCTWARnhXaJDVfuIqVKr6H" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "PatronProfiles",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CodeLensConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;PatronProfiles&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\user\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\user\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="dddd" />
@@ -139,7 +149,8 @@
       <workItem from="1684826539665" duration="2773000" />
       <workItem from="1684956812889" duration="346000" />
       <workItem from="1685632169631" duration="5208000" />
-      <workItem from="1685701274115" duration="17418000" />
+      <workItem from="1685701274115" duration="17601000" />
+      <workItem from="1685764341382" duration="2758000" />
     </task>
     <servers />
   </component>
@@ -159,24 +170,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/WebApi/Controller/PatronProfilesController.cs</url>
-          <line>23</line>
-          <properties documentPath="C:\Users\user\source\repos\LibraryManagementSystem\WebApi\Controller\PatronProfilesController.cs" initialLine="24" containingFunctionPresentation="Method 'GetPatronProfile'">
-            <startOffsets>
-              <option value="798" />
-            </startOffsets>
-            <endOffsets>
-              <option value="856" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

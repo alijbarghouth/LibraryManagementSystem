@@ -2,6 +2,7 @@
 using Application.Command.BookAuthorCommand;
 using Application.Command.BookTransactionCommand;
 using Application.Command.GenreCommand;
+using Application.Command.PatronProfileCommand;
 using Application.Command.UserCommand;
 using Application.Handler.AuthorHandler;
 using Application.Handler.BookAuthorHandler;
@@ -14,14 +15,17 @@ using Application.Handler.BookTransactionHandler.CheckOutBook;
 using Application.Handler.BookTransactionHandler.GetOverdueBooks;
 using Application.Handler.BookTransactionHandler.ReserveBook;
 using Application.Handler.GenreHandler;
-using Application.Handler.PatronProfileHandler;
+using Application.Handler.PatronProfileHandler.GetPatronProfileQueryHandler;
+using Application.Handler.PatronProfileHandler.ViewAndEditPatronProfileCommandHandler;
 using Application.Handler.UserHandler.LoginHandler;
 using Application.Handler.UserHandler.RefreshTokenHandler;
 using Application.Handler.UserHandler.RegisterHandler;
 using Application.Handler.UserHandler.RoleHandler;
+using Application.Query.PatronProfile;
 using Application.Validator.AuthorBookValidator;
 using Application.Validator.BookTransactionValidator;
 using Application.Validator.GenreValidator;
+using Application.Validator.PatronProfileValidator;
 using Application.Validator.UserValidator;
 using Domain.Services.AuthorService;
 using Domain.Services.BookAuthorService;
@@ -58,6 +62,8 @@ public static class Configuration
         services.AddScoped<IValidator<AcceptReturnedBookCommand>, AcceptReturnedBookCommandValidation>();
         services.AddScoped<IValidator<CheckOutBookCommand>, CheckOutBookCommandValidation>();
         services.AddScoped<IValidator<ReserveBookCommand>, ReserveBookCommandValidation>();
+        services.AddScoped<IValidator<ViewAndEditPatronProfileCommand>, ViewAndEditPatronProfileCommandValidation>();
+        services.AddScoped<IValidator<PatronProfileQuery>, PatronProfileQueryValidation>();
     }
 
     private static void AddCustomDependencies(IServiceCollection services)
@@ -85,7 +91,8 @@ public static class Configuration
         services.AddScoped<ICheckOutBookCommandHandler, CheckOutBookCommandHandler>();
         services.AddScoped<IGetOverdueBooksQueryHandler, GetOverdueBooksQueryHandler>();
         services.AddScoped<IAcceptReturnedBookCommandHandler, AcceptReturnedBookCommandHandler>();
-        services.AddScoped<IPatronProfileQueryHandler, PatronProfileQueryHandler>();
+        services.AddScoped<IGetPatronProfileQueryHandler, GetPatronProfileQueryHandler>();
         services.AddScoped<IPatronProfileService, PatronProfileService>();
+        services.AddScoped<IViewAndEditPatronProfileCommandHandler, ViewAndEditPatronProfileCommandHandler>();
     }
 }
