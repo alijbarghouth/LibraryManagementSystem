@@ -1,56 +1,53 @@
-﻿using Application.Command.BookCommand;
+using Application.Command.BookCommand;
 using Application.Handler.BookHandler.AddBookCommandHandler;
-using Application.Handler.BookHandler.SearchBookByAuthorName;
-using Application.Handler.BookHandler.SearchBookByGenre;
-using Application.Handler.BookHandler.SearchBookByTitle;
-using Application.Query.BookQuery;
+using Application.Handler.BookHandler.DeleteBookCommandHandler;
+using Application.Handler.BookHandler.GetAllBookQueryHandler;
+using Application.Handler.BookHandler.UpdateBookCommandHandler;
 using Microsoft.AspNetCore.Mvc;
-using WebApi.Filter;
 
 namespace WebApi.Controller.BookAuthorController
 {
     [Route("api/[controller]")]
     [ApiController]
-    [LibraryExceptionHandlerFilter]
     public class BooksController : ControllerBase
     {
-        private readonly ISearchBookByTitleQueryHandler _searchByTitleQueryHandler;
-        private readonly ISearchBookByAuthorNameQueryHandler _searchByAuthorNameQueryHandler;
-        private readonly ISearchBookByGenreQueryHandler _searchByGenreQueryHandler;
+        private readonly IUpdateBookCommandHandler _updateBookCommandHandler;
         private readonly IAddBookCommandHandler _addBookCommandHandler;
-        public BooksController(ISearchBookByTitleQueryHandler searchByTitleQueryHandler
-            , ISearchBookByAuthorNameQueryHandler searchByAuthorNameQueryHandler
-            , ISearchBookByGenreQueryHandler searchByGenreQueryHandler
-            , IAddBookCommandHandler addBookCommandHandler)
+        private readonly IDeleteBookCommandHandler _deleteBookCommandHandler;
+        private readonly IGetAllBookQueryHandler _getAllBookQueryHandler;
+
+        public BooksController(IUpdateBookCommandHandler updateBookCommandHandler
+            , IAddBookCommandHandler addBookCommandHandler
+            , IDeleteBookCommandHandler deleteBookCommandHandler
+            , IGetAllBookQueryHandler getAllBookQueryHandler)
         {
-            _searchByTitleQueryHandler = searchByTitleQueryHandler;
-            _searchByAuthorNameQueryHandler = searchByAuthorNameQueryHandler;
-            _searchByGenreQueryHandler = searchByGenreQueryHandler;
+            _updateBookCommandHandler = updateBookCommandHandler;
             _addBookCommandHandler = addBookCommandHandler;
+            _deleteBookCommandHandler = deleteBookCommandHandler;
+            _getAllBookQueryHandler = getAllBookQueryHandler;
         }
+
         [HttpPost]
         public async Task<IActionResult> AddBook(AddBookCommand command)
         {
-            var book = await _addBookCommandHandler.Handel(command);
-            return Ok(book);
+            return Ok(await _addBookCommandHandler.Handel(command));
         }
-        [HttpGet("searchByTitle")]
-        public async Task<IActionResult> GetBookByTitle([FromQuery] SearchBookByTitleQuery? query)
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateBook(UpdateBookCommand command)
         {
-            var book = await _searchByTitleQueryHandler.Handel(query);
-            return Ok(book);
+            return Ok(await _updateBookCommandHandler.Handel(command));
         }
-        [HttpGet("searchByAuthorName")]
-        public async Task<IActionResult> GetBookByAuthorName([FromQuery] SearchBookByAuthorNameQuery? query)
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteBook(DeleteBookCommand command)
         {
-            var book = await _searchByAuthorNameQueryHandler.Handel(query);
-            return Ok(book);
-        } 
-        [HttpGet("searchByBookGenre")]
-        public async Task<IActionResult> GetBookByBookGenre([FromQuery] SearchBookByGenerQuery query)
+            return Ok(await _deleteBookCommandHandler.Handel(command));
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAllBook()
         {
-            var book = await _searchByGenreQueryHandler.Handel(query);
-            return Ok(book);
+            return Ok(await _getAllBookQueryHandler.Handel());
         }
     }
 }

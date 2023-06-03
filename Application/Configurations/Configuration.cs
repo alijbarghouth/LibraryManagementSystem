@@ -7,9 +7,12 @@ using Application.Command.UserCommand;
 using Application.Handler.AuthorHandler;
 using Application.Handler.BookAuthorHandler;
 using Application.Handler.BookHandler.AddBookCommandHandler;
+using Application.Handler.BookHandler.DeleteBookCommandHandler;
+using Application.Handler.BookHandler.GetAllBookQueryHandler;
 using Application.Handler.BookHandler.SearchBookByAuthorName;
 using Application.Handler.BookHandler.SearchBookByGenre;
 using Application.Handler.BookHandler.SearchBookByTitle;
+using Application.Handler.BookHandler.UpdateBookCommandHandler;
 using Application.Handler.BookTransactionHandler.AcceptReturnedBook;
 using Application.Handler.BookTransactionHandler.CheckOutBook;
 using Application.Handler.BookTransactionHandler.GetOverdueBooks;
@@ -98,5 +101,8 @@ public static class Configuration
         services.AddScoped<IPatronProfileService, PatronProfileService>();
         services.AddScoped<IViewAndEditPatronProfileCommandHandler, ViewAndEditPatronProfileCommandHandler>();
         services.AddScoped<IBookCrudsService, BookCrudsService>();
+        services.AddScoped<IUpdateBookCommandHandler, UpdateBookCommandHandler>();
+        services.AddScoped<IDeleteBookCommandHandler, DeleteBookCommandHandler>();
+        services.AddScoped<IGetAllBookQueryHandler, GetAllBookQueryHandler>();
     }
 }
