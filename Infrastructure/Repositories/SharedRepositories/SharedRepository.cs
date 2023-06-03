@@ -69,4 +69,18 @@ public sealed class SharedRepository : ISharedRepository
             .AsNoTracking()
             .AnyAsync(x => x.Id == genreId);
     }
+
+    public async Task<bool> IsAuthorExistsByAuthorName(string authorName)
+    {
+        return await _libraryDbContext.Authors
+            .AsNoTracking()
+            .AnyAsync(x => x.Username == authorName);
+    }
+
+    public async Task<bool> IsAuthorExistsByAuthorId(Guid authorId)
+    {
+        return await _libraryDbContext.Authors
+            .AsNoTracking()
+            .AnyAsync(x => x.Id == authorId);
+    }
 }

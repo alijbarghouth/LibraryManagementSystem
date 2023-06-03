@@ -4,7 +4,9 @@ using Application.Command.BookTransactionCommand;
 using Application.Command.GenreCommand;
 using Application.Command.PatronProfileCommand;
 using Application.Command.UserCommand;
-using Application.Handler.AuthorHandler;
+using Application.Handler.AuthorHandler.AddAuthorCommandHandler;
+using Application.Handler.AuthorHandler.DeleteAuthorCommandHandler;
+using Application.Handler.AuthorHandler.UpdateAuthorCommandHandler;
 using Application.Handler.BookAuthorHandler;
 using Application.Handler.BookHandler.AddBookCommandHandler;
 using Application.Handler.BookHandler.DeleteBookCommandHandler;
@@ -30,10 +32,8 @@ using Application.Validator.BookTransactionValidator;
 using Application.Validator.GenreValidator;
 using Application.Validator.PatronProfileValidator;
 using Application.Validator.UserValidator;
-using Domain.Repositories.BookRepository.BookCrudsRepository;
 using Domain.Services.AuthorService;
 using Domain.Services.BookAuthorService;
-using Domain.Services.BookService;
 using Domain.Services.BookService.BookCruds;
 using Domain.Services.BookService.BookSearch;
 using Domain.Services.BookTransactionService;
@@ -86,8 +86,6 @@ public static class Configuration
         services.AddScoped<IBookSearchService, BookSearchService>();
         services.AddScoped<IBookAuthorService, BookAuthorService>();
         services.AddScoped<IBookAuthorCommandHandler, BookAuthorCommandHandler>();
-        services.AddScoped<IAuthorService, AuthorService>();
-        services.AddScoped<IAddAuthorCommandHandler, AddAuthorCommandHandler>();
         services.AddScoped<ISearchBookByGenreQueryHandler, SearchBookByGenreQueryHandler>();
         services.AddScoped<IAddBookGenreCommandHandler, AddBookGenreCommandHandler>();
         services.AddScoped<IGenreService, GenreService>();
@@ -104,5 +102,9 @@ public static class Configuration
         services.AddScoped<IUpdateBookCommandHandler, UpdateBookCommandHandler>();
         services.AddScoped<IDeleteBookCommandHandler, DeleteBookCommandHandler>();
         services.AddScoped<IGetAllBookQueryHandler, GetAllBookQueryHandler>();
+        services.AddScoped<IAuthorCrudsService, AuthorCrudsService>();
+        services.AddScoped<IDeleteAuthorCommandHandler, DeleteAuthorCommandHandler>();
+        services.AddScoped<IUpdateAuthorCommandHandler, UpdateAuthorCommandHandler>();
+        services.AddScoped<IAddAuthorCommandHandler, AddAuthorCommandHandler>();
     }
 }

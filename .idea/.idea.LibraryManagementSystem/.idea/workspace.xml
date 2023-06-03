@@ -13,8 +13,16 @@
     <list default="true" id="53e77f84-7d3d-4a8a-bd2b-c169cbe4d963" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/BookHandler/AddBookCommandHandler/AddBookCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookHandler/AddBookCommandHandler/AddBookCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/BooksController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/BookSearchesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/AuthorHandler/AddAuthorCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/AuthorHandler/AddAuthorCommandHandler/AddAuthorCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/AuthorHandler/IAddAuthorCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/AuthorHandler/AddAuthorCommandHandler/IAddAuthorCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Repositories/AuthorRepository/IAuthorRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/AuthorRepository/IAuthorRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Repositories/SharedRepositories/ISharedRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/SharedRepositories/ISharedRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/AuthorService/AuthorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/AuthorService/AuthorCrudsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/AuthorService/IAuthorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/AuthorService/IAuthorCrudsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/AuthorRepository/AuthorRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/AuthorRepository/AuthorRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/AuthorsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/AuthorsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/BooksController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/BooksController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,29 +46,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "BookandAuthorManagement",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CodeLensConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;BookandAuthorManagement&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\user\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\user\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="dddd" />
@@ -144,7 +152,7 @@
       <workItem from="1684956812889" duration="346000" />
       <workItem from="1685632169631" duration="5208000" />
       <workItem from="1685701274115" duration="17601000" />
-      <workItem from="1685764341382" duration="10195000" />
+      <workItem from="1685764341382" duration="12965000" />
     </task>
     <servers />
   </component>
