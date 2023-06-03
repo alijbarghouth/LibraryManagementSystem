@@ -5,7 +5,7 @@ using Domain.Shared.Exceptions;
 using Domain.Shared.Exceptions.CustomException;
 using System.Threading;
 
-namespace Domain.Services.Services.LoginService;
+namespace Domain.Services.UserService.LoginService;
 
 public class LoginService : ILoginService
 {

@@ -2,6 +2,7 @@
 using Domain.Repositories.UserRepositories;
 using Domain.Shared.Exceptions.CustomException;
 using Infrastructure.DBContext;
+using Mapster;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories.UserRepositories;
@@ -18,9 +19,9 @@ public sealed class AuthRepository : IAuthRepository
     public async Task AddRole(RoleRequest roleRequest)
     {
         var user = await _libraryDbContext.Users.FindAsync(roleRequest.UserId)
-            ?? throw new NotFoundException("user not found");
+                   ?? throw new NotFoundException("user not found");
         var role = await _libraryDbContext.Roles.FirstOrDefaultAsync(x => x.RoleName == roleRequest.RoleName)
-            ?? throw new NotFoundException("role not found");
+                   ?? throw new NotFoundException("role not found");
         if (user.Roles.Any(x => x.RoleName == roleRequest.RoleName))
         {
             throw new BadRequestException("User already assigned to this role");
@@ -28,5 +29,33 @@ public sealed class AuthRepository : IAuthRepository
 
         user.Roles.Add(role);
         _libraryDbContext.Users.Update(user);
+    }
+
+    public async Task<UpdateLibrarianRequest> UpdateLibrarianAccount(Guid userId,
+        UpdateLibrarianRequest updateLibrarianRequest)
+    {
+        var librarian = await _libraryDbContext.Users
+                            .FindAsync(userId)
+                        ?? throw new NotFoundException("user not found");
+        if (librarian.Roles.SingleOrDefault(x => x.RoleName == "Librarian") is null)
+        {
+            throw new NotFoundException("user not Librarian");
+        }
+
+        var newUser = updateLibrarianRequest.Adapt(librarian);
+        _libraryDbContext.Users.Update(librarian);
+        return updateLibrarianRequest;
+    }
+
+    public async Task<bool> DeleteLibrarianAccount(Guid userId)
+    {
+        var user = await _libraryDbContext.Users
+                       .FindAsync(userId)
+                   ?? throw new NotFoundException("user not found");
+        if (user.Roles.SingleOrDefault(x => x.RoleName == "Librarian") is null)
+            throw new NotFoundException("user not Librarian");
+        _libraryDbContext.Users
+            .Remove(user);
+        return true;
     }
 }

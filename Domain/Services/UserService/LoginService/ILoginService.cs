@@ -1,6 +1,6 @@
 ﻿using Domain.DTOs.UserDTOs;
 
-namespace Domain.Services.Services.LoginService;
+namespace Domain.Services.UserService.LoginService;
 
 public interface ILoginService
 {

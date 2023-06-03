@@ -1,5 +1,5 @@
 ﻿using Application.Command.UserCommand;
-using Domain.Services.Services.AuthService;
+using Domain.Services.UserService.AuthService;
 
 namespace Application.Handler.UserHandler.RoleHandler;
 

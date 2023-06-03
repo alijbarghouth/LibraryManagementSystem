@@ -3,7 +3,7 @@ using Domain.Repositories.UserRepositories;
 using Domain.Shared.Exceptions;
 using Domain.Shared.Exceptions.CustomException;
 
-namespace Domain.Services.Services.AuthService;
+namespace Domain.Services.UserService.AuthService;
 
 public sealed class AuthService : IAuthService
 {
@@ -20,6 +20,19 @@ public sealed class AuthService : IAuthService
         if (role is null)
             throw new NotFoundException("role is not found");
         await _authRepository.AddRole(role);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
+        return true;
+    }
+
+    public async Task<UpdateLibrarianRequest> UpdateLibrarianAccount
+        (Guid userId, UpdateLibrarianRequest updateLibrarianRequest)
+    {
+        return await _authRepository.UpdateLibrarianAccount(userId, updateLibrarianRequest);
+    }
+
+    public async Task<bool> DeleteLibrarianAccount(Guid userId, CancellationToken cancellationToken  =default)
+    {
+        var result = await _authRepository.DeleteLibrarianAccount(userId);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return true;
     }

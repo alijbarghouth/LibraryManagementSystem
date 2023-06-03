@@ -22,10 +22,12 @@ using Application.Handler.BookTransactionHandler.ReserveBook;
 using Application.Handler.GenreHandler;
 using Application.Handler.PatronProfileHandler.GetPatronProfileQueryHandler;
 using Application.Handler.PatronProfileHandler.ViewAndEditPatronProfileCommandHandler;
+using Application.Handler.UserHandler.DeleteLibrarianHandler;
 using Application.Handler.UserHandler.LoginHandler;
 using Application.Handler.UserHandler.RefreshTokenHandler;
 using Application.Handler.UserHandler.RegisterHandler;
 using Application.Handler.UserHandler.RoleHandler;
+using Application.Handler.UserHandler.UpdateLibrarianHandler;
 using Application.Query.PatronProfile;
 using Application.Validator.AuthorBookValidator;
 using Application.Validator.BookTransactionValidator;
@@ -39,9 +41,9 @@ using Domain.Services.BookService.BookSearch;
 using Domain.Services.BookTransactionService;
 using Domain.Services.GenreService;
 using Domain.Services.PatronProfile;
-using Domain.Services.Services.AuthService;
-using Domain.Services.Services.LoginService;
 using Domain.Services.Services.RegisterService;
+using Domain.Services.UserService.AuthService;
+using Domain.Services.UserService.LoginService;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -106,5 +108,7 @@ public static class Configuration
         services.AddScoped<IDeleteAuthorCommandHandler, DeleteAuthorCommandHandler>();
         services.AddScoped<IUpdateAuthorCommandHandler, UpdateAuthorCommandHandler>();
         services.AddScoped<IAddAuthorCommandHandler, AddAuthorCommandHandler>();
+        services.AddScoped<IUpdateLibrarianRequestCommandHandler, UpdateLibrarianRequestCommandHandler>();
+        services.AddScoped<IDeleteLibrarianRequestCommandHandler, DeleteLibrarianRequestCommandHandler>();
     }
 }
