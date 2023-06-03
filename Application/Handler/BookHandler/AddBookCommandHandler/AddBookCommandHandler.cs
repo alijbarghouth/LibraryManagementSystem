@@ -1,20 +1,22 @@
 using Application.Command.BookCommand;
 using Domain.DTOs.BookDTOs;
-using Domain.Services.BookService;
+using Domain.Repositories.BookRepository.BookCrudsRepository;
+using Domain.Services.BookService.BookCruds;
+using Domain.Services.BookService.BookSearch;
 
 namespace Application.Handler.BookHandler.AddBookCommandHandler;
 
 public class AddBookCommandHandler : IAddBookCommandHandler
 {
-    private readonly IBookService _bookService;
+    private readonly IBookCrudsService _bookCrudsService;
 
-    public AddBookCommandHandler(IBookService bookService)
+    public AddBookCommandHandler(IBookCrudsService bookCrudsService)
     {
-        _bookService = bookService;
+        _bookCrudsService = bookCrudsService;
     }
 
     public async Task<BookRequest> Handel(AddBookCommand command)
     {
-        return await _bookService.AddBook(command.Book);
+        return await _bookCrudsService.AddBook(command.Book);
     }
 }

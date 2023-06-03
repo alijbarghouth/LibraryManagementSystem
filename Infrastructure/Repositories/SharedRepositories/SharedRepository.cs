@@ -41,4 +41,32 @@ public sealed class SharedRepository : ISharedRepository
             .AsNoTracking()
             .AnyAsync(x => x.Id == orderId);
     }
+
+    public async Task<bool> IsBookExistsByTitle(string bookTitle)
+    {
+        return await _libraryDbContext.Books
+            .AsNoTracking()
+            .AnyAsync(x => x.Title == bookTitle);
+    }
+
+    public async Task<bool> IsBookExistsByBookId(Guid bookId)
+    {
+        return await _libraryDbContext.Books
+            .AsNoTracking()
+            .AnyAsync(x => x.Id == bookId);
+    }
+
+    public async Task<bool> IsBookGenreExists(string bookGenre)
+    {
+        return await _libraryDbContext.Genres
+            .AsNoTracking()
+            .AnyAsync(x => x.Name == bookGenre);
+    }
+
+    public async Task<bool> IsBookGenreExistsById(Guid genreId)
+    {
+        return await _libraryDbContext.Genres
+            .AsNoTracking()
+            .AnyAsync(x => x.Id == genreId);
+    }
 }

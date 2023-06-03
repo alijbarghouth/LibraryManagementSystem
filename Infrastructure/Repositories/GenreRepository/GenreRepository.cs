@@ -20,18 +20,4 @@ public sealed class GenreRepository : IGenreRepository
         await _libraryDbContext.Genres.AddAsync(genre.Adapt<Genre>());
         return genre;
     }
-
-    public async Task<bool> IsBookGenreExists(string bookGenre)
-    {
-        return await _libraryDbContext.Genres
-            .AsNoTracking()
-            .AnyAsync(x => x.Name == bookGenre);
-    }
-
-    public async Task<bool> IsBookGenreExistsById(Guid genreId)
-    {
-        return await _libraryDbContext.Genres
-            .AsNoTracking()
-            .AnyAsync(x => x.Id == genreId);
-    }
 }

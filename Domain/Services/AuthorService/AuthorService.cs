@@ -19,7 +19,6 @@ public sealed class AuthorService : IAuthorService
     {
         if (await _authorRepository.IsAuthorExists(author.Username))
             throw new BadRequestException("author is exists");
-
         var result = await _authorRepository.AddAuthor(author);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return result;

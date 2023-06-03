@@ -1,5 +1,6 @@
 ﻿using Domain.DTOs.GenreDTOs;
 using Domain.Repositories.GenreRepository;
+using Domain.Repositories.SharedRepositories;
 using Domain.Shared.Exceptions;
 using Domain.Shared.Exceptions.CustomException;
 
@@ -9,16 +10,17 @@ public sealed class GenreService : IGenreService
 {
     private readonly IGenreRepository _genreRepository;
     private readonly IUnitOfWork _unitOfWork;
-
-    public GenreService(IGenreRepository genreRepository, IUnitOfWork unitOfWork)
+    private readonly ISharedRepository _sharedRepository;
+    public GenreService(IGenreRepository genreRepository, IUnitOfWork unitOfWork, ISharedRepository sharedRepository)
     {
         _genreRepository = genreRepository;
         _unitOfWork = unitOfWork;
+        _sharedRepository = sharedRepository;
     }
 
     public async Task<Genre> AddBookGenre(Genre genre, CancellationToken cancellationToken = default)
     {
-        if (await _genreRepository.IsBookGenreExists(genre.Name))
+        if (await _sharedRepository.IsBookGenreExists(genre.Name))
             throw new BadRequestException("author is exists");
 
         var result = await _genreRepository.AddBookGenre(genre);

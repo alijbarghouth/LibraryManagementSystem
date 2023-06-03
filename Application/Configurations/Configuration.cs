@@ -27,9 +27,12 @@ using Application.Validator.BookTransactionValidator;
 using Application.Validator.GenreValidator;
 using Application.Validator.PatronProfileValidator;
 using Application.Validator.UserValidator;
+using Domain.Repositories.BookRepository.BookCrudsRepository;
 using Domain.Services.AuthorService;
 using Domain.Services.BookAuthorService;
 using Domain.Services.BookService;
+using Domain.Services.BookService.BookCruds;
+using Domain.Services.BookService.BookSearch;
 using Domain.Services.BookTransactionService;
 using Domain.Services.GenreService;
 using Domain.Services.PatronProfile;
@@ -77,7 +80,7 @@ public static class Configuration
         services.AddScoped<IRefreshTokenQueryHandler, RefreshTokenQueryHandler>();
         services.AddScoped<ISearchBookByTitleQueryHandler, SearchBookByTitleQueryHandler>();
         services.AddScoped<ISearchBookByAuthorNameQueryHandler, SearchBookByAuthorNameQueryHandler>();
-        services.AddScoped<IBookService, BookService>();
+        services.AddScoped<IBookSearchService, BookSearchService>();
         services.AddScoped<IBookAuthorService, BookAuthorService>();
         services.AddScoped<IBookAuthorCommandHandler, BookAuthorCommandHandler>();
         services.AddScoped<IAuthorService, AuthorService>();
@@ -94,5 +97,6 @@ public static class Configuration
         services.AddScoped<IGetPatronProfileQueryHandler, GetPatronProfileQueryHandler>();
         services.AddScoped<IPatronProfileService, PatronProfileService>();
         services.AddScoped<IViewAndEditPatronProfileCommandHandler, ViewAndEditPatronProfileCommandHandler>();
+        services.AddScoped<IBookCrudsService, BookCrudsService>();
     }
 }

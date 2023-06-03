@@ -1,17 +1,17 @@
 ﻿using Domain.DTOs.PaginationsDTOs;
-using Domain.Repositories.BookRepository;
+using Domain.Repositories.BookRepository.SearchBookRepository;
 using Infrastructure.DBContext;
 using Infrastructure.Model;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repositories.BookRepository;
+namespace Infrastructure.Repositories.BookRepository.SearchBookRepository;
 
-public sealed class BookRepository : IBookRepository
+public sealed class SearchBookRepository : ISearchBookRepository
 {
     private readonly LibraryDBContext _libraryDbContext;
 
-    public BookRepository(LibraryDBContext libraryDbContext)
+    public SearchBookRepository(LibraryDBContext libraryDbContext)
     {
         _libraryDbContext = libraryDbContext;
     }
@@ -84,18 +84,5 @@ public sealed class BookRepository : IBookRepository
             .ToListAsync();
 
         return query.Adapt<List<Domain.DTOs.BookDTOs.Book>>();
-    }
-
-    public async Task<Domain.DTOs.BookDTOs.BookRequest> AddBook(Domain.DTOs.BookDTOs.BookRequest book)
-    {
-        await _libraryDbContext.Books.AddAsync(book.Adapt<Book>());
-        return book;
-    }
-
-    public async Task<bool> IsBookExists(string bookTitle)
-    {
-        return await _libraryDbContext.Books
-            .AsNoTracking()
-            .AnyAsync(x => x.Title == bookTitle);
     }
 }

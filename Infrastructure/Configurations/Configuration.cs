@@ -2,7 +2,9 @@
 using Domain.DTOs.UserDTOs;
 using Domain.Repositories.AuthorRepository;
 using Domain.Repositories.BookAuthorRepository;
-using Domain.Repositories.BookRepository;
+using Domain.Repositories.BookRepository.BookCrudsRepository;
+using Domain.Repositories.BookRepository.SearchBookRepository;
+using Domain.Repositories.CrudsRepository;
 using Domain.Repositories.GenreRepository;
 using Domain.Repositories.PatronProfileRepository;
 using Domain.Repositories.ReserveBookRepository;
@@ -14,9 +16,11 @@ using Infrastructure.DBContext;
 using Infrastructure.Model;
 using Infrastructure.Repositories.AuthorRepository;
 using Infrastructure.Repositories.BookAuthorRepository;
-using Infrastructure.Repositories.BookRepository;
+using Infrastructure.Repositories.BookRepository.BookCrudsRepository;
+using Infrastructure.Repositories.BookRepository.SearchBookRepository;
 using Infrastructure.Repositories.GenreRepository;
 using Infrastructure.Repositories.BookTransactionRepository;
+using Infrastructure.Repositories.CrudsRepository;
 using Infrastructure.Repositories.PatronProfileRepository;
 using Infrastructure.Repositories.SharedRepositories;
 using Infrastructure.Repositories.UserRepositories;
@@ -31,7 +35,8 @@ namespace Infrastructure.Configurations;
 
 public static class Configuration
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services, ConfigurationManager configuration)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services,
+        ConfigurationManager configuration)
     {
         AddLibraryDbContext(services, configuration);
         AddRedisConfig(services, configuration);
@@ -39,6 +44,7 @@ public static class Configuration
         AddMapsterConfiguration();
         return services;
     }
+
     private static void AddCustomDependencies(IServiceCollection services, ConfigurationManager configuration)
     {
         services.AddScoped<ILogoutRepository, RedisLogoutRepository>();
@@ -47,21 +53,24 @@ public static class Configuration
         services.AddScoped<ILoginRepository, LoginRepository>();
         services.AddScoped<ISharedRepository, SharedRepository>();
         services.AddScoped<IAuthRepository, AuthRepository>();
-        services.AddScoped<IBookRepository, BookRepository>();
+        services.AddScoped<ISearchBookRepository, SearchBookRepository>();
         services.AddScoped<IBookAuthorRepository, BookAuthorRepository>();
         services.AddScoped<IAuthorRepository, AuthorRepository>();
         services.AddScoped<IGenreRepository, GenreRepository>();
         services.AddScoped<IBookTransactionRepository, BookTransactionTransactionRepository>();
         services.AddScoped<IPatronProfileRepository, PatronProfileRepository>();
+        services.AddScoped(typeof(ICrudsRepository<>), typeof(CrudsRepository<>));
+        services.AddScoped<IBookCrudsRepository, BookCrudsRepository>();
         services.Configure<JWT>(configuration.GetSection("JWT"));
     }
+
     private static void AddLibraryDbContext(IServiceCollection services, ConfigurationManager configuration)
     {
-        services.AddDbContext<LibraryDBContext>(delegate (DbContextOptionsBuilder optionsBuilder)
+        services.AddDbContext<LibraryDBContext>(delegate(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-            .UseLazyLoadingProxies()
-            .UseSqlServer(configuration.GetConnectionString("LibraryDbContext"));
+                .UseLazyLoadingProxies()
+                .UseSqlServer(configuration.GetConnectionString("LibraryDbContext"));
         });
     }
 

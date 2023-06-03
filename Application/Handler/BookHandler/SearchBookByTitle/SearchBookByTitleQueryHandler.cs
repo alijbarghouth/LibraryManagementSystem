@@ -2,6 +2,7 @@
 using Domain.DTOs.BookDTOs;
 using Domain.DTOs.PaginationsDTOs;
 using Domain.Services.BookService;
+using Domain.Services.BookService.BookSearch;
 using Domain.Shared.Exceptions.CustomException;
 using Mapster;
 
@@ -9,11 +10,11 @@ namespace Application.Handler.BookHandler.SearchBookByTitle;
 
 public sealed class SearchBookByTitleQueryHandler : ISearchBookByTitleQueryHandler
 {
-    private readonly IBookService _bookService;
+    private readonly IBookSearchService _bookSearchService;
 
-    public SearchBookByTitleQueryHandler(IBookService bookService)
+    public SearchBookByTitleQueryHandler(IBookSearchService bookSearchService)
     {
-        _bookService = bookService;
+        _bookSearchService = bookSearchService;
     }
 
     public async Task<PagedResponse<Book>> Handel(SearchBookByTitleQuery query)
@@ -22,6 +23,6 @@ public sealed class SearchBookByTitleQueryHandler : ISearchBookByTitleQueryHandl
             throw new NoContentException("no content");
 
         var filter = query.Queries.Adapt<PaginationFilter>();
-        return await _bookService.SearchBookByTitle(query.BookTitle,filter);
+        return await _bookSearchService.SearchBookByTitle(query.BookTitle,filter);
     }
 }
