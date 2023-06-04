@@ -3,7 +3,9 @@ using Application.Command.UserCommand;
 using Application.Handler.UserHandler.LoginHandler;
 using Application.Handler.UserHandler.RefreshTokenHandler;
 using Application.Handler.UserHandler.RegisterHandler;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Primitives;
 using WebApi.Filter;
 
@@ -17,16 +19,19 @@ namespace WebApi.Controller.UserController
         private readonly IRegisterUserCommandHandler _registerCommandHandler;
         private readonly ILoginUserCommandHandler _loginUserCommandHandler;
         private readonly IRefreshTokenQueryHandler _refreshTokenQueryHandler;
+        private readonly IDistributedCache _distributedCache;
         private readonly ILogoutService _logoutService;
         public UsersController(IRegisterUserCommandHandler registerCommandHandler,
               ILoginUserCommandHandler loginUserCommandHandler,
-              IRefreshTokenQueryHandler refreshTokenQueryHandler
-              , ILogoutService logoutService)
+              IRefreshTokenQueryHandler refreshTokenQueryHandler,
+              ILogoutService logoutService,
+              IDistributedCache distributedCache)
         {
             _registerCommandHandler = registerCommandHandler;
             _loginUserCommandHandler = loginUserCommandHandler;
             _refreshTokenQueryHandler = refreshTokenQueryHandler;
             _logoutService = logoutService;
+            _distributedCache = distributedCache;
         }
 
         [HttpPost("register")]
@@ -37,6 +42,10 @@ namespace WebApi.Controller.UserController
         [HttpPost("login")]
         public async Task<IActionResult> LoginUser(LoginUserCommand request)
         {
+            if (await _logoutService.IsActiveAsync(GetCurrentToken()))
+            {
+                return Ok(await _distributedCache.GetStringAsync("token"));
+            }
             var (token, refreshToken) = await _loginUserCommandHandler.Handle(request);
             if (!string.IsNullOrEmpty(refreshToken))
             {
@@ -54,14 +63,15 @@ namespace WebApi.Controller.UserController
 
             return Ok(token);
         }
-        [HttpPost("users/logout")]
+        [Authorize]
+        [HttpPost("logout")]
         public async Task<IActionResult> Logout()
         {
             var token = GetCurrentToken();
-            if (token == null || !User.Identity.IsAuthenticated)
+            if (token is null || !User.Identity.IsAuthenticated)
                 return Ok(new { Message = "You wasn't logged in" });
-            await _logoutService.Logout(GetCurrentToken());
-            return NoContent();
+            await _logoutService.Logout(token);
+            return Ok();
         }
         private string GetCurrentToken()
         {

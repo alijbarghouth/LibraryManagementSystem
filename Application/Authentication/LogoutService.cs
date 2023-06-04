@@ -18,6 +18,6 @@ public class LogoutService : ILogoutService
 
     public async Task<bool> IsActiveAsync(string token)
     {
-        return await _logoutRepository.IsActiveAsync(token);
+        return await _logoutRepository.IsActiveAsync();
     }
 }

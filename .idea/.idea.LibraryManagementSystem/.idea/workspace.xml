@@ -12,14 +12,11 @@
   <component name="ChangeListManager">
     <list default="true" id="53e77f84-7d3d-4a8a-bd2b-c169cbe4d963" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Authentication/LogoutService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Authentication/LogoutService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Authentication/ILogoutRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Authentication/ILogoutRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Authentication/RedisLogoutRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Authentication/RedisLogoutRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookRepository/BookCrudsRepository/BookCrudsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookRepository/BookCrudsRepository/BookCrudsRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/PatronProfileRepository/PatronProfileRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/PatronProfileRepository/PatronProfileRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedBookManagementRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedBookManagementRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/LoginRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/LoginRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Settings/JWT.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Settings/JWT.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/UserController/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/UserController/UsersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Middleware/LogoutMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Middleware/LogoutMiddleware.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +150,7 @@
       <workItem from="1685632169631" duration="5208000" />
       <workItem from="1685701274115" duration="17601000" />
       <workItem from="1685764341382" duration="26889000" />
-      <workItem from="1685884912775" duration="5396000" />
+      <workItem from="1685884912775" duration="7201000" />
     </task>
     <servers />
   </component>

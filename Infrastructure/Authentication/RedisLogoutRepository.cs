@@ -18,15 +18,15 @@ public sealed class RedisLogoutRepository : ILogoutRepository
 
     public async Task Logout(string token)
     {
-        await _cache.SetStringAsync(token,
-            " ", new DistributedCacheEntryOptions
+        await _cache.SetStringAsync("token",
+            token, new DistributedCacheEntryOptions
             {
                 AbsoluteExpirationRelativeToNow =
                     TimeSpan.FromMinutes(_jWt.DurationInMinutes)
             });
     }
-    public async Task<bool> IsActiveAsync(string token)
+    public async Task<bool> IsActiveAsync()
     {
-        return await _cache.GetStringAsync(token) == null;
+        return await _cache.GetStringAsync("token") != null;
     }
 }
