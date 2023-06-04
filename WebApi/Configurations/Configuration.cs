@@ -12,13 +12,6 @@ public static class Configuration
     public static IServiceCollection AddWebApi(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDistributedMemoryCache();
-        services.AddSession
-            (
-                 option =>
-                 {
-                     option.IOTimeout = TimeSpan.FromMinutes(10);
-                 }
-            );
         services.AddSwaggerGen(options =>
          {
              options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme

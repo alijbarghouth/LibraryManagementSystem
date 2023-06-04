@@ -1,11 +1,11 @@
-﻿using Domain.Authentication;
+﻿using Application.Cashing;
+using Domain.Authentication;
 using Domain.DTOs.UserDTOs;
 using Domain.Repositories.AuthorRepository;
 using Domain.Repositories.BookAuthorRepository;
 using Domain.Repositories.BookGenreRepository;
 using Domain.Repositories.BookRepository.BookCrudsRepository;
 using Domain.Repositories.BookRepository.SearchBookRepository;
-using Domain.Repositories.CrudsRepository;
 using Domain.Repositories.GenreRepository;
 using Domain.Repositories.PatronProfileRepository;
 using Domain.Repositories.ReserveBookRepository;
@@ -13,6 +13,7 @@ using Domain.Repositories.SharedRepositories;
 using Domain.Repositories.UserRepositories;
 using Domain.Shared.Exceptions;
 using Infrastructure.Authentication;
+using Infrastructure.Cashing;
 using Infrastructure.DBContext;
 using Infrastructure.Model;
 using Infrastructure.Repositories.AuthorRepository;
@@ -22,7 +23,6 @@ using Infrastructure.Repositories.BookRepository.BookCrudsRepository;
 using Infrastructure.Repositories.BookRepository.SearchBookRepository;
 using Infrastructure.Repositories.GenreRepository;
 using Infrastructure.Repositories.BookTransactionRepository;
-using Infrastructure.Repositories.CrudsRepository;
 using Infrastructure.Repositories.PatronProfileRepository;
 using Infrastructure.Repositories.SharedRepositories;
 using Infrastructure.Repositories.UserRepositories;
@@ -62,9 +62,9 @@ public static class Configuration
         services.AddScoped<IGenreRepository, GenreRepository>();
         services.AddScoped<IBookTransactionRepository, BookTransactionTransactionRepository>();
         services.AddScoped<IPatronProfileRepository, PatronProfileRepository>();
-        services.AddScoped(typeof(ICrudsRepository<>), typeof(CrudsRepository<>));
         services.AddScoped<IBookCrudsRepository, BookCrudsRepository>();
         services.AddScoped<IBookGenreRepository, BookGenreRepository>();
+        services.AddScoped<ICashService, CashService>();
         services.Configure<JWT>(configuration.GetSection("JWT"));
     }
 

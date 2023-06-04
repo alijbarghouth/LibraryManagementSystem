@@ -1,4 +1,5 @@
-﻿using Domain.Authentication;
+﻿using Application.Cashing;
+using Domain.Authentication;
 using Infrastructure.Settings;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Options;
@@ -7,26 +8,23 @@ namespace Infrastructure.Authentication;
 
 public sealed class RedisLogoutRepository : ILogoutRepository
 {
-    private readonly IDistributedCache _cache;
+    private readonly ICashService _cashService;
     private readonly JWT _jWt;
 
-    public RedisLogoutRepository(IDistributedCache cache, IOptions<JWT> jWt)
+    public RedisLogoutRepository(IOptions<JWT> jWt, ICashService cashService)
     {
-        _cache = cache;
+        _cashService = cashService;
         _jWt = jWt.Value;
     }
 
     public async Task Logout(string token)
     {
-        await _cache.SetStringAsync("token",
-            token, new DistributedCacheEntryOptions
-            {
-                AbsoluteExpirationRelativeToNow =
-                    TimeSpan.FromMinutes(_jWt.DurationInMinutes)
-            });
+        
+        await _cashService.SetAsync("token",
+            token);
     }
     public async Task<bool> IsActiveAsync()
     {
-        return await _cache.GetStringAsync("token") != null;
+        return await _cashService.GetAsync<string>("token") != null;
     }
 }

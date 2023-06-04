@@ -1,6 +1,7 @@
 ﻿using Application.Authentication;
 using Application.Command.AuthorCommand;
 using Application.Command.BookAuthorCommand;
+using Application.Command.BookGenreCommand;
 using Application.Command.BookTransactionCommand;
 using Application.Command.GenreCommand;
 using Application.Command.PatronProfileCommand;
@@ -32,6 +33,7 @@ using Application.Handler.UserHandler.RoleHandler;
 using Application.Handler.UserHandler.UpdateLibrarianHandler;
 using Application.Query.PatronProfile;
 using Application.Validator.AuthorBookValidator;
+using Application.Validator.BookGenreValidator;
 using Application.Validator.BookTransactionValidator;
 using Application.Validator.GenreValidator;
 using Application.Validator.PatronProfileValidator;
@@ -75,6 +77,7 @@ public static class Configuration
         services.AddScoped<IValidator<ReserveBookCommand>, ReserveBookCommandValidation>();
         services.AddScoped<IValidator<ViewAndEditPatronProfileCommand>, ViewAndEditPatronProfileCommandValidation>();
         services.AddScoped<IValidator<PatronProfileQuery>, PatronProfileQueryValidation>();
+        services.AddScoped<IValidator<AddBookGenreCommand>, AddBookGenreCommandValidation>();
     }
 
     private static void AddCustomDependencies(IServiceCollection services)

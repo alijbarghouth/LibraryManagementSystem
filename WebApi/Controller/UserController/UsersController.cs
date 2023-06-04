@@ -1,4 +1,5 @@
 ﻿using Application.Authentication;
+using Application.Cashing;
 using Application.Command.UserCommand;
 using Application.Handler.UserHandler.LoginHandler;
 using Application.Handler.UserHandler.RefreshTokenHandler;
@@ -19,19 +20,20 @@ namespace WebApi.Controller.UserController
         private readonly IRegisterUserCommandHandler _registerCommandHandler;
         private readonly ILoginUserCommandHandler _loginUserCommandHandler;
         private readonly IRefreshTokenQueryHandler _refreshTokenQueryHandler;
-        private readonly IDistributedCache _distributedCache;
+        private readonly ICashService _cashService;
         private readonly ILogoutService _logoutService;
+
         public UsersController(IRegisterUserCommandHandler registerCommandHandler,
-              ILoginUserCommandHandler loginUserCommandHandler,
-              IRefreshTokenQueryHandler refreshTokenQueryHandler,
-              ILogoutService logoutService,
-              IDistributedCache distributedCache)
+            ILoginUserCommandHandler loginUserCommandHandler,
+            IRefreshTokenQueryHandler refreshTokenQueryHandler,
+            ILogoutService logoutService,
+            ICashService cashService)
         {
             _registerCommandHandler = registerCommandHandler;
             _loginUserCommandHandler = loginUserCommandHandler;
             _refreshTokenQueryHandler = refreshTokenQueryHandler;
             _logoutService = logoutService;
-            _distributedCache = distributedCache;
+            _cashService = cashService;
         }
 
         [HttpPost("register")]
@@ -39,20 +41,24 @@ namespace WebApi.Controller.UserController
         {
             return Ok(await _registerCommandHandler.Handle(user));
         }
+
         [HttpPost("login")]
         public async Task<IActionResult> LoginUser(LoginUserCommand request)
         {
             if (await _logoutService.IsActiveAsync(GetCurrentToken()))
             {
-                return Ok(await _distributedCache.GetStringAsync("token"));
+                return Ok(await _cashService.GetAsync<string>("token"));
             }
+
             var (token, refreshToken) = await _loginUserCommandHandler.Handle(request);
             if (!string.IsNullOrEmpty(refreshToken))
             {
                 SetRefreshTokenInCookie(refreshToken);
             }
+
             return Ok(token);
         }
+
         [HttpGet("refreshToken")]
         public async Task<IActionResult> RefreshToken()
         {
@@ -63,6 +69,7 @@ namespace WebApi.Controller.UserController
 
             return Ok(token);
         }
+
         [Authorize]
         [HttpPost("logout")]
         public async Task<IActionResult> Logout()
@@ -73,11 +80,13 @@ namespace WebApi.Controller.UserController
             await _logoutService.Logout(token);
             return Ok();
         }
+
         private string GetCurrentToken()
         {
             var authHeader = HttpContext.Request?.Headers["authorization"];
             return authHeader.Equals(StringValues.Empty) ? string.Empty : authHeader.Single<string>().Split(" ").Last();
         }
+
         private void SetRefreshTokenInCookie(string refreshToken)
         {
             var cookieOptions = new CookieOptions
