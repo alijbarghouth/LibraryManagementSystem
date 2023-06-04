@@ -2,5 +2,5 @@
 
 namespace Application.Command.GenreCommand;
 
-public record AddBookGenreCommand(Genre Genre);
+public record AddGenreCommand(Genre Genre);
 

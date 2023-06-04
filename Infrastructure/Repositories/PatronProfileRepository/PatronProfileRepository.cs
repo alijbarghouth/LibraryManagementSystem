@@ -10,9 +10,9 @@ namespace Infrastructure.Repositories.PatronProfileRepository;
 
 public class PatronProfileRepository : IPatronProfileRepository
 {
-    private readonly LibraryDBContext _libraryDbContext;
+    private readonly LibraryDbContext _libraryDbContext;
 
-    public PatronProfileRepository(LibraryDBContext libraryDbContext)
+    public PatronProfileRepository(LibraryDbContext libraryDbContext)
     {
         _libraryDbContext = libraryDbContext;
     }

@@ -54,6 +54,7 @@ public static class Configuration
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ILoginRepository, LoginRepository>();
         services.AddScoped<ISharedUserRepository, SharedUserRepository>();
+        services.AddScoped<ISharedBookManagementRepository, SharedBookManagementRepository>();
         services.AddScoped<IAuthRepository, AuthRepository>();
         services.AddScoped<ISearchBookRepository, SearchBookRepository>();
         services.AddScoped<IBookAuthorRepository, BookAuthorRepository>();
@@ -69,7 +70,7 @@ public static class Configuration
 
     private static void AddLibraryDbContext(IServiceCollection services, ConfigurationManager configuration)
     {
-        services.AddDbContext<LibraryDBContext>(delegate(DbContextOptionsBuilder optionsBuilder)
+        services.AddDbContext<LibraryDbContext>(delegate(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
                 .UseLazyLoadingProxies()

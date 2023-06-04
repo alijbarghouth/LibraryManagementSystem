@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
-    [DbContext(typeof(LibraryDBContext))]
+    [DbContext(typeof(LibraryDbContext))]
     [Migration("20230528184136_AddRefreshToken")]
     partial class AddRefreshToken
     {

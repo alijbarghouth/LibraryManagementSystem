@@ -8,6 +8,7 @@ using Application.Handler.AuthorHandler.AddAuthorCommandHandler;
 using Application.Handler.AuthorHandler.DeleteAuthorCommandHandler;
 using Application.Handler.AuthorHandler.UpdateAuthorCommandHandler;
 using Application.Handler.BookAuthorHandler;
+using Application.Handler.BookGenreHandler.AddBookGenreCommandHandler;
 using Application.Handler.BookHandler.AddBookCommandHandler;
 using Application.Handler.BookHandler.DeleteBookCommandHandler;
 using Application.Handler.BookHandler.GetAllBookQueryHandler;
@@ -67,7 +68,7 @@ public static class Configuration
         services.AddScoped<IValidator<LoginUserCommand>, LoginRequestValidation>();
         services.AddScoped<IValidator<AddAuthorCommand>, AuthorValidation>();
         services.AddScoped<IValidator<AddBookAuthorCommand>, BookAuthorValidation>();
-        services.AddScoped<IValidator<AddBookGenreCommand>, AddBookGenreCommandValidation>();
+        services.AddScoped<IValidator<AddGenreCommand>, AddGenreCommandValidation>();
         services.AddScoped<IValidator<AcceptReturnedBookCommand>, AcceptReturnedBookCommandValidation>();
         services.AddScoped<IValidator<CheckOutBookCommand>, CheckOutBookCommandValidation>();
         services.AddScoped<IValidator<ReserveBookCommand>, ReserveBookCommandValidation>();
@@ -112,6 +113,6 @@ public static class Configuration
         services.AddScoped<IUpdateLibrarianRequestCommandHandler, UpdateLibrarianRequestCommandHandler>();
         services.AddScoped<IDeleteLibrarianRequestCommandHandler, DeleteLibrarianRequestCommandHandler>();
         services.AddScoped<IBookGenreService, BookGenreService>();
-        services.AddScoped<IAddGenreCommandHandler, AddGenreCommandHandler>();
+        services.AddScoped<IAddBookGenreCommandHandler, AddBookGenreCommandHandler>();
     }
 }

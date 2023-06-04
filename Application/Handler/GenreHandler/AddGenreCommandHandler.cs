@@ -13,7 +13,7 @@ public sealed class AddGenreCommandHandler : IAddGenreCommandHandler
         _genreService = genreService;
     }
 
-    public async Task<Genre> Handel(AddBookGenreCommand command)
+    public async Task<Genre> Handel(AddGenreCommand command)
     {
         return await _genreService.AddBookGenre(command.Genre);
     }

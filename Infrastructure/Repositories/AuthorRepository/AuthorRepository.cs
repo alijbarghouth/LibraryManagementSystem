@@ -7,9 +7,9 @@ namespace Infrastructure.Repositories.AuthorRepository;
 
 public sealed class AuthorRepository : IAuthorRepository
 {
-    private readonly LibraryDBContext _libraryDbContext;
+    private readonly LibraryDbContext _libraryDbContext;
 
-    public AuthorRepository(LibraryDBContext libraryDbContext)
+    public AuthorRepository(LibraryDbContext libraryDbContext)
     {
         _libraryDbContext = libraryDbContext;
     }

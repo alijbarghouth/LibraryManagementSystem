@@ -9,9 +9,9 @@ namespace Infrastructure.Repositories.BookRepository.SearchBookRepository;
 
 public sealed class SearchBookRepository : ISearchBookRepository
 {
-    private readonly LibraryDBContext _libraryDbContext;
+    private readonly LibraryDbContext _libraryDbContext;
 
-    public SearchBookRepository(LibraryDBContext libraryDbContext)
+    public SearchBookRepository(LibraryDbContext libraryDbContext)
     {
         _libraryDbContext = libraryDbContext;
     }

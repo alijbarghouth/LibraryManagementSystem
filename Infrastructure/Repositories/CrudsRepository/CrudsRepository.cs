@@ -7,9 +7,9 @@ namespace Infrastructure.Repositories.CrudsRepository;
 public class CrudsRepository<TEntity> : ICrudsRepository<TEntity>
 where TEntity : class 
 {
-    private readonly LibraryDBContext _libraryDbContext;
+    private readonly LibraryDbContext _libraryDbContext;
 
-    public CrudsRepository(LibraryDBContext libraryDbContext)
+    public CrudsRepository(LibraryDbContext libraryDbContext)
     {
         _libraryDbContext = libraryDbContext;
     }

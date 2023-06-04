@@ -3,7 +3,7 @@ using Application.Handler.GenreHandler;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Filter;
 
-namespace WebApi.Controller
+namespace WebApi.Controller.BookGenreController
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -17,7 +17,7 @@ namespace WebApi.Controller
             _addGenreCommandHandler = addGenreCommandHandler;
         }
         [HttpPost]
-        public async Task<IActionResult> AddBookGenre(AddBookGenreCommand command)
+        public async Task<IActionResult> AddBookGenre(AddGenreCommand command)
         {
             return Ok(await _addGenreCommandHandler.Handel(command));
         }

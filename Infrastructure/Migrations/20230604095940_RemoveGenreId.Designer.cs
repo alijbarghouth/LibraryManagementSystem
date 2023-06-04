@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
-    [DbContext(typeof(LibraryDBContext))]
+    [DbContext(typeof(LibraryDbContext))]
     [Migration("20230604095940_RemoveGenreId")]
     partial class RemoveGenreId
     {

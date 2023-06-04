@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.DBContext;
 
-public sealed class LibraryDBContext : DbContext
+public sealed class LibraryDbContext : DbContext
 {
-    public LibraryDBContext(DbContextOptions<LibraryDBContext> options) : base(options)
+    public LibraryDbContext(DbContextOptions<LibraryDbContext> options) : base(options)
     {
 
     }

@@ -17,10 +17,10 @@ namespace Infrastructure.Repositories.UserRepositories;
 
 public sealed class LoginRepository : ILoginRepository
 {
-    private readonly LibraryDBContext _libraryDbContext;
+    private readonly LibraryDbContext _libraryDbContext;
     private readonly JWT _jwt;
 
-    public LoginRepository(LibraryDBContext libraryDbContext, IOptions<JWT> jwt)
+    public LoginRepository(LibraryDbContext libraryDbContext, IOptions<JWT> jwt)
     {
         _libraryDbContext = libraryDbContext;
         _jwt = jwt.Value;

@@ -9,9 +9,9 @@ namespace Infrastructure.Repositories.BookRepository.BookCrudsRepository;
 
 public class BookCrudsRepository : IBookCrudsRepository
 {
-    private readonly LibraryDBContext _libraryDbContext;
+    private readonly LibraryDbContext _libraryDbContext;
 
-    public BookCrudsRepository(LibraryDBContext libraryDbContext)
+    public BookCrudsRepository(LibraryDbContext libraryDbContext)
     {
         _libraryDbContext = libraryDbContext;
     }

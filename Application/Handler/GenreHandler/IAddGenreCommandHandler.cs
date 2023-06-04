@@ -5,5 +5,5 @@ namespace Application.Handler.GenreHandler;
 
 public interface IAddGenreCommandHandler
 {
-    Task<Genre> Handel(AddBookGenreCommand command);
+    Task<Genre> Handel(AddGenreCommand command);
 }

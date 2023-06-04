@@ -10,9 +10,9 @@ namespace Infrastructure.Repositories.UserRepositories;
 
 public sealed class RegisterRepository : IRegisterRepository
 {
-    private readonly LibraryDBContext _libraryDbContext;
+    private readonly LibraryDbContext _libraryDbContext;
 
-    public RegisterRepository(LibraryDBContext libraryDbContext)
+    public RegisterRepository(LibraryDbContext libraryDbContext)
     {
         _libraryDbContext = libraryDbContext;
     }

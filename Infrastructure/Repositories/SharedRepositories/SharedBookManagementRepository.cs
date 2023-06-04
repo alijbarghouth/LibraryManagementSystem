@@ -6,9 +6,9 @@ namespace Infrastructure.Repositories.SharedRepositories;
 
 public class SharedBookManagementRepository : ISharedBookManagementRepository
 {
-    private readonly LibraryDBContext _libraryDbContext;
+    private readonly LibraryDbContext _libraryDbContext;
 
-    public SharedBookManagementRepository(LibraryDBContext libraryDbContext)
+    public SharedBookManagementRepository(LibraryDbContext libraryDbContext)
     {
         _libraryDbContext = libraryDbContext;
     }

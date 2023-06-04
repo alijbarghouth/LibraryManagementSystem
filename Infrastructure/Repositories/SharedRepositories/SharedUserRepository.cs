@@ -6,9 +6,9 @@ namespace Infrastructure.Repositories.SharedRepositories;
 
 public sealed class SharedUserRepository : ISharedUserRepository
 {
-    private readonly LibraryDBContext _libraryDbContext;
+    private readonly LibraryDbContext _libraryDbContext;
 
-    public SharedUserRepository(LibraryDBContext libraryDbContext)
+    public SharedUserRepository(LibraryDbContext libraryDbContext)
     {
         _libraryDbContext = libraryDbContext;
     }

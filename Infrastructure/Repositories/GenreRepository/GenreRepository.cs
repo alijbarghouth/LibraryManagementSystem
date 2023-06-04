@@ -8,9 +8,9 @@ namespace Infrastructure.Repositories.GenreRepository;
 
 public sealed class GenreRepository : IGenreRepository
 {
-    private readonly LibraryDBContext _libraryDbContext;
+    private readonly LibraryDbContext _libraryDbContext;
 
-    public GenreRepository(LibraryDBContext libraryDbContext)
+    public GenreRepository(LibraryDbContext libraryDbContext)
     {
         _libraryDbContext = libraryDbContext;
     }

@@ -10,9 +10,9 @@ namespace Infrastructure.Repositories.UserRepositories;
 
 public sealed class AuthRepository : IAuthRepository
 {
-    private readonly LibraryDBContext _libraryDbContext;
+    private readonly LibraryDbContext _libraryDbContext;
 
-    public AuthRepository(LibraryDBContext libraryDbContext)
+    public AuthRepository(LibraryDbContext libraryDbContext)
     {
         _libraryDbContext = libraryDbContext;
     }

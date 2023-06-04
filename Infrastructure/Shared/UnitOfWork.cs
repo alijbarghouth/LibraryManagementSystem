@@ -5,9 +5,9 @@ namespace Infrastructure.Shared;
 
 public sealed class UnitOfWork : IUnitOfWork
 {
-    private readonly LibraryDBContext _libraryDBContext;
+    private readonly LibraryDbContext _libraryDBContext;
 
-    public UnitOfWork(LibraryDBContext libraryDBContext)
+    public UnitOfWork(LibraryDbContext libraryDBContext)
     {
         _libraryDBContext = libraryDBContext;
     }

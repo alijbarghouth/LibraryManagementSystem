@@ -7,9 +7,9 @@ namespace Infrastructure.Repositories.BookGenreRepository;
 
 public sealed class BookGenreRepository : IBookGenreRepository
 {
-    private readonly LibraryDBContext _libraryDbContext;
+    private readonly LibraryDbContext _libraryDbContext;
 
-    public BookGenreRepository(LibraryDBContext libraryDbContext)
+    public BookGenreRepository(LibraryDbContext libraryDbContext)
     {
         _libraryDbContext = libraryDbContext;
     }
@@ -21,7 +21,8 @@ public sealed class BookGenreRepository : IBookGenreRepository
 
         foreach (var genreDtos in bookGenre.Genre)
         {
-            var genre = await _libraryDbContext.Authors.SingleOrDefaultAsync(x => x.Username == genreDtos);
+            var genre = await _libraryDbContext.Authors
+                .SingleOrDefaultAsync(x => x.Username == genreDtos);
             book.Authors.Add(genre);
         }
         _libraryDbContext.Books.Update(book);

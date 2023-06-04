@@ -10,9 +10,9 @@ namespace Infrastructure.Repositories.BookTransactionRepository;
 
 public sealed class BookTransactionTransactionRepository : IBookTransactionRepository
 {
-    private readonly LibraryDBContext _libraryDbContext;
+    private readonly LibraryDbContext _libraryDbContext;
 
-    public BookTransactionTransactionRepository(LibraryDBContext libraryDbContext)
+    public BookTransactionTransactionRepository(LibraryDbContext libraryDbContext)
     {
         _libraryDbContext = libraryDbContext;
     }

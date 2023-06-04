@@ -1,6 +1,6 @@
-using Application.Command.BookGenreCommand;
+﻿using Application.Command.BookGenreCommand;
 using Application.Handler.BookGenreHandler.AddBookGenreCommandHandler;
-using Application.Handler.GenreHandler;
+using Domain.DTOs.BookGenreDTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controller.BookGenreController
@@ -11,12 +11,10 @@ namespace WebApi.Controller.BookGenreController
     {
         private readonly IAddBookGenreCommandHandler _addBookGenreCommandHandler;
 
-        public BookGenresController
-            (IAddBookGenreCommandHandler addBookGenreCommandHandler)
+        public BookGenresController(IAddBookGenreCommandHandler addBookGenreCommandHandler)
         {
             _addBookGenreCommandHandler = addBookGenreCommandHandler;
         }
-
         [HttpPost]
         public async Task<IActionResult> AddBookGenre(AddBookGenreCommand command)
         {
