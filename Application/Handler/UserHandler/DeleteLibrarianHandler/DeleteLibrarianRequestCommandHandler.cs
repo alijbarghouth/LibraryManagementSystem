@@ -3,7 +3,7 @@ using Domain.Services.UserService.AuthService;
 
 namespace Application.Handler.UserHandler.DeleteLibrarianHandler;
 
-public class DeleteLibrarianRequestCommandHandler  :IDeleteLibrarianRequestCommandHandler
+public sealed class DeleteLibrarianRequestCommandHandler  :IDeleteLibrarianRequestCommandHandler
 {
     private readonly IAuthService _authService;
 

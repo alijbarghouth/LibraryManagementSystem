@@ -3,7 +3,7 @@ using Domain.Services.BookTransactionService;
 
 namespace Application.Handler.BookTransactionHandler.CheckOutBook;
 
-public class CheckOutBookCommandHandler : ICheckOutBookCommandHandler
+public sealed class CheckOutBookCommandHandler : ICheckOutBookCommandHandler
 {
     private readonly IBookTransactionService _bookTransactionService;
 

@@ -9,6 +9,5 @@ public record RegisterUser
      string Username,
     [EmailAddress]
      string Email,
-     string Password,
-     DateTime CreatedAt
+     string Password
 );

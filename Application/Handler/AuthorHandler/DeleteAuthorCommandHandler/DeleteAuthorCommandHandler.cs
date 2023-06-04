@@ -3,7 +3,7 @@ using Domain.Services.AuthorService;
 
 namespace Application.Handler.AuthorHandler.DeleteAuthorCommandHandler;
 
-public class DeleteAuthorCommandHandler : IDeleteAuthorCommandHandler
+public sealed class DeleteAuthorCommandHandler : IDeleteAuthorCommandHandler
 {
     private readonly IAuthorCrudsService _authorCrudsService;
 

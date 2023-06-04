@@ -3,7 +3,7 @@ using Domain.Services.BookService.BookCruds;
 
 namespace Application.Handler.BookHandler.DeleteBookCommandHandler;
 
-public class DeleteBookCommandHandler  :IDeleteBookCommandHandler
+public sealed class DeleteBookCommandHandler  :IDeleteBookCommandHandler
 {
     private readonly IBookCrudsService _bookCrudsService;
 

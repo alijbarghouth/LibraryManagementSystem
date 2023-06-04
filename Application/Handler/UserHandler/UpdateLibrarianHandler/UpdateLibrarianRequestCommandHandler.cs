@@ -5,7 +5,7 @@ using Domain.Shared.Exceptions;
 
 namespace Application.Handler.UserHandler.UpdateLibrarianHandler;
 
-public class UpdateLibrarianRequestCommandHandler : IUpdateLibrarianRequestCommandHandler
+public sealed class UpdateLibrarianRequestCommandHandler : IUpdateLibrarianRequestCommandHandler
 {
     private readonly IAuthService _authService;
     private readonly IUnitOfWork _unitOfWork;

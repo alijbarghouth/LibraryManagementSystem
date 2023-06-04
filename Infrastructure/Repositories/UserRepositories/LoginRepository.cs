@@ -19,6 +19,7 @@ public sealed class LoginRepository : ILoginRepository
 {
     private readonly LibraryDBContext _libraryDbContext;
     private readonly JWT _jwt;
+
     public LoginRepository(LibraryDBContext libraryDbContext, IOptions<JWT> jwt)
     {
         _libraryDbContext = libraryDbContext;
@@ -34,14 +35,19 @@ public sealed class LoginRepository : ILoginRepository
         {
             throw new BadRequestException("The password is wrong");
         }
+
         var token = new JwtSecurityTokenHandler().WriteToken(CreateJwtToken(user));
         var refreshToken = new RefreshToken();
-        if (!user.RefreshTokens.Any(x => x.IsActive))
+        if (user.RefreshTokens.Any(x => x.IsActive))
         {
-            refreshToken = GenerateRefreshToken();
-            user.RefreshTokens.Add(refreshToken);
-            _libraryDbContext.Users.Update(user);
+            refreshToken = user.RefreshTokens.FirstOrDefault(x => x.IsActive);
+            return (token, refreshToken.Token);
         }
+
+
+        refreshToken = GenerateRefreshToken();
+        user.RefreshTokens.Add(refreshToken);
+        _libraryDbContext.Users.Update(user);
 
         return (token, refreshToken.Token);
     }
@@ -49,11 +55,11 @@ public sealed class LoginRepository : ILoginRepository
     public async Task<(string, string)> RefreshToken(string token)
     {
         var user = await _libraryDbContext.Users
-            .SingleOrDefaultAsync(u => u.RefreshTokens.Any(t => t.Token == token))
-            ?? throw new BadRequestException("Invalid token");
+                       .SingleOrDefaultAsync(u => u.RefreshTokens.Any(t => t.Token == token))
+                   ?? throw new BadRequestException("Invalid token");
 
         var refreshToken = user.RefreshTokens.Single(t => t.Token == token)
-            ?? throw new BadRequestException("Inactive token");
+                           ?? throw new BadRequestException("Inactive token");
 
         refreshToken.RevokedOn = DateTime.UtcNow;
 
@@ -64,6 +70,7 @@ public sealed class LoginRepository : ILoginRepository
         var jwtToken = new JwtSecurityTokenHandler().WriteToken(CreateJwtToken(user));
         return (jwtToken, newRefreshToken.Token);
     }
+
     private JwtSecurityToken CreateJwtToken(User user)
     {
         var roleClaims = new List<Claim>();
@@ -74,19 +81,19 @@ public sealed class LoginRepository : ILoginRepository
         }
 
         var claims = new[]
-            {
-                new Claim("uid",user.Id.ToString()),
-                new Claim(JwtRegisteredClaimNames.Sub, user.Username),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+        {
+            new Claim("uid", user.Id.ToString()),
+            new Claim(JwtRegisteredClaimNames.Sub, user.Username),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(JwtRegisteredClaimNames.Email, user.Email),
         }.Union(roleClaims);
 
         var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwt.Key));
         var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
 
         var jwtSecurityToken = new JwtSecurityToken(
-        issuer: _jwt.Issuer,
-        audience: _jwt.Audience,
+            issuer: _jwt.Issuer,
+            audience: _jwt.Audience,
             claims: claims,
             expires: DateTime.UtcNow.AddMinutes(_jwt.DurationInMinutes),
             signingCredentials: signingCredentials);

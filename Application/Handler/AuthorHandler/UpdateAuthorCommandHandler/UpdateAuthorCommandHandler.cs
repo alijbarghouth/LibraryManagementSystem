@@ -4,7 +4,7 @@ using Domain.Services.AuthorService;
 
 namespace Application.Handler.AuthorHandler.UpdateAuthorCommandHandler;
 
-public class UpdateAuthorCommandHandler : IUpdateAuthorCommandHandler
+public sealed class UpdateAuthorCommandHandler : IUpdateAuthorCommandHandler
 {
     private readonly IAuthorCrudsService _authorCrudsService;
 

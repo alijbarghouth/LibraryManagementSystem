@@ -4,7 +4,7 @@ using Domain.Services.PatronProfile;
 
 namespace Application.Handler.PatronProfileHandler.GetPatronProfileQueryHandler;
 
-public class GetPatronProfileQueryHandler : IGetPatronProfileQueryHandler
+public sealed class GetPatronProfileQueryHandler : IGetPatronProfileQueryHandler
 {
     private readonly IPatronProfileService _patronProfileService;
 

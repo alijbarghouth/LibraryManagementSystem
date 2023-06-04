@@ -9,20 +9,20 @@ namespace Domain.Services.UserService.LoginService;
 
 public class LoginService : ILoginService
 {
-    private readonly ISharedRepository _sharedRepository;
+    private readonly ISharedUserRepository _sharedUserRepository;
     private readonly ILoginRepository _loginRepository;
     private readonly IUnitOfWork _unitOfWork;
-    public LoginService(ISharedRepository sharedRepository, ILoginRepository loginRepository
+    public LoginService(ISharedUserRepository sharedUserRepository, ILoginRepository loginRepository
         , IUnitOfWork unitOfWork)
     {
-        _sharedRepository = sharedRepository;
+        _sharedUserRepository = sharedUserRepository;
         _loginRepository = loginRepository;
         _unitOfWork = unitOfWork;
     }
 
     public async Task<(string, string)> LoginUser(LoginUser login, CancellationToken cancellationToken = default)
     {
-        if (!await _sharedRepository.UserIsExistsByEmail(login.Email))
+        if (!await _sharedUserRepository.UserIsExistsByEmail(login.Email))
         {
             throw new NotFoundException("email or password is incorrect!");
         }

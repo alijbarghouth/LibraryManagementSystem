@@ -12,18 +12,18 @@ public sealed class BookSearchService : IBookSearchService
 {
     private readonly ISearchBookRepository _searchBookRepository;
     private readonly IGenreRepository _genreRepository;
-    private readonly ISharedRepository _sharedRepository;
+    private readonly ISharedUserRepository _sharedUserRepository;
     private readonly IUnitOfWork _unitOfWork;
     private static readonly string BaseUrl = "/api/Books";
 
     public BookSearchService(ISearchBookRepository searchBookRepository
         , IUnitOfWork unitOfWork, IGenreRepository genreRepository
-        , ISharedRepository sharedRepository)
+        , ISharedUserRepository sharedUserRepository)
     {
         _searchBookRepository = searchBookRepository;
         _unitOfWork = unitOfWork;
         _genreRepository = genreRepository;
-        _sharedRepository = sharedRepository;
+        _sharedUserRepository = sharedUserRepository;
     }
 
     public async Task<PagedResponse<Book>> SearchBookByTitle(string bookTitle, PaginationFilter filter)

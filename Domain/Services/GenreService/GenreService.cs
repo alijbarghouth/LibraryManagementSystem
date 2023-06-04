@@ -10,18 +10,19 @@ public sealed class GenreService : IGenreService
 {
     private readonly IGenreRepository _genreRepository;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ISharedRepository _sharedRepository;
-    public GenreService(IGenreRepository genreRepository, IUnitOfWork unitOfWork, ISharedRepository sharedRepository)
+    private readonly ISharedBookManagementRepository _sharedBookManagementRepository;
+    public GenreService(IGenreRepository genreRepository
+        , IUnitOfWork unitOfWork, ISharedBookManagementRepository sharedBookManagementRepository)
     {
         _genreRepository = genreRepository;
         _unitOfWork = unitOfWork;
-        _sharedRepository = sharedRepository;
+        _sharedBookManagementRepository = sharedBookManagementRepository;
     }
 
     public async Task<Genre> AddBookGenre(Genre genre, CancellationToken cancellationToken = default)
     {
-        if (await _sharedRepository.IsBookGenreExists(genre.Name))
-            throw new BadRequestException("author is exists");
+        if (await _sharedBookManagementRepository.IsGenreExistsByTitle(genre.Name))
+            throw new BadRequestException("genre is exists");
 
         var result = await _genreRepository.AddBookGenre(genre);
         await _unitOfWork.SaveChangesAsync(cancellationToken);

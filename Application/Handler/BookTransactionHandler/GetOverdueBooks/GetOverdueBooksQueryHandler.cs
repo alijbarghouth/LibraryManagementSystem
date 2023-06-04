@@ -3,7 +3,7 @@ using Domain.Services.BookTransactionService;
 
 namespace Application.Handler.BookTransactionHandler.GetOverdueBooks;
 
-public class GetOverdueBooksQueryHandler : IGetOverdueBooksQueryHandler
+public sealed class GetOverdueBooksQueryHandler : IGetOverdueBooksQueryHandler
 {
     private readonly IBookTransactionService _bookTransactionService;
 

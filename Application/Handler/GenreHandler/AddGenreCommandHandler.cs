@@ -4,11 +4,11 @@ using Domain.Services.GenreService;
 
 namespace Application.Handler.GenreHandler;
 
-public sealed class AddBookGenreCommandHandler : IAddBookGenreCommandHandler
+public sealed class AddGenreCommandHandler : IAddGenreCommandHandler
 {
     private readonly IGenreService _genreService;
 
-    public AddBookGenreCommandHandler(IGenreService genreService)
+    public AddGenreCommandHandler(IGenreService genreService)
     {
         _genreService = genreService;
     }

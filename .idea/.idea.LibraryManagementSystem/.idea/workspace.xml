@@ -11,18 +11,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53e77f84-7d3d-4a8a-bd2b-c169cbe4d963" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Domain/Repositories/SharedRepositories/ISharedUserRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedUserRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/AuthorHandler/AddAuthorCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/AuthorHandler/AddAuthorCommandHandler/AddAuthorCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/AuthorHandler/IAddAuthorCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/AuthorHandler/AddAuthorCommandHandler/IAddAuthorCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Repositories/AuthorRepository/IAuthorRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/AuthorRepository/IAuthorRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Repositories/SharedRepositories/ISharedRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/SharedRepositories/ISharedRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Services/AuthorService/AuthorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/AuthorService/AuthorCrudsService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Services/AuthorService/IAuthorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/AuthorService/IAuthorCrudsService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/AuthorRepository/AuthorRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/AuthorRepository/AuthorRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/AuthorsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/AuthorsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/BooksController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/BooksController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/AuthorHandler/DeleteAuthorCommandHandler/DeleteAuthorCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/AuthorHandler/DeleteAuthorCommandHandler/DeleteAuthorCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/AuthorHandler/UpdateAuthorCommandHandler/UpdateAuthorCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/AuthorHandler/UpdateAuthorCommandHandler/UpdateAuthorCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/BookHandler/AddBookCommandHandler/AddBookCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookHandler/AddBookCommandHandler/AddBookCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/BookHandler/DeleteBookCommandHandler/DeleteBookCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookHandler/DeleteBookCommandHandler/DeleteBookCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/BookHandler/GetAllBookQueryHandler/GetAllBookQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookHandler/GetAllBookQueryHandler/GetAllBookQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/BookHandler/UpdateBookCommandHandler/UpdateBookCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookHandler/UpdateBookCommandHandler/UpdateBookCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/AcceptReturnedBook/AcceptReturnedBookCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/AcceptReturnedBook/AcceptReturnedBookCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/CheckOutBook/CheckOutBookCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/CheckOutBook/CheckOutBookCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/GetOverdueBooks/GetOverdueBooksQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/GetOverdueBooks/GetOverdueBooksQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/GenreHandler/AddBookGenreCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/GenreHandler/AddGenreCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/GenreHandler/IAddBookGenreCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/GenreHandler/IAddGenreCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/PatronProfileHandler/GetPatronProfileQueryHandler/GetPatronProfileQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/PatronProfileHandler/GetPatronProfileQueryHandler/GetPatronProfileQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/PatronProfileHandler/ViewAndEditPatronProfileCommandHandler/ViewAndEditPatronProfileCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/PatronProfileHandler/ViewAndEditPatronProfileCommandHandler/ViewAndEditPatronProfileCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/UserHandler/DeleteLibrarianHandler/DeleteLibrarianRequestCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/UserHandler/DeleteLibrarianHandler/DeleteLibrarianRequestCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/UserHandler/UpdateLibrarianHandler/UpdateLibrarianRequestCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/UserHandler/UpdateLibrarianHandler/UpdateLibrarianRequestCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/DTOs/BookDTOs/BookRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/DTOs/BookDTOs/BookRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/DTOs/UserDTOs/RegisterUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/DTOs/UserDTOs/RegisterUser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Repositories/SharedRepositories/ISharedRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/AuthorService/AuthorCrudsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/AuthorService/AuthorCrudsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/BookService/BookCruds/BookCrudsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/BookService/BookCruds/BookCrudsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/BookService/BookSearch/BookSearchService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/BookService/BookSearch/BookSearchService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/GenreService/GenreService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/GenreService/GenreService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/PatronProfile/PatronProfileService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/PatronProfile/PatronProfileService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/UserService/LoginService/LoginService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/UserService/LoginService/LoginService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/UserService/RegisterService/RegisterService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/UserService/RegisterService/RegisterService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/LibraryDBContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/LibraryDBContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Model/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Model/Book.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/AuthRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/AuthRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/LoginRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/LoginRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/GenresController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookGenreController/GenresController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +57,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Application/Handler/GenreHandler/AddGenreCommandHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Application/Handler/GenreHandler/IAddGenreCommandHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/Validator/PatronProfileValidator/PatronProfileQueryValidation.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -152,7 +178,7 @@
       <workItem from="1684956812889" duration="346000" />
       <workItem from="1685632169631" duration="5208000" />
       <workItem from="1685701274115" duration="17601000" />
-      <workItem from="1685764341382" duration="12965000" />
+      <workItem from="1685764341382" duration="22517000" />
     </task>
     <servers />
   </component>

@@ -4,7 +4,7 @@ using Domain.Services.PatronProfile;
 
 namespace Application.Handler.PatronProfileHandler.ViewAndEditPatronProfileCommandHandler;
 
-public class ViewAndEditPatronProfileCommandHandler : IViewAndEditPatronProfileCommandHandler
+public sealed class ViewAndEditPatronProfileCommandHandler : IViewAndEditPatronProfileCommandHandler
 {
     private readonly IPatronProfileService _patronProfileService;
 

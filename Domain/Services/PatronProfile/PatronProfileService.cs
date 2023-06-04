@@ -5,22 +5,27 @@ using Domain.Shared.Exceptions.CustomException;
 
 namespace Domain.Services.PatronProfile;
 
-public class PatronProfileService : IPatronProfileService
+public sealed class PatronProfileService : IPatronProfileService
 {
     private readonly IPatronProfileRepository _patronProfileRepository;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ISharedRepository _sharedRepository;
-
-    public PatronProfileService(IPatronProfileRepository patronProfileRepository, ISharedRepository sharedRepository, IUnitOfWork unitOfWork)
+    private readonly ISharedUserRepository _sharedUserRepository;
+    private readonly ISharedBookManagementRepository _sharedBookManagementRepository;
+    public PatronProfileService
+        (IPatronProfileRepository patronProfileRepository
+            , IUnitOfWork unitOfWork
+            , ISharedUserRepository sharedUserRepository
+            , ISharedBookManagementRepository sharedBookManagementRepository)
     {
         _patronProfileRepository = patronProfileRepository;
-        _sharedRepository = sharedRepository;
         _unitOfWork = unitOfWork;
+        _sharedUserRepository = sharedUserRepository;
+        _sharedBookManagementRepository = sharedBookManagementRepository;
     }
 
     public async Task<List<DTOs.PatronProfileDTOs.PatronProfile>> GetPatronProfile(Guid userId)
     {
-        if (!await _sharedRepository.UserIsExistsUserId(userId))
+        if (!await _sharedUserRepository.UserIsExistsUserId(userId))
             throw new NotFoundException("user not found");
         
         return await _patronProfileRepository.GetPatronProfile(userId);
@@ -29,9 +34,9 @@ public class PatronProfileService : IPatronProfileService
     public async Task<DTOs.PatronProfileDTOs.PatronProfile> ViewAndEditPatronProfile(
         DTOs.PatronProfileDTOs.PatronProfile patronProfile, Guid orderId, CancellationToken cancellationToken = default)
     {
-        if (!await _sharedRepository.UserIsExistsUserId(patronProfile.UserId))
+        if (!await _sharedUserRepository.UserIsExistsUserId(patronProfile.UserId))
             throw new NotFoundException("user not found");
-        if (!await _sharedRepository.OrderIsExistsByOrderId(orderId))
+        if (!await _sharedBookManagementRepository.OrderIsExistsByOrderId(orderId))
             throw new NotFoundException("order not found");
         
         var profile  = await _patronProfileRepository.ViewAndEditPatronProfile(patronProfile, orderId);

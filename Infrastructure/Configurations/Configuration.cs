@@ -2,6 +2,7 @@
 using Domain.DTOs.UserDTOs;
 using Domain.Repositories.AuthorRepository;
 using Domain.Repositories.BookAuthorRepository;
+using Domain.Repositories.BookGenreRepository;
 using Domain.Repositories.BookRepository.BookCrudsRepository;
 using Domain.Repositories.BookRepository.SearchBookRepository;
 using Domain.Repositories.CrudsRepository;
@@ -16,6 +17,7 @@ using Infrastructure.DBContext;
 using Infrastructure.Model;
 using Infrastructure.Repositories.AuthorRepository;
 using Infrastructure.Repositories.BookAuthorRepository;
+using Infrastructure.Repositories.BookGenreRepository;
 using Infrastructure.Repositories.BookRepository.BookCrudsRepository;
 using Infrastructure.Repositories.BookRepository.SearchBookRepository;
 using Infrastructure.Repositories.GenreRepository;
@@ -51,7 +53,7 @@ public static class Configuration
         services.AddScoped<IRegisterRepository, RegisterRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ILoginRepository, LoginRepository>();
-        services.AddScoped<ISharedRepository, SharedRepository>();
+        services.AddScoped<ISharedUserRepository, SharedUserRepository>();
         services.AddScoped<IAuthRepository, AuthRepository>();
         services.AddScoped<ISearchBookRepository, SearchBookRepository>();
         services.AddScoped<IBookAuthorRepository, BookAuthorRepository>();
@@ -61,6 +63,7 @@ public static class Configuration
         services.AddScoped<IPatronProfileRepository, PatronProfileRepository>();
         services.AddScoped(typeof(ICrudsRepository<>), typeof(CrudsRepository<>));
         services.AddScoped<IBookCrudsRepository, BookCrudsRepository>();
+        services.AddScoped<IBookGenreRepository, BookGenreRepository>();
         services.Configure<JWT>(configuration.GetSection("JWT"));
     }
 
@@ -86,6 +89,10 @@ public static class Configuration
     private static void AddMapsterConfiguration()
     {
         TypeAdapterConfig<RegisterUser, User>
+            .NewConfig()
+            .Ignore(x => x.PasswordHash)
+            .Ignore(x => x.PasswordSlot);
+        TypeAdapterConfig<UpdateLibrarianRequest, User>
             .NewConfig()
             .Ignore(x => x.PasswordHash)
             .Ignore(x => x.PasswordSlot);

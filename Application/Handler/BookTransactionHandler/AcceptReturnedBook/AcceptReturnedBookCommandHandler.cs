@@ -3,7 +3,7 @@ using Domain.Services.BookTransactionService;
 
 namespace Application.Handler.BookTransactionHandler.AcceptReturnedBook;
 
-public class AcceptReturnedBookCommandHandler :IAcceptReturnedBookCommandHandler
+public sealed class AcceptReturnedBookCommandHandler :IAcceptReturnedBookCommandHandler
 {
     private readonly IBookTransactionService _bookTransactionService;
 

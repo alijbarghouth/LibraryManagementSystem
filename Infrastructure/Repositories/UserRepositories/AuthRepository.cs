@@ -2,6 +2,7 @@
 using Domain.Repositories.UserRepositories;
 using Domain.Shared.Exceptions.CustomException;
 using Infrastructure.DBContext;
+using Infrastructure.HashingPassword;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 
@@ -42,7 +43,10 @@ public sealed class AuthRepository : IAuthRepository
             throw new NotFoundException("user not Librarian");
         }
 
-        var newUser = updateLibrarianRequest.Adapt(librarian);
+        updateLibrarianRequest.Adapt(librarian);
+        updateLibrarianRequest.Password.HashingPassword(out byte[] passwordHash, out byte[] passwordSlot);
+        librarian.PasswordHash = passwordHash;
+        librarian.PasswordSlot = passwordSlot;
         _libraryDbContext.Users.Update(librarian);
         return updateLibrarianRequest;
     }

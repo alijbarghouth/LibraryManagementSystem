@@ -10,16 +10,16 @@ namespace WebApi.Controller
     [LibraryExceptionHandlerFilter]
     public class GenresController : ControllerBase
     {
-        private readonly IAddBookGenreCommandHandler _addBookGenreCommandHandler;
+        private readonly IAddGenreCommandHandler _addGenreCommandHandler;
 
-        public GenresController(IAddBookGenreCommandHandler addBookGenreCommandHandler)
+        public GenresController(IAddGenreCommandHandler addGenreCommandHandler)
         {
-            _addBookGenreCommandHandler = addBookGenreCommandHandler;
+            _addGenreCommandHandler = addGenreCommandHandler;
         }
         [HttpPost]
         public async Task<IActionResult> AddBookGenre(AddBookGenreCommand command)
         {
-            return Ok(await _addBookGenreCommandHandler.Handel(command));
+            return Ok(await _addGenreCommandHandler.Handel(command));
         }
     }
 }

@@ -4,7 +4,7 @@ using Domain.Services.BookService.BookCruds;
 
 namespace Application.Handler.BookHandler.UpdateBookCommandHandler;
 
-public class UpdateBookCommandHandler : IUpdateBookCommandHandler
+public sealed class UpdateBookCommandHandler : IUpdateBookCommandHandler
 {
     private readonly IBookCrudsService _bookCrudsService;
 

@@ -3,7 +3,7 @@ using Domain.Services.BookService.BookCruds;
 
 namespace Application.Handler.BookHandler.GetAllBookQueryHandler;
 
-public class GetAllBookQueryHandler  : IGetAllBookQueryHandler
+public sealed class GetAllBookQueryHandler  : IGetAllBookQueryHandler
 {
     private readonly IBookCrudsService _bookCrudsService;
 

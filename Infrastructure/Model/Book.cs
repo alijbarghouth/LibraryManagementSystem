@@ -13,7 +13,6 @@ public class Book
     public Guid Id { get; set; }
     public string Title { get; set; }
     public DateTime PublicationDate { get; set; }
-    public Guid GenreId { get; set; }
     public BookStatus BookStatus { get; set; }
     public int Count { get; set; }
     public virtual IEnumerable<Genre> Genre { get; set; }

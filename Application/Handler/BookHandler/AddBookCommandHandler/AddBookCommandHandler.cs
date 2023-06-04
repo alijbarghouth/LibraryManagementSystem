@@ -5,7 +5,7 @@ using Domain.Services.BookService.BookCruds;
 
 namespace Application.Handler.BookHandler.AddBookCommandHandler;
 
-public class AddBookCommandHandler : IAddBookCommandHandler
+public sealed class AddBookCommandHandler : IAddBookCommandHandler
 {
     private readonly IBookCrudsService _bookCrudsService;
 

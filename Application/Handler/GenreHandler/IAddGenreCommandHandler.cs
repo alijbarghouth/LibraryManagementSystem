@@ -3,7 +3,7 @@ using Domain.DTOs.GenreDTOs;
 
 namespace Application.Handler.GenreHandler;
 
-public interface IAddBookGenreCommandHandler
+public interface IAddGenreCommandHandler
 {
     Task<Genre> Handel(AddBookGenreCommand command);
 }

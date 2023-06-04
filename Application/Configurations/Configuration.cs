@@ -36,6 +36,7 @@ using Application.Validator.PatronProfileValidator;
 using Application.Validator.UserValidator;
 using Domain.Services.AuthorService;
 using Domain.Services.BookAuthorService;
+using Domain.Services.BookGenreService;
 using Domain.Services.BookService.BookCruds;
 using Domain.Services.BookService.BookSearch;
 using Domain.Services.BookTransactionService;
@@ -89,7 +90,7 @@ public static class Configuration
         services.AddScoped<IBookAuthorService, BookAuthorService>();
         services.AddScoped<IBookAuthorCommandHandler, BookAuthorCommandHandler>();
         services.AddScoped<ISearchBookByGenreQueryHandler, SearchBookByGenreQueryHandler>();
-        services.AddScoped<IAddBookGenreCommandHandler, AddBookGenreCommandHandler>();
+        services.AddScoped<IAddGenreCommandHandler, AddGenreCommandHandler>();
         services.AddScoped<IGenreService, GenreService>();
         services.AddScoped<IBookTransactionService, BookTransactionService>();
         services.AddScoped<IReserveBookCommandHandler, ReserveBookCommandHandler>();
@@ -110,5 +111,7 @@ public static class Configuration
         services.AddScoped<IAddAuthorCommandHandler, AddAuthorCommandHandler>();
         services.AddScoped<IUpdateLibrarianRequestCommandHandler, UpdateLibrarianRequestCommandHandler>();
         services.AddScoped<IDeleteLibrarianRequestCommandHandler, DeleteLibrarianRequestCommandHandler>();
+        services.AddScoped<IBookGenreService, BookGenreService>();
+        services.AddScoped<IAddGenreCommandHandler, AddGenreCommandHandler>();
     }
 }
