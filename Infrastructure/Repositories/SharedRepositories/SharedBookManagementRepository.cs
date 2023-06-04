@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories.SharedRepositories;
 
-public class SharedBookManagementRepository : ISharedBookManagementRepository
+public sealed class SharedBookManagementRepository : ISharedBookManagementRepository
 {
     private readonly LibraryDbContext _libraryDbContext;
 

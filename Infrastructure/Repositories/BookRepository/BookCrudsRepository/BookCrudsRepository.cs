@@ -7,7 +7,7 @@ using Book = Infrastructure.Model.Book;
 
 namespace Infrastructure.Repositories.BookRepository.BookCrudsRepository;
 
-public class BookCrudsRepository : IBookCrudsRepository
+public sealed class BookCrudsRepository : IBookCrudsRepository
 {
     private readonly LibraryDbContext _libraryDbContext;
 
@@ -36,7 +36,7 @@ public class BookCrudsRepository : IBookCrudsRepository
     {
         var book = await _libraryDbContext.Books
             .FindAsync(bookId);
-        book.Adapt(bookRequest);
+       bookRequest.Adapt(book);
         _libraryDbContext.Books
             .Update(book);
         return bookRequest;

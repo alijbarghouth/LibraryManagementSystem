@@ -1,8 +1,10 @@
-﻿using Application.Command.UserCommand;
+﻿using Application.Authentication;
+using Application.Command.UserCommand;
 using Application.Handler.UserHandler.LoginHandler;
 using Application.Handler.UserHandler.RefreshTokenHandler;
 using Application.Handler.UserHandler.RegisterHandler;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 using WebApi.Filter;
 
 namespace WebApi.Controller.UserController
@@ -15,13 +17,16 @@ namespace WebApi.Controller.UserController
         private readonly IRegisterUserCommandHandler _registerCommandHandler;
         private readonly ILoginUserCommandHandler _loginUserCommandHandler;
         private readonly IRefreshTokenQueryHandler _refreshTokenQueryHandler;
+        private readonly ILogoutService _logoutService;
         public UsersController(IRegisterUserCommandHandler registerCommandHandler,
               ILoginUserCommandHandler loginUserCommandHandler,
-              IRefreshTokenQueryHandler refreshTokenQueryHandler)
+              IRefreshTokenQueryHandler refreshTokenQueryHandler
+              , ILogoutService logoutService)
         {
             _registerCommandHandler = registerCommandHandler;
             _loginUserCommandHandler = loginUserCommandHandler;
             _refreshTokenQueryHandler = refreshTokenQueryHandler;
+            _logoutService = logoutService;
         }
 
         [HttpPost("register")]
@@ -48,6 +53,20 @@ namespace WebApi.Controller.UserController
             SetRefreshTokenInCookie(refreshedToken);
 
             return Ok(token);
+        }
+        [HttpPost("users/logout")]
+        public async Task<IActionResult> Logout()
+        {
+            var token = GetCurrentToken();
+            if (token == null || !User.Identity.IsAuthenticated)
+                return Ok(new { Message = "You wasn't logged in" });
+            await _logoutService.Logout(GetCurrentToken());
+            return NoContent();
+        }
+        private string GetCurrentToken()
+        {
+            var authHeader = HttpContext.Request?.Headers["authorization"];
+            return authHeader.Equals(StringValues.Empty) ? string.Empty : authHeader.Single<string>().Split(" ").Last();
         }
         private void SetRefreshTokenInCookie(string refreshToken)
         {

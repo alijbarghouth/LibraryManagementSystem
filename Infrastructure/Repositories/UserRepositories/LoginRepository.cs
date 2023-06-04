@@ -11,7 +11,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using WebApi.Settings;
+using Infrastructure.Settings;
 
 namespace Infrastructure.Repositories.UserRepositories;
 

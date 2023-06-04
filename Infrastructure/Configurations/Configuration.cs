@@ -26,12 +26,12 @@ using Infrastructure.Repositories.CrudsRepository;
 using Infrastructure.Repositories.PatronProfileRepository;
 using Infrastructure.Repositories.SharedRepositories;
 using Infrastructure.Repositories.UserRepositories;
+using Infrastructure.Settings;
 using Infrastructure.Shared;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WebApi.Settings;
 
 namespace Infrastructure.Configurations;
 

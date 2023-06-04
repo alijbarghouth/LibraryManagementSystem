@@ -1,4 +1,4 @@
-﻿namespace WebApi.Settings;
+﻿namespace Infrastructure.Settings;
 
 public sealed class JWT
 {

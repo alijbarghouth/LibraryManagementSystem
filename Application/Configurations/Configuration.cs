@@ -1,4 +1,5 @@
-﻿using Application.Command.AuthorCommand;
+﻿using Application.Authentication;
+using Application.Command.AuthorCommand;
 using Application.Command.BookAuthorCommand;
 using Application.Command.BookTransactionCommand;
 using Application.Command.GenreCommand;
@@ -114,5 +115,6 @@ public static class Configuration
         services.AddScoped<IDeleteLibrarianRequestCommandHandler, DeleteLibrarianRequestCommandHandler>();
         services.AddScoped<IBookGenreService, BookGenreService>();
         services.AddScoped<IAddBookGenreCommandHandler, AddBookGenreCommandHandler>();
+        services.AddScoped<ILogoutService, LogoutService>();
     }
 }

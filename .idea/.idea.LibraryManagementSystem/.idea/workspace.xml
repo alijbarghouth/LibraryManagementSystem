@@ -12,41 +12,14 @@
   <component name="ChangeListManager">
     <list default="true" id="53e77f84-7d3d-4a8a-bd2b-c169cbe4d963" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Command/GenreCommand/AddBookGenreCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Command/GenreCommand/AddGenreCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/GenreHandler/AddGenreCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/GenreHandler/AddGenreCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/GenreHandler/IAddGenreCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/GenreHandler/IAddGenreCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Validator/GenreValidator/AddBookGenreCommandValidation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Validator/GenreValidator/AddGenreCommandValidation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Services/BookGenreService/BookGenreService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/BookGenreService/BookGenreService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Authentication/RedisLogoutRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Authentication/RedisLogoutRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/DBContext/LibraryDBContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DBContext/LibraryDBContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/20230527115558_CreatTable.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20230527115558_CreatTable.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/20230528064008_ConvartDataTimeNullable.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20230528064008_ConvartDataTimeNullable.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/20230528064020_SeedingRoles.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20230528064020_SeedingRoles.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/20230528184136_AddRefreshToken.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20230528184136_AddRefreshToken.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/20230601175951_ChangeBookAttributes.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20230601175951_ChangeBookAttributes.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/20230602120702_ChangeOrderTable.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20230602120702_ChangeOrderTable.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/20230602160802_ChangeOrderandOrderItemTable.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20230602160802_ChangeOrderandOrderItemTable.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/20230604095940_RemoveGenreId.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20230604095940_RemoveGenreId.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/LibraryDBContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/LibraryDBContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/AuthorRepository/AuthorRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/AuthorRepository/AuthorRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookAuthorRepository/BookAuthorRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookAuthorRepository/BookAuthorRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookGenreRepository/BookGenreRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookGenreRepository/BookGenreRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookRepository/BookCrudsRepository/BookCrudsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookRepository/BookCrudsRepository/BookCrudsRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookRepository/SearchBookRepository/SearchBookRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookRepository/SearchBookRepository/SearchBookRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookTransactionRepository/BookTransactionTransactionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookTransactionRepository/BookTransactionTransactionRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/CrudsRepository/CrudsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/CrudsRepository/CrudsRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/GenreRepository/GenreRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/GenreRepository/GenreRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/PatronProfileRepository/PatronProfileRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/PatronProfileRepository/PatronProfileRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedBookManagementRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedBookManagementRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedUserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/AuthRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/AuthRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/LoginRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/LoginRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/RegisterRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/RegisterRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Shared/UnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Shared/UnitOfWork.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/AuthorsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/AuthorsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookGenreController/BookGenresController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookGenreController/GenresController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookGenreController/GenresController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Settings/JWT.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Settings/JWT.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +153,7 @@
       <workItem from="1685632169631" duration="5208000" />
       <workItem from="1685701274115" duration="17601000" />
       <workItem from="1685764341382" duration="26889000" />
-      <workItem from="1685884912775" duration="2775000" />
+      <workItem from="1685884912775" duration="5396000" />
     </task>
     <servers />
   </component>

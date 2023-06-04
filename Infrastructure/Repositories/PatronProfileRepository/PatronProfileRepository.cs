@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories.PatronProfileRepository;
 
-public class PatronProfileRepository : IPatronProfileRepository
+public sealed class PatronProfileRepository : IPatronProfileRepository
 {
     private readonly LibraryDbContext _libraryDbContext;
 
