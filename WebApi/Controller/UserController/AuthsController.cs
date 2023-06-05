@@ -33,12 +33,14 @@ namespace WebApi.Controller.UserController
             return Ok(await _roleCommandHandler.Handel(role));
         }
 
+        [Authorize(Roles = "Administrators")]
         [HttpPut]
         public async Task<IActionResult> UpdateLibrarian(UpdateLibrarianRequestCommand command)
         {
             return Ok(await _updateLibrarianRequestCommandHandler.Handel(command));
         }
 
+        [Authorize(Roles = "Administrators,Librarians")]
         [HttpDelete]
         public async Task<IActionResult> DeleteLibrarian(DeleteLibrarianRequestCommand command)
         {

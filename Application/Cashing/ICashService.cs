@@ -9,7 +9,7 @@ public interface ICashService
     Task<T?> GetAsync<T>(string key, Func<Task<T>> factory, CancellationToken cancellationToken = default)
         where T : class;
 
-    Task SetAsync<T>(string key, T value, CancellationToken cancellationToken = default)
+    Task SetAsync<T>(string key, T value)
         where T : class;
 
     Task RemoveAsync(string key, CancellationToken cancellationToken = default);

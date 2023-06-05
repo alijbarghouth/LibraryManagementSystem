@@ -6,4 +6,5 @@ public interface ILoginRepository
 {
     Task<(string, string)> LoginUser(LoginUser login);
     Task<(string, string)> RefreshToken(string token);
+    Task<string> GetUserId(LoginUser user);
 }

@@ -1,6 +1,7 @@
 ﻿using Application.Command.UserCommand;
+using Domain.DTOs.Response;
 using Domain.DTOs.UserDTOs;
-using Domain.Services.Services.RegisterService;
+using Domain.Services.UserService.RegisterService;
 
 namespace Application.Handler.UserHandler.RegisterHandler;
 
@@ -13,7 +14,7 @@ public sealed class RegisterUserCommandHandler : IRegisterUserCommandHandler
         _registerService = registerService;
     }
 
-    public async Task<RegisterUser> Handle(RegisterUserCommand command)
+    public async Task<Response<RegisterUser>> Handle(RegisterUserCommand command)
     {
         return await _registerService.RegisterUser(command.RegisterUser);
     }

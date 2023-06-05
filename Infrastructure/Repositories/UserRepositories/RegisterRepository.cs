@@ -1,4 +1,5 @@
-﻿using Domain.DTOs.UserDTOs;
+﻿using Domain.DTOs.Response;
+using Domain.DTOs.UserDTOs;
 using Domain.Repositories.UserRepositories;
 using Infrastructure.DBContext;
 using Infrastructure.HashingPassword;
@@ -17,7 +18,7 @@ public sealed class RegisterRepository : IRegisterRepository
         _libraryDbContext = libraryDbContext;
     }
 
-    public async Task<RegisterUser>
+    public async Task<Response<RegisterUser>>
         RegisterUser(RegisterUser register)
     {
         var role = await _libraryDbContext.Roles.FirstOrDefaultAsync(x => x.RoleName == "Patrons");
@@ -30,6 +31,6 @@ public sealed class RegisterRepository : IRegisterRepository
         user.Roles.Add(role);
         await _libraryDbContext.Users.AddAsync(user);
 
-        return register;
+        return new Response<RegisterUser>(register,user.Id);
     }
 }

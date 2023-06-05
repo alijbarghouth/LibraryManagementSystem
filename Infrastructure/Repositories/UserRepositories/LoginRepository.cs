@@ -29,12 +29,9 @@ public sealed class LoginRepository : ILoginRepository
     public async Task<(string, string)> LoginUser(LoginUser login)
     {
         var user = await _libraryDbContext.Users
-            .FirstOrDefaultAsync(x => x.Email == login.Email);
+            .SingleAsync(x => x.Email == login.Email);
 
-        if (!login.Password.VerifyingPassword(user.PasswordHash, user.PasswordSlot))
-        {
-            throw new BadRequestException("The password is wrong");
-        }
+        
 
         var token = new JwtSecurityTokenHandler().WriteToken(CreateJwtToken(user));
         var refreshToken = new RefreshToken();
@@ -71,6 +68,18 @@ public sealed class LoginRepository : ILoginRepository
         return (jwtToken, newRefreshToken.Token);
     }
 
+    public async Task<string> GetUserId(LoginUser loginUser)
+    {
+        var user = await _libraryDbContext.Users
+                       .SingleOrDefaultAsync(x => x.Email == loginUser.Email)
+                   ?? throw new NotFoundException("user not found");
+        if (!loginUser.Password.VerifyingPassword(user.PasswordHash, user.PasswordSlot))
+        {
+            throw new BadRequestException("The password is wrong");
+        }
+        return user.Id.ToString();
+    }
+
     private JwtSecurityToken CreateJwtToken(User user)
     {
         var roleClaims = new List<Claim>();
@@ -82,7 +91,7 @@ public sealed class LoginRepository : ILoginRepository
 
         var claims = new[]
         {
-            new Claim("uid", user.Id.ToString()),
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new Claim(JwtRegisteredClaimNames.Sub, user.Username),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new Claim(JwtRegisteredClaimNames.Email, user.Email),

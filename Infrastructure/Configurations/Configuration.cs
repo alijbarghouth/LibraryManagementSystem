@@ -1,5 +1,4 @@
 ﻿using Application.Cashing;
-using Domain.Authentication;
 using Domain.DTOs.UserDTOs;
 using Domain.Repositories.AuthorRepository;
 using Domain.Repositories.BookAuthorRepository;
@@ -12,7 +11,6 @@ using Domain.Repositories.ReserveBookRepository;
 using Domain.Repositories.SharedRepositories;
 using Domain.Repositories.UserRepositories;
 using Domain.Shared.Exceptions;
-using Infrastructure.Authentication;
 using Infrastructure.Cashing;
 using Infrastructure.DBContext;
 using Infrastructure.Model;
@@ -49,7 +47,6 @@ public static class Configuration
 
     private static void AddCustomDependencies(IServiceCollection services, ConfigurationManager configuration)
     {
-        services.AddScoped<ILogoutRepository, RedisLogoutRepository>();
         services.AddScoped<IRegisterRepository, RegisterRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ILoginRepository, LoginRepository>();

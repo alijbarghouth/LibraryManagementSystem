@@ -3,6 +3,7 @@ using Application.Handler.BookTransactionHandler.AcceptReturnedBook;
 using Application.Handler.BookTransactionHandler.CheckOutBook;
 using Application.Handler.BookTransactionHandler.GetOverdueBooks;
 using Application.Handler.BookTransactionHandler.ReserveBook;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Filter;
 
@@ -30,22 +31,28 @@ namespace WebApi.Controller.BookTransactionController
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrators,Librarians,Patrons")]
         public async Task<IActionResult> ReserveBook(ReserveBookCommand command)
         {
             return Ok(await _reserveBookCommandHandler.Handel(command));
         }
 
+        [Authorize(Roles = "Administrators,Librarians")]
         [HttpPatch("checkout")]
         public async Task<IActionResult> CheckOutBook(CheckOutBookCommand command)
         {
             return Ok(await _checkOutBookCommandHandler.Handel(command));
         }
+
         [HttpPatch("accept")]
+        [Authorize(Roles = "Administrators,Librarians")]
         public async Task<IActionResult> AcceptReturnedBook(AcceptReturnedBookCommand command)
         {
             return Ok(await _acceptReturnedBookCommandHandler.Handel(command));
         }
+
         [HttpGet]
+        [Authorize(Roles = "Administrators,Librarians")]
         public async Task<IActionResult> GetOverdueBooks()
         {
             return Ok(await _getOverdueBooksQueryHandler.Handel());

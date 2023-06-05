@@ -2,6 +2,7 @@
 using Application.Handler.BookHandler.SearchBookByGenre;
 using Application.Handler.BookHandler.SearchBookByTitle;
 using Application.Query.BookQuery;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Filter;
 
@@ -10,6 +11,7 @@ namespace WebApi.Controller.BookAuthorController
     [Route("api/[controller]")]
     [ApiController]
     [LibraryExceptionHandlerFilter]
+    [Authorize(Roles = "Administrators,Librarians,Patrons")]
     public class BookSearchesController : ControllerBase
     {
         private readonly ISearchBookByTitleQueryHandler _searchByTitleQueryHandler;
@@ -23,7 +25,6 @@ namespace WebApi.Controller.BookAuthorController
             _searchByAuthorNameQueryHandler = searchByAuthorNameQueryHandler;
             _searchByGenreQueryHandler = searchByGenreQueryHandler;
         }
-
         [HttpGet("searchByTitle")]
         public async Task<IActionResult> GetBookByTitle([FromQuery] SearchBookByTitleQuery? query)
         {

@@ -11,7 +11,6 @@ namespace Infrastructure.Repositories.PatronProfileRepository;
 public sealed class PatronProfileRepository : IPatronProfileRepository
 {
     private readonly LibraryDbContext _libraryDbContext;
-
     public PatronProfileRepository(LibraryDbContext libraryDbContext)
     {
         _libraryDbContext = libraryDbContext;

@@ -1,8 +1,9 @@
-﻿using Domain.DTOs.UserDTOs;
+﻿using Domain.DTOs.Response;
+using Domain.DTOs.UserDTOs;
 
 namespace Domain.Repositories.UserRepositories;
 
 public interface IRegisterRepository
 {
-    Task<RegisterUser> RegisterUser(RegisterUser register);
+    Task<Response<RegisterUser>> RegisterUser(RegisterUser register);
 }

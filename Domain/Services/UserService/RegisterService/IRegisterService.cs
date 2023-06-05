@@ -1,8 +1,9 @@
-﻿using Domain.DTOs.UserDTOs;
+﻿using Domain.DTOs.Response;
+using Domain.DTOs.UserDTOs;
 
-namespace Domain.Services.Services.RegisterService;
+namespace Domain.Services.UserService.RegisterService;
 
 public interface IRegisterService
 {
-    Task<RegisterUser> RegisterUser(RegisterUser register, CancellationToken cancellationToken = default);
+    Task<Response<RegisterUser>> RegisterUser(RegisterUser register, CancellationToken cancellationToken = default);
 }

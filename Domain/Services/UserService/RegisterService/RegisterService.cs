@@ -1,10 +1,11 @@
-﻿using Domain.DTOs.UserDTOs;
+﻿using Domain.DTOs.Response;
+using Domain.DTOs.UserDTOs;
 using Domain.Repositories.SharedRepositories;
 using Domain.Repositories.UserRepositories;
 using Domain.Shared.Exceptions;
 using Domain.Shared.Exceptions.CustomException;
 
-namespace Domain.Services.Services.RegisterService;
+namespace Domain.Services.UserService.RegisterService;
 
 public sealed class RegisterService : IRegisterService
 {
@@ -19,7 +20,7 @@ public sealed class RegisterService : IRegisterService
         _sharedUserRepository = sharedUserRepository;
     }
 
-    public async Task<RegisterUser> RegisterUser(RegisterUser register, CancellationToken cancellationToken = default)
+    public async Task<Response<RegisterUser>> RegisterUser(RegisterUser register, CancellationToken cancellationToken = default)
     {
         if (await _sharedUserRepository.UserIsExistsByEmail(register.Email)
             || await _sharedUserRepository.UserIsExistByUsername(register.Username))

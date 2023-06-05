@@ -1,6 +1,7 @@
 ﻿using Application.Command.BookGenreCommand;
 using Application.Handler.BookGenreHandler.AddBookGenreCommandHandler;
 using Domain.DTOs.BookGenreDTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controller.BookGenreController
@@ -16,6 +17,7 @@ namespace WebApi.Controller.BookGenreController
             _addBookGenreCommandHandler = addBookGenreCommandHandler;
         }
         [HttpPost]
+        [Authorize(Roles = "Administrators,Librarians")]
         public async Task<IActionResult> AddBookGenre(AddBookGenreCommand command)
         {
             return Ok(await _addBookGenreCommandHandler.Handel(command));

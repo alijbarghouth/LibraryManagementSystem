@@ -14,16 +14,17 @@ public sealed class LoggerMiddleware : IMiddleware
         try
         {
             _logger.LogInformation($"Request: {context.Request.Method} {context.Request.Path}" +
-                $" from {context.Connection.RemoteIpAddress}");
+                                   $" from {context.Connection.RemoteIpAddress}");
 
             await next(context);
 
             _logger.LogInformation($"Request completed: {context.Request.Method} {context.Request.Path}" +
-                $" from {context.Connection.RemoteIpAddress}");
+                                   $" from {context.Connection.RemoteIpAddress}");
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex.Message, $"Error occurred while processing request: {context.Request.Method} {context.Request.Path}" +
+            _logger.LogError(ex.Message,
+                $"Error occurred while processing request: {context.Request.Method} {context.Request.Path}" +
                 $" from {context.Connection.RemoteIpAddress}");
 
             throw;

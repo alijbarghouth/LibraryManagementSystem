@@ -31,8 +31,8 @@ public sealed class AuthorCrudsService : IAuthorCrudsService
 
     public async Task<Author> UpdateAuthor(Guid authorId, Author author, CancellationToken cancellationToken = default)
     {
-        if (await _sharedBookManagementRepository.IsAuthorExistsByAuthorName(author.Username))
-            throw new BadRequestException("author is exists");
+        if (!await _sharedBookManagementRepository.IsAuthorExistsByAuthorId(authorId))
+            throw new NotFoundException("author is not exists");
         var result = await _authorRepository.UpdateAuthor(authorId,author);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return result;

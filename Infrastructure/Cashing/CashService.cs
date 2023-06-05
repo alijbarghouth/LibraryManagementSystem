@@ -11,12 +11,11 @@ public class CashService : ICashService
 {
     private readonly IDistributedCache _distributedCache;
     private static readonly ConcurrentDictionary<string, bool> CashKeys = new();
-    private readonly JWT _jWt;
-
-    public CashService(IDistributedCache distributedCache, IOptions<JWT> jWt)
+    private readonly JWT _jwt;
+    public CashService(IDistributedCache distributedCache, IOptions<JWT> jwt)
     {
         _distributedCache = distributedCache;
-        _jWt = jWt.Value;
+        _jwt = jwt.Value;
     }
 
     public async Task<T?> GetAsync<T>(string key, CancellationToken cancellationToken = default) where T : class
@@ -26,7 +25,9 @@ public class CashService : ICashService
         return cashValue is null ? null : JsonConvert.DeserializeObject<T>(cashValue);
     }
 
-    public async Task<T?> GetAsync<T>(string key, Func<Task<T>> factory, CancellationToken cancellationToken = default)
+    public async Task<T?> GetAsync<T>
+    (string key, Func<Task<T>> factory
+        , CancellationToken cancellationToken = default)
         where T : class
     {
         var cashValue = await GetAsync<T>(key, cancellationToken);
@@ -40,10 +41,15 @@ public class CashService : ICashService
         return cashValue;
     }
 
-    public async Task SetAsync<T>(string key, T value, CancellationToken cancellationToken = default) where T : class
+    public async Task SetAsync<T>(string key, T value)
+        where T : class
     {
         var cashValue = JsonConvert.SerializeObject(value);
-        await _distributedCache.SetStringAsync(key, cashValue, cancellationToken);
+        await _distributedCache.SetStringAsync(key, cashValue, new DistributedCacheEntryOptions
+        {
+            AbsoluteExpirationRelativeToNow =
+                TimeSpan.FromMinutes(_jwt.DurationInMinutes)
+        });
         CashKeys.TryAdd(key, false);
     }
 

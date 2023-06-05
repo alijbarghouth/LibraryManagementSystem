@@ -5,5 +5,5 @@ namespace Application.Handler.PatronProfileHandler.GetPatronProfileQueryHandler;
 
 public interface IGetPatronProfileQueryHandler
 {
-    Task<List<PatronProfile>> Handel(PatronProfileQuery query);
+    Task<List<PatronProfile>> Handel(PatronProfileQuery query, CancellationToken cancellationToken = default);
 }

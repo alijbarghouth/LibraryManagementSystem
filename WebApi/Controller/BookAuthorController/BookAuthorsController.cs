@@ -1,5 +1,6 @@
 ﻿using Application.Command.BookAuthorCommand;
 using Application.Handler.BookAuthorHandler;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Filter;
 
@@ -8,6 +9,7 @@ namespace WebApi.Controller.BookAuthorController
     [Route("api/[controller]")]
     [ApiController]
     [LibraryExceptionHandlerFilter]
+    [Authorize(Roles = "Administrators,Librarians")]
     public class BookAuthorsController : ControllerBase
     {
         private readonly IBookAuthorCommandHandler _bookAuthorCommandHandler;

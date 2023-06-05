@@ -1,20 +1,21 @@
-﻿using Domain.Authentication;
-using Microsoft.Extensions.Primitives;
+﻿using System.Security.Claims;
+using Microsoft.Extensions.Caching.Distributed;
 
 namespace WebApi.Middleware;
 
 public sealed class LogoutMiddleware : IMiddleware
 {
-    private readonly ILogoutRepository _logoutRepository;
+    private readonly IDistributedCache _distributedCache;
 
-    public LogoutMiddleware(ILogoutRepository logoutRepository)
+    public LogoutMiddleware(IDistributedCache distributedCache)
     {
-        _logoutRepository = logoutRepository;
+        _distributedCache = distributedCache;
     }
 
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
-        if (!context.Response.HasStarted && !await _logoutRepository.IsActiveAsync())
+        var userId = context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (!context.Response.HasStarted && await _distributedCache.GetStringAsync(userId ?? "") is null)
             context.Request.Headers["Authorization"] = string.Empty;
 
         context.Request.Headers["Authorization"] =

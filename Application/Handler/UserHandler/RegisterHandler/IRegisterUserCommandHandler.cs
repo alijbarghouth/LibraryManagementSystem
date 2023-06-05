@@ -1,9 +1,10 @@
 ﻿using Application.Command.UserCommand;
+using Domain.DTOs.Response;
 using Domain.DTOs.UserDTOs;
 
 namespace Application.Handler.UserHandler.RegisterHandler;
 
 public interface IRegisterUserCommandHandler
 {
-    Task<RegisterUser> Handle(RegisterUserCommand command);
+    Task<Response<RegisterUser>> Handle(RegisterUserCommand command);
 }

@@ -1,5 +1,4 @@
-﻿using Application.Authentication;
-using Application.Command.AuthorCommand;
+﻿using Application.Command.AuthorCommand;
 using Application.Command.BookAuthorCommand;
 using Application.Command.BookGenreCommand;
 using Application.Command.BookTransactionCommand;
@@ -46,9 +45,9 @@ using Domain.Services.BookService.BookSearch;
 using Domain.Services.BookTransactionService;
 using Domain.Services.GenreService;
 using Domain.Services.PatronProfile;
-using Domain.Services.Services.RegisterService;
 using Domain.Services.UserService.AuthService;
 using Domain.Services.UserService.LoginService;
+using Domain.Services.UserService.RegisterService;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -118,6 +117,5 @@ public static class Configuration
         services.AddScoped<IDeleteLibrarianRequestCommandHandler, DeleteLibrarianRequestCommandHandler>();
         services.AddScoped<IBookGenreService, BookGenreService>();
         services.AddScoped<IAddBookGenreCommandHandler, AddBookGenreCommandHandler>();
-        services.AddScoped<ILogoutService, LogoutService>();
     }
 }

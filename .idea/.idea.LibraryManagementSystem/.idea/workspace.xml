@@ -11,11 +11,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53e77f84-7d3d-4a8a-bd2b-c169cbe4d963" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Authentication/ILogoutService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Authentication/LogoutService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Cashing/ICashService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Cashing/ICashService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Authentication/RedisLogoutRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Authentication/RedisLogoutRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/PatronProfileHandler/GetPatronProfileQueryHandler/GetPatronProfileQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/PatronProfileHandler/GetPatronProfileQueryHandler/GetPatronProfileQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/PatronProfileHandler/GetPatronProfileQueryHandler/IGetPatronProfileQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/PatronProfileHandler/GetPatronProfileQueryHandler/IGetPatronProfileQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/UserHandler/LoginHandler/ILoginUserCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/UserHandler/LoginHandler/ILoginUserCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/UserHandler/LoginHandler/LoginUserCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/UserHandler/LoginHandler/LoginUserCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/UserHandler/RegisterHandler/IRegisterUserCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/UserHandler/RegisterHandler/IRegisterUserCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/UserHandler/RegisterHandler/RegisterUserCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/UserHandler/RegisterHandler/RegisterUserCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Validator/UserValidator/LoginRequestValidation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Validator/UserValidator/LoginRequestValidation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Validator/UserValidator/UserValidation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Validator/UserValidator/UserValidation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Authentication/ILogoutRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/DTOs/AuthorDTOs/Author.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/DTOs/AuthorDTOs/Author.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/DTOs/BookAuthorDTOs/BookAuthor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/DTOs/BookAuthorDTOs/BookAuthor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Repositories/UserRepositories/ILoginRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/UserRepositories/ILoginRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Repositories/UserRepositories/IRegisterRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/UserRepositories/IRegisterRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/AuthorService/AuthorCrudsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/AuthorService/AuthorCrudsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/UserService/LoginService/ILoginService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/UserService/LoginService/ILoginService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/UserService/LoginService/LoginService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/UserService/LoginService/LoginService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/UserService/RegisterService/IRegisterService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/UserService/RegisterService/IRegisterService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/UserService/RegisterService/RegisterService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/UserService/RegisterService/RegisterService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Authentication/RedisLogoutRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Cashing/CashService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Cashing/CashService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Configurations/Configuration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/AuthorRepository/AuthorRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/AuthorRepository/AuthorRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/PatronProfileRepository/PatronProfileRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/PatronProfileRepository/PatronProfileRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/LoginRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/LoginRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/RegisterRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/RegisterRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/AuthorsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/AuthorsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/BookAuthorsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/BookAuthorsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/BookSearchesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/BookSearchesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/BooksController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookAuthorController/BooksController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookGenreController/BookGenresController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookGenreController/BookGenresController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookGenreController/GenresController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookGenreController/GenresController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookTransactionController/BookTransactionsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookTransactionController/BookTransactionsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/PatronProfilesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/UserController/PatronProfilesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/UserController/AuthsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/UserController/AuthsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/UserController/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/UserController/UsersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Middleware/LoggerMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Middleware/LoggerMiddleware.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Middleware/LogoutMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Middleware/LogoutMiddleware.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +85,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Cashing",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -150,6 +187,7 @@
       <workItem from="1685701274115" duration="17601000" />
       <workItem from="1685764341382" duration="26889000" />
       <workItem from="1685884912775" duration="11888000" />
+      <workItem from="1685946312544" duration="17778000" />
     </task>
     <servers />
   </component>

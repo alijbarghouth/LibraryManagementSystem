@@ -1,7 +1,9 @@
 ﻿using Domain.Repositories.AuthorRepository;
+using Domain.Shared.Exceptions.CustomException;
 using Infrastructure.DBContext;
 using Infrastructure.Model;
 using Mapster;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories.AuthorRepository;
 
@@ -25,6 +27,12 @@ public sealed class AuthorRepository : IAuthorRepository
         var oldAuthor = await _libraryDbContext.Authors
             .FindAsync(authorId);
         var newAuthor = author.Adapt(oldAuthor);
+        if (await _libraryDbContext.Authors
+                .SingleOrDefaultAsync
+                    (x => x.Username == newAuthor.Username) is not null)
+        {
+            throw new BadRequestException("author name is exists");
+        }
         _libraryDbContext.Authors.Update(newAuthor);
         return author;
     }
