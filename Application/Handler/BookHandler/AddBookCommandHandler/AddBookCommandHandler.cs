@@ -1,5 +1,6 @@
 using Application.Command.BookCommand;
 using Domain.DTOs.BookDTOs;
+using Domain.DTOs.Response;
 using Domain.Repositories.BookRepository.BookCrudsRepository;
 using Domain.Services.BookService.BookCruds;
 
@@ -14,7 +15,7 @@ public sealed class AddBookCommandHandler : IAddBookCommandHandler
         _bookCrudsService = bookCrudsService;
     }
 
-    public async Task<BookRequest> Handel(AddBookCommand command)
+    public async Task<Response<BookRequest>> Handel(AddBookCommand command)
     {
         return await _bookCrudsService.AddBook(command.Book);
     }

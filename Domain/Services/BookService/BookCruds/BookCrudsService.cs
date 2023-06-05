@@ -1,4 +1,5 @@
 using Domain.DTOs.BookDTOs;
+using Domain.DTOs.Response;
 using Domain.Repositories.BookRepository.BookCrudsRepository;
 using Domain.Repositories.SharedRepositories;
 using Domain.Shared.Exceptions;
@@ -21,11 +22,11 @@ public sealed class BookCrudsService : IBookCrudsService
         _bookManagementRepository = bookManagementRepository;
     }
 
-    public async Task<BookRequest> AddBook(BookRequest book, CancellationToken cancellationToken = default)
+    public async Task<Response<BookRequest>> AddBook(BookRequest bookRequest, CancellationToken cancellationToken = default)
     {
-        if (await _bookManagementRepository.IsBookExistsByTitle(book.Title))
+        if (await _bookManagementRepository.IsBookExistsByTitle(bookRequest.Title))
             throw new NotFoundException("book is exists");
-        await _bookCrudsRepository.AddBook(book);
+        var book = await _bookCrudsRepository.AddBook(bookRequest);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return book;
     }
@@ -39,7 +40,7 @@ public sealed class BookCrudsService : IBookCrudsService
         return result;
     }
 
-    public async Task<BookRequest> UpdateBook
+    public async Task<Response<BookRequest>> UpdateBook
         (Guid bookId, BookRequest book, CancellationToken cancellationToken = default)
     {
         if (!await _bookManagementRepository.IsBookExistsByBookId(bookId))

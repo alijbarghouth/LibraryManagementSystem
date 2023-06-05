@@ -1,5 +1,6 @@
 using Application.Command.BookCommand;
 using Domain.DTOs.BookDTOs;
+using Domain.DTOs.Response;
 using Domain.Services.BookService.BookCruds;
 
 namespace Application.Handler.BookHandler.UpdateBookCommandHandler;
@@ -13,7 +14,7 @@ public sealed class UpdateBookCommandHandler : IUpdateBookCommandHandler
         _bookCrudsService = bookCrudsService;
     }
 
-    public async Task<BookRequest> Handel(UpdateBookCommand command)
+    public async Task<Response<BookRequest>> Handel(UpdateBookCommand command)
     {
         return await _bookCrudsService.UpdateBook(command.BookId, command.Book);
     }

@@ -1,4 +1,5 @@
 ﻿using Domain.DTOs.AuthorDTOs;
+using Domain.DTOs.Response;
 using Domain.Repositories.AuthorRepository;
 using Domain.Repositories.SharedRepositories;
 using Domain.Shared.Exceptions;
@@ -20,7 +21,7 @@ public sealed class AuthorCrudsService : IAuthorCrudsService
         _sharedBookManagementRepository = managementRepository;
     }
 
-    public async Task<Author> AddAuthor(Author author, CancellationToken cancellationToken = default)
+    public async Task<Response<Author>> AddAuthor(Author author, CancellationToken cancellationToken = default)
     {
         if (await _sharedBookManagementRepository.IsAuthorExistsByAuthorName(author.Username))
             throw new BadRequestException("author is exists");
@@ -29,7 +30,7 @@ public sealed class AuthorCrudsService : IAuthorCrudsService
         return result;
     }
 
-    public async Task<Author> UpdateAuthor(Guid authorId, Author author, CancellationToken cancellationToken = default)
+    public async Task<Response<Author>> UpdateAuthor(Guid authorId, Author author, CancellationToken cancellationToken = default)
     {
         if (!await _sharedBookManagementRepository.IsAuthorExistsByAuthorId(authorId))
             throw new NotFoundException("author is not exists");

@@ -1,5 +1,6 @@
 using Application.Command.AuthorCommand;
 using Domain.DTOs.AuthorDTOs;
+using Domain.DTOs.Response;
 using Domain.Services.AuthorService;
 
 namespace Application.Handler.AuthorHandler.UpdateAuthorCommandHandler;
@@ -13,7 +14,7 @@ public sealed class UpdateAuthorCommandHandler : IUpdateAuthorCommandHandler
         _authorCrudsService = authorCrudsService;
     }
 
-    public async Task<Author> Handel(UpdateAuthorCommand command)
+    public async Task<Response<Author>> Handel(UpdateAuthorCommand command)
     {
         return await _authorCrudsService.UpdateAuthor(command.AuthorId, command.Author);
     }

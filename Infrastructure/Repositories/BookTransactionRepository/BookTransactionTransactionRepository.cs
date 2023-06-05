@@ -23,6 +23,13 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
                    ?? throw new NotFoundException("book is not found");
         var user = await _libraryDbContext.Users.FindAsync(userId)
                    ?? throw new NotFoundException("user is not found");
+        if (user.Orders.Any
+            (x => x.OrderItems
+                .Any(y => y.BookId == book.Id)))
+        {
+            throw new BadRequestException("order is already exists");
+        }
+
         if (book.BookStatus != BookStatus.Available)
         {
             throw new NotFoundException("book is not Available");

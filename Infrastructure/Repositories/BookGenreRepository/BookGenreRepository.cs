@@ -17,13 +17,13 @@ public sealed class BookGenreRepository : IBookGenreRepository
     public async Task<BookGenre> AddBookGenre(BookGenre bookGenre)
     {
         var book = await _libraryDbContext.Books
-            .SingleOrDefaultAsync(x => x.Title == bookGenre.BookName);
+            .SingleAsync(x => x.Title == bookGenre.BookName);
 
         foreach (var genreDtos in bookGenre.Genre)
         {
-            var genre = await _libraryDbContext.Authors
-                .SingleOrDefaultAsync(x => x.Username == genreDtos);
-            book.Authors.Add(genre);
+            var genre = await _libraryDbContext.Genres
+                .SingleAsync(x => x.Name == genreDtos);
+            book.Genre.Add(genre);
         }
         _libraryDbContext.Books.Update(book);
 
