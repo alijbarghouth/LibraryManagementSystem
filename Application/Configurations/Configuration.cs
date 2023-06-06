@@ -1,6 +1,7 @@
 ﻿using Application.Command.AuthorCommand;
 using Application.Command.BookAuthorCommand;
 using Application.Command.BookGenreCommand;
+using Application.Command.BookReviewCommand;
 using Application.Command.BookTransactionCommand;
 using Application.Command.GenreCommand;
 using Application.Command.PatronProfileCommand;
@@ -18,6 +19,9 @@ using Application.Handler.BookHandler.SearchBookByAuthorName;
 using Application.Handler.BookHandler.SearchBookByGenre;
 using Application.Handler.BookHandler.SearchBookByTitle;
 using Application.Handler.BookHandler.UpdateBookCommandHandler;
+using Application.Handler.BookReviewHandler.AddBookReviewCommandHandler;
+using Application.Handler.BookReviewHandler.GetAllBookReviewQueryHandler;
+using Application.Handler.BookReviewHandler.UpdateBookReviewCommandHandler;
 using Application.Handler.BookTransactionHandler.AcceptReturnedBook;
 using Application.Handler.BookTransactionHandler.CheckOutBook;
 using Application.Handler.BookTransactionHandler.GetOverdueBooks;
@@ -37,6 +41,7 @@ using Application.Handler.UserHandler.UpdateLibrarianHandler;
 using Application.Query.PatronProfile;
 using Application.Validator.AuthorBookValidator;
 using Application.Validator.BookGenreValidator;
+using Application.Validator.BookReviewValidator;
 using Application.Validator.BookTransactionValidator;
 using Application.Validator.GenreValidator;
 using Application.Validator.PatronProfileValidator;
@@ -45,6 +50,7 @@ using Application.Validator.UserValidator;
 using Domain.Services.AuthorService;
 using Domain.Services.BookAuthorService;
 using Domain.Services.BookGenreService;
+using Domain.Services.BookReviewService;
 using Domain.Services.BookService.BookCruds;
 using Domain.Services.BookService.BookSearch;
 using Domain.Services.BookTransactionService;
@@ -56,6 +62,7 @@ using Domain.Services.UserService.LoginService;
 using Domain.Services.UserService.RegisterService;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Mapster;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.Configurations;
@@ -85,6 +92,7 @@ public static class Configuration
         services.AddScoped<IValidator<AddBookGenreCommand>, AddBookGenreCommandValidation>();
         services.AddScoped<IValidator<AddReadingListCommand>, AddReadingListCommandValidation>();
         services.AddScoped<IValidator<DeleteReadingListCommand>, DeleteReadingListCommandValidation>();
+        services.AddScoped<IValidator<AddBookReviewCommand>, AddBookReviewCommandValidation>();
     }
 
     private static void AddCustomDependencies(IServiceCollection services)
@@ -129,5 +137,9 @@ public static class Configuration
         services.AddScoped<IAddReadingListCommandHandler, AddReadingListCommandHandler>();
         services.AddScoped<IDeleteReadingListCommandHandler, DeleteReadingListCommandHandler>();
         services.AddScoped<IGetAllReadingListQueryHandler, GetAllReadingListQueryHandler>();
+        services.AddScoped<IBookReviewService, BookReviewService>();
+        services.AddScoped<IAddBookReviewCommandHandler, AddBookReviewCommandHandler>();
+        services.AddScoped<IUpdateBookReviewCommandHandler, UpdateBookReviewCommandHandler>();
+        services.AddScoped<IGetAllBookReviewCommandHandler, GetAllBookReviewQueryHandler>();
     }
 }

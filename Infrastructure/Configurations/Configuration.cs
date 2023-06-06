@@ -5,6 +5,7 @@ using Domain.Repositories.BookAuthorRepository;
 using Domain.Repositories.BookGenreRepository;
 using Domain.Repositories.BookRepository.BookCrudsRepository;
 using Domain.Repositories.BookRepository.SearchBookRepository;
+using Domain.Repositories.BookReviewRepository;
 using Domain.Repositories.GenreRepository;
 using Domain.Repositories.PatronProfileRepository;
 using Domain.Repositories.ReadingListRepository;
@@ -20,6 +21,7 @@ using Infrastructure.Repositories.BookAuthorRepository;
 using Infrastructure.Repositories.BookGenreRepository;
 using Infrastructure.Repositories.BookRepository.BookCrudsRepository;
 using Infrastructure.Repositories.BookRepository.SearchBookRepository;
+using Infrastructure.Repositories.BookReviewRepository;
 using Infrastructure.Repositories.GenreRepository;
 using Infrastructure.Repositories.BookTransactionRepository;
 using Infrastructure.Repositories.PatronProfileRepository;
@@ -65,6 +67,7 @@ public static class Configuration
         services.AddScoped<IBookGenreRepository, BookGenreRepository>();
         services.AddScoped<ICashService, CashService>();
         services.AddScoped<IReadingListRepository, ReadingListRepository>();
+        services.AddScoped<IBookReviewRepository, BookReviewRepository>();
         services.Configure<JWT>(configuration.GetSection("JWT"));
     }
 

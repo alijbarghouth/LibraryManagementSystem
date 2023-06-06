@@ -5,11 +5,13 @@ using Application.Handler.ReadingListHandler.GetAllReadingListQueryHandler;
 using Application.Query.ReadingListQuery;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Filter;
 
 namespace WebApi.Controller.ReadingListController
 {
     [Route("api/[controller]")]
     [ApiController]
+    [LibraryExceptionHandlerFilter]
     public class ReadingListsController : ControllerBase
     {
         private readonly IAddReadingListCommandHandler _addReadingListCommandHandler;

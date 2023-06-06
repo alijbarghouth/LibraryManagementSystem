@@ -11,24 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53e77f84-7d3d-4a8a-bd2b-c169cbe4d963" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Application/Handler/BookGenreHandler/AddBookGenreCommandHandler/AddBookGenreCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookGenreHandler/AddBookGenreCommandHandler/AddBookGenreCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/ReadingListHandler/AddReadingListHandler/AddReadingListCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/ReadingListHandler/AddReadingListHandler/AddReadingListCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/ReadingListHandler/DeleteReadingListHandler/DeleteReadingListCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/ReadingListHandler/DeleteReadingListHandler/DeleteReadingListCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Validator/BookTransactionValidator/AcceptReturnedBookCommandValidation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Validator/BookTransactionValidator/AcceptReturnedBookCommandValidation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Validator/BookTransactionValidator/CheckOutBookCommandValidation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Validator/BookTransactionValidator/CheckOutBookCommandValidation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Validator/BookTransactionValidator/ReserveBookCommandValidation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Validator/BookTransactionValidator/ReserveBookCommandValidation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Validator/PatronProfileValidator/PatronProfileQueryValidation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Validator/PatronProfileValidator/PatronProfileQueryValidation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Validator/PatronProfileValidator/ViewAndEditPatronProfileCommandValidation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Validator/PatronProfileValidator/ViewAndEditPatronProfileCommandValidation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Validator/ReadingListValidator/AddReadingListCommandValidation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Validator/ReadingListValidator/AddReadingListCommandValidation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Services/UserService/LoginService/LoginService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/UserService/LoginService/LoginService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/HashingPassword/HashPassword.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Utils/HashPassword.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/HashingPassword/VerifyPassword.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Utils/VerifyPassword.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/ReadingListRepository/ReadingListRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/ReadingListRepository/ReadingListRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/AuthRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/AuthRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/LoginRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/LoginRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/RegisterRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/RegisterRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Shared/UnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Shared/UnitOfWork.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Repositories/SharedRepositories/ISharedBookManagementRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/SharedRepositories/ISharedBookManagementRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedBookManagementRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedBookManagementRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/WebApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/WebApi.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,13 +53,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "BookReviewsandRatings",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CodeLensConfigurable",
+    "settings.editor.selected.configurable": "ReSpellerSettingsId",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -169,6 +156,7 @@
       <workItem from="1685764341382" duration="26889000" />
       <workItem from="1685884912775" duration="11888000" />
       <workItem from="1685946312544" duration="35395000" />
+      <workItem from="1686039778550" duration="11715000" />
     </task>
     <servers />
   </component>
