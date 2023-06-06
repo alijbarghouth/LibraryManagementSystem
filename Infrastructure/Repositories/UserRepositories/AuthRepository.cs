@@ -2,7 +2,7 @@
 using Domain.Repositories.UserRepositories;
 using Domain.Shared.Exceptions.CustomException;
 using Infrastructure.DBContext;
-using Infrastructure.HashingPassword;
+using Infrastructure.Utils;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 

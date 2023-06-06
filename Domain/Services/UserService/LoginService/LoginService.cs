@@ -5,7 +5,7 @@ using Domain.Shared.Exceptions.CustomException;
 
 namespace Domain.Services.UserService.LoginService;
 
-public class LoginService : ILoginService
+public sealed class LoginService : ILoginService
 {
     private readonly ILoginRepository _loginRepository;
     private readonly IUnitOfWork _unitOfWork;

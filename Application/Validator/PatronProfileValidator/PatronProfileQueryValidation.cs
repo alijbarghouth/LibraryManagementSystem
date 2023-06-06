@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Application.Validator.PatronProfileValidator;
 
-public class PatronProfileQueryValidation : AbstractValidator<PatronProfileQuery>
+public sealed class PatronProfileQueryValidation : AbstractValidator<PatronProfileQuery>
 {
     public PatronProfileQueryValidation()
     {

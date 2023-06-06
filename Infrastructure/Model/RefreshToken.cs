@@ -3,7 +3,7 @@
 namespace Infrastructure.Model;
 
 [Owned]
-public class RefreshToken
+public sealed class RefreshToken
 {
     public string Token { get; set; }
 

@@ -1,9 +1,9 @@
-using System.Collections.Concurrent;
 using Application.Cashing;
 using Infrastructure.Settings;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using System.Collections.Concurrent;
 
 namespace Infrastructure.Cashing;
 

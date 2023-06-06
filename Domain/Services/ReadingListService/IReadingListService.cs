@@ -11,9 +11,5 @@ public interface IReadingListService
     Task<bool> DeleteReadingList(Guid readingListId,
         CancellationToken cancellationToken = default);
 
-    Task<Response<ReadingList>> UpdateReadingList
-    (Guid readingListId, ReadingList readingList,
-        CancellationToken cancellationToken = default);
-
     Task<List<ReadingListResponse>> GetAllReadingList(Guid userId);
 }

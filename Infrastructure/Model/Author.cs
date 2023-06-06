@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Infrastructure.Model;
 [Index(nameof(Username), IsUnique = true)]
-public class Author
+public sealed class Author
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -12,5 +12,5 @@ public class Author
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Username { get; set; }
-    public virtual ICollection<Book> Books { get; set; }
+    public  ICollection<Book> Books { get; set; }
 }

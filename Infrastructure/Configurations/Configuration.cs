@@ -68,17 +68,16 @@ public static class Configuration
         services.Configure<JWT>(configuration.GetSection("JWT"));
     }
 
-    private static void AddLibraryDbContext(IServiceCollection services, ConfigurationManager configuration)
+    private static void AddLibraryDbContext(IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<LibraryDbContext>(delegate(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                .UseLazyLoadingProxies()
                 .UseSqlServer(configuration.GetConnectionString("LibraryDbContext"));
         });
     }
 
-    private static void AddRedisConfig(IServiceCollection services, ConfigurationManager configuration)
+    private static void AddRedisConfig(IServiceCollection services, IConfiguration configuration)
     {
         services.AddStackExchangeRedisCache(redisOption =>
         {

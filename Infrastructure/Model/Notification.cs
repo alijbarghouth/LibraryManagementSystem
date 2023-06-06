@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Infrastructure.Model;
 [Index(nameof(Id), IsUnique = true)]
-public class Notification
+public sealed class Notification
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -12,5 +12,5 @@ public class Notification
     public Guid UserId { get; set; }
     public Guid Message { get; set; }
     public DateTime CreatedAt { get; set; }
-    public virtual User User { get; set; }
+    public  User User { get; set; }
 }

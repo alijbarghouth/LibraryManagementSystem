@@ -47,18 +47,6 @@ public sealed class ReadingListService : IReadingListService
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return result;
     }
-
-    public async Task<Response<ReadingList>> UpdateReadingList(Guid readingListId, ReadingList readingList,
-        CancellationToken cancellationToken = default)
-    {
-        if (!await _sharedBookManagementRepository.IsReadingListExistsByAuthorId(readingListId))
-            throw new NotFoundException("readingList not found");
-        var result = await _readingListRepository
-            .UpdateReadingList(readingListId, readingList);
-        await _unitOfWork.SaveChangesAsync(cancellationToken);
-        return result;
-    }
-
     public async Task<List<ReadingListResponse>> GetAllReadingList(Guid userId)
     {
         return await _readingListRepository.GetAllReadingList(userId);

@@ -5,7 +5,7 @@ using Domain.Services.ReadingListService;
 
 namespace Application.Handler.ReadingListHandler.AddReadingListHandler;
 
-public class AddReadingListCommandHandler : IAddReadingListCommandHandler
+public sealed class AddReadingListCommandHandler : IAddReadingListCommandHandler
 {
     private readonly IReadingListService _readingListService;
 

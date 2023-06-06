@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Application.Validator.ReadingListValidator;
 
-public class AddReadingListCommandValidation : AbstractValidator<AddReadingListCommand>
+public sealed class AddReadingListCommandValidation : AbstractValidator<AddReadingListCommand>
 {
     public AddReadingListCommandValidation()
     {

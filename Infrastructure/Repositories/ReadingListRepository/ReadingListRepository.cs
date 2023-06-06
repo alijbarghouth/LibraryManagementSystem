@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories.ReadingListRepository;
 
-public class ReadingListRepository : IReadingListRepository
+public sealed class ReadingListRepository : IReadingListRepository
 {
     private readonly LibraryDbContext _libraryDbContext;
 
@@ -33,18 +33,6 @@ public class ReadingListRepository : IReadingListRepository
         _libraryDbContext.ReadingLists.Remove(readList);
         return true;
     }
-
-    public async Task<Response<Domain.DTOs.ReadingListDTOs.ReadingList>> UpdateReadingList(Guid readingListId,
-        Domain.DTOs.ReadingListDTOs.ReadingList readingList)
-    {
-        var oldReadList = await _libraryDbContext.ReadingLists
-            .FindAsync(readingListId);
-        var newReadingList = readingList.Adapt(oldReadList);
-        _libraryDbContext.ReadingLists.Update(newReadingList);
-        return new Response<Domain.DTOs.ReadingListDTOs.ReadingList>
-            (readingList, newReadingList.Id);
-    }
-
     public async Task<List<Domain.DTOs.ReadingListDTOs.ReadingListResponse>> GetAllReadingList(Guid userId)
     {
         return (await _libraryDbContext.ReadingLists

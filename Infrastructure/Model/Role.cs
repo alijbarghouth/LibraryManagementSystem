@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Infrastructure.Model;
 [Index(nameof(Id), IsUnique = true)]
-public class Role
+public sealed class Role
 {
     public Role()
     {
@@ -14,5 +14,5 @@ public class Role
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
     public string RoleName { get; set; }
-    public virtual ICollection<User> Users { get; set; }
+    public  ICollection<User> Users { get; set; }
 }

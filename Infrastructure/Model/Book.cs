@@ -7,7 +7,7 @@ namespace Infrastructure.Model;
 
 [Index(nameof(Title), IsUnique = true)]
 [Index(nameof(Id), IsUnique = true)]
-public class Book
+public sealed class Book
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,10 +17,10 @@ public class Book
     public DateTime PublicationDate { get; set; }
     public BookStatus BookStatus { get; set; }
     public int Count { get; set; }
-    public virtual ICollection<Genre> Genre { get; set; }
-    public virtual ICollection<Author> Authors { get; set; }
-    public virtual IEnumerable<ReadingList> ReadingLists { get; set; }
-    public virtual IEnumerable<BookReview> BookReviews { get; set; }
-    public virtual BookRecommendation BookRecommendation { get; set; }
-    public virtual IEnumerable<OrderItem> OrderItems { get; set; }
+    public  ICollection<Genre> Genre { get; set; }
+    public  ICollection<Author> Authors { get; set; }
+    public  IEnumerable<ReadingList> ReadingLists { get; set; }
+    public  IEnumerable<BookReview> BookReviews { get; set; }
+    public  BookRecommendation BookRecommendation { get; set; }
+    public  IEnumerable<OrderItem> OrderItems { get; set; }
 }

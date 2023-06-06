@@ -35,6 +35,27 @@ public sealed class LibraryDbContext : DbContext
          .HasMany(x => x.Orders)
          .WithOne(x => x.User)
          .HasForeignKey(x => x.UserId);
+        modelBuilder.Entity<User>()
+            .HasMany(x => x.Interactions)
+            .WithOne(x => x.User)
+            .HasForeignKey(x => x.UserId);
+        modelBuilder.Entity<User>()
+            .HasMany(x => x.Reports)
+            .WithOne(x => x.User)
+            .HasForeignKey(x => x.UserId);
+        
+        modelBuilder.Entity<BookReview>()
+            .HasMany(x => x.Interactions)
+            .WithOne(x => x.BookReview)
+            .HasForeignKey(x => x.BookReviewId);
+        modelBuilder.Entity<BookReview>()
+            .HasMany(x => x.Moderations)
+            .WithOne(x => x.BookReview)
+            .HasForeignKey(x => x.BookReviewId);
+        modelBuilder.Entity<BookReview>()
+            .HasMany(x => x.Reports)
+            .WithOne(x => x.BookReview)
+            .HasForeignKey(x => x.BookReviewId);
 
         modelBuilder.Entity<Book>()
             .HasMany(x => x.Authors)
@@ -70,7 +91,10 @@ public sealed class LibraryDbContext : DbContext
     public DbSet<Role> Roles { get; set; }
     public DbSet<Book> Books { get; set; }
     public DbSet<BookRecommendation> BookRecommendations { get; set; }
+    public DbSet<Interaction> Interactions { get; set; }
+    public DbSet<Moderation> Moderations { get; set; }
     public DbSet<BookReview> BookReviews { get; set; }
+    public DbSet<Report> Reports { get; set; }
     public DbSet<Notification> Notifications { get; set; }
     public DbSet<Genre> Genres { get; set; }
     public DbSet<Author> Authors { get; set; }

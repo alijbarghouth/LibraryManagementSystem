@@ -2,7 +2,6 @@
 using Domain.Repositories.UserRepositories;
 using Domain.Shared.Exceptions.CustomException;
 using Infrastructure.DBContext;
-using Infrastructure.HashingPassword;
 using Infrastructure.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -12,6 +11,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using Infrastructure.Settings;
+using Infrastructure.Utils;
 
 namespace Infrastructure.Repositories.UserRepositories;
 

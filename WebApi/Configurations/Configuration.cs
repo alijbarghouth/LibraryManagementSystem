@@ -9,7 +9,7 @@ namespace WebApi.Configurations;
 
 public static class Configuration
 {
-    public static IServiceCollection AddWebApi(this IServiceCollection services, IConfiguration configuration)
+    public static void AddWebApi(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDistributedMemoryCache();
         services.AddSwaggerGen(options =>
@@ -47,10 +47,6 @@ public static class Configuration
     });
         services.AddScoped<LogoutMiddleware>();
         services.AddScoped<LoggerMiddleware>();
-
-
-
-        return services;
     }
     private static void AddCustomDependencies(IServiceCollection services)
     {

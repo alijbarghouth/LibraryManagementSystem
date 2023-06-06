@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Infrastructure.Model;
 [Index(nameof(Username), IsUnique = true)]
 [Index(nameof(Email), IsUnique = true)]
-public class User
+public sealed class User
 {
     public User()
     {
@@ -25,10 +25,12 @@ public class User
     public DateTime? UpdatedAt { get; set; }
     public bool IsActive { get; set; } = true;
     public ICollection<RefreshToken> RefreshTokens { get; set; }
-    public virtual ICollection<Role> Roles { get; set; }
-    public virtual IEnumerable<ReadingList> ReadingLists { get; set; }
-    public virtual IEnumerable<Notification> Notifications { get; set; }
-    public virtual IEnumerable<BookReview> BookReviews { get; set; }
-    public virtual IEnumerable<BookRecommendation> BookRecommendations { get; set; }
-    public virtual IEnumerable<Order> Orders { get; set; }
+    public  ICollection<Role> Roles { get; set; }
+    public  IEnumerable<ReadingList> ReadingLists { get; set; }
+    public  ICollection<Notification> Notifications { get; set; }
+    public  ICollection<BookReview> BookReviews { get; set; }
+    public  IEnumerable<BookRecommendation> BookRecommendations { get; set; }
+    public  IEnumerable<Order> Orders { get; set; }
+    public ICollection<Interaction> Interactions { get; set; }
+    public ICollection<Report> Reports { get; set; }
 }

@@ -4,7 +4,7 @@ using Domain.Services.BookGenreService;
 
 namespace Application.Handler.BookGenreHandler.AddBookGenreCommandHandler;
 
-public class AddBookGenreCommandHandler : IAddBookGenreCommandHandler
+public sealed class AddBookGenreCommandHandler : IAddBookGenreCommandHandler
 {
     private readonly IBookGenreService _bookGenreService;
 

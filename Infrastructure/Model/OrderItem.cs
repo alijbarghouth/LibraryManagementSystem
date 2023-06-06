@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Infrastructure.Model;
 
 [Index(nameof(Id), IsUnique = true)]
-public class OrderItem
+public sealed class OrderItem
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,6 +16,6 @@ public class OrderItem
     public DateTime? BorrowedDate { get; set; }
     public DateTime RequestDate { get; set; }
     public DateTime? DateRetrieved { get; set; }
-    public virtual Order Order { get; set; }
-    public virtual Book Book { get; set; }
+    public  Order Order { get; set; }
+    public  Book Book { get; set; }
 }

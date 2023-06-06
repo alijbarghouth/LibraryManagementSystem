@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Application.Validator.PatronProfileValidator;
 
-public class ViewAndEditPatronProfileCommandValidation : AbstractValidator<ViewAndEditPatronProfileCommand>
+public sealed class ViewAndEditPatronProfileCommandValidation : AbstractValidator<ViewAndEditPatronProfileCommand>
 {
     public ViewAndEditPatronProfileCommandValidation()
     {

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Infrastructure.Model;
 [Index(nameof(Id), IsUnique = true)]
-public class BookReview
+public sealed class BookReview
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -12,8 +12,11 @@ public class BookReview
     public Guid UserId { get; set; }
     public Guid BookId { get; set; }
     public int Rating { get; set; }
-    public string Review { get; set; }
+    public string Content  { get; set; }
     public DateTime CreatedAt { get; set; }
-    public virtual User User { get; set; }
-    public virtual Book Book { get; set; }
+    public  User User { get; set; }
+    public  Book Book { get; set; }
+    public ICollection<Interaction> Interactions { get; set; }
+    public ICollection<Moderation> Moderations { get; set; }
+    public ICollection<Report> Reports { get; set; }
 }

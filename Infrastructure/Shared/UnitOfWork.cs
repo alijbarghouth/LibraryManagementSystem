@@ -5,15 +5,15 @@ namespace Infrastructure.Shared;
 
 public sealed class UnitOfWork : IUnitOfWork
 {
-    private readonly LibraryDbContext _libraryDBContext;
+    private readonly LibraryDbContext _libraryDbContext;
 
-    public UnitOfWork(LibraryDbContext libraryDBContext)
+    public UnitOfWork(LibraryDbContext libraryDbContext)
     {
-        _libraryDBContext = libraryDBContext;
+        _libraryDbContext = libraryDbContext;
     }
 
     public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        await _libraryDBContext.SaveChangesAsync(cancellationToken);
+        await _libraryDbContext.SaveChangesAsync(cancellationToken);
     }
 }

@@ -28,7 +28,6 @@ using Application.Handler.PatronProfileHandler.ViewAndEditPatronProfileCommandHa
 using Application.Handler.ReadingListHandler.AddReadingListHandler;
 using Application.Handler.ReadingListHandler.DeleteReadingListHandler;
 using Application.Handler.ReadingListHandler.GetAllReadingListQueryHandler;
-using Application.Handler.ReadingListHandler.UpdateReadingListHandler;
 using Application.Handler.UserHandler.DeleteLibrarianHandler;
 using Application.Handler.UserHandler.LoginHandler;
 using Application.Handler.UserHandler.RefreshTokenHandler;
@@ -85,7 +84,6 @@ public static class Configuration
         services.AddScoped<IValidator<PatronProfileQuery>, PatronProfileQueryValidation>();
         services.AddScoped<IValidator<AddBookGenreCommand>, AddBookGenreCommandValidation>();
         services.AddScoped<IValidator<AddReadingListCommand>, AddReadingListCommandValidation>();
-        services.AddScoped<IValidator<UpdateReadingListCommand>, UpdateReadingListCommandValidation>();
         services.AddScoped<IValidator<DeleteReadingListCommand>, DeleteReadingListCommandValidation>();
     }
 
@@ -129,7 +127,6 @@ public static class Configuration
         services.AddScoped<IAddBookGenreCommandHandler, AddBookGenreCommandHandler>();
         services.AddScoped<IReadingListService, ReadingListService>();
         services.AddScoped<IAddReadingListCommandHandler, AddReadingListCommandHandler>();
-        services.AddScoped<IUpdateReadingListCommandHandler, UpdateReadingListCommandHandler>();
         services.AddScoped<IDeleteReadingListCommandHandler, DeleteReadingListCommandHandler>();
         services.AddScoped<IGetAllReadingListQueryHandler, GetAllReadingListQueryHandler>();
     }

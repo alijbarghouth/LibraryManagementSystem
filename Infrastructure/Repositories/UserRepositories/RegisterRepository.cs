@@ -2,8 +2,8 @@
 using Domain.DTOs.UserDTOs;
 using Domain.Repositories.UserRepositories;
 using Infrastructure.DBContext;
-using Infrastructure.HashingPassword;
 using Infrastructure.Model;
+using Infrastructure.Utils;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 

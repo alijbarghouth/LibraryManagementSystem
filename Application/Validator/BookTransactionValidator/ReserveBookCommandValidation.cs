@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Application.Validator.BookTransactionValidator;
 
-public class ReserveBookCommandValidation : AbstractValidator<ReserveBookCommand>
+public sealed class ReserveBookCommandValidation : AbstractValidator<ReserveBookCommand>
 {
     public ReserveBookCommandValidation()
     {
