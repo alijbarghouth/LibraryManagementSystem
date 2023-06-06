@@ -82,4 +82,18 @@ public sealed class SharedBookManagementRepository : ISharedBookManagementReposi
             .AsNoTracking()
             .AnyAsync(x => x.Id == bookReviewId);
     }
+
+    public async Task<bool> IsInteractionExistsByInteractionId(Guid bookReviewId)
+    {
+        return await _libraryDbContext.Interactions
+            .AsNoTracking()
+            .AnyAsync(x => x.Id == bookReviewId);
+    }
+
+    public async Task<bool> IsInteractionExistsByBookReviewIdAndUserId(Guid userId, Guid bookReviewId)
+    {
+        return await _libraryDbContext.Interactions
+            .AsNoTracking()
+            .AnyAsync(x => x.UserId == userId && x.BookReviewId == bookReviewId);
+    }
 }

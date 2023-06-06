@@ -20,7 +20,7 @@ public sealed class LoginUserCommandHandler : ILoginUserCommandHandler
     public async Task<LoginUserResponse> Handle(LoginUserCommand login,
         CancellationToken cancellationToken = default)
     {
-        var userId = await _loginService.GetUserId(login.LoginUser);
+        var userId = await _loginService.GetUserId(login.LoginUser) ;
         return await _cashService.GetAsync<LoginUserResponse>(userId, async () =>
         {
             var tokens = await _loginService.LoginUser(login.LoginUser, cancellationToken);

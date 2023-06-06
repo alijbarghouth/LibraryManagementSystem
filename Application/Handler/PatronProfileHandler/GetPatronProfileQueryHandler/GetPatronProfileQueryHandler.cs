@@ -1,6 +1,7 @@
 using Application.Cashing;
 using Application.Query.PatronProfile;
 using Domain.DTOs.PatronProfileDTOs;
+using Domain.DTOs.Response;
 using Domain.Services.PatronProfile;
 
 namespace Application.Handler.PatronProfileHandler.GetPatronProfileQueryHandler;
@@ -17,7 +18,7 @@ public sealed class GetPatronProfileQueryHandler : IGetPatronProfileQueryHandler
         _cashService = cashService;
     }
 
-    public async Task<List<PatronProfile>> Handel(PatronProfileQuery query,
+    public async Task<List<Response<PatronProfile>>> Handel(PatronProfileQuery query,
         CancellationToken cancellationToken = default)
     {
         var key = $"{query.UserId} PatronProfile";

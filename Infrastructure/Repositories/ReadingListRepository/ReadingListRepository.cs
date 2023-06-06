@@ -33,9 +33,13 @@ public sealed class ReadingListRepository : IReadingListRepository
         _libraryDbContext.ReadingLists.Remove(readList);
         return true;
     }
+
     public async Task<List<Domain.DTOs.ReadingListDTOs.ReadingListResponse>> GetAllReadingList(Guid userId)
     {
         return (await _libraryDbContext.ReadingLists
+                .Include(x => x.Book)
+                .Include(x => x.Book.Genre)
+                .Include(x => x.Book.Authors)
                 .AsNoTracking()
                 .Where(x => x.UserId == userId)
                 .Select(x => new

@@ -4,6 +4,7 @@ using Application.Command.BookGenreCommand;
 using Application.Command.BookReviewCommand;
 using Application.Command.BookTransactionCommand;
 using Application.Command.GenreCommand;
+using Application.Command.InteractionCommand;
 using Application.Command.PatronProfileCommand;
 using Application.Command.ReadingListCommand;
 using Application.Command.UserCommand;
@@ -28,6 +29,10 @@ using Application.Handler.BookTransactionHandler.CheckOutBook;
 using Application.Handler.BookTransactionHandler.GetOverdueBooks;
 using Application.Handler.BookTransactionHandler.ReserveBook;
 using Application.Handler.GenreHandler;
+using Application.Handler.InteractionHandler.AddInteractionCommandHandler;
+using Application.Handler.InteractionHandler.DeleteInteractionCommandHandler;
+using Application.Handler.InteractionHandler.GetAllInteractionQueryHandler;
+using Application.Handler.InteractionHandler.UpdateInteractionCommandHandler;
 using Application.Handler.PatronProfileHandler.GetPatronProfileQueryHandler;
 using Application.Handler.PatronProfileHandler.ViewAndEditPatronProfileCommandHandler;
 using Application.Handler.ReadingListHandler.AddReadingListHandler;
@@ -40,12 +45,14 @@ using Application.Handler.UserHandler.RegisterHandler;
 using Application.Handler.UserHandler.RoleHandler;
 using Application.Handler.UserHandler.UpdateLibrarianHandler;
 using Application.Query.BookReview;
+using Application.Query.InteractionQuery;
 using Application.Query.PatronProfile;
 using Application.Validator.AuthorBookValidator;
 using Application.Validator.BookGenreValidator;
 using Application.Validator.BookReviewValidator;
 using Application.Validator.BookTransactionValidator;
 using Application.Validator.GenreValidator;
+using Application.Validator.InteractionValidator;
 using Application.Validator.PatronProfileValidator;
 using Application.Validator.ReadingListValidator;
 using Application.Validator.UserValidator;
@@ -58,6 +65,7 @@ using Domain.Services.BookService.BookCruds;
 using Domain.Services.BookService.BookSearch;
 using Domain.Services.BookTransactionService;
 using Domain.Services.GenreService;
+using Domain.Services.InteractionService;
 using Domain.Services.PatronProfile;
 using Domain.Services.ReadingListService;
 using Domain.Services.UserService.AuthService;
@@ -97,8 +105,12 @@ public static class Configuration
         services.AddScoped<IValidator<DeleteReadingListCommand>, DeleteReadingListCommandValidation>();
         services.AddScoped<IValidator<AddBookReviewCommand>, AddBookReviewCommandValidation>();
         services.AddScoped<IValidator<DeleteBookReviewCommand>, DeleteBookReviewCommandValidation>();
-        services.AddScoped<IValidator<UpdateBookReviewCommand>,UpdateBookReviewCommandValidation>();
+        services.AddScoped<IValidator<UpdateBookReviewCommand>, UpdateBookReviewCommandValidation>();
         services.AddScoped<IValidator<GetAllBookReviewQuery>, GetAllBookReviewQueryValidation>();
+        services.AddScoped<IValidator<AddInteractionCommand>, AddInteractionCommandValidation>();
+        services.AddScoped<IValidator<UpdateInteractionCommand>, UpdateInteractionCommandValidation>();
+        services.AddScoped<IValidator<GetAllInteractionQuery>, GetAllInteractionQueryValidation>();
+        services.AddScoped<IValidator<DeleteInteractionCommand>, DeleteInteractionCommandValidation>();
     }
 
     private static void AddCustomDependencies(IServiceCollection services)
@@ -148,5 +160,10 @@ public static class Configuration
         services.AddScoped<IUpdateBookReviewCommandHandler, UpdateBookReviewCommandHandler>();
         services.AddScoped<IDeleteBookReviewCommandHandler, DeleteBookReviewCommandHandler>();
         services.AddScoped<IGetAllBookReviewCommandHandler, GetAllBookReviewQueryHandler>();
+        services.AddScoped<IInteractionService, InteractionService>();
+        services.AddScoped<IAddInteractionCommandHandler, AddInteractionCommandHandler>();
+        services.AddScoped<IUpdateInteractionCommandHandler, UpdateInteractionCommandHandler>();
+        services.AddScoped<IDeleteInteractionCommandHandler, DeleteInteractionCommandHandler>();
+        services.AddScoped<IGetAllInteractionQueryHandler, GetAllInteractionQueryHandler>();
     }
 }

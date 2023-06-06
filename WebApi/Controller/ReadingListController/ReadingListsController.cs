@@ -27,21 +27,24 @@ namespace WebApi.Controller.ReadingListController
             _deleteReadingListCommandHandler = deleteReadingListCommandHandler;
             _getAllReadingListQueryHandler = getAllReadingListQueryHandler;
         }
-        [Authorize]
+
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddReadingList(AddReadingListCommand command)
         {
             return Ok(await _addReadingListCommandHandler.Handel(command));
         }
-        [Authorize]
+
         [HttpDelete]
+        [Authorize]
         public async Task<IActionResult> DeleteReadingList([FromQuery] DeleteReadingListCommand command)
         {
             return Ok(await _deleteReadingListCommandHandler.Handel(command));
         }
-        [Authorize]
+
         [HttpGet]
-        public async Task<IActionResult> GetAllReadingList(GetAllReadingListQuery query)
+        [Authorize]
+        public async Task<IActionResult> GetAllReadingList([FromQuery] GetAllReadingListQuery query)
         {
             return Ok(await _getAllReadingListQueryHandler.Handel(query));
         }

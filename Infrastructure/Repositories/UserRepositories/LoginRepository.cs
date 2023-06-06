@@ -29,9 +29,10 @@ public sealed class LoginRepository : ILoginRepository
     public async Task<(string, string)> LoginUser(LoginUser login)
     {
         var user = await _libraryDbContext.Users
+            .Include(x => x.Roles)
             .SingleAsync(x => x.Email == login.Email);
-
-        
+        if (!user.IsActive)
+            throw new BadRequestException("account is disable");
 
         var token = new JwtSecurityTokenHandler().WriteToken(CreateJwtToken(user));
         var refreshToken = new RefreshToken();
@@ -77,6 +78,7 @@ public sealed class LoginRepository : ILoginRepository
         {
             throw new BadRequestException("The password is wrong");
         }
+
         return user.Id.ToString();
     }
 
@@ -91,7 +93,7 @@ public sealed class LoginRepository : ILoginRepository
 
         var claims = new[]
         {
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim("uid", user.Id.ToString()),
             new Claim(JwtRegisteredClaimNames.Sub, user.Username),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new Claim(JwtRegisteredClaimNames.Email, user.Email),

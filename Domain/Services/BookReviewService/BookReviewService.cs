@@ -7,7 +7,7 @@ using Domain.Shared.Exceptions.CustomException;
 
 namespace Domain.Services.BookReviewService;
 
-public class BookReviewService : IBookReviewService
+public sealed class BookReviewService : IBookReviewService
 {
     private readonly IBookReviewRepository _bookReviewRepository;
     private readonly IUnitOfWork _unitOfWork;

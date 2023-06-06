@@ -53,7 +53,6 @@ namespace WebApi.Controller.UserController
 
             return Ok(token);
         }
-
         private void SetRefreshTokenInCookie(string refreshToken)
         {
             var cookieOptions = new CookieOptions

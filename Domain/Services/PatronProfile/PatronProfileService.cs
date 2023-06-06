@@ -1,3 +1,4 @@
+using Domain.DTOs.Response;
 using Domain.Repositories.PatronProfileRepository;
 using Domain.Repositories.SharedRepositories;
 using Domain.Shared.Exceptions;
@@ -23,7 +24,7 @@ public sealed class PatronProfileService : IPatronProfileService
         _sharedBookManagementRepository = sharedBookManagementRepository;
     }
 
-    public async Task<List<DTOs.PatronProfileDTOs.PatronProfile>> GetPatronProfile(Guid userId)
+    public async Task<List<Response<Domain.DTOs.PatronProfileDTOs.PatronProfile>>> GetPatronProfile(Guid userId)
     {
         if (!await _sharedUserRepository.IsUserExistsUserId(userId))
             throw new NotFoundException("user not found");
