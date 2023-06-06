@@ -8,5 +8,5 @@ public interface IBookCrudsRepository
     Task<Response<BookRequest>> AddBook(BookRequest book);
     Task<bool> DeleteBook(Guid bookId);
     Task<Response<BookRequest>> UpdateBook(Guid bookId, BookRequest book);
-    Task<List<Book>> GetAllBook();
+    Task<List<Response<Book>>> GetAllBook();
 }

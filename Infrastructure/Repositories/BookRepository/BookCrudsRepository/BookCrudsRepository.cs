@@ -44,13 +44,16 @@ public sealed class BookCrudsRepository : IBookCrudsRepository
         return new Response<Domain.DTOs.BookDTOs.BookRequest>(bookRequest, newBook.Id);
     }
 
-    public async Task<List<Domain.DTOs.BookDTOs.Book>> GetAllBook()
+    public async Task<List<Response<Domain.DTOs.BookDTOs.Book>>> GetAllBook()
     {
         return (await _libraryDbContext.Books
-                .Include(x => x.Genre)
-                .Include(x => x.Authors)
-                .AsNoTracking()
-                .ToListAsync())
-            .Adapt<List<Domain.DTOs.BookDTOs.Book>>();
+            .Include(x => x.Genre)
+            .Include(x => x.Authors)
+            .AsNoTracking()
+            .Select(x
+                =>
+                new Response<Domain.DTOs.BookDTOs.Book>(x.Adapt<Domain.DTOs.BookDTOs.Book>(), x.Id)
+            )
+            .ToListAsync());
     }
 }

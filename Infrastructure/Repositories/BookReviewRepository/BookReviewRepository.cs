@@ -25,13 +25,14 @@ public sealed class BookReviewRepository : IBookReviewRepository
     }
 
     public async Task<Response<Domain.DTOs.BookReviewDTOs.BookReview>> UpdateBookReview(Guid bookReviewId,
-        Domain.DTOs.BookReviewDTOs.BookReview bookReview)
+        Domain.DTOs.BookReviewDTOs.UpdateBookReviewequest bookReview)
     {
         var oldBookReview = await _libraryDbContext.BookReviews
             .SingleAsync(x => x.Id == bookReviewId);
         var newBookReview = bookReview.Adapt(oldBookReview);
+        var updatedBookReview = newBookReview.Adapt<Domain.DTOs.BookReviewDTOs.BookReview>();
         _libraryDbContext.BookReviews.Update(newBookReview);
-        return new Response<Domain.DTOs.BookReviewDTOs.BookReview>(bookReview, newBookReview.Id);
+        return new Response<Domain.DTOs.BookReviewDTOs.BookReview>(updatedBookReview, newBookReview.Id);
     }
 
     public async Task<bool> DeleteBookReview(Guid bookReviewId)
@@ -50,8 +51,8 @@ public sealed class BookReviewRepository : IBookReviewRepository
             .Where(x => x.UserId == userId && x.BookId == bookId
                  && x.Moderations.All(i => i.IsApproved))
             .Select(x
-                => x.Adapt(new Response<Domain.DTOs.BookReviewDTOs.BookReview>
-                    (x.Adapt<Domain.DTOs.BookReviewDTOs.BookReview>(), x.Id)))
+                => new Response<Domain.DTOs.BookReviewDTOs.BookReview>
+                    (x.Adapt<Domain.DTOs.BookReviewDTOs.BookReview>(), x.Id))
             .ToListAsync();
     }
 }

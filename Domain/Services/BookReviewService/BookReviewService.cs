@@ -36,14 +36,10 @@ public class BookReviewService : IBookReviewService
         return review;
     }
 
-    public async Task<Response<BookReview>> UpdateBookReview(Guid bookReviewId, BookReview bookReview, CancellationToken cancellationToken = default)
+    public async Task<Response<BookReview>> UpdateBookReview(Guid bookReviewId, UpdateBookReviewequest bookReview, CancellationToken cancellationToken = default)
     {
         if (!await _sharedBookManagementRepository.IsBookReviewExistsByBookReviewId(bookReviewId))
             throw new NotFoundException("book review not found");
-        if (!await _sharedBookManagementRepository.IsBookExistsByBookId(bookReview.BookId))
-            throw new NotFoundException("book  not found");
-        if (!await _sharedUserRepository.IsUserExistsUserId(bookReview.UserId))
-            throw new NotFoundException("user not found");
         var review = await _bookReviewRepository.UpdateBookReview(bookReviewId, bookReview);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return review;

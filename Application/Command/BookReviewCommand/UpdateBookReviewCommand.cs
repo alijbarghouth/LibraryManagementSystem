@@ -5,5 +5,5 @@ namespace Application.Command.BookReviewCommand;
 public record UpdateBookReviewCommand
 (
     Guid BookReviewId,
-    BookReview BookReview   
+    UpdateBookReviewequest BookReview   
 );

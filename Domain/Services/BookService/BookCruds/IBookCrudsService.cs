@@ -8,5 +8,5 @@ public interface IBookCrudsService
     Task<Response<BookRequest>> AddBook(BookRequest book, CancellationToken cancellationToken = default);
     Task<bool> DeleteBook(Guid bookId, CancellationToken cancellationToken = default);
     Task<Response<BookRequest>> UpdateBook(Guid bookId, BookRequest book, CancellationToken cancellationToken = default);
-    Task<List<Book>> GetAllBook();
+    Task<List<Response<Book>>> GetAllBook();
 }

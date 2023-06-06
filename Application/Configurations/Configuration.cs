@@ -20,6 +20,7 @@ using Application.Handler.BookHandler.SearchBookByGenre;
 using Application.Handler.BookHandler.SearchBookByTitle;
 using Application.Handler.BookHandler.UpdateBookCommandHandler;
 using Application.Handler.BookReviewHandler.AddBookReviewCommandHandler;
+using Application.Handler.BookReviewHandler.DeleteBookReviewCommandHandler;
 using Application.Handler.BookReviewHandler.GetAllBookReviewQueryHandler;
 using Application.Handler.BookReviewHandler.UpdateBookReviewCommandHandler;
 using Application.Handler.BookTransactionHandler.AcceptReturnedBook;
@@ -38,6 +39,7 @@ using Application.Handler.UserHandler.RefreshTokenHandler;
 using Application.Handler.UserHandler.RegisterHandler;
 using Application.Handler.UserHandler.RoleHandler;
 using Application.Handler.UserHandler.UpdateLibrarianHandler;
+using Application.Query.BookReview;
 using Application.Query.PatronProfile;
 using Application.Validator.AuthorBookValidator;
 using Application.Validator.BookGenreValidator;
@@ -47,6 +49,7 @@ using Application.Validator.GenreValidator;
 using Application.Validator.PatronProfileValidator;
 using Application.Validator.ReadingListValidator;
 using Application.Validator.UserValidator;
+using Domain.DTOs.BookReviewDTOs;
 using Domain.Services.AuthorService;
 using Domain.Services.BookAuthorService;
 using Domain.Services.BookGenreService;
@@ -93,6 +96,9 @@ public static class Configuration
         services.AddScoped<IValidator<AddReadingListCommand>, AddReadingListCommandValidation>();
         services.AddScoped<IValidator<DeleteReadingListCommand>, DeleteReadingListCommandValidation>();
         services.AddScoped<IValidator<AddBookReviewCommand>, AddBookReviewCommandValidation>();
+        services.AddScoped<IValidator<DeleteBookReviewCommand>, DeleteBookReviewCommandValidation>();
+        services.AddScoped<IValidator<UpdateBookReviewCommand>,UpdateBookReviewCommandValidation>();
+        services.AddScoped<IValidator<GetAllBookReviewQuery>, GetAllBookReviewQueryValidation>();
     }
 
     private static void AddCustomDependencies(IServiceCollection services)
@@ -140,6 +146,7 @@ public static class Configuration
         services.AddScoped<IBookReviewService, BookReviewService>();
         services.AddScoped<IAddBookReviewCommandHandler, AddBookReviewCommandHandler>();
         services.AddScoped<IUpdateBookReviewCommandHandler, UpdateBookReviewCommandHandler>();
+        services.AddScoped<IDeleteBookReviewCommandHandler, DeleteBookReviewCommandHandler>();
         services.AddScoped<IGetAllBookReviewCommandHandler, GetAllBookReviewQueryHandler>();
     }
 }

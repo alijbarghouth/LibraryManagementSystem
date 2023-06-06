@@ -1,5 +1,6 @@
 using Application.Cashing;
 using Domain.DTOs.BookDTOs;
+using Domain.DTOs.Response;
 using Domain.Services.BookService.BookCruds;
 
 namespace Application.Handler.BookHandler.GetAllBookQueryHandler;
@@ -15,9 +16,9 @@ public sealed class GetAllBookQueryHandler  : IGetAllBookQueryHandler
         _cashService = cashService;
     }
 
-    public async Task<List<Book>> Handel()
+    public async Task<List<Response<Book>>> Handel()
     {
-        return await _cashService.GetAsync<List<Book>>("Books", async () =>
+        return await _cashService.GetAsync<List<Response<Book>>>("Books", async () =>
         {
             var books = await _bookCrudsService.GetAllBook();
             return books;

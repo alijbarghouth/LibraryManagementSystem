@@ -51,7 +51,7 @@ public sealed class BookCrudsService : IBookCrudsService
         return result;
     }
 
-    public async Task<List<Book>> GetAllBook()
+    public async  Task<List<Response<Book>>> GetAllBook()
     {
         return await _bookCrudsRepository.GetAllBook();
     }
