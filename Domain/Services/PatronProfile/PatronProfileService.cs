@@ -25,7 +25,7 @@ public sealed class PatronProfileService : IPatronProfileService
 
     public async Task<List<DTOs.PatronProfileDTOs.PatronProfile>> GetPatronProfile(Guid userId)
     {
-        if (!await _sharedUserRepository.UserIsExistsUserId(userId))
+        if (!await _sharedUserRepository.IsUserExistsUserId(userId))
             throw new NotFoundException("user not found");
         
         return await _patronProfileRepository.GetPatronProfile(userId);
@@ -34,7 +34,7 @@ public sealed class PatronProfileService : IPatronProfileService
     public async Task<DTOs.PatronProfileDTOs.PatronProfile> ViewAndEditPatronProfile(
         DTOs.PatronProfileDTOs.PatronProfile patronProfile, Guid orderId, CancellationToken cancellationToken = default)
     {
-        if (!await _sharedUserRepository.UserIsExistsUserId(patronProfile.UserId))
+        if (!await _sharedUserRepository.IsUserExistsUserId(patronProfile.UserId))
             throw new NotFoundException("user not found");
         if (!await _sharedBookManagementRepository.OrderIsExistsByOrderId(orderId))
             throw new NotFoundException("order not found");

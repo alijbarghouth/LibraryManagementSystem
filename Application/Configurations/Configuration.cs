@@ -4,6 +4,7 @@ using Application.Command.BookGenreCommand;
 using Application.Command.BookTransactionCommand;
 using Application.Command.GenreCommand;
 using Application.Command.PatronProfileCommand;
+using Application.Command.ReadingListCommand;
 using Application.Command.UserCommand;
 using Application.Handler.AuthorHandler.AddAuthorCommandHandler;
 using Application.Handler.AuthorHandler.DeleteAuthorCommandHandler;
@@ -24,6 +25,10 @@ using Application.Handler.BookTransactionHandler.ReserveBook;
 using Application.Handler.GenreHandler;
 using Application.Handler.PatronProfileHandler.GetPatronProfileQueryHandler;
 using Application.Handler.PatronProfileHandler.ViewAndEditPatronProfileCommandHandler;
+using Application.Handler.ReadingListHandler.AddReadingListHandler;
+using Application.Handler.ReadingListHandler.DeleteReadingListHandler;
+using Application.Handler.ReadingListHandler.GetAllReadingListQueryHandler;
+using Application.Handler.ReadingListHandler.UpdateReadingListHandler;
 using Application.Handler.UserHandler.DeleteLibrarianHandler;
 using Application.Handler.UserHandler.LoginHandler;
 using Application.Handler.UserHandler.RefreshTokenHandler;
@@ -36,6 +41,7 @@ using Application.Validator.BookGenreValidator;
 using Application.Validator.BookTransactionValidator;
 using Application.Validator.GenreValidator;
 using Application.Validator.PatronProfileValidator;
+using Application.Validator.ReadingListValidator;
 using Application.Validator.UserValidator;
 using Domain.Services.AuthorService;
 using Domain.Services.BookAuthorService;
@@ -45,6 +51,7 @@ using Domain.Services.BookService.BookSearch;
 using Domain.Services.BookTransactionService;
 using Domain.Services.GenreService;
 using Domain.Services.PatronProfile;
+using Domain.Services.ReadingListService;
 using Domain.Services.UserService.AuthService;
 using Domain.Services.UserService.LoginService;
 using Domain.Services.UserService.RegisterService;
@@ -77,6 +84,9 @@ public static class Configuration
         services.AddScoped<IValidator<ViewAndEditPatronProfileCommand>, ViewAndEditPatronProfileCommandValidation>();
         services.AddScoped<IValidator<PatronProfileQuery>, PatronProfileQueryValidation>();
         services.AddScoped<IValidator<AddBookGenreCommand>, AddBookGenreCommandValidation>();
+        services.AddScoped<IValidator<AddReadingListCommand>, AddReadingListCommandValidation>();
+        services.AddScoped<IValidator<UpdateReadingListCommand>, UpdateReadingListCommandValidation>();
+        services.AddScoped<IValidator<DeleteReadingListCommand>, DeleteReadingListCommandValidation>();
     }
 
     private static void AddCustomDependencies(IServiceCollection services)
@@ -117,5 +127,10 @@ public static class Configuration
         services.AddScoped<IDeleteLibrarianRequestCommandHandler, DeleteLibrarianRequestCommandHandler>();
         services.AddScoped<IBookGenreService, BookGenreService>();
         services.AddScoped<IAddBookGenreCommandHandler, AddBookGenreCommandHandler>();
+        services.AddScoped<IReadingListService, ReadingListService>();
+        services.AddScoped<IAddReadingListCommandHandler, AddReadingListCommandHandler>();
+        services.AddScoped<IUpdateReadingListCommandHandler, UpdateReadingListCommandHandler>();
+        services.AddScoped<IDeleteReadingListCommandHandler, DeleteReadingListCommandHandler>();
+        services.AddScoped<IGetAllReadingListQueryHandler, GetAllReadingListQueryHandler>();
     }
 }

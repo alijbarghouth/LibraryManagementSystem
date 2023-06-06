@@ -9,4 +9,6 @@ public interface ISharedBookManagementRepository
     Task<bool> IsGenreExistsById(Guid genreId);
     Task<bool> IsAuthorExistsByAuthorName(string authorName);
     Task<bool> IsAuthorExistsByAuthorId(Guid authorId);
+    Task<bool> IsReadingListExistsByAuthorId(Guid readingListId);
+    Task<bool> IsBookExistsInReadingList(Guid bookId);
 }

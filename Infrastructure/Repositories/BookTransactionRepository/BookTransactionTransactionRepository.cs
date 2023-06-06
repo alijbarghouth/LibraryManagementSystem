@@ -24,7 +24,7 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
         var user = await _libraryDbContext.Users.FindAsync(userId)
                    ?? throw new NotFoundException("user is not found");
         if (user.Orders.Any
-            (x => x.OrderItems
+            (x =>x.StatusRequest == StatusRequest.Reserved &&x.OrderItems
                 .Any(y => y.BookId == book.Id)))
         {
             throw new BadRequestException("order is already exists");
@@ -64,7 +64,6 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
                         ?? throw new NotFoundException("order item not found");
 
         orderItem.BorrowedDate = DateTime.UtcNow;
-        orderItem.DateRetrieved = DateTime.UtcNow.AddDays(10);
         _libraryDbContext.Orders.Update(order);
         await _libraryDbContext.SaveChangesAsync();
         _libraryDbContext.OrderItems.Update(orderItem);

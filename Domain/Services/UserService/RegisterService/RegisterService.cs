@@ -12,6 +12,7 @@ public sealed class RegisterService : IRegisterService
     private readonly IRegisterRepository _registerRepository;
     private readonly ISharedUserRepository _sharedUserRepository;
     private readonly IUnitOfWork _unitOfWork;
+
     public RegisterService(IRegisterRepository registerRepository
         , IUnitOfWork unitOfWork, ISharedUserRepository sharedUserRepository)
     {
@@ -20,10 +21,11 @@ public sealed class RegisterService : IRegisterService
         _sharedUserRepository = sharedUserRepository;
     }
 
-    public async Task<Response<RegisterUser>> RegisterUser(RegisterUser register, CancellationToken cancellationToken = default)
+    public async Task<Response<RegisterUser>> RegisterUser(RegisterUser register,
+        CancellationToken cancellationToken = default)
     {
-        if (await _sharedUserRepository.UserIsExistsByEmail(register.Email)
-            || await _sharedUserRepository.UserIsExistByUsername(register.Username))
+        if (await _sharedUserRepository.IsUserExistsByEmail(register.Email)
+            || await _sharedUserRepository.IsUserExistByUsername(register.Username))
             throw new BadRequestException("username or email is exists");
 
         var user = await _registerRepository.RegisterUser(register);

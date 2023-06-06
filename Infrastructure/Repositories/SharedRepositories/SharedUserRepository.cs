@@ -14,26 +14,24 @@ public sealed class SharedUserRepository : ISharedUserRepository
     }
 
 
-    public async Task<bool> UserIsExistByUsername(string username)
+    public async Task<bool> IsUserExistByUsername(string username)
     {
         return await _libraryDbContext.Users
-       .AsNoTracking()
-       .AnyAsync(x => x.Username == username);
+            .AsNoTracking()
+            .AnyAsync(x => x.Username == username);
     }
 
-    public async Task<bool> UserIsExistsByEmail(string email)
+    public async Task<bool> IsUserExistsByEmail(string email)
     {
         return await _libraryDbContext.Users
             .AsNoTracking()
             .AnyAsync(x => x.Email == email);
     }
 
-    public async Task<bool> UserIsExistsUserId(Guid userId)
+    public async Task<bool> IsUserExistsUserId(Guid userId)
     {
         return await _libraryDbContext.Users
             .AsNoTracking()
             .AnyAsync(x => x.Id == userId);
     }
-
-   
 }

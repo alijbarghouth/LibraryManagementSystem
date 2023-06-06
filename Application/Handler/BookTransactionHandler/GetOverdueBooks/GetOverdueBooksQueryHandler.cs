@@ -18,13 +18,13 @@ public sealed class GetOverdueBooksQueryHandler : IGetOverdueBooksQueryHandler
     }
 
     public async Task<List<Order>> Handel()
-    {
-        return await _cashService.GetAsync<List<Order>>("OverdueBooks", async () =>
+    =>
+         await _cashService.GetAsync<List<Order>>("OverdueBooks", async () =>
         {
             var order = await _bookTransactionService.GetOverdueBooks();
             if (order.Count <= 0)
                 throw new NoContentException("no order");
             return order;
         });
-    }
+    
 }

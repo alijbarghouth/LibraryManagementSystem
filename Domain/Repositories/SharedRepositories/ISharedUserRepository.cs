@@ -2,7 +2,7 @@
 
 public interface ISharedUserRepository
 {
-    Task<bool> UserIsExistByUsername(string username);
-    Task<bool> UserIsExistsByEmail(string email);
-    Task<bool> UserIsExistsUserId(Guid userId);
+    Task<bool> IsUserExistByUsername(string username);
+    Task<bool> IsUserExistsByEmail(string email);
+    Task<bool> IsUserExistsUserId(Guid userId);
 }

@@ -47,6 +47,8 @@ public sealed class BookCrudsRepository : IBookCrudsRepository
     public async Task<List<Domain.DTOs.BookDTOs.Book>> GetAllBook()
     {
         return (await _libraryDbContext.Books
+                .Include(x => x.Genre)
+                .Include(x => x.Authors)
                 .AsNoTracking()
                 .ToListAsync())
             .Adapt<List<Domain.DTOs.BookDTOs.Book>>();

@@ -20,7 +20,8 @@ public sealed class GetPatronProfileQueryHandler : IGetPatronProfileQueryHandler
     public async Task<List<PatronProfile>> Handel(PatronProfileQuery query,
         CancellationToken cancellationToken = default)
     {
-        return await _cashService.GetAsync(query.UserId.ToString(),
+        var key = $"{query.UserId} PatronProfile";
+        return await _cashService.GetAsync(key,
             async () =>
             {
                 var orders = await _patronProfileService.GetPatronProfile(query.UserId);
