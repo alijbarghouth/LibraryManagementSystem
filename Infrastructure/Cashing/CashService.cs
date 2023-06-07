@@ -53,6 +53,11 @@ public class CashService : ICashService
         CashKeys.TryAdd(key, false);
     }
 
+    public async Task RefreshAsync(string key, CancellationToken cancellationToken = default)
+    {
+        await _distributedCache.RefreshAsync(key, cancellationToken);
+    }
+
     public async Task RemoveAsync(string key, CancellationToken cancellationToken = default)
     {
         await _distributedCache.RemoveAsync(key, cancellationToken);

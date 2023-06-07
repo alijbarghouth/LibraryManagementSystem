@@ -54,12 +54,10 @@ public sealed class BookReviewService : IBookReviewService
         return result;
     }
 
-    public async Task<List<Response<BookReview>>> GetAllBookReviewByBookIdAndUserId(Guid userId, Guid bookId)
+    public async Task<List<Response<BookReview>>> GetAllBookReviewByBookIdForUser( Guid bookId)
     {
         if (!await _sharedBookManagementRepository.IsBookExistsByBookId(bookId))
             throw new NotFoundException("book  not found");
-        if (!await _sharedUserRepository.IsUserExistsUserId(userId))
-            throw new NotFoundException("user not found");
-        return await _bookReviewRepository.GetAllBookReviewByBookIdAndUserId(userId, bookId);
+        return await _bookReviewRepository.GetAllBookReviewByBookIdForUser(bookId);
     }
 }

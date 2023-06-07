@@ -96,4 +96,11 @@ public sealed class SharedBookManagementRepository : ISharedBookManagementReposi
             .AsNoTracking()
             .AnyAsync(x => x.UserId == userId && x.BookReviewId == bookReviewId);
     }
+
+    public async Task<bool> IsReadingListExistsByBookIdAndUserId(Guid userId, Guid bookId)
+    {
+        return await _libraryDbContext.ReadingLists
+            .AsNoTracking()
+            .AnyAsync(x => x.UserId == userId && x.BookId == bookId);
+    }
 }

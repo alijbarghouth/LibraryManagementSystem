@@ -1,4 +1,5 @@
-﻿using Application.Command.BookTransactionCommand;
+﻿using Application.Cashing;
+using Application.Command.BookTransactionCommand;
 using Domain.Services.BookTransactionService;
 
 namespace Application.Handler.BookTransactionHandler.ReserveBook;
@@ -6,14 +7,19 @@ namespace Application.Handler.BookTransactionHandler.ReserveBook;
 public sealed class ReserveBookCommandHandler : IReserveBookCommandHandler
 {
     private readonly IBookTransactionService _bookTransactionService;
-
-    public ReserveBookCommandHandler(IBookTransactionService bookTransactionService)
+    private readonly ICashService _cashService;
+    public ReserveBookCommandHandler(IBookTransactionService bookTransactionService,
+        ICashService cashService)
     {
         _bookTransactionService = bookTransactionService;
+        _cashService = cashService;
     }
 
     public async Task<bool> Handel(ReserveBookCommand command)
     {
-        return await _bookTransactionService.ReserveBook(command.BookId,command.UserId);   
+        var key = $"{command.UserId} PatronProfile";
+        var transactionResult =  await _bookTransactionService.ReserveBook(command.BookId,command.UserId);
+        await _cashService.RemoveAsync(key);
+        return transactionResult;
     }
 }

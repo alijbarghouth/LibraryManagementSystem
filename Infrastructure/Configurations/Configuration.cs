@@ -8,6 +8,7 @@ using Domain.Repositories.BookRepository.SearchBookRepository;
 using Domain.Repositories.BookReviewRepository;
 using Domain.Repositories.GenreRepository;
 using Domain.Repositories.InteractionRepository;
+using Domain.Repositories.ModerationRepository;
 using Domain.Repositories.PatronProfileRepository;
 using Domain.Repositories.ReadingListRepository;
 using Domain.Repositories.ReserveBookRepository;
@@ -26,6 +27,7 @@ using Infrastructure.Repositories.BookReviewRepository;
 using Infrastructure.Repositories.GenreRepository;
 using Infrastructure.Repositories.BookTransactionRepository;
 using Infrastructure.Repositories.InteractionRepository;
+using Infrastructure.Repositories.ModerationRepository;
 using Infrastructure.Repositories.PatronProfileRepository;
 using Infrastructure.Repositories.ReadingListRepository;
 using Infrastructure.Repositories.SharedRepositories;
@@ -71,6 +73,7 @@ public static class Configuration
         services.AddScoped<IReadingListRepository, ReadingListRepository>();
         services.AddScoped<IBookReviewRepository, BookReviewRepository>();
         services.AddScoped<IInteractionRepository, InteractionRepository>();
+        services.AddScoped<IModerationRepository, ModerationRepository>();
         services.Configure<JWT>(configuration.GetSection("JWT"));
     }
 

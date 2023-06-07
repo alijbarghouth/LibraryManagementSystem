@@ -32,8 +32,9 @@ public sealed class ReadingListService : IReadingListService
             throw new NotFoundException("book not found");
         if (!await _sharedBookManagementRepository.IsBookExistsByBookId(readingList.BookId))
             throw new NotFoundException("book not found");
-        if (!await _sharedBookManagementRepository.IsBookExistsInReadingList(readingList.BookId))
-            throw new BadRequestException("book is exists in reading list");
+        if (await _sharedBookManagementRepository.IsReadingListExistsByBookIdAndUserId(readingList.UserId,readingList.BookId))
+            throw new BadRequestException("book is exists in readingList");
+
         var readList = await _readingListRepository.AddReadingList(readingList);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return readList;

@@ -9,5 +9,5 @@ public interface IBookReviewService
     Task<Response<BookReview>> UpdateBookReview(Guid bookReviewId,
         UpdateBookReviewequest bookReview, CancellationToken cancellationToken = default);
     Task<bool> DeleteBookReview(Guid bookReviewId, CancellationToken cancellationToken = default);
-    Task<List<Response<BookReview>>> GetAllBookReviewByBookIdAndUserId(Guid userId, Guid bookId);
+    Task<List<Response<BookReview>>> GetAllBookReviewByBookIdForUser( Guid bookId);
 }

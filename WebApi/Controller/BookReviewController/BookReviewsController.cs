@@ -46,7 +46,7 @@ namespace WebApi.Controller.BookReviewController
             return Ok(await _deleteBookReviewCommandHandler.Handel(command));
         }
         [HttpGet]
-        public async Task<IActionResult> GetAllBookReviewByUserIdAndBookId(GetAllBookReviewQuery query)
+        public async Task<IActionResult> GetAllBookReviewByUserIdAndBookId([FromQuery]GetAllBookReviewQuery query)
         {
             return Ok(await _getAllBookReviewCommandHandler.Handel(query));
         }

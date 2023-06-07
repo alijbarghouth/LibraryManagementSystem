@@ -33,6 +33,7 @@ using Application.Handler.InteractionHandler.AddInteractionCommandHandler;
 using Application.Handler.InteractionHandler.DeleteInteractionCommandHandler;
 using Application.Handler.InteractionHandler.GetAllInteractionQueryHandler;
 using Application.Handler.InteractionHandler.UpdateInteractionCommandHandler;
+using Application.Handler.ModerationHandler;
 using Application.Handler.PatronProfileHandler.GetPatronProfileQueryHandler;
 using Application.Handler.PatronProfileHandler.ViewAndEditPatronProfileCommandHandler;
 using Application.Handler.ReadingListHandler.AddReadingListHandler;
@@ -66,6 +67,7 @@ using Domain.Services.BookService.BookSearch;
 using Domain.Services.BookTransactionService;
 using Domain.Services.GenreService;
 using Domain.Services.InteractionService;
+using Domain.Services.ModerationService;
 using Domain.Services.PatronProfile;
 using Domain.Services.ReadingListService;
 using Domain.Services.UserService.AuthService;
@@ -165,5 +167,7 @@ public static class Configuration
         services.AddScoped<IUpdateInteractionCommandHandler, UpdateInteractionCommandHandler>();
         services.AddScoped<IDeleteInteractionCommandHandler, DeleteInteractionCommandHandler>();
         services.AddScoped<IGetAllInteractionQueryHandler, GetAllInteractionQueryHandler>();
+        services.AddScoped<IModerationService, ModerationService>();
+        services.AddScoped<IDeleteReviewCommandHandler, DeleteReviewCommandHandler>();
     }
 }

@@ -29,6 +29,7 @@
   <ItemGroup>
     <Folder Include="Controller\BookReviewController\" />
     <Folder Include="Controller\InteractionController\" />
+    <Folder Include="Controller\ModerationController\" />
     <Folder Include="Controller\ReadingListController\" />
   </ItemGroup>
 

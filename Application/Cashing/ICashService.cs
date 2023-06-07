@@ -12,6 +12,7 @@ public interface ICashService
     Task SetAsync<T>(string key, T value)
         where T : class;
 
+    Task RefreshAsync(string key, CancellationToken cancellationToken = default);
     Task RemoveAsync(string key, CancellationToken cancellationToken = default);
     Task RemoveByPrefixAsync(string prefixKey, CancellationToken cancellationToken = default);
 }

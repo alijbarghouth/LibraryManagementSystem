@@ -18,7 +18,7 @@ public sealed class GetAllBookQueryHandler  : IGetAllBookQueryHandler
 
     public async Task<List<Response<Book>>> Handel()
     {
-        return await _cashService.GetAsync<List<Response<Book>>>("Bookds", async () =>
+        return await _cashService.GetAsync<List<Response<Book>>>("Book", async () =>
         {
             var books = await _bookCrudsService.GetAllBook();
             return books;

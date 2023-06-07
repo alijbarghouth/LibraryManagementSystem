@@ -13,5 +13,6 @@ public interface ISharedBookManagementRepository
     Task<bool> IsBookExistsInReadingList(Guid bookId);
     Task<bool> IsBookReviewExistsByBookReviewId(Guid bookReviewId);
     Task<bool> IsInteractionExistsByInteractionId(Guid bookReviewId);
-    Task<bool> IsInteractionExistsByBookReviewIdAndUserId(Guid userId, Guid bookId);
+    Task<bool> IsInteractionExistsByBookReviewIdAndUserId(Guid userId, Guid bookReviewId);
+    Task<bool> IsReadingListExistsByBookIdAndUserId(Guid userId, Guid bookId);
 }

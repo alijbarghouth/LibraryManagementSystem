@@ -19,7 +19,21 @@ public sealed class BookReviewRepository : IBookReviewRepository
     public async Task<Response<Domain.DTOs.BookReviewDTOs.BookReview>> AddBookReview(
         Domain.DTOs.BookReviewDTOs.BookReview bookReview)
     {
-        var review = bookReview.Adapt<BookReview>();
+        var review = new BookReview
+        {
+            BookId = bookReview.BookId,
+            Moderations = new List<Moderation>
+            {
+                new Moderation
+                {
+                    Reason = "",
+                }
+            },
+            Content = bookReview.Content,
+            Rating = bookReview.Rating,
+            UserId = bookReview.UserId
+        };
+        // var review = bookReview.Adapt<BookReview>();
         await _libraryDbContext.BookReviews.AddAsync(review);
         return new Response<Domain.DTOs.BookReviewDTOs.BookReview>(bookReview, review.Id);
     }
@@ -44,12 +58,13 @@ public sealed class BookReviewRepository : IBookReviewRepository
         return true;
     }
 
-    public async Task<List<Response<Domain.DTOs.BookReviewDTOs.BookReview>>> GetAllBookReviewByBookIdAndUserId(
-        Guid userId, Guid bookId)
+    public async Task<List<Response<Domain.DTOs.BookReviewDTOs.BookReview>>>
+        GetAllBookReviewByBookIdForUser(Guid bookId)
     {
         return await _libraryDbContext.BookReviews
-            .Where(x => x.UserId == userId && x.BookId == bookId
-                 && x.Moderations.All(i => i.IsApproved))
+            .Include(x => x.Moderations)
+            .Where(x => x.BookId == bookId
+                        && x.Moderations.All(i => i.IsApproved))
             .Select(x
                 => new Response<Domain.DTOs.BookReviewDTOs.BookReview>
                     (x.Adapt<Domain.DTOs.BookReviewDTOs.BookReview>(), x.Id))

@@ -20,10 +20,10 @@ public class GetAllBookReviewQueryHandler : IGetAllBookReviewCommandHandler
 
     public async Task<List<Response<BookReview>>> Handel(GetAllBookReviewQuery query)
     {
-        var key = $"{query.UserId}{query.BookId}";
+        var key = $"BookReview {query.BookId}";
         return await _cashService.GetAsync<List<Response<BookReview>>>(key, async () =>
         {
-            var bookReview = await _bookReviewService.GetAllBookReviewByBookIdAndUserId(query.UserId, query.BookId);
+            var bookReview = await _bookReviewService.GetAllBookReviewByBookIdForUser( query.BookId);
             return bookReview;
         });
     }
