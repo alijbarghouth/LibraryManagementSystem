@@ -61,6 +61,7 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
     public async Task<Domain.DTOs.OrderDTOs.Order> CheckOutBook(Guid orderId)
     {
         var order = await _libraryDbContext.Orders
+                        .Include(x=> x.OrderItems)
                         .FirstOrDefaultAsync(o => o.Id == orderId && o.StatusRequest == StatusRequest.Reserved)
                     ?? throw new NotFoundException("order not found or not found order is reserved");
         order.StatusRequest = StatusRequest.CheckedOut;

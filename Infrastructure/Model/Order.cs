@@ -7,6 +7,11 @@ namespace Infrastructure.Model;
 [Index(nameof(Id), IsUnique = true)]
 public sealed class Order
 {
+    public Order()
+    {
+        OrderItems = new List<OrderItem>();
+    }
+
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }

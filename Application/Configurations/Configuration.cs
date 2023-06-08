@@ -39,6 +39,7 @@ using Application.Handler.PatronProfileHandler.ViewAndEditPatronProfileCommandHa
 using Application.Handler.ReadingListHandler.AddReadingListHandler;
 using Application.Handler.ReadingListHandler.DeleteReadingListHandler;
 using Application.Handler.ReadingListHandler.GetAllReadingListQueryHandler;
+using Application.Handler.UserHandler.ConfirmedEmailHandler;
 using Application.Handler.UserHandler.DeleteLibrarianHandler;
 using Application.Handler.UserHandler.LoginHandler;
 using Application.Handler.UserHandler.RefreshTokenHandler;
@@ -173,6 +174,7 @@ public static class Configuration
         services.AddScoped<IModerationService, ModerationService>();
         services.AddScoped<IDeleteReviewCommandHandler, DeleteReviewCommandHandler>();
         services.AddScoped<INotificationService, NotificationService>();
+        services.AddScoped<IConfirmedEmailCommandHandler, ConfirmedEmailCommandHandler>();
         services.Configure<MailSettings>
             (configuration.GetSection(nameof(MailSettings)));
     }

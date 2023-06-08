@@ -25,6 +25,7 @@ public sealed class User
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
     public bool IsActive { get; set; } = true;
+    public bool IsConfirmed { get; set; }
     public ICollection<RefreshToken> RefreshTokens { get; set; }
     public  ICollection<Role> Roles { get; set; }
     public  IEnumerable<ReadingList> ReadingLists { get; set; }

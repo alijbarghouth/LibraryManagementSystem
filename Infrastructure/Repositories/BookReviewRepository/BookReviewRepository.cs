@@ -70,4 +70,20 @@ public sealed class BookReviewRepository : IBookReviewRepository
                     (x.Adapt<Domain.DTOs.BookReviewDTOs.BookReview>(), x.Id))
             .ToListAsync();
     }
+
+    public async Task<double> AverageRatingForEachBook(Guid bookId)
+    {
+        var booksRating = await _libraryDbContext.Books
+            .Include(b => b.BookReviews)
+            .Select(b => new
+            {
+                b.Id,
+                AverageRating = b.BookReviews.Any() ? b.BookReviews.Average(r => r.Rating) : 0
+            })
+            .ToListAsync();
+
+        return booksRating.FirstOrDefault
+                (x => x.Id == bookId)
+            .AverageRating;
+    }
 }

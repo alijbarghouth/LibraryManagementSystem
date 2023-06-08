@@ -13,6 +13,7 @@ public sealed class BookReviewService : IBookReviewService
     private readonly IUnitOfWork _unitOfWork;
     private readonly ISharedUserRepository _sharedUserRepository;
     private readonly ISharedBookManagementRepository _sharedBookManagementRepository;
+
     public BookReviewService(IBookReviewRepository bookReviewRepository,
         IUnitOfWork unitOfWork,
         ISharedUserRepository sharedUserRepository,
@@ -36,7 +37,8 @@ public sealed class BookReviewService : IBookReviewService
         return review;
     }
 
-    public async Task<Response<BookReview>> UpdateBookReview(Guid bookReviewId, UpdateBookReviewequest bookReview, CancellationToken cancellationToken = default)
+    public async Task<Response<BookReview>> UpdateBookReview(Guid bookReviewId, UpdateBookReviewequest bookReview,
+        CancellationToken cancellationToken = default)
     {
         if (!await _sharedBookManagementRepository.IsBookReviewExistsByBookReviewId(bookReviewId))
             throw new NotFoundException("book review not found");
@@ -54,10 +56,15 @@ public sealed class BookReviewService : IBookReviewService
         return result;
     }
 
-    public async Task<List<Response<BookReview>>> GetAllBookReviewByBookIdForUser( Guid bookId)
+    public async Task<List<Response<BookReview>>> GetAllBookReviewByBookIdForUser(Guid bookId)
     {
         if (!await _sharedBookManagementRepository.IsBookExistsByBookId(bookId))
             throw new NotFoundException("book  not found");
         return await _bookReviewRepository.GetAllBookReviewByBookIdForUser(bookId);
+    }
+
+    public async Task<double> AverageRatingForEachBook(Guid bookId)
+    {
+        return await _bookReviewRepository.AverageRatingForEachBook(bookId);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Domain.DTOs.UserDTOs;
+using Domain.Repositories.SharedRepositories;
 using Domain.Repositories.UserRepositories;
 using Domain.Shared.Exceptions;
 using Domain.Shared.Exceptions.CustomException;
@@ -9,12 +10,15 @@ public sealed class LoginService : ILoginService
 {
     private readonly ILoginRepository _loginRepository;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly ISharedUserRepository _sharedUserRepository;
 
     public LoginService(ILoginRepository loginRepository
-        , IUnitOfWork unitOfWork)
+        , IUnitOfWork unitOfWork,
+        ISharedUserRepository sharedUserRepository)
     {
         _loginRepository = loginRepository;
         _unitOfWork = unitOfWork;
+        _sharedUserRepository = sharedUserRepository;
     }
 
     public async Task<(string, string)> LoginUser(LoginUser login, CancellationToken cancellationToken = default)
@@ -36,5 +40,14 @@ public sealed class LoginService : ILoginService
     public async Task<string> GetUserId(LoginUser loginUser)
     {
         return await _loginRepository.GetUserId(loginUser);
+    }
+    
+    public async Task ConfirmedEmail(Guid userId, CancellationToken cancellationToken = default)
+    {
+        if (!await _sharedUserRepository.IsUserExistsUserId(userId))
+            throw new NotFoundException("user not found");
+
+        await _loginRepository.ConfirmedEmail(userId);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
     }
 }

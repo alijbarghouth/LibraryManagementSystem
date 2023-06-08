@@ -10,4 +10,5 @@ public interface IBookReviewService
         UpdateBookReviewequest bookReview, CancellationToken cancellationToken = default);
     Task<bool> DeleteBookReview(Guid bookReviewId, CancellationToken cancellationToken = default);
     Task<List<Response<BookReview>>> GetAllBookReviewByBookIdForUser( Guid bookId);
+    Task<double> AverageRatingForEachBook(Guid bookId);
 }

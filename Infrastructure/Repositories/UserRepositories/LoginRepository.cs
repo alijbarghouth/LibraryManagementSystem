@@ -33,7 +33,8 @@ public sealed class LoginRepository : ILoginRepository
             .SingleAsync(x => x.Email == login.Email);
         if (!user.IsActive)
             throw new BadRequestException("account is disable");
-
+        if (!user.IsConfirmed)
+            throw new BadRequestException("Please Confirm your email");
         var token = new JwtSecurityTokenHandler().WriteToken(CreateJwtToken(user));
         var refreshToken = new RefreshToken();
         if (user.RefreshTokens.Any(x => x.IsActive))
@@ -80,6 +81,14 @@ public sealed class LoginRepository : ILoginRepository
         }
 
         return user.Id.ToString();
+    }
+
+    public async Task ConfirmedEmail(Guid userId)
+    {
+        var user = await _libraryDbContext.Users
+            .FindAsync(userId);
+        user.IsConfirmed = true;
+        _libraryDbContext.Users.Update(user);
     }
 
     private JwtSecurityToken CreateJwtToken(User user)

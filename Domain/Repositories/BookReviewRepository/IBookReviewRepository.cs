@@ -9,4 +9,5 @@ public interface IBookReviewRepository
     Task<Response<BookReview>> UpdateBookReview(Guid bookReviewId, UpdateBookReviewequest bookReview);
     Task<bool> DeleteBookReview(Guid bookReviewId);
     Task<List<Response<BookReview>>> GetAllBookReviewByBookIdForUser(Guid bookId);
+    Task<double> AverageRatingForEachBook(Guid bookId);
 }
