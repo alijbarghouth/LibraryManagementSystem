@@ -1,4 +1,5 @@
-﻿using Domain.Repositories.ReserveBookRepository;
+﻿using Azure;
+using Domain.Repositories.ReserveBookRepository;
 using Domain.Shared.Enums;
 using Domain.Shared.Exceptions.CustomException;
 using Infrastructure.DBContext;
@@ -17,14 +18,19 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
         _libraryDbContext = libraryDbContext;
     }
 
-    public async Task<bool> ReserveBook(Guid bookId, Guid userId)
+    public async Task<Domain.DTOs.OrderDTOs.Order> ReserveBook
+        (Guid bookId, Guid userId)
     {
-        var book = await _libraryDbContext.Books.FindAsync(bookId)
-                   ?? throw new NotFoundException("book is not found");
-        var user = await _libraryDbContext.Users.FindAsync(userId)
-                   ?? throw new NotFoundException("user is not found");
+        var book = await _libraryDbContext.Books.FindAsync(bookId);
+
+        var user = await _libraryDbContext.Users
+            .Include(x => x.Orders)
+            .ThenInclude(x => x.OrderItems)
+            .SingleOrDefaultAsync(x => x.Id == userId);
+
         if (user.Orders.Any
-            (x =>x.StatusRequest == StatusRequest.Reserved &&x.OrderItems
+            (x => (x.StatusRequest == StatusRequest.Reserved
+                   || x.StatusRequest == StatusRequest.CheckedOut) && x.OrderItems
                 .Any(y => y.BookId == book.Id)))
         {
             throw new BadRequestException("order is already exists");
@@ -49,17 +55,16 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
         };
 
         await _libraryDbContext.Orders.AddAsync(order);
-        return true;
+        return order.Adapt<Domain.DTOs.OrderDTOs.Order>();
     }
 
-    public async Task CheckOutBook(Guid orderId)
+    public async Task<Domain.DTOs.OrderDTOs.Order> CheckOutBook(Guid orderId)
     {
         var order = await _libraryDbContext.Orders
                         .FirstOrDefaultAsync(o => o.Id == orderId && o.StatusRequest == StatusRequest.Reserved)
                     ?? throw new NotFoundException("order not found or not found order is reserved");
         order.StatusRequest = StatusRequest.CheckedOut;
         order.OrderDate = DateTime.UtcNow;
-        // Set the borrowed date of the associated order item
         var orderItem = order.OrderItems.FirstOrDefault()
                         ?? throw new NotFoundException("order item not found");
 
@@ -68,9 +73,10 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
         await _libraryDbContext.SaveChangesAsync();
         _libraryDbContext.OrderItems.Update(orderItem);
         await _libraryDbContext.SaveChangesAsync();
+        return order.Adapt<Domain.DTOs.OrderDTOs.Order>();
     }
 
-    public async Task AcceptReturnedBook(Guid orderId)
+    public async Task<Domain.DTOs.OrderDTOs.Order> AcceptReturnedBook(Guid orderId)
     {
         var order = await _libraryDbContext.Orders
                         .FirstOrDefaultAsync(x => x.Id == orderId && x.StatusRequest == StatusRequest.CheckedOut)
@@ -84,6 +90,7 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
         orderItem.DateRetrieved = DateTime.UtcNow;
         _libraryDbContext.OrderItems.Update(orderItem);
         await _libraryDbContext.SaveChangesAsync();
+        return order.Adapt<Domain.DTOs.OrderDTOs.Order>();
     }
 
     public async Task<List<Domain.DTOs.OrderDTOs.Order>> GetOverdueBooks()

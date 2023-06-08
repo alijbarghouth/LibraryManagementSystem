@@ -10,7 +10,7 @@ public sealed class Notification
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
     public Guid UserId { get; set; }
-    public Guid Message { get; set; }
+    public string Message { get; set; }
     public DateTime CreatedAt { get; set; }
     public  User User { get; set; }
 }

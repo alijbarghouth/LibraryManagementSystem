@@ -9,7 +9,8 @@ public sealed class User
 {
     public User()
     {
-        Roles = new List<Role>(); 
+        Roles = new List<Role>();
+        Orders = new List<Order>();
     }
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

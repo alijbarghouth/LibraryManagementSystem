@@ -1,8 +1,9 @@
 using Application.Command.BookTransactionCommand;
+using Domain.DTOs.OrderDTOs;
 
 namespace Application.Handler.BookTransactionHandler.CheckOutBook;
 
 public interface ICheckOutBookCommandHandler
 {
-    Task<string> Handel(CheckOutBookCommand command);
+    Task<Order> Handel(CheckOutBookCommand command);
 }

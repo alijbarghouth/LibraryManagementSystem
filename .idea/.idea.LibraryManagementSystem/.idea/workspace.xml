@@ -12,45 +12,26 @@
   <component name="ChangeListManager">
     <list default="true" id="53e77f84-7d3d-4a8a-bd2b-c169cbe4d963" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Cashing/ICashService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Cashing/ICashService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Command/BookReviewCommand/DeleteBookReviewCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Command/BookReviewCommand/DeleteBookReviewCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Command/BookTransactionCommand/AcceptReturnedBookCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Command/BookTransactionCommand/AcceptReturnedBookCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Command/BookTransactionCommand/CheckOutBookCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Command/BookTransactionCommand/CheckOutBookCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Command/InteractionCommand/DeleteInteractionCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Command/InteractionCommand/DeleteInteractionCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Command/ReadingListCommand/DeleteReadingListCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Command/ReadingListCommand/DeleteReadingListCommand.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/BookHandler/AddBookCommandHandler/AddBookCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookHandler/AddBookCommandHandler/AddBookCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/BookHandler/DeleteBookCommandHandler/DeleteBookCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookHandler/DeleteBookCommandHandler/DeleteBookCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/BookHandler/GetAllBookQueryHandler/GetAllBookQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookHandler/GetAllBookQueryHandler/GetAllBookQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/BookHandler/UpdateBookCommandHandler/UpdateBookCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookHandler/UpdateBookCommandHandler/UpdateBookCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/BookReviewHandler/AddBookReviewCommandHandler/AddBookReviewCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookReviewHandler/AddBookReviewCommandHandler/AddBookReviewCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/BookReviewHandler/DeleteBookReviewCommandHandler/DeleteBookReviewCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookReviewHandler/DeleteBookReviewCommandHandler/DeleteBookReviewCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/BookReviewHandler/GetAllBookReviewQueryHandler/GetAllBookReviewQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookReviewHandler/GetAllBookReviewQueryHandler/GetAllBookReviewQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/BookReviewHandler/UpdateBookReviewCommandHandler/UpdateBookReviewCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookReviewHandler/UpdateBookReviewCommandHandler/UpdateBookReviewCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/AcceptReturnedBook/AcceptReturnedBookCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/AcceptReturnedBook/AcceptReturnedBookCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/CheckOutBook/CheckOutBookCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/CheckOutBook/CheckOutBookCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/GetOverdueBooks/GetOverdueBooksQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/GetOverdueBooks/GetOverdueBooksQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/ReserveBook/IReserveBookCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/ReserveBook/IReserveBookCommandHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/ReserveBook/ReserveBookCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/ReserveBook/ReserveBookCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/InteractionHandler/AddInteractionCommandHandler/AddInteractionCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/InteractionHandler/AddInteractionCommandHandler/AddInteractionCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/InteractionHandler/DeleteInteractionCommandHandler/DeleteInteractionCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/InteractionHandler/DeleteInteractionCommandHandler/DeleteInteractionCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/InteractionHandler/UpdateInteractionCommandHandler/UpdateInteractionCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/InteractionHandler/UpdateInteractionCommandHandler/UpdateInteractionCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/ReadingListHandler/AddReadingListHandler/AddReadingListCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/ReadingListHandler/AddReadingListHandler/AddReadingListCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/ReadingListHandler/DeleteReadingListHandler/DeleteReadingListCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/ReadingListHandler/DeleteReadingListHandler/DeleteReadingListCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Query/BookReview/GetAllBookReviewQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Query/BookReview/GetAllBookReviewQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Validator/BookReviewValidator/GetAllBookReviewQueryValidation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Validator/BookReviewValidator/GetAllBookReviewQueryValidation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Repositories/BookReviewRepository/IBookReviewRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/BookReviewRepository/IBookReviewRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Repositories/SharedRepositories/ISharedBookManagementRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/SharedRepositories/ISharedBookManagementRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Services/BookReviewService/BookReviewService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/BookReviewService/BookReviewService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Services/BookReviewService/IBookReviewService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/BookReviewService/IBookReviewService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Services/ReadingListService/ReadingListService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/ReadingListService/ReadingListService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Cashing/CashService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Cashing/CashService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Query/BookQuery/SearchBookByTitleQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Query/BookQuery/SearchBookByTitleQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Domain.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Repositories/ReserveBookRepository/IBookTransactionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/ReserveBookRepository/IBookTransactionRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Repositories/SharedRepositories/ISharedUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/SharedRepositories/ISharedUserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/BookTransactionService/BookTransactionService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/BookTransactionService/BookTransactionService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/BookTransactionService/IBookTransactionService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/BookTransactionService/IBookTransactionService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/LibraryDBContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/LibraryDBContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Model/BookReview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Model/BookReview.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Model/Moderation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Model/Moderation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookReviewRepository/BookReviewRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookReviewRepository/BookReviewRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedBookManagementRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedBookManagementRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookReviewController/BookReviewsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookReviewController/BookReviewsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/WebApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/WebApi.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Model/Notification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Model/Notification.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Model/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Model/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookTransactionRepository/BookTransactionTransactionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookTransactionRepository/BookTransactionTransactionRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/PatronProfileRepository/PatronProfileRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/PatronProfileRepository/PatronProfileRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedUserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +55,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="SWEA" />
+  </component>
   <component name="ProjectId" id="2QBUZGCTWARnhXaJDVfuIqVKr6H" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -82,29 +66,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Interaction",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "ReSpellerSettingsId",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Interaction&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ReSpellerSettingsId&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\user\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\user\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="dddd" />
@@ -192,7 +176,8 @@
       <workItem from="1685884912775" duration="11888000" />
       <workItem from="1685946312544" duration="35395000" />
       <workItem from="1686039778550" duration="26788000" />
-      <workItem from="1686121201478" duration="12078000" />
+      <workItem from="1686121201478" duration="21512000" />
+      <workItem from="1686221012334" duration="844000" />
     </task>
     <servers />
   </component>

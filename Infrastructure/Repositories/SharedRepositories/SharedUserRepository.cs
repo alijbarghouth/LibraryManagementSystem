@@ -1,4 +1,5 @@
 ﻿using Domain.Repositories.SharedRepositories;
+using Domain.Shared.Exceptions.CustomException;
 using Infrastructure.DBContext;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,5 +34,14 @@ public sealed class SharedUserRepository : ISharedUserRepository
         return await _libraryDbContext.Users
             .AsNoTracking()
             .AnyAsync(x => x.Id == userId);
+    }
+
+    public async Task<(string, string)> FindUserEmailAndUsernameById(Guid userId)
+    {
+        var user = await _libraryDbContext.Users
+            .FindAsync(userId);
+        if (user is null)
+            throw new NotFoundException("user not found");
+        return (user.Username, user.Email);
     }
 }

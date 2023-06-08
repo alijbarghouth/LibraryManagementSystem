@@ -22,7 +22,7 @@ builder.Services.AddControllers(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddApplication()
+builder.Services.AddApplication(builder.Configuration)
     .AddInfrastructure(builder.Configuration)
     .AddWebApi(builder.Configuration);
 

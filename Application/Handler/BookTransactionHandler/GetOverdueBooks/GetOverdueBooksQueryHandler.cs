@@ -1,6 +1,7 @@
 using Application.Cashing;
 using Domain.DTOs.OrderDTOs;
 using Domain.Services.BookTransactionService;
+using Domain.Services.NotificationService;
 using Domain.Shared.Exceptions.CustomException;
 
 namespace Application.Handler.BookTransactionHandler.GetOverdueBooks;
@@ -10,7 +11,8 @@ public sealed class GetOverdueBooksQueryHandler : IGetOverdueBooksQueryHandler
     private readonly IBookTransactionService _bookTransactionService;
     private readonly ICashService _cashService;
 
-    public GetOverdueBooksQueryHandler(IBookTransactionService bookTransactionService,
+    public GetOverdueBooksQueryHandler
+    (IBookTransactionService bookTransactionService,
         ICashService cashService)
     {
         _bookTransactionService = bookTransactionService;
@@ -18,13 +20,13 @@ public sealed class GetOverdueBooksQueryHandler : IGetOverdueBooksQueryHandler
     }
 
     public async Task<List<Order>> Handel()
-    =>
-         await _cashService.GetAsync<List<Order>>("OverdueBooks", async () =>
+    {
+        return await _cashService.GetAsync<List<Order>>("OverdueBooks", async () =>
         {
-            var order = await _bookTransactionService.GetOverdueBooks();
-            if (order.Count <= 0)
+            var orders = await _bookTransactionService.GetOverdueBooks();
+            if (orders.Count <= 0)
                 throw new NoContentException("no order");
-            return order;
+            return orders;
         });
-    
+    }
 }

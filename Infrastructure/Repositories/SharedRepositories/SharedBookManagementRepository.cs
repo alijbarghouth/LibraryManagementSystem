@@ -13,7 +13,7 @@ public sealed class SharedBookManagementRepository : ISharedBookManagementReposi
         _libraryDbContext = libraryDbContext;
     }
 
-    public async Task<bool> OrderIsExistsByOrderId(Guid orderId)
+    public async Task<bool> IsOrderExistsByOrderId(Guid orderId)
     {
         return await _libraryDbContext.Orders
             .AsNoTracking()

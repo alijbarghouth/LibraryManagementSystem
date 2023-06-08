@@ -9,11 +9,13 @@ using Domain.Repositories.BookReviewRepository;
 using Domain.Repositories.GenreRepository;
 using Domain.Repositories.InteractionRepository;
 using Domain.Repositories.ModerationRepository;
+using Domain.Repositories.NotificationRepository;
 using Domain.Repositories.PatronProfileRepository;
 using Domain.Repositories.ReadingListRepository;
 using Domain.Repositories.ReserveBookRepository;
 using Domain.Repositories.SharedRepositories;
 using Domain.Repositories.UserRepositories;
+using Domain.Services.EmailService;
 using Domain.Shared.Exceptions;
 using Infrastructure.Cashing;
 using Infrastructure.DBContext;
@@ -28,6 +30,7 @@ using Infrastructure.Repositories.GenreRepository;
 using Infrastructure.Repositories.BookTransactionRepository;
 using Infrastructure.Repositories.InteractionRepository;
 using Infrastructure.Repositories.ModerationRepository;
+using Infrastructure.Repositories.NotificationRepository;
 using Infrastructure.Repositories.PatronProfileRepository;
 using Infrastructure.Repositories.ReadingListRepository;
 using Infrastructure.Repositories.SharedRepositories;
@@ -74,7 +77,9 @@ public static class Configuration
         services.AddScoped<IBookReviewRepository, BookReviewRepository>();
         services.AddScoped<IInteractionRepository, InteractionRepository>();
         services.AddScoped<IModerationRepository, ModerationRepository>();
-        services.Configure<JWT>(configuration.GetSection("JWT"));
+        services.AddScoped<INotificationRepository, NotificationRepository>();
+        services.AddScoped<IEmailService, EmailService.EmailService>();
+        services.Configure<JWT>(configuration.GetSection(nameof(JWT)));
     }
 
     private static void AddLibraryDbContext(IServiceCollection services, IConfiguration configuration)

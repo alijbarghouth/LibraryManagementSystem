@@ -57,7 +57,7 @@ using Application.Validator.InteractionValidator;
 using Application.Validator.PatronProfileValidator;
 using Application.Validator.ReadingListValidator;
 using Application.Validator.UserValidator;
-using Domain.DTOs.BookReviewDTOs;
+using Domain.DTOs.EmailDTOs;
 using Domain.Services.AuthorService;
 using Domain.Services.BookAuthorService;
 using Domain.Services.BookGenreService;
@@ -68,6 +68,7 @@ using Domain.Services.BookTransactionService;
 using Domain.Services.GenreService;
 using Domain.Services.InteractionService;
 using Domain.Services.ModerationService;
+using Domain.Services.NotificationService;
 using Domain.Services.PatronProfile;
 using Domain.Services.ReadingListService;
 using Domain.Services.UserService.AuthService;
@@ -75,17 +76,19 @@ using Domain.Services.UserService.LoginService;
 using Domain.Services.UserService.RegisterService;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using Mapster;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Domain.Services.EmailService;
 
 namespace Application.Configurations;
 
 public static class Configuration
 {
-    public static IServiceCollection AddApplication(this IServiceCollection services)
+    public static IServiceCollection AddApplication
+        (this IServiceCollection services, IConfiguration configuration)
     {
         AddFluentValidation(services);
-        AddCustomDependencies(services);
+        AddCustomDependencies(services, configuration);
         return services;
     }
 
@@ -115,7 +118,7 @@ public static class Configuration
         services.AddScoped<IValidator<DeleteInteractionCommand>, DeleteInteractionCommandValidation>();
     }
 
-    private static void AddCustomDependencies(IServiceCollection services)
+    private static void AddCustomDependencies(IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IRegisterService, RegisterService>();
         services.AddScoped<ILoginService, LoginService>();
@@ -169,5 +172,8 @@ public static class Configuration
         services.AddScoped<IGetAllInteractionQueryHandler, GetAllInteractionQueryHandler>();
         services.AddScoped<IModerationService, ModerationService>();
         services.AddScoped<IDeleteReviewCommandHandler, DeleteReviewCommandHandler>();
+        services.AddScoped<INotificationService, NotificationService>();
+        services.Configure<MailSettings>
+            (configuration.GetSection(nameof(MailSettings)));
     }
 }

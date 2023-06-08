@@ -37,7 +37,7 @@ public sealed class PatronProfileService : IPatronProfileService
     {
         if (!await _sharedUserRepository.IsUserExistsUserId(patronProfile.UserId))
             throw new NotFoundException("user not found");
-        if (!await _sharedBookManagementRepository.OrderIsExistsByOrderId(orderId))
+        if (!await _sharedBookManagementRepository.IsOrderExistsByOrderId(orderId))
             throw new NotFoundException("order not found");
         
         var profile  = await _patronProfileRepository.ViewAndEditPatronProfile(patronProfile, orderId);
