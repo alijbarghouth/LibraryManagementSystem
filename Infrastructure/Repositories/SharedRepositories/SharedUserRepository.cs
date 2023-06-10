@@ -44,4 +44,12 @@ public sealed class SharedUserRepository : ISharedUserRepository
             throw new NotFoundException("user not found");
         return (user.Username, user.Email);
     }
+
+    public async Task<bool> IsUserActive(string email)
+    {
+        var user =  await _libraryDbContext.Users
+            .AsNoTracking()
+            .SingleAsync(x => x.Email == email);
+        return user.IsActive;
+    }
 }

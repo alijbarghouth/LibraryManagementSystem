@@ -18,15 +18,18 @@ public sealed class BookAuthorRepository : IBookAuthorRepository
     public async Task<BookAuthor> AddBookAuthor(BookAuthor bookAuthor)
     {
         var book = await _libraryDbContext.Books
-            .SingleOrDefaultAsync(x => x.Title == bookAuthor.BookName)
-            ?? throw new NotFoundException("book not found");
+                       .Include(x => x.Authors)
+                       .SingleOrDefaultAsync(x => x.Title == bookAuthor.BookName)
+                   ?? throw new NotFoundException("book not found");
 
         foreach (var authorDto in bookAuthor.AuthorName)
         {
             var author = await _libraryDbContext.Authors.SingleOrDefaultAsync(x => x.Username == authorDto)
-                 ?? throw new NotFoundException("author not found"); ;
+                         ?? throw new NotFoundException("author not found");
+            ;
             book.Authors.Add(author);
         }
+
         _libraryDbContext.Books.Update(book);
 
         return bookAuthor;

@@ -14,7 +14,7 @@ public sealed class BookSearchService : IBookSearchService
     private readonly IGenreRepository _genreRepository;
     private readonly ISharedUserRepository _sharedUserRepository;
     private readonly IUnitOfWork _unitOfWork;
-    private static readonly string BaseUrl = "/api/Books";
+    private const string BaseUrl = "/api/BookSearches";
 
     public BookSearchService(ISearchBookRepository searchBookRepository
         , IUnitOfWork unitOfWork, IGenreRepository genreRepository

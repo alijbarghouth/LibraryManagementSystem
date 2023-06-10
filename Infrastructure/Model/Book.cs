@@ -17,7 +17,7 @@ public sealed class Book
     public DateTime PublicationDate { get; set; }
     public BookStatus BookStatus { get; set; }
     public int Count { get; set; }
-    public double AverageRating { get; set; }
+    public double AverageRating { get; set; } = 0;
     public  ICollection<Genre> Genres { get; set; }
     public  ICollection<Author> Authors { get; set; }
     public  IEnumerable<ReadingList> ReadingLists { get; set; }

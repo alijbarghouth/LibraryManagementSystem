@@ -31,8 +31,6 @@ public sealed class LoginRepository : ILoginRepository
         var user = await _libraryDbContext.Users
             .Include(x => x.Roles)
             .SingleAsync(x => x.Email == login.Email);
-        if (!user.IsActive)
-            throw new BadRequestException("account is disable");
         if (!user.IsConfirmed)
             throw new BadRequestException("Please Confirm your email");
         var token = new JwtSecurityTokenHandler().WriteToken(CreateJwtToken(user));

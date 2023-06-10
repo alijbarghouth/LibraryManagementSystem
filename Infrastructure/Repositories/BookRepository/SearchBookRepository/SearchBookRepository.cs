@@ -21,15 +21,17 @@ public sealed class SearchBookRepository : ISearchBookRepository
     {
         var query = await _libraryDbContext.Books
             .AsNoTracking()
+            .Include(x=>x.Authors)
+            .Include(x=> x.Genres)
             .Where(x => string.IsNullOrEmpty(bookTitle) || x.Title.Contains(bookTitle))
             .Select(x => new
             {
                 x.Title,
-                Author = x.Authors.Select(a => a.Username).ToList(),
+                Authors = x.Authors.ToList(),
                 x.PublicationDate,
                 x.BookStatus,
                 x.Count,
-                Genre = x.Genres.Select(g => g.Name).ToList(),
+                Genres = x.Genres.ToList(),
             })
             .Skip((filter.PageNumber - 1) * filter.PageSize)
             .Take(filter.PageSize)

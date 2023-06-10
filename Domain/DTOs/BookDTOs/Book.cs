@@ -9,7 +9,7 @@ public record Book
     string Title,
     List<Author> Authors,
     DateTime PublicationDate,
-    List<Genre> Genre,
+    List<Genre> Genres,
     BookStatus BookStatus,
     int Count
 );

@@ -19,7 +19,9 @@ public sealed class AuthRepository : IAuthRepository
 
     public async Task AddRole(RoleRequest roleRequest)
     {
-        var user = await _libraryDbContext.Users.FindAsync(roleRequest.UserId);
+        var user = await _libraryDbContext.Users
+            .Include(x=>x.Roles)
+            .SingleAsync(x=> x.Id == roleRequest.UserId);
 
         var role = await _libraryDbContext.Roles.FirstOrDefaultAsync
                        (x => x.RoleName == roleRequest.RoleName)

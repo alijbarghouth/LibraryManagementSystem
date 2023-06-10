@@ -23,6 +23,9 @@ public sealed class LoginService : ILoginService
 
     public async Task<(string, string)> LoginUser(LoginUser login, CancellationToken cancellationToken = default)
     {
+        if (!await _sharedUserRepository.IsUserActive(login.Email))
+            throw new BadRequestException("account is disable");
+        
         var tokens = await _loginRepository.LoginUser(login);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return tokens;

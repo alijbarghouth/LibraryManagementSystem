@@ -62,7 +62,9 @@ namespace WebApi.Controller.UserController
             return Ok(await _resetPasswordCommandHandler.Handel(command));
         }
 
-        public async Task<IActionResult> DeleteAccount(DeleteAccountCommand command)
+        [Authorize]
+        [HttpPatch("deleteAccount")]
+        public async Task<IActionResult> DeleteAccount([FromQuery] DeleteAccountCommand command)
         {
             await _deleteAccountCommandHandler.Handel(command);
             return Ok("user Disabled");
