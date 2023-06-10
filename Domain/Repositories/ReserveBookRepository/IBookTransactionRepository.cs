@@ -1,0 +1,11 @@
+﻿using Domain.DTOs.OrderDTOs;
+
+namespace Domain.Repositories.ReserveBookRepository;
+
+public interface IBookTransactionRepository
+{
+    Task<Order> ReserveBook(Guid bookId, Guid userId);
+    Task<Order> CheckOutBook(Guid orderId);
+    Task<Order> AcceptReturnedBook(Guid orderId);
+    Task<List<Order>> GetOverdueBooks();
+}
