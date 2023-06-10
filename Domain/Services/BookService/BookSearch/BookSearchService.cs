@@ -37,7 +37,7 @@ public sealed class BookSearchService : IBookSearchService
 
     public async Task<PagedResponse<Book>> SearchBookByAuthor(string authorName, PaginationFilter filter)
     {
-        var query = await _searchBookRepository.SearchBookByAuhtorName(authorName, filter);
+        var query = await _searchBookRepository.SearchBookByAuthorName(authorName, filter);
         if (query.Count == 0)
             throw new NoContentException("no content");
 
@@ -52,6 +52,7 @@ public sealed class BookSearchService : IBookSearchService
 
         return GetPagedResponse(query, filter, bookGenre, "searchByAuthorName");
     }
+
     private static PagedResponse<Book> GetPagedResponse(List<Book> query
         , PaginationFilter filter, string searchTitle, string endPointName)
     {

@@ -13,19 +13,10 @@
   <component name="ChangeListManager">
     <list default="true" id="53e77f84-7d3d-4a8a-bd2b-c169cbe4d963" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/UserHandler/DeleteAccountHandler/DeleteAccountCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/UserHandler/DeleteAccountHandler/DeleteAccountCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Handler/UserHandler/RoleHandler/RoleCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/UserHandler/RoleHandler/RoleCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Repositories/SharedRepositories/ISharedUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/SharedRepositories/ISharedUserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Repositories/BookRepository/SearchBookRepository/ISearchBookRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/BookRepository/SearchBookRepository/ISearchBookRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Services/BookService/BookSearch/BookSearchService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/BookService/BookSearch/BookSearchService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Services/UserService/LoginService/LoginService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/UserService/LoginService/LoginService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/LibraryDBContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/LibraryDBContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Model/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Model/Book.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookAuthorRepository/BookAuthorRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookAuthorRepository/BookAuthorRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookRepository/SearchBookRepository/SearchBookRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookRepository/SearchBookRepository/SearchBookRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/SharedRepositories/SharedUserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/AuthRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/AuthRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/LoginRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/UserRepositories/LoginRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controller/UserController/AuthsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/UserController/AuthsController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

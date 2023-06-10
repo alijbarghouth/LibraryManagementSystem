@@ -40,22 +40,24 @@ public sealed class SearchBookRepository : ISearchBookRepository
         return query.Adapt<List<Domain.DTOs.BookDTOs.Book>>();
     }
 
-    public async Task<List<Domain.DTOs.BookDTOs.Book>> SearchBookByAuhtorName
+    public async Task<List<Domain.DTOs.BookDTOs.Book>> SearchBookByAuthorName
         (string authorName, PaginationFilter filter)
     {
         var query = await _libraryDbContext.Books
             .AsNoTracking()
+            .Include(x=> x.Authors)
+            .Include(x=> x.Genres)
             .Where(x => x.Authors.Any(x =>
                 string.IsNullOrEmpty(authorName)
                 || x.Username.Contains(authorName)))
             .Select(x => new
             {
                 x.Title,
-                Author = x.Authors.Select(x => x.Username).ToList(),
+                Authors = x.Authors.ToList(),
                 x.PublicationDate,
                 x.BookStatus,
                 x.Count,
-                Genre = x.Genres.Select(x => x.Name).ToList(),
+                Genres = x.Genres.ToList(),
             })
             .Skip((filter.PageNumber - 1) * filter.PageSize)
             .Take(filter.PageSize)
@@ -69,17 +71,19 @@ public sealed class SearchBookRepository : ISearchBookRepository
     {
         var query = await _libraryDbContext.Books
             .AsNoTracking()
+            .Include(x=> x.Authors)
+            .Include(x=> x.Genres)
             .Where(x => x.Genres.Any(x =>
                 string.IsNullOrEmpty(bookGenre)
                 || x.Name.Contains(bookGenre)))
             .Select(x => new
             {
                 x.Title,
-                Author = x.Authors.Select(x => x.Username).ToList(),
+                Authors = x.Authors.ToList(),
                 x.PublicationDate,
                 x.BookStatus,
                 x.Count,
-                Genre = x.Genres.Select(x => x.Name).ToList(),
+                Genres = x.Genres.ToList(),
             })
             .Skip((filter.PageNumber - 1) * filter.PageSize)
             .Take(filter.PageSize)
