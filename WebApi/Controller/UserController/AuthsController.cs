@@ -51,7 +51,8 @@ namespace WebApi.Controller.UserController
             return Ok(await _deleteLibrarianRequestCommandHandler.Handel(command));
         }
 
-        [HttpPost]
+        [Authorize]
+        [HttpPost("resetPassword")]
         public async Task<IActionResult> ResetPassword(ResetPasswordCommand command)
         {
             return Ok(await _resetPasswordCommandHandler.Handel(command));
