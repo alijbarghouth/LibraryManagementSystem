@@ -57,8 +57,9 @@ public sealed class AuthRepository : IAuthRepository
             .FindAsync(userId);
         if (user.Roles.SingleOrDefault(x => x.RoleName == "Librarian") is null)
             throw new NotFoundException("user not Librarian");
+        user.IsActive = false;
         _libraryDbContext.Users
-            .Remove(user);
+            .Update(user);
         return true;
     }
 
@@ -72,6 +73,14 @@ public sealed class AuthRepository : IAuthRepository
         resetPassword.NewPassword.HashingPassword(out var passwordHash, out var passwordSlot);
         user.PasswordHash = passwordHash;
         user.PasswordSlot = passwordSlot;
+        _libraryDbContext.Users.Update(user);
+    }
+
+    public async Task DeleteAccount(Guid userId)
+    {
+        var user = await _libraryDbContext.Users
+            .FindAsync(userId);
+        user.IsActive = false;
         _libraryDbContext.Users.Update(user);
     }
 }

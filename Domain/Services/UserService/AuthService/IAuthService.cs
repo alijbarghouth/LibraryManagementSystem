@@ -11,4 +11,5 @@ public interface IAuthService
 
     Task<bool> DeleteLibrarianAccount(Guid userId, CancellationToken cancellationToken = default);
     Task ResetPassword(ResetPassword resetPassword, CancellationToken cancellationToken = default);
+    Task DeleteAccount(Guid userId, CancellationToken cancellationToken = default);
 }

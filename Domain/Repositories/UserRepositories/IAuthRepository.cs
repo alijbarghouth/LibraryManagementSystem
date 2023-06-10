@@ -11,4 +11,5 @@ public interface IAuthRepository
 
     Task<bool> DeleteLibrarianAccount(Guid userId);
     Task ResetPassword(ResetPassword resetPassword);
+    Task DeleteAccount(Guid userId);
 }

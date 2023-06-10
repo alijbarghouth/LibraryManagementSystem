@@ -61,4 +61,12 @@ public sealed class AuthService : IAuthService
         await _authRepository.ResetPassword(resetPassword);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
     }
+
+    public async Task DeleteAccount(Guid userId, CancellationToken cancellationToken = default)
+    {
+        if (!await _sharedUserRepository.IsUserExistsUserId(userId))
+            throw new NotFoundException("user not found");
+        await _authRepository.DeleteAccount(userId);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
+    }
 }

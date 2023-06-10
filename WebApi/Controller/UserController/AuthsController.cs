@@ -1,4 +1,5 @@
 ﻿using Application.Command.UserCommand;
+using Application.Handler.UserHandler.DeleteAccountHandler;
 using Application.Handler.UserHandler.DeleteLibrarianHandler;
 using Application.Handler.UserHandler.ResetPasswordHandler;
 using Application.Handler.UserHandler.RoleHandler;
@@ -18,16 +19,19 @@ namespace WebApi.Controller.UserController
         private readonly IUpdateLibrarianRequestCommandHandler _updateLibrarianRequestCommandHandler;
         private readonly IDeleteLibrarianRequestCommandHandler _deleteLibrarianRequestCommandHandler;
         private readonly IResetPasswordCommandHandler _resetPasswordCommandHandler;
+        private readonly IDeleteAccountCommandHandler _deleteAccountCommandHandler;
 
         public AuthsController(IRoleCommandHandler roleCommandHandler
             , IUpdateLibrarianRequestCommandHandler librarianRequestCommandHandler,
             IDeleteLibrarianRequestCommandHandler deleteLibrarianRequestCommandHandler,
-            IResetPasswordCommandHandler resetPasswordCommandHandler)
+            IResetPasswordCommandHandler resetPasswordCommandHandler,
+            IDeleteAccountCommandHandler deleteAccountCommandHandler)
         {
             _roleCommandHandler = roleCommandHandler;
             _updateLibrarianRequestCommandHandler = librarianRequestCommandHandler;
             _deleteLibrarianRequestCommandHandler = deleteLibrarianRequestCommandHandler;
             _resetPasswordCommandHandler = resetPasswordCommandHandler;
+            _deleteAccountCommandHandler = deleteAccountCommandHandler;
         }
 
         [Authorize(Roles = "Administrators")]
@@ -56,6 +60,12 @@ namespace WebApi.Controller.UserController
         public async Task<IActionResult> ResetPassword(ResetPasswordCommand command)
         {
             return Ok(await _resetPasswordCommandHandler.Handel(command));
+        }
+
+        public async Task<IActionResult> DeleteAccount(DeleteAccountCommand command)
+        {
+            await _deleteAccountCommandHandler.Handel(command);
+            return Ok("user Disabled");
         }
     }
 }

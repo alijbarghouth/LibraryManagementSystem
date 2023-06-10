@@ -42,6 +42,7 @@ using Application.Handler.ReadingListHandler.AddReadingListHandler;
 using Application.Handler.ReadingListHandler.DeleteReadingListHandler;
 using Application.Handler.ReadingListHandler.GetAllReadingListQueryHandler;
 using Application.Handler.UserHandler.ConfirmedEmailHandler;
+using Application.Handler.UserHandler.DeleteAccountHandler;
 using Application.Handler.UserHandler.DeleteLibrarianHandler;
 using Application.Handler.UserHandler.LoginHandler;
 using Application.Handler.UserHandler.RefreshTokenHandler;
@@ -184,6 +185,7 @@ public static class Configuration
         services.AddScoped<IBookRecommendationService, BookRecommendationService>();
         services.AddScoped<IGetBookRecommendationsQueryHandler, GetBookRecommendationsQueryHandler>();
         services.AddScoped<IResetPasswordCommandHandler, ResetPasswordCommandHandler>();
+        services.AddScoped<IDeleteAccountCommandHandler, DeleteAccountCommandHandler>();
         services.Configure<MailSettings>
             (configuration.GetSection(nameof(MailSettings)));
     }
