@@ -29,6 +29,7 @@ using Application.Handler.BookReviewHandler.UpdateBookReviewCommandHandler;
 using Application.Handler.BookTransactionHandler.AcceptReturnedBook;
 using Application.Handler.BookTransactionHandler.CheckOutBook;
 using Application.Handler.BookTransactionHandler.GetOverdueBooks;
+using Application.Handler.BookTransactionHandler.RejectReserveBook;
 using Application.Handler.BookTransactionHandler.ReserveBook;
 using Application.Handler.GenreHandler;
 using Application.Handler.InteractionHandler.AddInteractionCommandHandler;
@@ -123,6 +124,7 @@ public static class Configuration
         services.AddScoped<IValidator<GetAllInteractionQuery>, GetAllInteractionQueryValidation>();
         services.AddScoped<IValidator<DeleteInteractionCommand>, DeleteInteractionCommandValidation>();
         services.AddScoped<IValidator<ResetPasswordCommand>, ResetPasswordCommandValidation>();
+        services.AddScoped<IValidator<RejectReserveBookCommand>, RejectReserveBookCommandValidation>();
     }
 
     private static void AddCustomDependencies(IServiceCollection services, IConfiguration configuration)
@@ -186,6 +188,7 @@ public static class Configuration
         services.AddScoped<IGetBookRecommendationsQueryHandler, GetBookRecommendationsQueryHandler>();
         services.AddScoped<IResetPasswordCommandHandler, ResetPasswordCommandHandler>();
         services.AddScoped<IDeleteAccountCommandHandler, DeleteAccountCommandHandler>();
+        services.AddScoped<IRejectReserveBookCommandHandler, RejectReserveBookCommandHandler>();
         services.Configure<MailSettings>
             (configuration.GetSection(nameof(MailSettings)));
     }

@@ -17,6 +17,7 @@ public class ModerationRepository : IModerationRepository
     public async Task<bool> DeleteReview(string massage, Guid bookReviewId)
     {
         var review = await _libraryDbContext.BookReviews
+            .Include(x=> x.Moderations)
             .FirstAsync(x => x.Id == bookReviewId);
         var moderation = new Moderation
         {

@@ -4,9 +4,9 @@ namespace Domain.Shared.Exceptions.CustomException;
 
 public sealed class NoContentException : LibraryException
 {
-    public NoContentException(string Message)
+    public NoContentException(string message)
     {
-        this.Message = Message;
+        this.Message = message;
         StatusCode = HttpStatusCode.NoContent;
     }
 }

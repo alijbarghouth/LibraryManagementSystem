@@ -2,6 +2,7 @@
 using Application.Handler.BookTransactionHandler.AcceptReturnedBook;
 using Application.Handler.BookTransactionHandler.CheckOutBook;
 using Application.Handler.BookTransactionHandler.GetOverdueBooks;
+using Application.Handler.BookTransactionHandler.RejectReserveBook;
 using Application.Handler.BookTransactionHandler.ReserveBook;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,20 +19,23 @@ namespace WebApi.Controller.BookTransactionController
         private readonly ICheckOutBookCommandHandler _checkOutBookCommandHandler;
         private readonly IAcceptReturnedBookCommandHandler _acceptReturnedBookCommandHandler;
         private readonly IGetOverdueBooksQueryHandler _getOverdueBooksQueryHandler;
+        private readonly IRejectReserveBookCommandHandler _rejectReserveBookCommandHandler;
 
         public BookTransactionsController(IReserveBookCommandHandler reserveBookCommandHandler,
             ICheckOutBookCommandHandler checkOutBookCommandHandler,
             IAcceptReturnedBookCommandHandler acceptReturnedBookCommandHandler,
-            IGetOverdueBooksQueryHandler getOverdueBooksQueryHandler)
+            IGetOverdueBooksQueryHandler getOverdueBooksQueryHandler,
+            IRejectReserveBookCommandHandler rejectReserveBookCommandHandler)
         {
             _reserveBookCommandHandler = reserveBookCommandHandler;
             _checkOutBookCommandHandler = checkOutBookCommandHandler;
             _acceptReturnedBookCommandHandler = acceptReturnedBookCommandHandler;
             _getOverdueBooksQueryHandler = getOverdueBooksQueryHandler;
+            _rejectReserveBookCommandHandler = rejectReserveBookCommandHandler;
         }
 
-        [HttpPost]
-        [Authorize(Roles = "Administrators,Librarians,Patrons")]
+        [HttpPost("reserve")]
+        [Authorize]
         public async Task<IActionResult> ReserveBook(ReserveBookCommand command)
         {
             return Ok(await _reserveBookCommandHandler.Handel(command));
@@ -56,6 +60,13 @@ namespace WebApi.Controller.BookTransactionController
         public async Task<IActionResult> GetOverdueBooks()
         {
             return Ok(await _getOverdueBooksQueryHandler.Handel());
+        }
+        
+        [HttpPatch("reject")]
+        [Authorize(Roles = "Administrators,Librarians")]
+        public async Task<IActionResult> RejectReserveBook(RejectReserveBookCommand command)
+        {
+            return Ok(await _rejectReserveBookCommandHandler.Handel(command));
         }
     }
 }

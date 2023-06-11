@@ -25,6 +25,6 @@ public sealed class LoginUserCommandHandler : ILoginUserCommandHandler
         {
             var tokens = await _loginService.LoginUser(login.LoginUser, cancellationToken);
             return new LoginUserResponse(tokens.Item1, tokens.Item2);
-        }, cancellationToken);
+        },"token", cancellationToken);
     }
 }

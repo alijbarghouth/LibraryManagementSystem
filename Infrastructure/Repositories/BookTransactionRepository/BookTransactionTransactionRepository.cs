@@ -73,7 +73,12 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
         var orderItem = order.OrderItems.FirstOrDefault()
                         ?? throw new NotFoundException("order item not found");
 
-        // order.OrderItems.Select(x => x.Book.Count -= 1);
+        var book = await _libraryDbContext.Books
+            .FindAsync(orderItem.BookId)
+            ?? throw new NotFoundException("book not found");
+        book.Count -= 1;
+        _libraryDbContext.Books.Update(book);
+        await _libraryDbContext.SaveChangesAsync();
 
         orderItem.BorrowedDate = DateTime.UtcNow;
         _libraryDbContext.Orders.Update(order);
@@ -96,11 +101,30 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
 
         var orderItem = order.OrderItems.FirstOrDefault()
                         ?? throw new NotFoundException("order item not found");
-        // order.OrderItems.Select(x => x.Book.Count -= 1);
-
+        var book = await _libraryDbContext.Books
+                       .FindAsync(orderItem.BookId)
+                   ?? throw new NotFoundException("book not found");
+        book.Count += 1;
+        _libraryDbContext.Books.Update(book);
+        await _libraryDbContext.SaveChangesAsync();
+        
         orderItem.DateRetrieved = DateTime.UtcNow;
         _libraryDbContext.OrderItems.Update(orderItem);
         await _libraryDbContext.SaveChangesAsync();
+        return order.Adapt<Domain.DTOs.OrderDTOs.Order>();
+    }
+
+    public async Task<Domain.DTOs.OrderDTOs.Order> RejectReserveBook(Guid orderId)
+    {
+        var order = await _libraryDbContext.Orders
+            .Include(x => x.OrderItems)
+            .ThenInclude(x => x.Book)
+            .FirstOrDefaultAsync(o => o.Id == orderId && o.StatusRequest == StatusRequest.Reserved);
+        order.StatusRequest = StatusRequest.Rejected;
+        var orderItem = order.OrderItems.FirstOrDefault()
+                        ?? throw new NotFoundException("order item not found");
+        _libraryDbContext.Orders.Update(order);
+        
         return order.Adapt<Domain.DTOs.OrderDTOs.Order>();
     }
 
@@ -109,6 +133,7 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
         var currentDate = DateTime.UtcNow;
 
         var overdueBooks = await _libraryDbContext.Orders
+            .AsNoTracking()
             .Include(o => o.OrderItems)
             .Where(o => o.StatusRequest == StatusRequest.CheckedOut && o.OrderItems
                 .Any(oi => oi.BorrowedDate.HasValue

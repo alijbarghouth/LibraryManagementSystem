@@ -4,9 +4,9 @@ namespace Domain.Shared.Exceptions.CustomException;
 
 public sealed class BadRequestException : LibraryException
 {
-    public BadRequestException(string Message)
+    public BadRequestException(string message)
     {
-        this.Message = Message;
+        this.Message = message;
         StatusCode = HttpStatusCode.BadRequest;
     }
 }

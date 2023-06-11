@@ -83,6 +83,7 @@ public static class Configuration
         services.AddScoped<IEmailService, EmailService.EmailService>();
         services.AddScoped<IBookRecommendationRepository, BookRecommendationRepository>();
         services.Configure<JWT>(configuration.GetSection(nameof(JWT)));
+        services.Configure<Cash>(configuration.GetSection(nameof(Cash)));
     }
 
     private static void AddLibraryDbContext(IServiceCollection services, IConfiguration configuration)

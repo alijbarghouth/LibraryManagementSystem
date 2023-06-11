@@ -18,8 +18,7 @@ public sealed class GetPatronProfileQueryHandler : IGetPatronProfileQueryHandler
         _cashService = cashService;
     }
 
-    public async Task<List<Response<PatronProfile>>> Handel(PatronProfileQuery query,
-        CancellationToken cancellationToken = default)
+    public async Task<List<Response<PatronProfile>>> Handel(PatronProfileQuery query)
     {
         var key = $"{query.UserId} PatronProfile";
         return await _cashService.GetAsync(key,
@@ -27,6 +26,6 @@ public sealed class GetPatronProfileQueryHandler : IGetPatronProfileQueryHandler
             {
                 var orders = await _patronProfileService.GetPatronProfile(query.UserId);
                 return orders;
-            }, cancellationToken);
+            });
     }
 }

@@ -13,10 +13,16 @@
   <component name="ChangeListManager">
     <list default="true" id="53e77f84-7d3d-4a8a-bd2b-c169cbe4d963" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Repositories/BookRepository/SearchBookRepository/ISearchBookRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/BookRepository/SearchBookRepository/ISearchBookRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Services/BookService/BookSearch/BookSearchService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/BookService/BookSearch/BookSearchService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookRepository/SearchBookRepository/SearchBookRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookRepository/SearchBookRepository/SearchBookRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/GetOverdueBooks/GetOverdueBooksQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Handler/BookTransactionHandler/GetOverdueBooks/GetOverdueBooksQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Repositories/ReserveBookRepository/IBookTransactionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Repositories/ReserveBookRepository/IBookTransactionRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/BookTransactionService/BookTransactionService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/BookTransactionService/BookTransactionService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Services/BookTransactionService/IBookTransactionService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/BookTransactionService/IBookTransactionService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Shared/Exceptions/CustomException/BadRequestException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Shared/Exceptions/CustomException/BadRequestException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Shared/Exceptions/CustomException/NoContentException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Shared/Exceptions/CustomException/NoContentException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Shared/Exceptions/CustomException/NotFoundException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Shared/Exceptions/CustomException/NotFoundException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/BookTransactionRepository/BookTransactionTransactionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/BookTransactionRepository/BookTransactionTransactionRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controller/BookTransactionController/BookTransactionsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/BookTransactionController/BookTransactionsController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +73,9 @@
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlserver"
+    ],
     "rider.external.source.directories": [
       "C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
       "C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
@@ -186,6 +195,8 @@
       <workItem from="1686221012334" duration="5593000" />
       <workItem from="1686307390625" duration="9113000" />
       <workItem from="1686381128709" duration="522000" />
+      <workItem from="1686425777374" duration="324000" />
+      <workItem from="1686470877083" duration="4384000" />
     </task>
     <servers />
   </component>

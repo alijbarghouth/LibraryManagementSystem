@@ -1,7 +1,6 @@
 using Application.Cashing;
 using Domain.DTOs.OrderDTOs;
 using Domain.Services.BookTransactionService;
-using Domain.Services.NotificationService;
 using Domain.Shared.Exceptions.CustomException;
 
 namespace Application.Handler.BookTransactionHandler.GetOverdueBooks;

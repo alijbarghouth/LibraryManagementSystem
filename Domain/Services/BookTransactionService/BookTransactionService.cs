@@ -53,6 +53,16 @@ public sealed class BookTransactionService : IBookTransactionService
         return await _bookTransactionRepository.AcceptReturnedBook(orderId);
     }
 
+    public async Task<Order> RejectReserveBook(Guid orderId, CancellationToken cancellationToken = default)
+    {
+        if (!await _sharedBookManagementRepository.IsOrderExistsByOrderId(orderId))
+            throw new NotFoundException("order not found");
+
+        var order = await _bookTransactionRepository.RejectReserveBook(orderId);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
+        return order;
+    }
+
     public async Task<List<Order>> GetOverdueBooks()
     {
         return await _bookTransactionRepository.GetOverdueBooks();
