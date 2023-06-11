@@ -17,7 +17,5 @@ public sealed class ViewAndEditPatronProfileCommandValidation : AbstractValidato
             .NotEmpty().WithMessage("StatusRequest is required.");
         RuleFor(x => x.PatronProfile.OrderItems)
             .NotEmpty().WithMessage("OrderItems is required.");
-        RuleFor(x => x.OrderId)
-            .NotEmpty().WithMessage("OrderId is required.");
     }
 }

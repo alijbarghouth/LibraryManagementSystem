@@ -9,6 +9,11 @@ namespace Infrastructure.Model;
 [Index(nameof(Id), IsUnique = true)]
 public sealed class Book
 {
+    public Book()
+    {
+        OrderItems = new List<OrderItem>();
+    }
+
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }

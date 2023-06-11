@@ -5,6 +5,6 @@ namespace Domain.Repositories.PatronProfileRepository;
 
 public interface IPatronProfileRepository
 {
-    Task<List<Response<PatronProfile>>> GetPatronProfile(Guid userId);
-    Task<PatronProfile> ViewAndEditPatronProfile(PatronProfile patronProfile, Guid orderId);
+    Task<List<PatronProfile>> GetPatronProfile(Guid userId);
+    Task<PatronProfile> ViewAndEditPatronProfile(PatronProfile patronProfile);
 }

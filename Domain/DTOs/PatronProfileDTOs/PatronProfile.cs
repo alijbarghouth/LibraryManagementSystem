@@ -7,7 +7,7 @@ public record PatronProfile
 (
     Guid Id,
     Guid UserId,
-    DateTime OrderDate,
+    DateTime? OrderDate,
     StatusRequest StatusRequest,
-    List<OrderItem> OrderItems
+    List<OrderItem?> OrderItems
 );

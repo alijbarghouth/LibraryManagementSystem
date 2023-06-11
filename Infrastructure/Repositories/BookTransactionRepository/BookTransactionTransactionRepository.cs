@@ -1,5 +1,4 @@
-﻿using Azure;
-using Domain.Repositories.ReserveBookRepository;
+﻿using Domain.Repositories.BookTransactionRepository;
 using Domain.Shared.Enums;
 using Domain.Shared.Exceptions.CustomException;
 using Infrastructure.DBContext;
@@ -22,10 +21,10 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
         (Guid bookId, Guid userId)
     {
         var book = await _libraryDbContext.Books.FindAsync(bookId);
-        
+
         if (book.Count <= 0)
             throw new BadRequestException("book not Available");
-        
+
         var user = await _libraryDbContext.Users
             .Include(x => x.Orders)
             .ThenInclude(x => x.OrderItems)
@@ -74,8 +73,8 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
                         ?? throw new NotFoundException("order item not found");
 
         var book = await _libraryDbContext.Books
-            .FindAsync(orderItem.BookId)
-            ?? throw new NotFoundException("book not found");
+                       .FindAsync(orderItem.BookId)
+                   ?? throw new NotFoundException("book not found");
         book.Count -= 1;
         _libraryDbContext.Books.Update(book);
         await _libraryDbContext.SaveChangesAsync();
@@ -107,7 +106,7 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
         book.Count += 1;
         _libraryDbContext.Books.Update(book);
         await _libraryDbContext.SaveChangesAsync();
-        
+
         orderItem.DateRetrieved = DateTime.UtcNow;
         _libraryDbContext.OrderItems.Update(orderItem);
         await _libraryDbContext.SaveChangesAsync();
@@ -117,14 +116,16 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
     public async Task<Domain.DTOs.OrderDTOs.Order> RejectReserveBook(Guid orderId)
     {
         var order = await _libraryDbContext.Orders
-            .Include(x => x.OrderItems)
-            .ThenInclude(x => x.Book)
-            .FirstOrDefaultAsync(o => o.Id == orderId && o.StatusRequest == StatusRequest.Reserved);
+                        .Include(x => x.OrderItems)
+                        .ThenInclude(x => x.Book)
+                        .FirstOrDefaultAsync
+                            (o => o.Id == orderId && o.StatusRequest == StatusRequest.Reserved)
+                    ?? throw new NotFoundException("order not found or not found order is reserved");
+        ;
         order.StatusRequest = StatusRequest.Rejected;
-        var orderItem = order.OrderItems.FirstOrDefault()
-                        ?? throw new NotFoundException("order item not found");
+
         _libraryDbContext.Orders.Update(order);
-        
+
         return order.Adapt<Domain.DTOs.OrderDTOs.Order>();
     }
 

@@ -1,6 +1,6 @@
 ﻿using Domain.DTOs.OrderDTOs;
 
-namespace Domain.Repositories.ReserveBookRepository;
+namespace Domain.Repositories.BookTransactionRepository;
 
 public interface IBookTransactionRepository
 {

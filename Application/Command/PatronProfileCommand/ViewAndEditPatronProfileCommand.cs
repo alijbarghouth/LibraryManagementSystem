@@ -4,6 +4,5 @@ namespace Application.Command.PatronProfileCommand;
 
 public record ViewAndEditPatronProfileCommand
 (
-    PatronProfile PatronProfile,
-    Guid OrderId
+    PatronProfile PatronProfile
 );

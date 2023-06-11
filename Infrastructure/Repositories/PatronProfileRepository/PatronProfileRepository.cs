@@ -17,22 +17,26 @@ public sealed class PatronProfileRepository : IPatronProfileRepository
         _libraryDbContext = libraryDbContext;
     }
 
-    public async Task<List<Response<PatronProfile>>> GetPatronProfile(Guid userId)
+    public async Task<List<PatronProfile>> GetPatronProfile(Guid userId)
     {
         return await _libraryDbContext.Orders
             .AsNoTracking()
             .Include(x => x.OrderItems)
             .Where(x => x.UserId == userId)
-            .Select(x => new Response<PatronProfile>(x.Adapt<PatronProfile>(), x.Id))
+            .Select
+            (x =>
+                x.Adapt<PatronProfile>()
+            )
             .ToListAsync();
     }
 
-    public async Task<PatronProfile> ViewAndEditPatronProfile(PatronProfile patronProfile, Guid orderId)
+    public async Task<PatronProfile> ViewAndEditPatronProfile
+        (PatronProfile patronProfile)
     {
         var order = await _libraryDbContext.Orders
-                        .Where(x => x.UserId == patronProfile.UserId)
-                        .FirstOrDefaultAsync(x => x.Id == orderId)
-                    ?? throw new NotFoundException("order not found");
+            .Include(x => x.OrderItems)
+            .FirstOrDefaultAsync(x => x.Id == patronProfile.Id);
+
         _libraryDbContext.Orders.Update(patronProfile.Adapt(order));
         return patronProfile;
     }

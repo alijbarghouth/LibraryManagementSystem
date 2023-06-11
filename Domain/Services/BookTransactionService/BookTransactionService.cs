@@ -1,5 +1,5 @@
 ﻿using Domain.DTOs.OrderDTOs;
-using Domain.Repositories.ReserveBookRepository;
+using Domain.Repositories.BookTransactionRepository;
 using Domain.Repositories.SharedRepositories;
 using Domain.Shared.Exceptions;
 using Domain.Shared.Exceptions.CustomException;

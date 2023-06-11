@@ -12,11 +12,12 @@ public sealed class PatronProfileService : IPatronProfileService
     private readonly IUnitOfWork _unitOfWork;
     private readonly ISharedUserRepository _sharedUserRepository;
     private readonly ISharedBookManagementRepository _sharedBookManagementRepository;
+
     public PatronProfileService
-        (IPatronProfileRepository patronProfileRepository
-            , IUnitOfWork unitOfWork
-            , ISharedUserRepository sharedUserRepository
-            , ISharedBookManagementRepository sharedBookManagementRepository)
+    (IPatronProfileRepository patronProfileRepository
+        , IUnitOfWork unitOfWork
+        , ISharedUserRepository sharedUserRepository
+        , ISharedBookManagementRepository sharedBookManagementRepository)
     {
         _patronProfileRepository = patronProfileRepository;
         _unitOfWork = unitOfWork;
@@ -24,23 +25,25 @@ public sealed class PatronProfileService : IPatronProfileService
         _sharedBookManagementRepository = sharedBookManagementRepository;
     }
 
-    public async Task<List<Response<Domain.DTOs.PatronProfileDTOs.PatronProfile>>> GetPatronProfile(Guid userId)
+    public async Task<List<Domain.DTOs.PatronProfileDTOs.PatronProfile>> GetPatronProfile(Guid userId)
     {
         if (!await _sharedUserRepository.IsUserExistsUserId(userId))
             throw new NotFoundException("user not found");
-        
+
         return await _patronProfileRepository.GetPatronProfile(userId);
     }
 
-    public async Task<DTOs.PatronProfileDTOs.PatronProfile> ViewAndEditPatronProfile(
-        DTOs.PatronProfileDTOs.PatronProfile patronProfile, Guid orderId, CancellationToken cancellationToken = default)
+    public async Task<DTOs.PatronProfileDTOs.PatronProfile> ViewAndEditPatronProfile
+    (DTOs.PatronProfileDTOs.PatronProfile patronProfile,
+        CancellationToken cancellationToken = default)
     {
         if (!await _sharedUserRepository.IsUserExistsUserId(patronProfile.UserId))
             throw new NotFoundException("user not found");
-        if (!await _sharedBookManagementRepository.IsOrderExistsByOrderId(orderId))
+        if (!await _sharedBookManagementRepository.IsOrderExistsByOrderId(patronProfile.Id))
             throw new NotFoundException("order not found");
-        
-        var profile  = await _patronProfileRepository.ViewAndEditPatronProfile(patronProfile, orderId);
+
+        var profile = await _patronProfileRepository.ViewAndEditPatronProfile
+            (patronProfile);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return profile;
     }

@@ -18,9 +18,9 @@ public sealed class GetPatronProfileQueryHandler : IGetPatronProfileQueryHandler
         _cashService = cashService;
     }
 
-    public async Task<List<Response<PatronProfile>>> Handel(PatronProfileQuery query)
+    public async Task<List<PatronProfile>> Handel(PatronProfileQuery query)
     {
-        var key = $"{query.UserId} PatronProfile";
+        var key = $"{query.UserId} PatronProfiles";
         return await _cashService.GetAsync(key,
             async () =>
             {

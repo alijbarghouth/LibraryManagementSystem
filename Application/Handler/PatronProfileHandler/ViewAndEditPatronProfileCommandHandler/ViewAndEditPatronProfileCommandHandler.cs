@@ -15,6 +15,6 @@ public sealed class ViewAndEditPatronProfileCommandHandler : IViewAndEditPatronP
 
     public async Task<PatronProfile> Handel(ViewAndEditPatronProfileCommand command)
     {
-        return await _patronProfileService.ViewAndEditPatronProfile(command.PatronProfile, command.OrderId);
+        return await _patronProfileService.ViewAndEditPatronProfile(command.PatronProfile);
     }
 }
