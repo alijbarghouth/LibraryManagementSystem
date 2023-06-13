@@ -34,18 +34,25 @@ public sealed class AuthorCrudsService : IAuthorCrudsService
     {
         if (!await _sharedBookManagementRepository.IsAuthorExistsByAuthorId(authorId))
             throw new NotFoundException("author is not exists");
-        var result = await _authorRepository.UpdateAuthor(authorId,author);
+        var result = await _authorRepository.UpdateAuthor(authorId, author);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return result;
     }
 
     public async Task<bool> DeleteAuthor(Guid authorId
-        , CancellationToken cancellationToken  =default)
+        , CancellationToken cancellationToken = default)
     {
         if (!await _sharedBookManagementRepository.IsAuthorExistsByAuthorId(authorId))
             throw new BadRequestException("author is not exists");
         var result = await _authorRepository.DeleteAuthor(authorId);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return result;
+    }
+
+    public async Task<List<Response<Author>>> GetAuthorByBookId(Guid bookId)
+    {
+        if (!await _sharedBookManagementRepository.IsBookExistsByBookId(bookId))
+            throw new NotFoundException("book not found");
+        return await _authorRepository.GetAuthorByBookId(bookId);
     }
 }

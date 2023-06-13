@@ -86,6 +86,8 @@ using FluentValidation.AspNetCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Domain.Services.EmailService;
+using Application.Handler.AuthorHandler.GetAuthorByBookIdQueryHandler;
+using Application.Query.AuthorQuery;
 
 namespace Application.Configurations;
 
@@ -125,6 +127,7 @@ public static class Configuration
         services.AddScoped<IValidator<DeleteInteractionCommand>, DeleteInteractionCommandValidation>();
         services.AddScoped<IValidator<ResetPasswordCommand>, ResetPasswordCommandValidation>();
         services.AddScoped<IValidator<RejectReserveBookCommand>, RejectReserveBookCommandValidation>();
+        services.AddScoped<IValidator<GetAuthorByBookIdQuery>, GetAuthorByBookIdQueryValidation>();
     }
 
     private static void AddCustomDependencies(IServiceCollection services, IConfiguration configuration)
@@ -189,6 +192,7 @@ public static class Configuration
         services.AddScoped<IResetPasswordCommandHandler, ResetPasswordCommandHandler>();
         services.AddScoped<IDeleteAccountCommandHandler, DeleteAccountCommandHandler>();
         services.AddScoped<IRejectReserveBookCommandHandler, RejectReserveBookCommandHandler>();
+        services.AddScoped<IGetAuthorByBookIdQueryHandler, GetAuthorByBookIdQueryHandler>();
         services.Configure<MailSettings>
             (configuration.GetSection(nameof(MailSettings)));
     }

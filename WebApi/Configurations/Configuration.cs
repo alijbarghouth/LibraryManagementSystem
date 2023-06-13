@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
+using WebApi.Filter;
 using WebApi.Middleware;
 
 namespace WebApi.Configurations;
@@ -11,18 +13,32 @@ public static class Configuration
 {
     public static void AddWebApi(this IServiceCollection services, IConfiguration configuration)
     {
+        AddCustomDependencies(services, configuration);
+    }
+    private static void AddCustomDependencies(IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddControllers(options =>
+        {
+            options.ReturnHttpNotAcceptable = true;
+            options.Filters.Add<ModelStateFilter>();
+        }).AddNewtonsoftJson(options =>
+        {
+            options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+        }).AddXmlDataContractSerializerFormatters();
+
+        services.AddScoped<LoggerMiddleware>();
         services.AddDistributedMemoryCache();
         services.AddSwaggerGen(options =>
-         {
-             options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-             {
-                 Description = "Standard authorization header using the bearer scheme(\"bearer {token}\")",
-                 In = ParameterLocation.Header,
-                 Name = "Authorization",
-                 Type = SecuritySchemeType.ApiKey
-             });
-             options.OperationFilter<SecurityRequirementsOperationFilter>();
-         });
+        {
+            options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+            {
+                Description = "Standard authorization header using the bearer scheme(\"bearer {token}\")",
+                In = ParameterLocation.Header,
+                Name = "Authorization",
+                Type = SecuritySchemeType.ApiKey
+            });
+            options.OperationFilter<SecurityRequirementsOperationFilter>();
+        });
 
         services.AddAuthentication(options =>
         {
@@ -45,12 +61,6 @@ public static class Configuration
             ClockSkew = TimeSpan.Zero
         };
     });
-        services.AddScoped<LogoutMiddleware>();
-        services.AddScoped<LoggerMiddleware>();
-    }
-    private static void AddCustomDependencies(IServiceCollection services)
-    {
-
     }
 }
 

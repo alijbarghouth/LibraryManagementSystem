@@ -21,11 +21,9 @@ public sealed class LoginService : ILoginService
         _sharedUserRepository = sharedUserRepository;
     }
 
-    public async Task<(string, string)> LoginUser(LoginUser login, CancellationToken cancellationToken = default)
+    public async Task<(string, string)> LoginUser(LoginUser login,
+        CancellationToken cancellationToken = default)
     {
-        if (!await _sharedUserRepository.IsUserActive(login.Email))
-            throw new BadRequestException("account is disable");
-        
         var tokens = await _loginRepository.LoginUser(login);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return tokens;
@@ -42,9 +40,14 @@ public sealed class LoginService : ILoginService
 
     public async Task<string> GetUserId(LoginUser loginUser)
     {
+        if(!await _sharedUserRepository.IsUserExistsByEmail(loginUser.Email))
+            throw new NotFoundException("user not found");
+        if (!await _sharedUserRepository.IsUserActive(loginUser.Email))
+            throw new BadRequestException("account is disable");
+
         return await _loginRepository.GetUserId(loginUser);
     }
-    
+
     public async Task ConfirmedEmail(Guid userId, CancellationToken cancellationToken = default)
     {
         if (!await _sharedUserRepository.IsUserExistsUserId(userId))

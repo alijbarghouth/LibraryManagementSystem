@@ -71,8 +71,8 @@ public sealed class LoginRepository : ILoginRepository
     public async Task<string> GetUserId(LoginUser loginUser)
     {
         var user = await _libraryDbContext.Users
-                       .SingleOrDefaultAsync(x => x.Email == loginUser.Email)
-                   ?? throw new NotFoundException("user not found");
+                       .SingleAsync(x => x.Email == loginUser.Email);
+                   
         if (!loginUser.Password.VerifyingPassword(user.PasswordHash, user.PasswordSlot))
         {
             throw new BadRequestException("The password is wrong");

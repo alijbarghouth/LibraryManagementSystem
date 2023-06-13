@@ -25,7 +25,7 @@ public sealed class BookCrudsService : IBookCrudsService
     public async Task<Response<BookRequest>> AddBook(BookRequest bookRequest, CancellationToken cancellationToken = default)
     {
         if (await _bookManagementRepository.IsBookExistsByTitle(bookRequest.Title))
-            throw new NotFoundException("book is exists");
+            throw new BadRequestException("book is exists");
         var book = await _bookCrudsRepository.AddBook(bookRequest);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return book;

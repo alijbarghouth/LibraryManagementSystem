@@ -12,8 +12,4 @@
     <None Remove="Services\UserService\AuthServcie\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
-  </ItemGroup>
-
 </Project>

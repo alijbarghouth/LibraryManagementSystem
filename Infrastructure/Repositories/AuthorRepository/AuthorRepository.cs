@@ -49,4 +49,18 @@ public sealed class AuthorRepository : IAuthorRepository
         _libraryDbContext.Authors.Remove(author);
         return true;
     }
+
+    public async Task<List<Response<Domain.DTOs.AuthorDTOs.Author>>> GetAuthorByBookId(Guid bookId)
+    {
+        return await _libraryDbContext.Books
+           .Include(x => x.Authors)
+           .AsNoTracking()
+           .Where(x => x.Id == bookId)
+           .SelectMany(x =>
+               x.Authors.Select(y =>
+                   new Response<Domain.DTOs.AuthorDTOs.Author>(y.Adapt<Domain.DTOs.AuthorDTOs.Author>(), y.Id)
+               )
+           )
+           .ToListAsync();
+    }
 }
