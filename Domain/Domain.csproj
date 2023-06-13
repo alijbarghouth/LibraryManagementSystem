@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Services\UserService\AuthServcie\**" />
+    <EmbeddedResource Remove="Services\UserService\AuthServcie\**" />
+    <None Remove="Services\UserService\AuthServcie\**" />
+  </ItemGroup>
+
+</Project>
