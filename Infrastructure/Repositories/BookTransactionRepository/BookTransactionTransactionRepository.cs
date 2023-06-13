@@ -11,13 +11,10 @@ namespace Infrastructure.Repositories.BookTransactionRepository;
 public sealed class BookTransactionTransactionRepository : IBookTransactionRepository
 {
     private readonly LibraryDbContext _libraryDbContext;
-    private Timer _timer;
 
-    public BookTransactionTransactionRepository(LibraryDbContext libraryDbContext,
-        Timer timer)
+    public BookTransactionTransactionRepository(LibraryDbContext libraryDbContext)
     {
         _libraryDbContext = libraryDbContext;
-        _timer = timer;
     }
 
     public async Task<Domain.DTOs.OrderDTOs.Order> ReserveBook
@@ -143,18 +140,21 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
         var overdueBooks = await _libraryDbContext.Orders
             .AsNoTracking()
             .Include(o => o.OrderItems)
+            .ThenInclude(x=> x.Book)
+            .ThenInclude(x=> x.Authors)
+            .Include(x=> x.User)
             .Where(o => o.StatusRequest == StatusRequest.CheckedOut && o.OrderItems
                 .Any(oi => oi.BorrowedDate.HasValue
                            && oi.BorrowedDate.Value.AddDays(10) < currentDate))
-            .Select(x=> new
+            .Select(x => new
             {
-                UserId = x.UserId,
-                Book = x.OrderItems.Select(b => b.Book),
-                price = x.OrderItems.Select
-                    (y=> y.GetUpdatedPrice())
+                x.UserId,
+                Book = x.OrderItems.Select(b => b.Book).FirstOrDefault(),
+                UpdatedPrice = x.OrderItems.Select
+                    (y => y.UpdatedPrice).FirstOrDefault()
             })
             .ToListAsync();
-        
+
         return overdueBooks.Adapt<List<Domain.DTOs.OrderDTOs.OverdueBook>>();
     }
 }

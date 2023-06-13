@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Application.Handler.BookRecommendationHandler;
+using Application.Query.BookQuery;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controller.BookRecommendationController
@@ -20,11 +16,11 @@ namespace WebApi.Controller.BookRecommendationController
         {
             _getBookRecommendationsQueryHandler = getBookRecommendationsQueryHandler;
         }
-        // [Authorize]
+        [Authorize]
         [HttpGet("BookRecommendations")]
-        public async Task<IActionResult> GetBookRecommendations()
+        public async Task<IActionResult> GetBookRecommendations(GetBookRecommendationsQuery query)
         {
-            return Ok(await _getBookRecommendationsQueryHandler.Handel());
+            return Ok(await _getBookRecommendationsQueryHandler.Handel(query));
         }
     }
 }

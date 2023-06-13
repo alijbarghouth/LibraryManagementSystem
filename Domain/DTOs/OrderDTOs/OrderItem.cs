@@ -5,7 +5,7 @@ public record OrderItem
     Guid Id,
     Guid OrderId,
     Guid BookId,
-    decimal? Price,
+    decimal? UpdatedPrice,
     DateTime? BorrowedDate,
     DateTime RequestDate,
     DateTime? DateRetrieved

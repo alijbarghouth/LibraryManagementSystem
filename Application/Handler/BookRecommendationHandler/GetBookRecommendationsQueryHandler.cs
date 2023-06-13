@@ -1,3 +1,4 @@
+using Application.Query.BookQuery;
 using Domain.DTOs.BookRecommendationDTOs;
 using Domain.Services.BookRecommendationService;
 
@@ -13,8 +14,8 @@ public class GetBookRecommendationsQueryHandler : IGetBookRecommendationsQueryHa
         _bookRecommendationService = bookRecommendationService;
     }
 
-    public async Task<List<BookRecommendation>> Handel()
+    public async Task<List<BookRecommendation>> Handel(GetBookRecommendationsQuery query)
     {
-        return await _bookRecommendationService.GetBookRecommendations();
+        return await _bookRecommendationService.GetBookRecommendations(query.UserId);
     }
 }

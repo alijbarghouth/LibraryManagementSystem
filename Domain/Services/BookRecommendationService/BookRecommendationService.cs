@@ -12,8 +12,8 @@ public class BookRecommendationService : IBookRecommendationService
         _bookRecommendationRepository = bookRecommendationRepository;
     }
 
-    public async Task<List<BookRecommendation>> GetBookRecommendations()
+    public async Task<List<BookRecommendation>> GetBookRecommendations(Guid userId)
     {
-        return await _bookRecommendationRepository.GetBookRecommendations();
+        return await _bookRecommendationRepository.GetPersonalizedBookRecommendations(userId);
     }
 }

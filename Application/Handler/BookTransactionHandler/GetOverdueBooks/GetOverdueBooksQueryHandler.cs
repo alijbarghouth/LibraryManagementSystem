@@ -20,7 +20,7 @@ public sealed class GetOverdueBooksQueryHandler : IGetOverdueBooksQueryHandler
 
     public async Task<List<OverdueBook>> Handel()
     {
-        return await _cashService.GetAsync<List<OverdueBook>>("OverdueBooks", async () =>
+        return await _cashService.GetAsync("OverdueBooks", async () =>
         {
             var orders = await _bookTransactionService.GetOverdueBooks();
             if (orders.Count <= 0)

@@ -6,5 +6,5 @@ public record OverdueBook
 (
   Guid UserId,
   Book Book,
-  decimal Price
+  decimal UpdatedPrice
 );

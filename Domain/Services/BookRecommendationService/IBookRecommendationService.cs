@@ -4,5 +4,5 @@ namespace Domain.Services.BookRecommendationService;
 
 public interface IBookRecommendationService
 {
-    Task<List<BookRecommendation>> GetBookRecommendations();
+    Task<List<BookRecommendation>> GetBookRecommendations(Guid userId);
 }
