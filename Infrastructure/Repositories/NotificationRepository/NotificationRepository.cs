@@ -15,7 +15,7 @@ public class NotificationRepository : INotificationRepository
     }
 
     public async Task<Domain.DTOs.NotificationDTOs.Notification>
-        GenerateDueDateReminderNotification
+        AddNotification
         (Domain.DTOs.NotificationDTOs.Notification notificationDtOs)
     {
         var notification = notificationDtOs.Adapt<Notification>();

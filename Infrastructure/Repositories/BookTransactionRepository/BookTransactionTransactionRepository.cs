@@ -11,10 +11,13 @@ namespace Infrastructure.Repositories.BookTransactionRepository;
 public sealed class BookTransactionTransactionRepository : IBookTransactionRepository
 {
     private readonly LibraryDbContext _libraryDbContext;
+    private Timer _timer;
 
-    public BookTransactionTransactionRepository(LibraryDbContext libraryDbContext)
+    public BookTransactionTransactionRepository(LibraryDbContext libraryDbContext,
+        Timer timer)
     {
         _libraryDbContext = libraryDbContext;
+        _timer = timer;
     }
 
     public async Task<Domain.DTOs.OrderDTOs.Order> ReserveBook
@@ -78,7 +81,7 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
         orderItem.Price = book.Price;
         _libraryDbContext.OrderItems.Update(orderItem);
         await _libraryDbContext.SaveChangesAsync();
-        
+
         book.Count -= 1;
         _libraryDbContext.Books.Update(book);
         await _libraryDbContext.SaveChangesAsync();
@@ -133,7 +136,7 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
         return order.Adapt<Domain.DTOs.OrderDTOs.Order>();
     }
 
-    public async Task<List<Domain.DTOs.OrderDTOs.Order>> GetOverdueBooks()
+    public async Task<List<Domain.DTOs.OrderDTOs.OverdueBook>> GetOverdueBooks()
     {
         var currentDate = DateTime.UtcNow;
 
@@ -143,8 +146,15 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
             .Where(o => o.StatusRequest == StatusRequest.CheckedOut && o.OrderItems
                 .Any(oi => oi.BorrowedDate.HasValue
                            && oi.BorrowedDate.Value.AddDays(10) < currentDate))
+            .Select(x=> new
+            {
+                UserId = x.UserId,
+                Book = x.OrderItems.Select(b => b.Book),
+                price = x.OrderItems.Select
+                    (y=> y.GetUpdatedPrice())
+            })
             .ToListAsync();
-
-        return overdueBooks.Adapt<List<Domain.DTOs.OrderDTOs.Order>>();
+        
+        return overdueBooks.Adapt<List<Domain.DTOs.OrderDTOs.OverdueBook>>();
     }
 }

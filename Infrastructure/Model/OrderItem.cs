@@ -19,4 +19,17 @@ public sealed class OrderItem
     public DateTime? DateRetrieved { get; set; }
     public  Order Order { get; set; }
     public  Book Book { get; set; }
+    public decimal GetUpdatedPrice()
+    {
+        var currentDate = DateTime.UtcNow.Date;
+
+        var daysSinceRequest = (int)(currentDate - BorrowedDate.Value.AddDays(10).Date).TotalDays;
+
+        var taxPercentage = 0.01m * daysSinceRequest;
+
+        var updatedPrice = Price ?? 0;
+        updatedPrice += updatedPrice * taxPercentage;
+
+        return updatedPrice;
+    }
 }

@@ -4,5 +4,5 @@ namespace Application.Handler.BookTransactionHandler.GetOverdueBooks;
 
 public interface IGetOverdueBooksQueryHandler
 {
-    Task<List<Order>> Handel();
+    Task<List<OverdueBook>> Handel();
 }

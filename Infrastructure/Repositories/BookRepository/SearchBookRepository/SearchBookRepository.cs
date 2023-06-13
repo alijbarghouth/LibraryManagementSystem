@@ -31,6 +31,7 @@ public sealed class SearchBookRepository : ISearchBookRepository
                 x.PublicationDate,
                 x.BookStatus,
                 x.Count,
+                x.Price,
                 Genres = x.Genres.ToList(),
             })
             .Skip((filter.PageNumber - 1) * filter.PageSize)
@@ -57,6 +58,7 @@ public sealed class SearchBookRepository : ISearchBookRepository
                 x.PublicationDate,
                 x.BookStatus,
                 x.Count,
+                x.Price,
                 Genres = x.Genres.ToList(),
             })
             .Skip((filter.PageNumber - 1) * filter.PageSize)
@@ -83,6 +85,7 @@ public sealed class SearchBookRepository : ISearchBookRepository
                 x.PublicationDate,
                 x.BookStatus,
                 x.Count,
+                x.Price,
                 Genres = x.Genres.ToList(),
             })
             .Skip((filter.PageNumber - 1) * filter.PageSize)

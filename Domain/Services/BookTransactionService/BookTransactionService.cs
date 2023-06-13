@@ -63,7 +63,7 @@ public sealed class BookTransactionService : IBookTransactionService
         return order;
     }
 
-    public async Task<List<Order>> GetOverdueBooks()
+    public async Task<List<OverdueBook>> GetOverdueBooks()
     {
         return await _bookTransactionRepository.GetOverdueBooks();
     }

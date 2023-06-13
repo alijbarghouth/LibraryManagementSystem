@@ -34,7 +34,7 @@ public sealed class NotificationService : INotificationService
         await _emailService.SendAsync
             (email, massage, username, subject, cancellationToken);
         var result = await _notificationRepository
-            .GenerateDueDateReminderNotification(notification);
+            .AddNotification(notification);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         return result;
     }

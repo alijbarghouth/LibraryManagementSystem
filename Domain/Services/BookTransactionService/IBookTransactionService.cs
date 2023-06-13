@@ -8,5 +8,5 @@ public interface IBookTransactionService
     Task<Order> CheckOutBook(Guid orderId);
     Task<Order> AcceptReturnedBook(Guid orderId);
     Task<Order> RejectReserveBook(Guid orderId, CancellationToken cancellationToken = default);
-    Task<List<Order>> GetOverdueBooks();
+    Task<List<OverdueBook>> GetOverdueBooks();
 }

@@ -4,6 +4,6 @@ namespace Domain.Repositories.NotificationRepository;
 
 public interface INotificationRepository
 {
-    Task<Notification> GenerateDueDateReminderNotification
+    Task<Notification> AddNotification
         (Notification notificationDtOs);
 }
