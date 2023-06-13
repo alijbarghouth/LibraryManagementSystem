@@ -1,5 +1,6 @@
 using Domain.DTOs.BookRecommendationDTOs;
 using Domain.Repositories.BookRecommendationRepository;
+using Domain.Shared.Enums;
 using Infrastructure.DBContext;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
@@ -43,7 +44,7 @@ public class BookRecommendationRepository : IBookRecommendationRepository
 
         var recommendedBooks = await _libraryDbContext.Books
             .Include(b => b.BookReviews)
-            .Include(x=> x.Genres)
+            .Include(x => x.Genres)
             .Where(b => reservedBooks.Contains(b.Id) || b.Genres.Any(g => readGenres.Contains(g)))
             .ToListAsync();
 
@@ -67,5 +68,28 @@ public class BookRecommendationRepository : IBookRecommendationRepository
         )).ToList();
 
         return bookRecommendations;
+    }
+
+    public async Task<List<BookRecommendation>> GetPersonalizedBookRecommendations(Guid patronId)
+    {
+        // Retrieve the patron's borrowing history
+        var borrowingHistory = await _libraryDbContext.Orders
+            .Where(o => o.UserId == patronId && o.StatusRequest == StatusRequest.CheckedOut)
+            .Include(o => o.OrderItems)
+            .ThenInclude(oi => oi.Book)
+            .ToListAsync();
+
+        // Aggregate the genres from the borrowing history
+        var genres = borrowingHistory
+            .SelectMany(order => order.OrderItems.Select(oi => oi.Book.Genres))
+            .Distinct()
+            .ToList();
+
+        // Retrieve recommended books based on genres
+        var recommendedBooks = await _libraryDbContext.Books
+            .Where(book => genres.Contains(book.Genres))
+            .ToListAsync();
+
+        return recommendedBooks.Adapt<List<BookRecommendation>>();
     }
 }

@@ -12,7 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53e77f84-7d3d-4a8a-bd2b-c169cbe4d963" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Domain/Services/UserService/LoginService/LoginService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Services/UserService/LoginService/LoginService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Model/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Model/Book.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +33,8 @@
     <setting file="file://$PROJECT_DIR$/Application/Handler/GenreHandler/AddGenreCommandHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/Handler/GenreHandler/IAddGenreCommandHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/Validator/PatronProfileValidator/PatronProfileQueryValidation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/user/source/repos/LibraryManagementSystem/Domain/Services/AuthorService/AuthorCrudsService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/user/source/repos/LibraryManagementSystem/WebApi/Controller/BookRecommendationController/BookRecommendationsController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -53,7 +57,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "AdditionalEndPoint",
+    "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -207,5 +211,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Repositories/BookRecommendationRepository/BookRecommendationRepository.cs</url>
+          <line>19</line>
+          <properties documentPath="C:\Users\user\source\repos\LibraryManagementSystem\Infrastructure\Repositories\BookRecommendationRepository\BookRecommendationRepository.cs" initialLine="19" containingFunctionPresentation="Method 'GetBookRecommendations'">
+            <startOffsets>
+              <option value="607" />
+            </startOffsets>
+            <endOffsets>
+              <option value="922" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

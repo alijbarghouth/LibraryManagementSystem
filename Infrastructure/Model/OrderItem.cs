@@ -13,6 +13,7 @@ public sealed class OrderItem
 
     public Guid OrderId { get; set; }
     public Guid BookId { get; set; }
+    public decimal? Price { get; set; }
     public DateTime? BorrowedDate { get; set; }
     public DateTime RequestDate { get; set; }
     public DateTime? DateRetrieved { get; set; }

@@ -75,6 +75,10 @@ public sealed class BookTransactionTransactionRepository : IBookTransactionRepos
         var book = await _libraryDbContext.Books
                        .FindAsync(orderItem.BookId)
                    ?? throw new NotFoundException("book not found");
+        orderItem.Price = book.Price;
+        _libraryDbContext.OrderItems.Update(orderItem);
+        await _libraryDbContext.SaveChangesAsync();
+        
         book.Count -= 1;
         _libraryDbContext.Books.Update(book);
         await _libraryDbContext.SaveChangesAsync();

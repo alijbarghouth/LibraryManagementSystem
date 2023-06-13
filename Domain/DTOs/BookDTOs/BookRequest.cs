@@ -7,5 +7,6 @@ public record BookRequest
     string Title,
     DateTime PublicationDate,
     BookStatus BookStatus,
-    int Count
+    int Count,
+    decimal Price
 );

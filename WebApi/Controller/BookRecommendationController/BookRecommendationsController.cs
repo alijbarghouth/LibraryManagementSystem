@@ -20,7 +20,7 @@ namespace WebApi.Controller.BookRecommendationController
         {
             _getBookRecommendationsQueryHandler = getBookRecommendationsQueryHandler;
         }
-        [Authorize]
+        // [Authorize]
         [HttpGet("BookRecommendations")]
         public async Task<IActionResult> GetBookRecommendations()
         {
