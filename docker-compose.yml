@@ -6,6 +6,3 @@ services:
     build:
       context: .
       dockerfile: WebApi/Dockerfile
-    deploy:
-      mode: replicated
-      replicas: 3

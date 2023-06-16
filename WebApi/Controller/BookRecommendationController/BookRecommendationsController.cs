@@ -17,8 +17,8 @@ namespace WebApi.Controller.BookRecommendationController
             _getBookRecommendationsQueryHandler = getBookRecommendationsQueryHandler;
         }
         [Authorize]
-        [HttpGet("BookRecommendations")]
-        public async Task<IActionResult> GetBookRecommendations(GetBookRecommendationsQuery query)
+        [HttpGet]
+        public async Task<IActionResult> GetBookRecommendations([FromQuery] GetBookRecommendationsQuery query)
         {
             return Ok(await _getBookRecommendationsQueryHandler.Handel(query));
         }

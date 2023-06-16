@@ -1,6 +1,5 @@
 using Domain.DTOs.BookRecommendationDTOs;
 using Domain.Repositories.BookRecommendationRepository;
-using Domain.Shared.Enums;
 using Infrastructure.DBContext;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
@@ -19,18 +18,26 @@ public class BookRecommendationRepository : IBookRecommendationRepository
     public async Task<List<BookRecommendation>> GetPersonalizedBookRecommendations(Guid patronId)
     {
         var borrowingHistory = await _libraryDbContext.Orders
-            .Where(o => o.UserId == patronId && o.StatusRequest == StatusRequest.CheckedOut)
             .Include(o => o.OrderItems)
             .ThenInclude(oi => oi.Book)
+            .ThenInclude(x => x.Genres)
+            .Where(o => o.UserId == patronId)
             .ToListAsync();
-
+        
+        var borrowingBook = borrowingHistory
+            .Select(x => x.OrderItems.First().Book)
+            .Distinct()
+            .ToList();
+        
         var genres = borrowingHistory
-            .SelectMany(order => order.OrderItems.Select(oi => oi.Book.Genres))
+            .SelectMany(order => order.OrderItems.SelectMany(oi => oi.Book.Genres))
             .Distinct()
             .ToList();
 
         var recommendedBooks = await _libraryDbContext.Books
-            .Where(book => genres.Contains(book.Genres))
+            .Include(x => x.Genres)
+            .Where(book => genres.Any(bg => book.Genres.Any(x => x.Name == bg.Name)))
+            .Except(borrowingBook)
             .ToListAsync();
 
         return recommendedBooks.Adapt<List<BookRecommendation>>();
