@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.Command.ReportCommand;
+using FluentValidation;
 
-namespace Application.Validator.ReportValidator
+namespace Application.Validator.ReportValidator;
+
+public sealed class AddReportCommandValidation : AbstractValidator<AddReportCommand>
 {
-    internal class AddReportCommandValidation
+    public AddReportCommandValidation()
     {
+        RuleFor(x => x.Report.UserId)
+           .NotEmpty().WithMessage("UserId is required.");
+        RuleFor(x => x.Report.BookReviewId)
+            .NotEmpty().WithMessage("BookReviewId is required.");
+        RuleFor(x => x.Report.Massage)
+                .NotEmpty().WithMessage("Massage is required.");
     }
 }

@@ -7,9 +7,11 @@ using Application.Command.GenreCommand;
 using Application.Command.InteractionCommand;
 using Application.Command.PatronProfileCommand;
 using Application.Command.ReadingListCommand;
+using Application.Command.ReportCommand;
 using Application.Command.UserCommand;
 using Application.Handler.AuthorHandler.AddAuthorCommandHandler;
 using Application.Handler.AuthorHandler.DeleteAuthorCommandHandler;
+using Application.Handler.AuthorHandler.GetAuthorByBookIdQueryHandler;
 using Application.Handler.AuthorHandler.UpdateAuthorCommandHandler;
 using Application.Handler.BookAuthorHandler;
 using Application.Handler.BookGenreHandler.AddBookGenreCommandHandler;
@@ -42,6 +44,7 @@ using Application.Handler.PatronProfileHandler.ViewAndEditPatronProfileCommandHa
 using Application.Handler.ReadingListHandler.AddReadingListHandler;
 using Application.Handler.ReadingListHandler.DeleteReadingListHandler;
 using Application.Handler.ReadingListHandler.GetAllReadingListQueryHandler;
+using Application.Handler.ReportHandler.AddReportCommandHandler;
 using Application.Handler.UserHandler.ConfirmedEmailHandler;
 using Application.Handler.UserHandler.DeleteAccountHandler;
 using Application.Handler.UserHandler.DeleteLibrarianHandler;
@@ -51,6 +54,7 @@ using Application.Handler.UserHandler.RegisterHandler;
 using Application.Handler.UserHandler.ResetPasswordHandler;
 using Application.Handler.UserHandler.RoleHandler;
 using Application.Handler.UserHandler.UpdateLibrarianHandler;
+using Application.Query.AuthorQuery;
 using Application.Query.BookReview;
 using Application.Query.InteractionQuery;
 using Application.Query.PatronProfile;
@@ -62,6 +66,7 @@ using Application.Validator.GenreValidator;
 using Application.Validator.InteractionValidator;
 using Application.Validator.PatronProfileValidator;
 using Application.Validator.ReadingListValidator;
+using Application.Validator.ReportValidator;
 using Application.Validator.UserValidator;
 using Domain.DTOs.EmailDTOs;
 using Domain.Services.AuthorService;
@@ -78,6 +83,7 @@ using Domain.Services.ModerationService;
 using Domain.Services.NotificationService;
 using Domain.Services.PatronProfile;
 using Domain.Services.ReadingListService;
+using Domain.Services.ReportService;
 using Domain.Services.UserService.AuthService;
 using Domain.Services.UserService.LoginService;
 using Domain.Services.UserService.RegisterService;
@@ -85,11 +91,6 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Domain.Services.EmailService;
-using Application.Handler.AuthorHandler.GetAuthorByBookIdQueryHandler;
-using Application.Handler.ReportHandler.AddReportCommandHandler;
-using Application.Query.AuthorQuery;
-using Domain.Services.ReportService;
 
 namespace Application.Configurations;
 
@@ -130,6 +131,7 @@ public static class Configuration
         services.AddScoped<IValidator<ResetPasswordCommand>, ResetPasswordCommandValidation>();
         services.AddScoped<IValidator<RejectReserveBookCommand>, RejectReserveBookCommandValidation>();
         services.AddScoped<IValidator<GetAuthorByBookIdQuery>, GetAuthorByBookIdQueryValidation>();
+        services.AddScoped<IValidator<AddReportCommand>, AddReportCommandValidation>();
     }
 
     private static void AddCustomDependencies(IServiceCollection services, IConfiguration configuration)

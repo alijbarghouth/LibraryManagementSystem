@@ -1,5 +1,6 @@
 using Application.Command.ModerationCommand;
 using Application.Handler.ModerationHandler;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controller.ModerationController
@@ -14,7 +15,7 @@ namespace WebApi.Controller.ModerationController
         {
             _deleteReviewCommandHandler = deleteReviewCommandHandler;
         }
-
+        [Authorize(Roles = "Administrators,Librarians")]
         [HttpPut]
         public async Task<IActionResult> DeleteReview(DeleteReviewCommand command)
         {

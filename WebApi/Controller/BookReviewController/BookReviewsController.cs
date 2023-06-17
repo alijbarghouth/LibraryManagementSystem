@@ -4,6 +4,7 @@ using Application.Handler.BookReviewHandler.DeleteBookReviewCommandHandler;
 using Application.Handler.BookReviewHandler.GetAllBookReviewQueryHandler;
 using Application.Handler.BookReviewHandler.UpdateBookReviewCommandHandler;
 using Application.Query.BookReview;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Filter;
 
@@ -29,22 +30,28 @@ namespace WebApi.Controller.BookReviewController
             _updateBookReviewCommandHandler = updateBookReviewCommandHandler;
             _getAllBookReviewCommandHandler = getAllBookReviewCommandHandler;
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddBookReview(AddBookReviewCommand command)
         {
             return Ok(await _addBookReviewCommandHandler.Handel(command));
         }
+
+        [Authorize]
         [HttpPut]
         public async Task<IActionResult> UpdateBookReview(UpdateBookReviewCommand command)
         {
             return Ok(await _updateBookReviewCommandHandler.Handel(command));
         }
+
+        [Authorize]
         [HttpDelete]
         public async Task<IActionResult> DeleteBookReview(DeleteBookReviewCommand command)
         {
             return Ok(await _deleteBookReviewCommandHandler.Handel(command));
         }
+
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAllBookReviewByUserIdAndBookId([FromQuery]GetAllBookReviewQuery query)
         {
