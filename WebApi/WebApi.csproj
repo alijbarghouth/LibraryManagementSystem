@@ -33,6 +33,7 @@
     <Folder Include="Controller\InteractionController\" />
     <Folder Include="Controller\ModerationController\" />
     <Folder Include="Controller\ReadingListController\" />
+    <Folder Include="Controller\ReportController\" />
   </ItemGroup>
 
   <ItemGroup>

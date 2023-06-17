@@ -87,7 +87,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Domain.Services.EmailService;
 using Application.Handler.AuthorHandler.GetAuthorByBookIdQueryHandler;
+using Application.Handler.ReportHandler.AddReportCommandHandler;
 using Application.Query.AuthorQuery;
+using Domain.Services.ReportService;
 
 namespace Application.Configurations;
 
@@ -193,6 +195,8 @@ public static class Configuration
         services.AddScoped<IDeleteAccountCommandHandler, DeleteAccountCommandHandler>();
         services.AddScoped<IRejectReserveBookCommandHandler, RejectReserveBookCommandHandler>();
         services.AddScoped<IGetAuthorByBookIdQueryHandler, GetAuthorByBookIdQueryHandler>();
+        services.AddScoped<IAddReportCommandHandler, AddReportCommandHandler>();
+        services.AddScoped<IReportService, ReportService>();
         services.Configure<MailSettings>
             (configuration.GetSection(nameof(MailSettings)));
     }

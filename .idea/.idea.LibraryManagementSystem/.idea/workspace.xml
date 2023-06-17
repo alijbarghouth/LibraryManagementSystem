@@ -11,9 +11,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53e77f84-7d3d-4a8a-bd2b-c169cbe4d963" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/dataSources/aee63581-81d3-4ae1-a5bf-888316c89e23.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/dataSources/aee63581-81d3-4ae1-a5bf-888316c89e23.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagementSystem/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="53e77f84-7d3d-4a8a-bd2b-c169cbe4d963" name="Changes" comment="add borrowingBook to GetPersonalizedBookRecommendations">
+      <change beforePath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Configurations/Configuration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configurations/Configuration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/WebApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/WebApi.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +70,16 @@
       <updated>1686675128077</updated>
       <workItem from="1686675138201" duration="1937000" />
       <workItem from="1686679341444" duration="87000" />
+      <workItem from="1686913292170" duration="4906000" />
     </task>
+    <task id="LOCAL-00001" summary="add borrowingBook to GetPersonalizedBookRecommendations">
+      <created>1686917164442</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686917164443</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -78,6 +88,8 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="add borrowingBook to GetPersonalizedBookRecommendations" />
+    <option name="LAST_COMMIT_MESSAGE" value="add borrowingBook to GetPersonalizedBookRecommendations" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

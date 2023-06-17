@@ -14,6 +14,7 @@ using Domain.Repositories.ModerationRepository;
 using Domain.Repositories.NotificationRepository;
 using Domain.Repositories.PatronProfileRepository;
 using Domain.Repositories.ReadingListRepository;
+using Domain.Repositories.ReportRepository;
 using Domain.Repositories.SharedRepositories;
 using Domain.Repositories.UserRepositories;
 using Domain.Services.EmailService;
@@ -35,6 +36,7 @@ using Infrastructure.Repositories.ModerationRepository;
 using Infrastructure.Repositories.NotificationRepository;
 using Infrastructure.Repositories.PatronProfileRepository;
 using Infrastructure.Repositories.ReadingListRepository;
+using Infrastructure.Repositories.ReportRepository;
 using Infrastructure.Repositories.SharedRepositories;
 using Infrastructure.Repositories.UserRepositories;
 using Infrastructure.Settings;
@@ -82,6 +84,7 @@ public static class Configuration
         services.AddScoped<INotificationRepository, NotificationRepository>();
         services.AddScoped<IEmailService, EmailService.EmailService>();
         services.AddScoped<IBookRecommendationRepository, BookRecommendationRepository>();
+        services.AddScoped<IReportRepository, ReportRepository>();
         services.Configure<JWT>(configuration.GetSection(nameof(JWT)));
         services.Configure<Cash>(configuration.GetSection(nameof(Cash)));
     }
