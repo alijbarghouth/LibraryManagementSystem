@@ -6,3 +6,6 @@ services:
     build:
       context: .
       dockerfile: WebApi/Dockerfile
+    environment:
+      - ConnectionStrings__LibraryDbContext=Data Source=ALI-J-BARGHOUTH;Initial Catalog=LibraryManagementSystem;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False
+      - ConnectionStrings__Redis=127.0.0.1:6379

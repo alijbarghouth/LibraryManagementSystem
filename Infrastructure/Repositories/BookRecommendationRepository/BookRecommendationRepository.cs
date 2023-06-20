@@ -23,23 +23,35 @@ public class BookRecommendationRepository : IBookRecommendationRepository
             .ThenInclude(x => x.Genres)
             .Where(o => o.UserId == patronId)
             .ToListAsync();
-        
-        var borrowingBook = borrowingHistory
-            .Select(x => x.OrderItems.First().Book)
+
+        var borrowingBookIds = borrowingHistory
+            .SelectMany(order => order.OrderItems.Select(oi => oi.BookId))
             .Distinct()
             .ToList();
-        
+
         var genres = borrowingHistory
             .SelectMany(order => order.OrderItems.SelectMany(oi => oi.Book.Genres))
             .Distinct()
             .ToList();
 
         var recommendedBooks = await _libraryDbContext.Books
+            .Include(x => x.Authors)
             .Include(x => x.Genres)
-            .Where(book => genres.Any(bg => book.Genres.Any(x => x.Name == bg.Name)))
-            .Except(borrowingBook)
             .ToListAsync();
 
-        return recommendedBooks.Adapt<List<BookRecommendation>>();
+        var filteredBooks = recommendedBooks
+            .Where(book => genres.Any(bg => book.Genres.Any(x => x.Name == bg.Name)))
+            .AsEnumerable()
+            //.Where(book => !borrowingBookIds.Contains(book.Id))
+            .Select(x => new
+            {
+                BookTitle = x.Title,
+                x.AverageRating,
+                Genres = x.Genres.ToList(),
+                Authors = x.Authors.ToList()
+            })
+            .ToList();
+
+        return filteredBooks.Adapt<List<BookRecommendation>>();
     }
 }

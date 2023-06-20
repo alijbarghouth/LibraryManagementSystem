@@ -17,12 +17,11 @@ public sealed class Book
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
-
     public string Title { get; set; }
     public DateTime PublicationDate { get; set; }
     public BookStatus BookStatus { get; set; }
     public int Count { get; set; }
-    public double AverageRating { get; set; } = 0;
+    public double AverageRating => BookReviews?.Average(review => review.Rating) ?? 0.0;
     public decimal Price { get; set; }
     public  ICollection<Genre> Genres { get; set; }
     public  ICollection<Author> Authors { get; set; }

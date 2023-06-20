@@ -72,7 +72,7 @@ public static class Configuration
         services.AddScoped<IBookAuthorRepository, BookAuthorRepository>();
         services.AddScoped<IAuthorRepository, AuthorRepository>();
         services.AddScoped<IGenreRepository, GenreRepository>();
-        services.AddScoped<IBookTransactionRepository, BookTransactionTransactionRepository>();
+        services.AddScoped<IBookTransactionRepository, BookTransactionRepository>();
         services.AddScoped<IPatronProfileRepository, PatronProfileRepository>();
         services.AddScoped<IBookCrudsRepository, BookCrudsRepository>();
         services.AddScoped<IBookGenreRepository, BookGenreRepository>();

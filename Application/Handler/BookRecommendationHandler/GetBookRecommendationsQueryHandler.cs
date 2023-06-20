@@ -1,3 +1,4 @@
+using Application.Cashing;
 using Application.Query.BookQuery;
 using Domain.DTOs.BookRecommendationDTOs;
 using Domain.Services.BookRecommendationService;
@@ -7,7 +8,6 @@ namespace Application.Handler.BookRecommendationHandler;
 public class GetBookRecommendationsQueryHandler : IGetBookRecommendationsQueryHandler
 {
     private readonly IBookRecommendationService _bookRecommendationService;
-
     public GetBookRecommendationsQueryHandler
         (IBookRecommendationService bookRecommendationService)
     {
