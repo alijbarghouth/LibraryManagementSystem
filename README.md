@@ -56,7 +56,7 @@ Clone the repository:
 ```https://github.com/alibarghouth/LibraryManagementSystem.git```
 
 # Navigate to the project directory:
-```cd LibraryManagementSystem````
+```cd LibraryManagementSystem```
 
 # Build and run the Docker containers:
 ```docker-compose up --build```
