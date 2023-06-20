@@ -53,11 +53,11 @@ Docker: Install Docker on your machine.
 
 # Steps
 Clone the repository:
-`https://github.com/alibarghouth/LibraryManagementSystem.git`
+```https://github.com/alibarghouth/LibraryManagementSystem.git```
 
 # Navigate to the project directory:
-`cd LibraryManagementSystem`
+```cd LibraryManagementSystem````
 
 # Build and run the Docker containers:
-`docker-compose up --build`
+```docker-compose up --build```
 
