@@ -42,11 +42,10 @@ public class BookRecommendationRepository : IBookRecommendationRepository
         var filteredBooks = recommendedBooks
             .Where(book => genres.Any(bg => book.Genres.Any(x => x.Name == bg.Name)))
             .AsEnumerable()
-            //.Where(book => !borrowingBookIds.Contains(book.Id))
+            .Where(book => !borrowingBookIds.Contains(book.Id))
             .Select(x => new
             {
                 BookTitle = x.Title,
-                x.AverageRating,
                 Genres = x.Genres.ToList(),
                 Authors = x.Authors.ToList()
             })

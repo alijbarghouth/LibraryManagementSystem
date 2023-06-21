@@ -1,5 +1,6 @@
 using Application.Command.BookReviewCommand;
 using Application.Handler.BookReviewHandler.AddBookReviewCommandHandler;
+using Application.Handler.BookReviewHandler.AverageRatingForEachBookHandler;
 using Application.Handler.BookReviewHandler.DeleteBookReviewCommandHandler;
 using Application.Handler.BookReviewHandler.GetAllBookReviewQueryHandler;
 using Application.Handler.BookReviewHandler.UpdateBookReviewCommandHandler;
@@ -19,16 +20,18 @@ namespace WebApi.Controller.BookReviewController
         private readonly IDeleteBookReviewCommandHandler _deleteBookReviewCommandHandler;
         private readonly IUpdateBookReviewCommandHandler _updateBookReviewCommandHandler;
         private readonly IGetAllBookReviewCommandHandler _getAllBookReviewCommandHandler;
-
+        private readonly IAverageRatingForEachBookQueryHandler _averageRatingForEachBookQueryHandler;
         public BookReviewsController(IAddBookReviewCommandHandler addBookReviewCommandHandler,
             IDeleteBookReviewCommandHandler deleteBookReviewCommandHandler,
             IUpdateBookReviewCommandHandler updateBookReviewCommandHandler,
-            IGetAllBookReviewCommandHandler getAllBookReviewCommandHandler)
+            IGetAllBookReviewCommandHandler getAllBookReviewCommandHandler,
+            IAverageRatingForEachBookQueryHandler averageRatingForEachBookQueryHandler)
         {
             _addBookReviewCommandHandler = addBookReviewCommandHandler;
             _deleteBookReviewCommandHandler = deleteBookReviewCommandHandler;
             _updateBookReviewCommandHandler = updateBookReviewCommandHandler;
             _getAllBookReviewCommandHandler = getAllBookReviewCommandHandler;
+            _averageRatingForEachBookQueryHandler = averageRatingForEachBookQueryHandler;
         }
         [Authorize]
         [HttpPost]
@@ -53,9 +56,15 @@ namespace WebApi.Controller.BookReviewController
 
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> GetAllBookReviewByUserIdAndBookId([FromQuery]GetAllBookReviewQuery query)
+        public async Task<IActionResult> GetAllBookReviewByBookId([FromQuery]GetAllBookReviewQuery query)
         {
             return Ok(await _getAllBookReviewCommandHandler.Handel(query));
+        }
+        [Authorize]
+        [HttpGet("rating")]
+        public async Task<IActionResult> AverageRatingForEachBook()
+        {
+            return Ok(await _averageRatingForEachBookQueryHandler.Handel());
         }
     }
 }

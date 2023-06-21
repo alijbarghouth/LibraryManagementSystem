@@ -33,7 +33,7 @@ public sealed class BookReviewService : IBookReviewService
         if (!await _sharedUserRepository.IsUserExistsUserId(bookReview.UserId))
             throw new NotFoundException("user not found");
         if(await _sharedBookManagementRepository.IsReviewExistsByBookIdAndUserId(bookReview.UserId, bookReview.BookId))
-            throw new NotFoundException("review is alreary exsists");
+            throw new NotFoundException("review is already exists");
 
         var review = await _bookReviewRepository.AddBookReview(bookReview);
         await _unitOfWork.SaveChangesAsync(cancellationToken);

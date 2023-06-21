@@ -21,12 +21,11 @@ public sealed class Book
     public DateTime PublicationDate { get; set; }
     public BookStatus BookStatus { get; set; }
     public int Count { get; set; }
-    public double AverageRating => BookReviews?.Average(review => review.Rating) ?? 0.0;
     public decimal Price { get; set; }
     public  ICollection<Genre> Genres { get; set; }
     public  ICollection<Author> Authors { get; set; }
     public  IEnumerable<ReadingList> ReadingLists { get; set; }
-    public  IEnumerable<BookReview> BookReviews { get; set; }
+    public  List<BookReview> BookReviews { get; set; }
     public  BookRecommendation BookRecommendation { get; set; }
     public  IEnumerable<OrderItem> OrderItems { get; set; }
 }

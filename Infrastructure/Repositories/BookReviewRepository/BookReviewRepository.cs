@@ -35,7 +35,6 @@ public sealed class BookReviewRepository : IBookReviewRepository
             Rating = bookReview.Rating,
             UserId = bookReview.UserId
         };
-        // var review = bookReview.Adapt<BookReview>();
         await _libraryDbContext.BookReviews.AddAsync(review);
         return new Response<Domain.DTOs.BookReviewDTOs.BookReview>(bookReview, review.Id);
     }
@@ -76,13 +75,10 @@ public sealed class BookReviewRepository : IBookReviewRepository
     public async Task<List<BookRating>> AverageRatingForEachBook()
     {
         return await _libraryDbContext.Books
-            .Include(b => b.BookReviews)
+            .Include(x => x.BookReviews)
             .Select(b
                 => new BookRating
-                (b.Title, b.BookReviews.Any()
-                    ? b.BookReviews.Average(r => r.Rating)
-                    : 0
-                ))
+                (b.Title, b.BookReviews.Any() ? b.BookReviews.Average(x => x.Rating) : 0))
             .ToListAsync();
     }
 }
