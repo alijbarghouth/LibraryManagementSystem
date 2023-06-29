@@ -61,6 +61,13 @@ public static class Configuration
             ClockSkew = TimeSpan.Zero
         };
     });
+
+        services.AddCors(c =>
+        {
+            c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().
+             AllowAnyHeader());
+        });
+
     }
 }
 

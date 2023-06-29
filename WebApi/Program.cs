@@ -27,6 +27,8 @@ app.UseHttpsRedirection();
 
 app.UseMiddleware<LoggerMiddleware>();
 
+app.UseCors("AllowOrigin");
+
 app.UseAuthentication();
 
 app.UseAuthorization();
