@@ -5,7 +5,7 @@
 
 > **Note**
 > Click here to view the documentation for this project
-> <a href = "https://www.notion.so/Technical-Design-Document-Libro-Book-Management-System-3716ed2333eb4b3499d4edfe2a662162">Technical Design Document</a>
+> <a href = "https://quirky-toy-006.notion.site/Technical-Design-Document-Libro-Book-Management-System-3716ed2333eb4b3499d4edfe2a662162">Technical Design Document</a>
 
 # Introduction
 The Libro Book Management System is a web-based application designed to facilitate the management and discovery of books in a library setting. This technical design document provides an overview of the system's architecture, components, design patterns, database structure, authentication mechanisms, error handling, and other technical aspects.
