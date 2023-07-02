@@ -30,6 +30,8 @@ app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
 
+app.UseResponseCompression();
+
 app.UseMiddleware<LoggerMiddleware>();
 
 app.UseCors("AllowOrigin");
