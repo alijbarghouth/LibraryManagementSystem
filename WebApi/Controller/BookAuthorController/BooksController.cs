@@ -50,7 +50,7 @@ namespace WebApi.Controller.BookAuthorController
         {
             return Ok(await _deleteBookCommandHandler.Handel(command));
         }
-
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAllBook()
         {
