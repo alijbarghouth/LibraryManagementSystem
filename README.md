@@ -1,4 +1,4 @@
-## Libro Book Management System - Technical Design Document
+## Libro Book Management System
 
 > **Warning**
 > If you need to show all commit which is not visible in the master branch you can access the notifications branch (all data is not visible in the master branch due to an error)
