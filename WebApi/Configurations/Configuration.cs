@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -6,6 +7,7 @@ using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Filters;
 using System.IO.Compression;
 using System.Text;
+using System.Threading.RateLimiting;
 using WebApi.Filter;
 using WebApi.Middleware;
 
@@ -76,6 +78,19 @@ public static class Configuration
         services.Configure<BrotliCompressionProviderOptions>(option =>
         {
             option.Level = CompressionLevel.Fastest;
+        });
+
+        services.AddRateLimiter(rateLimiterOption =>
+        {
+            rateLimiterOption.AddTokenBucketLimiter("token", option =>
+            {
+                option.TokenLimit = 100;
+                option.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+                option.QueueLimit = 5;
+                option.ReplenishmentPeriod = TimeSpan.FromSeconds(10);
+                option.TokensPerPeriod = 20;
+                option.AutoReplenishment = true;
+            });
         });
     }
 }
