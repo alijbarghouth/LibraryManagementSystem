@@ -1,5 +1,8 @@
-﻿namespace WebApi.Middleware;
+﻿using Domain.Shared.Exceptions.CustomException;
+using WebApi.Filter;
 
+namespace WebApi.Middleware;
+[LibraryExceptionHandlerFilter]
 public sealed class LoggerMiddleware : IMiddleware
 {
     private readonly ILogger<LoggerMiddleware> _logger;
@@ -27,7 +30,9 @@ public sealed class LoggerMiddleware : IMiddleware
                 $"Error occurred while processing request: {context.Request.Method} {context.Request.Path}" +
                 $" from {context.Connection.RemoteIpAddress}");
 
-            throw;
+            throw new BadRequestException(
+                $"Error occurred in {context.Request.Method} {context.Request.Path}" +
+                $" from {context.Connection.RemoteIpAddress}");
         }
     }
 }
