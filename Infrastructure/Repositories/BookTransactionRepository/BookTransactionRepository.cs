@@ -81,13 +81,12 @@ public sealed class BookTransactionRepository : IBookTransactionRepository
 
         book.Count -= 1;
         _libraryDbContext.Books.Update(book);
-        await _libraryDbContext.SaveChangesAsync();
 
         orderItem.BorrowedDate = DateTime.UtcNow;
         _libraryDbContext.Orders.Update(order);
-        await _libraryDbContext.SaveChangesAsync();
+
         _libraryDbContext.OrderItems.Update(orderItem);
-        await _libraryDbContext.SaveChangesAsync();
+
         return order.Adapt<Domain.DTOs.OrderDTOs.Order>();
     }
 
@@ -100,7 +99,6 @@ public sealed class BookTransactionRepository : IBookTransactionRepository
                     ?? throw new NotFoundException("order not found or not found order is reserved");
         order.StatusRequest = StatusRequest.Returned;
         _libraryDbContext.Orders.Update(order);
-        await _libraryDbContext.SaveChangesAsync();
 
         var orderItem = order.OrderItems.FirstOrDefault()
                         ?? throw new NotFoundException("order item not found");
@@ -109,11 +107,10 @@ public sealed class BookTransactionRepository : IBookTransactionRepository
                    ?? throw new NotFoundException("book not found");
         book.Count += 1;
         _libraryDbContext.Books.Update(book);
-        await _libraryDbContext.SaveChangesAsync();
 
         orderItem.DateRetrieved = DateTime.UtcNow;
         _libraryDbContext.OrderItems.Update(orderItem);
-        await _libraryDbContext.SaveChangesAsync();
+
         return order.Adapt<Domain.DTOs.OrderDTOs.Order>();
     }
 

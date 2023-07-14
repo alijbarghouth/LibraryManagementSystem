@@ -37,20 +37,24 @@ public sealed class BookTransactionService : IBookTransactionService
         return result;
     }
 
-    public async Task<Order> CheckOutBook(Guid orderId)
+    public async Task<Order> CheckOutBook(Guid orderId, CancellationToken cancellationToken)
     {
         if (!await _sharedBookManagementRepository.IsOrderExistsByOrderId(orderId))
             throw new NotFoundException("order not found");
 
-        return await _bookTransactionRepository.CheckOutBook(orderId);
+        var book =  await _bookTransactionRepository.CheckOutBook(orderId);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
+        return book;
     }
 
-    public async Task<Order> AcceptReturnedBook(Guid orderId)
+    public async Task<Order> AcceptReturnedBook(Guid orderId, CancellationToken cancellationToken)
     {
         if (!await _sharedBookManagementRepository.IsOrderExistsByOrderId(orderId))
             throw new NotFoundException("order not found");
 
-        return await _bookTransactionRepository.AcceptReturnedBook(orderId);
+        var book =  await _bookTransactionRepository.AcceptReturnedBook(orderId);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
+        return book;
     }
 
     public async Task<Order> RejectReserveBook(Guid orderId, CancellationToken cancellationToken = default)

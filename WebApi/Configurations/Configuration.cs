@@ -67,7 +67,7 @@ public static class Configuration
             c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().
              AllowAnyHeader());
         });
-
+        
         services.AddHealthChecks();
 
         services.AddResponseCompression(option =>
