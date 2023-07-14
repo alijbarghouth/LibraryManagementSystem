@@ -34,13 +34,10 @@ public class BookRecommendationRepository : IBookRecommendationRepository
             .Distinct()
             .ToList();
 
-        var recommendedBooks =await  _libraryDbContext.Books
+        var recommendedBooks =  _libraryDbContext.Books
             .Include(x => x.Authors)
             .Include(x => x.Genres)
             .Where(book => genres.Any(bg => book.Genres.Any(x => x.Name == bg.Name)))
-            .ToListAsync();
-
-        var filteredBooks = recommendedBooks
             .Where(book => !borrowingBookIds.Contains(book.Id))
             .Select(x => new
             {
@@ -50,6 +47,6 @@ public class BookRecommendationRepository : IBookRecommendationRepository
             })
             .ToList();
 
-        return filteredBooks.Adapt<List<BookRecommendation>>();
+        return recommendedBooks.Adapt<List<BookRecommendation>>();
     }
 }
